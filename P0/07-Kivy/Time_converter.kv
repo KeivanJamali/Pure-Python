@@ -1,0 +1,62 @@
+<Mng>:
+    Mainsc:
+    Mesc:
+
+<Mainsc>:
+    FloatLayout:
+
+        TextInput:
+            hint_text: "Year"
+            size_hint: 0.2, 0.1
+            pos_hint: {"x": 0.21, "y": 0.66}
+        TextInput:
+            hint_text: "Month"
+            size_hint: 0.2, 0.1
+            pos_hint: {"x": 0.41, "y": 0.66}
+        TextInput:
+            hint_text: "Day"
+            size_hint: 0.2, 0.1
+            pos_hint: {"x": 0.61, "y": 0.66}
+        Label:
+            text: "Date: "
+            size_hint: 0.2, 0.1
+            pos_hint: {"x": 0, "y": 0.66}
+        Label:
+            text: "Shamsi: "
+            size_hint: 0.2, 0.1
+            pos_hint: {"x": 0, "y": 0.52}
+        Label:
+            text: "Miladi: "
+            size_hint: 0.18, 0.1
+            pos_hint: {"x": 0, "y": 0.38}
+        Label:
+            text: "Gamari: "
+            size_hint: 0.2, 0.1
+            pos_hint: {"x": 0, "y": 0.23}
+
+
+<Shape>:
+    size: 200,200
+    canvas:
+        Rectangle:
+            pos : 0, 375
+            size : 450, 6
+        Rectangle:
+            pos : 0, 100
+            size: 450, 6
+
+<Shapeme>:
+    size: 200,200
+    canvas:
+        Rectangle:
+            pos: 10, 50
+            size: 10,500
+        Rectangle:
+            pos: 430,50
+            size: 10,500
+        Rectangle:
+            pos: 40, 500
+            size: 450-80, 6
+        Rectangle:
+            pos: 40, 100
+            size: 450-80, 6

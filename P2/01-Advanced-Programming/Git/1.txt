@@ -1,0 +1,7 @@
+git init
+git add
+git commit -m
+git status
+git config --global user.name keivan
+git config --global user.email kj.pj.sj@gmail.com
+git revert

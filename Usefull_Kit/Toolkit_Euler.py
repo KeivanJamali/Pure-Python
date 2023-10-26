@@ -1,4 +1,5 @@
 import itertools
+import math
 
 def prime_provid(n):
     """n = last_number"""
@@ -35,6 +36,8 @@ def factors(n: int) -> list:
     return table
 
 
-def findpermutations(l: list) -> list:
-    """it will returns all permutations off a list as a list"""
+def find_permutations(l: list) -> list:
+    """Returns all permutations of a list as a list."""
     return list(itertools.permutations(l))
+
+

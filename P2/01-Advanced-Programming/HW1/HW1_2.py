@@ -9,7 +9,7 @@ def find_permutations(l: map):
 class HW1_2:
 
     @staticmethod
-    def max_power(lst: map) -> int:
+    def max_power(lst: list) -> int:
         """
         Returns the maximum power calculated for a given list of items.
 
@@ -71,6 +71,6 @@ def main(n: int, string: str) -> int:
     return HW1_2.max_power(lst)
 
 
-n = int(input())
-string = input()
+n = 10
+string = "1 3 5 7 3 6 2 4 8 9"
 print(main(n, string))

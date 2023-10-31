@@ -19,3 +19,4 @@ class HW1_5:
                 last_prices.append(leftover_new)
             color_prices_new = color_prices.copy().remove(color)
             self.dynamic(leftover_new, color_prices_new)
+

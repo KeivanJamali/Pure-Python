@@ -3,6 +3,12 @@ import re
 
 class Account:
     def __init__(self, username, password, nationalcode, creditcard, email):
+        # self.username = self.username_validation(username)
+        # self.password = self.password_validation(password)
+        # self.nationalcode = self.nationalcode_validation(nationalcode)
+        # self.creditcard = self.creditcard_validation(creditcard)
+        # self.email = self.email_validation(email)
+
         self.username = self.username_validation(username)
         self.password = self.password_validation(password)
         self.nationalcode = self.nationalcode_validation(nationalcode)
@@ -15,6 +21,16 @@ class Account:
             raise Exception("invalid UserName")
         else:
             return username
+        # if not re.match(r"^[a-zA-Z]+[._][a-zA-Z]+$", username):
+        #     raise Exception("invalid UserName")
+        # else:
+        #     return username
+        # regex_pattern = r"^[a-zA-Z]+[._][a-zA-Z]+$"
+        # match = re.match(regex_pattern, username)
+        # if match is None:
+        #     raise Exception("invalid UserName")
+        # else:
+        #     return username
 
     def password_validation(self, password: str):
         if not re.match(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#\$%!]).{8,}$", password):

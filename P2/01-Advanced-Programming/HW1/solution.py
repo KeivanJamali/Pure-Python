@@ -5,29 +5,26 @@ class Account:
     def __init__(self, username, password, nationalcode, creditcard, email):
         self.username = self.username_validation(username)
         self.password = self.password_validation(password)
-        self.nationalcode = self.nationalcode_validation(str(nationalcode))
-        self.creditcard = self.creditcard_validation(str(creditcard))
+        self.nationalcode = self.nationalcode_validation(nationalcode)
+        self.creditcard = self.creditcard_validation(creditcard)
         self.email = self.email_validation(email)
-        # self.password_validation(password)
-        # self.nationalcode_validation(str(nationalcode))
-        # self.creditcard_validation(str(creditcard))
-        # self.email_validation(email)
+
 
     def username_validation(self, username: str):
         if not re.match(r"^[A-Za-z]+[_.][A-Za-z]+$", username):
-            raise ValueError("invalid UserName")
+            raise Exception("invalid UserName")
         else:
             return username
 
     def password_validation(self, password: str):
         if not re.match(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#\$%!]).{8,}$", password):
-            raise ValueError("invalid Password")
+            raise Exception("invalid Password")
         else:
             return password
 
     def nationalcode_validation(self, nationalcode: str):
         if len(nationalcode) != 10:
-            raise ValueError("invalid NationalCode")
+            raise Exception("invalid NationalCode")
         else:
             control = sum([(10 - i) * int(nationalcode[i]) for i in range(len(nationalcode) - 1)])
             remain = divmod(control, 11)[1]
@@ -36,7 +33,7 @@ class Account:
             else:
                 control = 11 - remain
             if int(nationalcode[-1]) != control:
-                raise ValueError("invalid NationalCode")
+                raise Exception("invalid NationalCode")
             else:
                 return nationalcode
 
@@ -58,7 +55,7 @@ class Account:
 
     def email_validation(self, email: str):
         if not re.match(r"^[A-Za-z0-9_]+@[A-Za-z0-9]+\.[A-Za-z]{2,3}$", email) or email.split("").count(".") > 2:
-            raise ValueError("invalid Email")
+            raise Exception("invalid Email")
         else:
             return email
 

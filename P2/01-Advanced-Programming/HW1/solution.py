@@ -3,42 +3,25 @@ import re
 
 class Account:
     def __init__(self, username, password, nationalcode, creditcard, email):
-        # self.username = self.username_validation(username)
-        # self.password = self.password_validation(password)
-        # self.nationalcode = self.nationalcode_validation(nationalcode)
-        # self.creditcard = self.creditcard_validation(creditcard)
-        # self.email = self.email_validation(email)
-
         self.username = self.username_validation(username)
         self.password = self.password_validation(password)
         self.nationalcode = self.nationalcode_validation(nationalcode)
         self.creditcard = self.creditcard_validation(creditcard)
         self.email = self.email_validation(email)
 
-
-    def username_validation(self, username: str):
+    def username_validation(self, username):
         if not re.match(r"^[A-Za-z]+[_.][A-Za-z]+$", username):
             raise Exception("invalid UserName")
         else:
             return username
-        # if not re.match(r"^[a-zA-Z]+[._][a-zA-Z]+$", username):
-        #     raise Exception("invalid UserName")
-        # else:
-        #     return username
-        # regex_pattern = r"^[a-zA-Z]+[._][a-zA-Z]+$"
-        # match = re.match(regex_pattern, username)
-        # if match is None:
-        #     raise Exception("invalid UserName")
-        # else:
-        #     return username
 
-    def password_validation(self, password: str):
+    def password_validation(self, password):
         if not re.match(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#\$%!]).{8,}$", password):
             raise Exception("invalid Password")
         else:
             return password
 
-    def nationalcode_validation(self, nationalcode: str):
+    def nationalcode_validation(self, nationalcode):
         if len(nationalcode) != 10:
             raise Exception("invalid NationalCode")
         else:
@@ -53,7 +36,7 @@ class Account:
             else:
                 return nationalcode
 
-    def creditcard_validation(self, creditcard: str):
+    def creditcard_validation(self, creditcard):
         control_c = 0
         for i in range(len(creditcard)):
             if i % 2 == 0:
@@ -69,7 +52,7 @@ class Account:
         else:
             return creditcard
 
-    def email_validation(self, email: str):
+    def email_validation(self, email):
         if not re.match(r"^[A-Za-z0-9_]+@[A-Za-z0-9]+\.[A-Za-z]{2,3}$", email) or email.split("").count(".") > 2:
             raise Exception("invalid Email")
         else:

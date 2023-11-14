@@ -68,3 +68,10 @@ def a_g(r: float, n: int, g: float = None) -> float:
 def ie(r: float) -> float:
     """produce effective interest rate"""
     return exp(r) - 1
+
+
+def p_abar(r: float, n: int, abar: float = None) -> float:
+    if abar:
+        return abar * ((exp(r * 5) - 1) / (r * exp(r * 5)))
+    else:
+        return (exp(r * 5) - 1) / (r * exp(r * 5))

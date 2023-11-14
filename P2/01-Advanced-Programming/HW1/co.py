@@ -59,68 +59,65 @@ class Account:
             str: The validated national code.
 
         """
-        nationalcode.replace(" ", "")
-        if len(str(nationalcode)) != 10:
+        if len(nationalcode) != 10:
             raise Exception("invalid NationalCode")
         else:
-            control = sum([(10 - i) * int(list(str(nationalcode))[i]) for i in range(len(str(nationalcode)) - 1)])
+            control = sum([(10 - i) * int(nationalcode[i]) for i in range(len(nationalcode) - 1)])
             remain = divmod(control, 11)[1]
             if remain < 2:
                 control = remain
             else:
                 control = 11 - remain
-            if int(list(str(nationalcode))[-1]) != control:
+            if int(nationalcode[-1]) != control:
                 raise Exception("invalid NationalCode")
             else:
                 return nationalcode
 
     def creditcard_validation(self, creditcard):
-        # """
-        # Validates a credit card number.
-        #
-        # Parameters:
-        #     creditcard (str): The credit card number to be validated.
-        #
-        # Returns:
-        #     str: The validated credit card number.
-        #
-        # Raises:
-        #     ValueError: If the credit card number is invalid.
-        # """
-        # control_c = 0
-        # for i in range(len(creditcard)):
-        #     if i % 2 == 0:
-        #         control_c += int(creditcard[i])
-        #     else:
-        #         if int(creditcard[i]) * 2 > 9:
-        #             control_c += int(creditcard[i]) * 2 - 9
-        #         else:
-        #             control_c += int(creditcard[i]) * 2
-        # A = divmod(control_c, 10)[1]
-        # if A != 0:
-        #     raise Exception("invalid CreditCard")
-        # else:
-        #     return creditcard
-        pass
+        """
+        Validates a credit card number.
+
+        Parameters:
+            creditcard (str): The credit card number to be validated.
+
+        Returns:
+            str: The validated credit card number.
+
+        Raises:
+            ValueError: If the credit card number is invalid.
+        """
+        control_c = 0
+        for i in range(len(creditcard)):
+            if i % 2 == 0:
+                control_c += int(creditcard[i])
+            else:
+                if int(creditcard[i]) * 2 > 9:
+                    control_c += int(creditcard[i]) * 2 - 9
+                else:
+                    control_c += int(creditcard[i]) * 2
+        A = divmod(control_c, 10)[1]
+        if A != 0:
+            raise ValueError("invalid CreditCard")
+        else:
+            return creditcard
 
     def email_validation(self, email):
-        # """
-        # Validates a credit card number.
-        #
-        # Parameters:
-        #     email (str): The email to be validated.
-        #
-        # Returns:
-        #     str: The validated email.
-        #
-        # Raises:
-        #     ValueError: If the email is invalid.
-        # """
-        # if not re.match(r"^[A-Za-z0-9_.]+@[A-Za-z]+\.[A-Za-z]{2,3}$", email) or email.split("").count(".") > 2:
-        #     raise Exception("invalid Email")
-        # else:
-        #     return email
-        pass
+        """
+        Validates a credit card number.
+
+        Parameters:
+            creditcard (str): The credit card number to be validated.
+
+        Returns:
+            str: The validated credit card number.
+
+        Raises:
+            ValueError: If the credit card number is invalid.
+        """
+        if not re.match(r"^[A-Za-z0-9_]+@[A-Za-z0-9]+\.[A-Za-z]{2,3}$", email) or email.split("").count(".") > 2:
+            raise Exception("invalid Email")
+        else:
+            return email
 
 
 class Order:

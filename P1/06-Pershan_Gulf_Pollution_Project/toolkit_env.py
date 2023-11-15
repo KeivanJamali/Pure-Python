@@ -36,8 +36,8 @@ class Transport:
         It will give you the concentration as c
         :param dimension: what space are you working at? 1d or 2d or 3d. just write the number only.
         :param t: at what time are you looking at it. (s)
-        :param L: if you are in 2d (m)
-        :param A: if you are in 1d (m^2)
+        :param L: if you are in 2d (04-Project management)
+        :param A: if you are in 1d (04-Project management^2)
         :return: concentration
         """
         if dimension == 1:
@@ -116,8 +116,8 @@ def plot_picture(t: float, nodes, vx: float = 0, vy: float = 0, error: float = 1
             plt.scatter(x_list[iteration], y_list[iteration], c="#2874A6")
 
     plt.title(f"scenario {scenario}: at time {t:.2f} hour")
-    plt.xlabel("X (m)")
-    plt.ylabel("Y (m)")
+    plt.xlabel("X (04-Project management)")
+    plt.ylabel("Y (04-Project management)")
     cmap = plt.get_cmap("nipy_spectral_r", split + 3)
     norm = mpl.colors.Normalize(vmin=0, vmax=6.5)
     sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
@@ -190,8 +190,8 @@ def plot_curve(nodes: list, t: float, scenario: int = 1, show: bool = True, save
     ax = plt.axes(projection='3d')
     ax.plot3D(x, y, c)
     plt.title(f"scenario {scenario}: at time {t:.2f} hour 3D plot(X-Y-C)")
-    plt.xlabel("X (m)")
-    plt.ylabel("Y (m)")
+    plt.xlabel("X (04-Project management)")
+    plt.ylabel("Y (04-Project management)")
     if save:
         plt.savefig(f"3D S{scenario} at {t:.2f}.png", dpi=300)
     if show:
@@ -200,8 +200,8 @@ def plot_curve(nodes: list, t: float, scenario: int = 1, show: bool = True, save
     plt.clf()
     plt.plot(x2, cx)
     plt.title(f"scenario {scenario}: at time {t:.2f} hour 2D plot(X-C)")
-    plt.xlabel("X (m)")
-    plt.ylabel("C (kg/m^3)")
+    plt.xlabel("X (04-Project management)")
+    plt.ylabel("C (kg/04-Project management^3)")
     plt.ylim([0, 6.5])
     if save:
         plt.savefig(f"2Dx S{scenario} at {t:.2f}.png", dpi=300)
@@ -211,8 +211,8 @@ def plot_curve(nodes: list, t: float, scenario: int = 1, show: bool = True, save
     plt.clf()
     plt.plot(y2, cy)
     plt.title(f"scenario {scenario}: at time {t:.2f} hour 2D plot(Y-C)")
-    plt.xlabel("Y (m)")
-    plt.ylabel("C (kg/m^3)")
+    plt.xlabel("Y (04-Project management)")
+    plt.ylabel("C (kg/04-Project management^3)")
     plt.ylim([0, 6.5])
     if save:
         plt.savefig(f"2Dy S{scenario} at {t:.2f}.png", dpi=300)

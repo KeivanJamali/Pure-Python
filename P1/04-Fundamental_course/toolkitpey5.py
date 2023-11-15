@@ -12,7 +12,7 @@ def iz_max(qbar: float, q: float, qz: float) -> float:
     :param qbar: main q
     :param q: layer pressure (KPa)
     :param qz: pressure till z (KPa)
-    :return: Iz(m)
+    :return: Iz(04-Project management)
     """
     result = 0.5 + 0.1 * ((qbar - q) / qz) ** 0.5
     return result
@@ -30,8 +30,8 @@ def point_between(point1: Point, point2: Point, x: float) -> float:
 def Es(L: float, B: float, qc: float) -> float:
     """
     Schmertmann solution.
-    :param L: length of pey(higher) (m)
-    :param B: width of pey(lower) (m)
+    :param L: length of pey(higher) (04-Project management)
+    :param B: width of pey(lower) (04-Project management)
     :param qc: cone penetration resistance (KPa)
     :return: Es (KPa)
     """
@@ -72,9 +72,9 @@ def c2_Schmertmann(t: float) -> float:
 def alfa_embank(b1: float, b2: float, z: float, q0: float = 1) -> list:
     """
     returns a list contains alfa1, alfa2, sigma
-    :param b1: top length (m)
-    :param b2: triangle bottom length (m)
-    :param z: depth (m)
+    :param b1: top length (04-Project management)
+    :param b2: triangle bottom length (04-Project management)
+    :param z: depth (04-Project management)
     :param q0: presser in KPa - default is 1
     :return: alfa1 and alfa2 in radian (Ra) and sigma (KPa)
     """

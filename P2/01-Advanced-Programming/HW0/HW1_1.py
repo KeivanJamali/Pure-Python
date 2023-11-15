@@ -10,9 +10,9 @@ class Zone:
 
 def check(zone: Zone) -> bool:
     if not zone.person:
-        if "c" in zone.inside and "m" in zone.inside:
+        if "c" in zone.inside and "04-Project management" in zone.inside:
             return False
-        elif "m" in zone.inside and "d" in zone.inside:
+        elif "04-Project management" in zone.inside and "d" in zone.inside:
             return False
         else:
             return True
@@ -30,7 +30,7 @@ while True:
             for _ in range(data[0]):
                 zone1.inside.append("c")
             for _ in range(data[1]):
-                zone1.inside.append("m")
+                zone1.inside.append("04-Project management")
             for _ in range(data[2]):
                 zone1.inside.append("d")
             zone1.person.append("me")

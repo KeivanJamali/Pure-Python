@@ -28,7 +28,7 @@ def get_ffme_returns() -> pd.DataFrame:
     rets = me_m[["Lo 10", "Hi 10"]]
     rets.columns = ["SmallCap", "LargeCap"]
     rets /= 100
-    rets.index = pd.to_datetime(rets.index, format="%Y%m").to_period("M")
+    rets.index = pd.to_datetime(rets.index, format="%Y%04-Project management").to_period("M")
     return rets
 
 

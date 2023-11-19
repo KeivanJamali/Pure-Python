@@ -40,7 +40,9 @@ class Account:
         Raises:
             Exception: If the password does not meet the required criteria.
         """
-        if not re.match(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@!#$])[A-Za-z\d@!#$].{8,}$", password):
+        if not re.match(
+            r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@!#$])[A-Za-z\d@!#$].{8,}$", password
+        ):
             raise Exception("invalid Password")
         else:
             return password
@@ -59,21 +61,25 @@ class Account:
             str: The validated national code.
 
         """
-        nationalcode.replace(" ", "")
         same = 0
-        for i in range(len(str(nationalcode))-1):
-            if str(nationalcode)[i] !=str(nationalcode)[i+1]:
+        for i in range(len(str(nationalcode)) - 1):
+            if str(nationalcode)[i] != str(nationalcode)[i + 1]:
                 break
             else:
                 same += 1
-        
-        if same == len(str(nationalcode))-1:
+
+        if same == len(str(nationalcode)) - 1:
             raise Exception("invalid NationalCode")
-    
+
         if len(str(nationalcode)) != 10:
             raise Exception("invalid NationalCode")
         else:
-            control = sum([(10 - i) * int(list(str(nationalcode))[i]) for i in range(len(str(nationalcode)) - 1)])
+            control = sum(
+                [
+                    (10 - i) * int(list(str(nationalcode))[i])
+                    for i in range(len(str(nationalcode)) - 1)
+                ]
+            )
             remain = divmod(control, 11)[1]
             if remain < 2:
                 control = remain
@@ -85,52 +91,66 @@ class Account:
                 return nationalcode
 
     def creditcard_validation(self, creditcard):
-        # """
-        # Validates a credit card number.
-        #
-        # Parameters:
-        #     creditcard (str): The credit card number to be validated.
-        #
-        # Returns:
-        #     str: The validated credit card number.
-        #
-        # Raises:
-        #     ValueError: If the credit card number is invalid.
-        # """
-        # control_c = 0
-        # for i in range(len(creditcard)):
-        #     if i % 2 == 0:
-        #         control_c += int(creditcard[i])
-        #     else:
-        #         if int(creditcard[i]) * 2 > 9:
-        #             control_c += int(creditcard[i]) * 2 - 9
-        #         else:
-        #             control_c += int(creditcard[i]) * 2
-        # A = divmod(control_c, 10)[1]
-        # if A != 0:
-        #     raise Exception("invalid CreditCard")
-        # else:
-        #     return creditcard
-        pass
+        """
+        Validates a credit card number.
+
+        Parameters:
+            creditcard (str): The credit card number to be validated.
+
+        Returns:
+            str: The validated credit card number.
+
+        Raises:
+            ValueError: If the credit card number is invalid.
+        """
+        control_c = 0
+        if len(str(creditcard)) != 16:
+            raise Exception("invalid CreditCard")
+        for i in range(len(str(creditcard))):
+            if (i + 1) % 2 == 0:
+                control_c += int(str(creditcard)[i])
+            else:
+                if int(str(creditcard)[i]) * 2 > 9:
+                    control_c += int(str(creditcard)[i]) * 2 - 9
+                else:
+                    control_c += int(str(creditcard)[i]) * 2
+        A = divmod(control_c, 10)[1]
+        if A != 0:
+            raise Exception("invalid CreditCard")
+        else:
+            return creditcard
 
     def email_validation(self, email):
-        # """
-        # Validates a credit card number.
-        #
-        # Parameters:
-        #     email (str): The email to be validated.
-        #
-        # Returns:
-        #     str: The validated email.
-        #
-        # Raises:
-        #     ValueError: If the email is invalid.
-        # """
-        # if not re.match(r"^[A-Za-z0-9_.]+@[A-Za-z]+\.[A-Za-z]{2,3}$", email) or email.split("").count(".") > 2:
-        #     raise Exception("invalid Email")
-        # else:
-        #     return email
-        pass
+        """
+        Validates a credit card number.
+
+        Parameters:
+            email (str): The email to be validated.
+
+        Returns:
+            str: The validated email.
+
+        Raises:
+            ValueError: If the email is invalid.
+        """
+        count = 0
+        email_s = email.split("@")
+        username = email_s[0]
+        domain_tld = email_s[1]
+        if not re.match(r"^[A-Za-z0-9_.]", username):
+            raise Exception("invalid Email")
+        if not re.match(r"^[A-Za-z]+\.[A-Za-z]{2,3}$", domain_tld) and not re.match(
+            r"^[0-9]+\.[A-Za-z]{2,3}$", domain_tld
+        ):
+            raise Exception("invalid Email")
+
+        for i in str(email):
+            if i == ".":
+                count += 1
+        if count > 2:
+            raise Exception("invalid Email")
+        
+        return email
 
 
 class Order:
@@ -142,7 +162,9 @@ class Order:
 
     def add_product(self, product, amount, price_product):
         if self.posted:
-            raise ValueError("Unfortunately, your products have been sent by truck and you can't change anything.")
+            raise ValueError(
+                "Unfortunately, your products have been sent by truck and you can't change anything."
+            )
         elif product in self.products:
             self.products[product] += amount
             self.price += amount * price_product
@@ -152,7 +174,9 @@ class Order:
 
     def remove_product(self, product, amount, price_product):
         if self.posted:
-            raise ValueError("Unfortunately, your products have been sent by truck and you can't change anything.")
+            raise ValueError(
+                "Unfortunately, your products have been sent by truck and you can't change anything."
+            )
         elif product not in self.products:
             return f"{product} is not in your cart."
         else:
@@ -164,5 +188,7 @@ class Order:
 
     def send_order(self):
         self.posted = True
-        products_s = ', '.join([f"{key}: {value}" for key, value in self.products.items()])
+        products_s = ", ".join(
+            [f"{key}: {value}" for key, value in self.products.items()]
+        )
         return f"Hi {self.name} ,You have ordered {products_s} and the price will be {self.price}$."

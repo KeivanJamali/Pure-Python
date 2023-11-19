@@ -1,4 +1,6 @@
 import math
+
+
 class Lig:
     def __init__(self):
         self.teams = {}
@@ -43,7 +45,7 @@ class Lig:
 
     def league_table(self) -> None:
         sorted_teams = sorted(self.teams,
-                              key=lambda x: (self.teams[x]["score"], self.teams[x]["goal_difference"], x), reverse=True)
+                              key=lambda x: (-self.teams[x]["goal_difference"], -self.teams[x]["score"], x))
 
         for team in sorted_teams:
             print(f"{team} {self.teams[team]['score']} {self.teams[team]['goal_difference']}")
@@ -60,8 +62,34 @@ class Lig:
 
 main = Lig()
 
+command = ""
+lines = []
 while True:
-    command = input().split()
+    get = input()
+    if get == "end":
+        break
+    if not get:
+        continue
+    lines.append(get)
+lines_stable = lines.copy()
+
+def read() -> str:
+    line = lines.pop(0)
+    if line[0:2] == "\n":
+        return read()
+    try:
+        if line[0] == " ":
+            final_line = line[:-2] + read()
+            return final_line
+        elif lines[0][0] != " ":
+            return line
+    except:
+        return line
+
+
+while lines:
+
+    command = read().split()
     if command[0] == "new_team":
         main.new_team(command[1])
     elif command[0] == "new_player":
@@ -72,7 +100,5 @@ while True:
         main.league_table()
     elif command[0] == "team_players":
         main.team_players(command[1])
-    elif command[0] == "end":
-        break
     else:
         print("invalid command")

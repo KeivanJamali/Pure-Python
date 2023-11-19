@@ -60,6 +60,16 @@ class Account:
 
         """
         nationalcode.replace(" ", "")
+        same = 0
+        for i in range(len(str(nationalcode))-1):
+            if str(nationalcode)[i] !=str(nationalcode)[i+1]:
+                break
+            else:
+                same += 1
+        
+        if same == len(str(nationalcode))-1:
+            raise Exception("invalid NationalCode")
+    
         if len(str(nationalcode)) != 10:
             raise Exception("invalid NationalCode")
         else:

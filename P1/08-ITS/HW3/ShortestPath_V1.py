@@ -90,7 +90,6 @@ class ShortestPath:
         """
         num_nodes = len(self.graph_)
         visited = np.zeros(num_nodes, dtype=bool)
-        # print(visited)
         distances_ = np.full(num_nodes, np.inf)
         distances_[self.start] = 0
         parents = np.full(num_nodes, -1, dtype=int)

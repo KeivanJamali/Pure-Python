@@ -1,9 +1,11 @@
+from collections import OrderedDict
+
 class Bank:
     def __init__(self):
         self.data = {}
         self.currency = ["IRT"]
-        self.market = {}
-        self.orders = {}
+        self.market = OrderedDict()
+        self.orders = OrderedDict()
         self.cash = []
         self.id = 1
 
@@ -50,73 +52,75 @@ class Bank:
         elif side == "Sell" and int(amount) > self.data[trader_name][market_name[:-3]]:
             print("trader has not enough balance!")
         else:
-            self.market[market_name][side].update({str(self.id): [price, amount, trader_name]})
+            self.market[market_name][side][str(self.id)] = [price, amount, trader_name]
             self.orders[market_name][str(self.id)] = [side, price, amount, trader_name]
             if side == "Buy":
                 self.data[trader_name]["IRT"] -= int(amount) * int(price)
             elif side == "Sell":
                 self.data[trader_name][market_name[:-3]] -= int(amount)
             print("new order created successfully!")
+            name2 = str(self.id)
+            value2 = [side, price, amount, trader_name]
             self.id += 1
-        #     self._check(market_name)
+            self._check(market_name, name2, value2)
 
-    def _check(self, market_name):
+    def _check(self, market_name, name2, value2):
         omit_sell = []
         omit_buy = []
-        for name1, value1 in self.orders[market_name].items():
-            for name2, value2 in self.orders[market_name].items():
-                if int(name2) > int(name1):
-                    if value1[0] == "Buy" and value2[0] == "Sell":
-                        if name1 not in omit_buy and name2 not in omit_sell and int(value1[1]) >= int(value2[1]):
-                            if int(value1[2]) > int(value2[2]):
-                                amount = int(value2[2])
-                                self.market[market_name]["Buy"][name1][1] = int(value1[2]) - int(value2[2])
-                                self.orders[market_name][name1][2] = int(value1[2]) - int(value2[2])
-                                self.data[value1[3]][market_name[:-3]] += int(amount)
-                                self.data[value2[3]]["IRT"] += int(amount) * int(value1[1])
-                                omit_sell.append(name2)
-                            elif int(value1[2]) < int(value2[2]):
-                                amount = int(value1[2])
-                                self.market[market_name]["Sell"][name2][1] = int(value2[2]) - int(value1[2])
-                                self.orders[market_name][name2][2] = int(value2[2]) - int(value1[2])
-                                self.data[value1[3]][market_name[:-3]] += int(amount)
-                                self.data[value2[3]]["IRT"] += int(amount) * int(value1[1])
-                                omit_buy.append(name1)
-                            else:
-                                amount = int(value1[2])
-                                self.data[value1[3]][market_name[:-3]] += int(amount)
-                                self.data[value2[3]]["IRT"] += int(amount) * int(value1[1])
-                                omit_buy.append(name1)
-                                omit_sell.append(name2)
-                            self.cash.append(f"trade {value1[3]} {value2[3]} {amount} {value1[1]}")
-                            print(
-                                f"new trade: maker is {value1[3]}, taker is {value2[3]}, price: {value1[1]}, amount: {amount}")
-                    if value1[0] == "Sell" and value2[0] == "Buy":
-                        if name1 not in omit_sell and name2 not in omit_buy and int(value1[1]) <= int(value2[1]):
-                            if name1 not in omit_sell and name2 not in omit_buy and int(value1[1]) <= int(value2[1]):
-                                if int(value1[2]) > int(value2[2]):
-                                    amount = int(value2[2])
-                                    self.market[market_name]["Sell"][name1][1] = int(value1[2]) - int(value2[2])
-                                    self.orders[market_name][name1][2] = int(value1[2]) - int(value2[2])
-                                    self.data[value2[3]][market_name[:-3]] += int(amount)
-                                    self.data[value1[3]]["IRT"] += int(amount) * int(value1[1])
-                                    omit_buy.append(name2)
-                                elif int(value1[2]) < int(value2[2]):
-                                    amount = int(value1[2])
-                                    self.market[market_name]["Buy"][name2][1] = int(value2[2]) - int(value1[2])
-                                    self.orders[market_name][name2][2] = int(value2[2]) - int(value1[2])
-                                    self.data[value2[3]][market_name[:-3]] += int(amount)
-                                    self.data[value1[3]]["IRT"] += int(amount) * int(value1[1])
-                                    omit_sell.append(name1)
-                                else:
-                                    amount = int(value1[2])
-                                    self.data[value2[3]][market_name[:-3]] += int(amount)
-                                    self.data[value1[3]]["IRT"] += int(amount) * int(value1[1])
-                                    omit_buy.append(name2)
-                                    omit_sell.append(name1)
-                                self.cash.append(f"trade {value1[3]} {value2[3]} {amount} {value1[1]}")
-                                print(
-                                    f"new trade: maker is {value1[3]}, taker is {value2[3]}, price: {value1[1]}, amount: {amount}")
+        order = dict(sorted(self.orders[market_name].items(), key=lambda x: int(x[1][1])))
+        # print(order)
+        # print(self.orders)
+        for name1, value1 in order.items():
+            if value1[0] == "Buy" and value2[0] == "Sell":
+                if name1 not in omit_buy and name2 not in omit_sell and int(value1[1]) >= int(value2[1]):
+                    if int(value1[2]) > int(value2[2]):
+                        amount = int(value2[2])
+                        self.market[market_name]["Buy"][name1][1] = int(value1[2]) - int(value2[2])
+                        self.orders[market_name][name1][2] = int(value1[2]) - int(value2[2])
+                        self.data[value1[3]][market_name[:-3]] += int(amount)
+                        self.data[value2[3]]["IRT"] += int(amount) * int(value1[1])
+                        omit_sell.append(name2)
+                    elif int(value1[2]) < int(value2[2]):
+                        amount = int(value1[2])
+                        self.market[market_name]["Sell"][name2][1] = int(value2[2]) - int(value1[2])
+                        self.orders[market_name][name2][2] = int(value2[2]) - int(value1[2])
+                        self.data[value1[3]][market_name[:-3]] += int(amount)
+                        self.data[value2[3]]["IRT"] += int(amount) * int(value1[1])
+                        omit_buy.append(name1)
+                    else:
+                        amount = int(value1[2])
+                        self.data[value1[3]][market_name[:-3]] += int(amount)
+                        self.data[value2[3]]["IRT"] += int(amount) * int(value1[1])
+                        omit_buy.append(name1)
+                        omit_sell.append(name2)
+                    self.cash.append(f"trade {value1[3]} {value2[3]} {amount} {value1[1]}")
+                    print(
+                        f"new trade: maker is {value1[3]}, taker is {value2[3]}, price: {value1[1]}, amount: {amount}")
+            if value1[0] == "Sell" and value2[0] == "Buy":
+                if name1 not in omit_sell and name2 not in omit_buy and int(value1[1]) <= int(value2[1]):
+                    if int(value1[2]) > int(value2[2]):
+                        amount = int(value2[2])
+                        self.market[market_name]["Sell"][name1][1] = int(value1[2]) - int(value2[2])
+                        self.orders[market_name][name1][2] = int(value1[2]) - int(value2[2])
+                        self.data[value2[3]][market_name[:-3]] += int(amount)
+                        self.data[value1[3]]["IRT"] += int(amount) * int(value1[1])
+                        omit_buy.append(name2)
+                    elif int(value1[2]) < int(value2[2]):
+                        amount = int(value1[2])
+                        self.market[market_name]["Buy"][name2][1] = int(value2[2]) - int(value1[2])
+                        self.orders[market_name][name2][2] = int(value2[2]) - int(value1[2])
+                        self.data[value2[3]][market_name[:-3]] += int(amount)
+                        self.data[value1[3]]["IRT"] += int(amount) * int(value1[1])
+                        omit_sell.append(name1)
+                    else:
+                        amount = int(value1[2])
+                        self.data[value2[3]][market_name[:-3]] += int(amount)
+                        self.data[value1[3]]["IRT"] += int(amount) * int(value1[1])
+                        omit_buy.append(name2)
+                        omit_sell.append(name1)
+                    self.cash.append(f"trade {value1[3]} {value2[3]} {amount} {value1[1]}")
+                    print(
+                        f"new trade: maker is {value1[3]}, taker is {value2[3]}, price: {value1[1]}, amount: {amount}")
 
         for name in omit_buy:
             del self.market[market_name]["Buy"][name]
@@ -134,24 +138,23 @@ class Bank:
             self.data[trader_name][currency_name] += int(amount)
 
     def orderbook(self, market_name: str) -> None:
-        pass
-        # if market_name not in self.market.keys():
-        #     print("market with this name does not exist.")
-        # else:
-        #     # print(self.market[market_name]["Sell"])
-        #     sor_sell = sorted(self.market[market_name]["Sell"], key=lambda x: x[0])
-        #     sor_buy = sorted(self.market[market_name]["Buy"], key=lambda x: x[0])
-        #     # print(sor_buy)
-        #     print(f"Sell:")
-        #     for i in sor_sell:
-        #         price = self.market[market_name]["Sell"][i][0]
-        #         amount = self.market[market_name]["Sell"][i][1]
-        #         print(f"{price} {amount}")
-        #     print(f"Buy:")
-        #     for i in sor_buy:
-        #         price = self.market[market_name]["Buy"][i][0]
-        #         amount = self.market[market_name]["Buy"][i][1]
-        #         print(f"{price} {amount}")
+        if market_name not in self.market.keys():
+            print("market with this name does not exist.")
+        else:
+            # print(self.market[market_name]["Sell"])
+            sor_sell = dict(sorted(self.market[market_name]["Sell"].items(), key=lambda x: x[1][0]))
+            sor_buy = dict(sorted(self.market[market_name]["Buy"].items(), key=lambda x: x[1][0]))
+            # print(sor_buy)
+            print(f"Sell:")
+            for i, value in sor_sell.items():
+                price = value[0]
+                amount = value[1]
+                print(f"{price} {amount}")
+            print(f"Buy:")
+            for i, value in sor_buy.items():
+                price = value[0]
+                amount = value[1]
+                print(f"{price} {amount}")
 
     def trades(self, market_name: str) -> None:
         pass

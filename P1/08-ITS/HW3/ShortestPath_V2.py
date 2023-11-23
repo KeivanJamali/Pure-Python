@@ -2,7 +2,7 @@ import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
 import pandas as pd
-from tqdm import tqdm
+from tqdm.auto import tqdm
 
 
 class ShortestPath:
@@ -88,7 +88,8 @@ class ShortestPath:
             else:
                 new = pd.DataFrame({self.shortest_path: self.path})
                 self.results = pd.concat([self.results, new], axis=1)
-            print(self.shortest_path, self.path)
+            # print(self.shortest_path, self.path)
+        self.save_results("result-whole-run")
 
     def _astar_method(self) -> tuple:
         """

@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 class ShortestPath:
     def __init__(self) -> None:
         self.graph_ = None
+        self.graph_data = None
         self.start = None
         self.target = None
         self.shortest = None
@@ -44,6 +45,7 @@ class ShortestPath:
                    and the path taken to reach the target node.
         """
         self.graph_ = graph_
+        self.graph_data = {start: 0}
         self.start = start
         self.target = target
         self.shortest, self.path = self._astar_method()
@@ -70,6 +72,7 @@ class ShortestPath:
         self.start = start
         self.target = target
         for i in range(0, flow, step):
+            self.graph_data = {start: 0}
             self.shortest, self.path = self._astar_method()
             self.shortest_path = self.shortest[target]
             self.graph_plotting(self.path, pos=pos, name=f"Question2_step{i}")
@@ -112,6 +115,7 @@ class ShortestPath:
                 distance = distances_[current_node] + weight
                 if distance < distances_[neighbor]:
                     distances_[neighbor] = distance
+                    self.graph_data[neighbor] = distance
                     parents[neighbor] = current_node
         shortest_path = self._reconstruct_path(parents)
 
@@ -153,7 +157,14 @@ class ShortestPath:
         g = nx.DiGraph(self.graph_)
         nx.draw_networkx_nodes(g, pos)
         nx.draw_networkx_edges(g, pos)
-        nx.draw_networkx_labels(g, pos)
+        numbers1 = []
+        numbers2 = []
+        for key, value in self.graph_.items():
+            numbers1.append(key)
+            numbers2.append(self.graph_data[key])
+        labels = {node: (num1, num2) for node, num1, num2 in zip(g.nodes(), numbers1, numbers2)}
+        pos_labels = {node: (x, y + 0.6) for node, (x, y) in pos.items()}
+        nx.draw_networkx_labels(g, pos=pos_labels, labels=labels)
         path = given_path
         path_edges = list(zip(path, path[1:]))
         nx.draw_networkx_edges(g, pos, edgelist=path_edges, edge_color='r', width=2)

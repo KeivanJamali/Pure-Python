@@ -9,35 +9,43 @@ class Eco:
     def print_factor(self, factor: float, name: str) -> None:
         print(f"__{name} = {factor:.{self.decimal_digits}f}__")
 
-    def print_result(self, result: list, name: list) -> None:
+    def print_result(self, result: list, name: list, time: bool = False) -> None:
         for i in range(len(result)):
-            print(f"__$$ {name[i]} = {result[i]:.{self.decimal_digits}f} $$__")
+            if not time:
+                print(f"__$$ {name[i]} = {result[i]:.{self.decimal_digits}f} $$__")
+            else:
+                time_1 = str(result[i])
+                time_1 = time_1.split(".")
+                time_2 = result[i] - int(time_1[0])
+                time_2 = time_2 * 12
+                print(f"__$$ {name[i]} = {int(time_1[0])} year and {time_2:.{self.decimal_digits}f} month $$__")
 
-    @staticmethod
-    def virtualized(dict_list: list, show: bool = True, title=None, legend: bool = False, scaler: float = 1) -> None:
-        for dict_ in dict_list:
-            x = []
-            y = []
-            for key, value in dict_.items():
-                x.append(key)
-                x.append(key)
-                x.append(key)
-                y.append(0)
-                y.append(value * scaler)
-                y.append(0)
 
-            for i in range(1, len(x), 3):
-                plt.text(x[i], y[i], str(y[i]), ha='center', va='bottom')
+@staticmethod
+def visualize(dict_list: list, show: bool = True, title=None, legend: bool = False, scaler: float = 1) -> None:
+    for dict_ in dict_list:
+        x = []
+        y = []
+        for key, value in dict_.items():
+            x.append(key)
+            x.append(key)
+            x.append(key)
+            y.append(0)
+            y.append(value * scaler)
+            y.append(0)
 
-            for i in range(1, len(x), 3):
-                plt.text(x[i], 0, str(x[i]), ha='center', va='bottom', position=(x[i], -0.8), c="y")
-            plt.plot(x, y, label=f"Scenario {dict_list.index(dict_) + 1}")
-        if show:
-            if title:
-                plt.title(title)
-            if legend:
-                plt.legend()
-            plt.show()
+        for i in range(1, len(x), 3):
+            plt.text(x[i], y[i], str(y[i]), ha='center', va='bottom')
+
+        for i in range(1, len(x), 3):
+            plt.text(x[i], 0, str(x[i]), ha='center', va='bottom', position=(x[i], -0.8), c="y")
+        plt.plot(x, y, label=f"Scenario {dict_list.index(dict_) + 1}")
+    if show:
+        if title:
+            plt.title(title)
+        if legend:
+            plt.legend()
+        plt.show()
 
 
 class Primary_Eco(Eco):
@@ -76,7 +84,7 @@ class Primary_Eco(Eco):
             else:
                 return factor
         else:
-            factor = 1/i
+            factor = 1 / i
             if print_:
                 self.print_factor(factor=factor, name=f"(P/A for inf years, {i:.{self.decimal_digits}f})")
             if a:
@@ -212,6 +220,14 @@ class Primary_Eco(Eco):
             self.print_factor(factor=factor, name=f"(i_from_ie, ie={ie:.{self.decimal_digits}f}, m={m})")
         return factor
 
+    def some_f_to_p(self, i: float, all_f: list) -> float:
+        """produce p from some a"""
+        result = 0
+        for iteration in range(len(all_f)):
+            p = Primary_Eco().f_to_p(i=i, n=iteration + 1, f=all_f[iteration], print_=False)
+            result += p
+        return result
+
 
 class Continuous_Eco(Eco):
     def __init__(self, decimal_digits: int = 4) -> None:
@@ -340,13 +356,3 @@ class My_Eco(Eco):
     def __init__(self, decimal_digits: int = 4):
         super().__init__()
         self.decimal_digits = decimal_digits
-
-    def some_f_to_p(self, i: float, all_f: list, print_: bool = True) -> float:
-        """produce p from some a"""
-        result = 0
-        for iteration in range(len(all_f)):
-            p = Primary_Eco().f_to_p(i=i, n=iteration + 1, f=all_f[iteration], print_=False)
-            result += p
-        if print_:
-            self.print_result(result=[result], name=[f"(from some f to p, {i:.{self.decimal_digits}f}, {len(all_f)})"])
-        return result

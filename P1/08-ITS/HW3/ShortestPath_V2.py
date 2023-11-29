@@ -17,7 +17,7 @@ class ShortestPath:
         self.results = None
 
     @staticmethod
-    def _heuristic(node, target):
+    def _heuristic(node: int, target: int) -> float:
         """
         Calculate the Euclidean distance between two nodes as the heuristic.
 
@@ -30,7 +30,7 @@ class ShortestPath:
         """
         return np.linalg.norm(target - node)
 
-    def _update_path(self, path: np.ndarray, v) -> None:
+    def _update_path(self, path: np.ndarray, v: float) -> None:
         for i in range(len(path) - 1):
             self.graph_[path[i]][path[i + 1]] = self.graph_[path[i]][path[i + 1]] * (1 + 0.3 * (v / 4000) ** 2)
 
@@ -52,9 +52,7 @@ class ShortestPath:
         self.start = start
         self.target = target
         self.shortest, self.path = self._astar_method()
-        print("Done Shortest path")
         self.shortest_path = self.shortest[target]
-        # self.graph_plotting(self.path)
         self.results = pd.DataFrame({self.shortest_path: self.path})
         return self.shortest_path, self.path
 
@@ -88,7 +86,6 @@ class ShortestPath:
             else:
                 new = pd.DataFrame({self.shortest_path: self.path})
                 self.results = pd.concat([self.results, new], axis=1)
-            # print(self.shortest_path, self.path)
         self.save_results("result-whole-run")
 
     def _astar_method(self) -> tuple:
@@ -138,9 +135,7 @@ class ShortestPath:
                 except:
                     pass
         pbar.close()
-        # print("Done Part 1")
         shortest_path = self._reconstruct_path(parents)
-        # print("Done Part 2")
         return distances_, list(map(int, shortest_path))
 
     def _reconstruct_path(self, parents: np.ndarray):
@@ -191,9 +186,8 @@ class ShortestPath:
         path = given_path
         path_edges = list(zip(path, path[1:]))
         nx.draw_networkx_edges(g, pos, edgelist=path_edges, edge_color='r', width=2)
-        # plt.savefig(f"plots/{name}.svg", format="svg")
+        plt.savefig(f"plots/{name}.svg", format="svg")
         plt.show()
-        # plt.close()
 
     def save_results(self, name: str = "result"):
         self.results.to_csv(f"results/{name}.csv")

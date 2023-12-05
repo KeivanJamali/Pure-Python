@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a7772ce1-7c70-4e44-8366-1223a073af3f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Class/sql.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/initial-Q1/initial.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/initial-Q1/queries.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql-course-materials/SQL Course Materials/create-databases.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql-course-materials/SQL Course Materials/create-db-hr.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql-course-materials/SQL Course Materials/create-db-inventory.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql-course-materials/SQL Course Materials/create-db-invoicing.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql-course-materials/SQL Course Materials/create-db-store.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql-course-materials/__MACOSX/SQL Course Materials/._create-databases.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql-course-materials/__MACOSX/SQL Course Materials/._create-db-hr.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql-course-materials/__MACOSX/SQL Course Materials/._create-db-inventory.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql-course-materials/__MACOSX/SQL Course Materials/._create-db-invoicing.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql-course-materials/__MACOSX/SQL Course Materials/._create-db-store.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../04-Project management/Midterm/Test.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../04-Project management/Midterm/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/Pure-Python.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/Pure-Python.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../P1/01-Handy Works/02-count number of words.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../P1/01-Handy Works/02-count number of words.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../P1/01-Handy Works/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../P1/01-Handy Works/test.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DJango/code1.py" beforeDir="false" afterPath="$PROJECT_DIR$/../DJango/code1.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2Z7ibrC0khbHO71XsmOrQq8oWYF" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenDatabaseViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/All Python/Pure-Python/P2/01-Advanced-Programming/HW2&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>

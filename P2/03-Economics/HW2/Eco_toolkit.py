@@ -20,32 +20,31 @@ class Eco:
                 time_2 = time_2 * 12
                 print(f"__$$ {name[i]} = {int(time_1[0])} year and {time_2:.{self.decimal_digits}f} month $$__")
 
+    @staticmethod
+    def visualize(dict_list: list, show: bool = True, title=None, legend: bool = False, scaler: float = 1) -> None:
+        for dict_ in dict_list:
+            x = []
+            y = []
+            for key, value in dict_.items():
+                x.append(key)
+                x.append(key)
+                x.append(key)
+                y.append(0)
+                y.append(value * scaler)
+                y.append(0)
 
-@staticmethod
-def visualize(dict_list: list, show: bool = True, title=None, legend: bool = False, scaler: float = 1) -> None:
-    for dict_ in dict_list:
-        x = []
-        y = []
-        for key, value in dict_.items():
-            x.append(key)
-            x.append(key)
-            x.append(key)
-            y.append(0)
-            y.append(value * scaler)
-            y.append(0)
+            for i in range(1, len(x), 3):
+                plt.text(x[i], y[i], str(y[i]), ha='center', va='bottom')
 
-        for i in range(1, len(x), 3):
-            plt.text(x[i], y[i], str(y[i]), ha='center', va='bottom')
-
-        for i in range(1, len(x), 3):
-            plt.text(x[i], 0, str(x[i]), ha='center', va='bottom', position=(x[i], -0.8), c="y")
-        plt.plot(x, y, label=f"Scenario {dict_list.index(dict_) + 1}")
-    if show:
-        if title:
-            plt.title(title)
-        if legend:
-            plt.legend()
-        plt.show()
+            for i in range(1, len(x), 3):
+                plt.text(x[i], 0, str(x[i]), ha='center', va='bottom', position=(x[i], -0.8), c="y")
+            plt.plot(x, y, label=f"Scenario {dict_list.index(dict_) + 1}")
+        if show:
+            if title:
+                plt.title(title)
+            if legend:
+                plt.legend()
+            plt.show()
 
 
 class Primary_Eco(Eco):

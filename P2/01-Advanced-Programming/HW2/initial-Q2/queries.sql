@@ -9,11 +9,11 @@
     ORDER BY
         CASE
             WHEN Year_of_Release >= 2000 THEN Movie_Rating
-            ELSE 0 -- A large number to push movies before 2000 to the end
+            ELSE 0
             END DESC,
         CASE
             WHEN Year_of_Release < 2000 THEN Year_of_Release
-            ELSE 1 -- A small number to push movies before 2000 to the end
+            ELSE 1
             END DESC,
         movie_name;
 -- Section3

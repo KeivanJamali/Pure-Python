@@ -366,14 +366,14 @@ class Equation_Eco(Eco):
         solution = fsolve(equ, x0=init)
         return float(solution[0])
 
-    def plot_eq_to_solve(self, equ, print_: bool = True, plot: bool = True):
+    def plot_eq_to_solve(self, equ, print_: bool = False, plot: bool = False):
         results = []
         x = []
         solution = []
         for i in np.arange(0.001, 1, 0.001):
             s = equ(i)
             if abs(s) < 50:
-                results.append(equ(i))
+                results.append(s)
                 x.append(i)
 
         if plot:
@@ -382,10 +382,9 @@ class Equation_Eco(Eco):
             plt.show()
 
         for i in range(len(results)):
-            if results[i] < 10:
-                solution.append(i)
-        solution = np.average(solution)
+            if abs(results[i]) < 5:
+                solution.append(x[i])
+        solution_final = np.average(solution)
         if print_:
-            self.print_factor(factor=solution, name=f"ROR")
-
-        return solution
+            self.print_factor(factor=solution_final, name=f"ROR")
+        return solution_final

@@ -1,4 +1,4 @@
-print(len(open("test.txt", "r").read().split(" ")))
+print(len(open("test.txt", "r").read()))
 
 
 file = open("test.txt", "r").read()

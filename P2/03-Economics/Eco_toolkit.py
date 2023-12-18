@@ -1,5 +1,10 @@
 from math import exp
+from typing import Tuple
+
 import matplotlib.pyplot as plt
+import numpy as np
+from numpy import ndarray
+from scipy.optimize import fsolve
 
 
 class Eco:
@@ -351,7 +356,35 @@ class Continuous_Eco(Eco):
             return factor
 
 
-class My_Eco(Eco):
+class Equation_Eco(Eco):
     def __init__(self, decimal_digits: int = 4):
         super().__init__()
         self.decimal_digits = decimal_digits
+        self.math = ["+", "-", "*", "^", "/", "="]
+
+    def solve_for_i(self, equ, init) -> float:
+        solution = fsolve(equ, x0=init)
+        return float(solution[0])
+
+    def plot_eq_to_solve(self, equ, print_: bool = True, plot: bool = True):
+        results = []
+        x = []
+        solution = []
+        for i in np.arange(0.001, 1, 0.001):
+            s = equ(i)
+            if abs(s) < 50:
+                results.append(s)
+                x.append(i)
+
+        if plot:
+            plt.plot(x, results, c="b")
+            plt.plot(x, np.zeros(len(x)), c="r")
+            plt.show()
+
+        for i in range(len(results)):
+            if abs(results[i]) < 5:
+                solution.append(x[i])
+        solution_final = np.average(solution)
+        if print_:
+            self.print_factor(factor=solution_final, name=f"ROR")
+        return solution_final

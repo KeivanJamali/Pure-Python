@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from .models import Player
 from .validators import *
 from django.shortcuts import get_object_or_404
+from django.core.validators import validate_email
 
 
 def authenticate(request):
@@ -69,45 +70,56 @@ def profile(request, username):
         response_body = {
             "username": player.username,
             "rank": player.get_rank_display(),
-            "score": float(player.score)
+            "score": player.score
         }
         return JsonResponse(response_body, status=200)
 
     elif request.method == "PUT":
-        if "auth-token" not in request.headers:
-            return JsonResponse({}, status=401)  # Unauthorized
-
-        auth_token = request.headers["auth-token"]
-        if auth_token[::-1] != auth_token:
-            return JsonResponse({}, status=401)  # Unauthorized
-
         try:
-            player = Player.objects.get(username=username)
-        except Player.DoesNotExist:
-            return JsonResponse({}, status=404)
+            if "auth-token" not in request.headers:
+                return JsonResponse({}, status=401)  # Unauthorized
 
-        try:
-            request_data = json.loads(request.body)
-            password = request_data.get("password")
-            age = request_data.get("age")
-            email = request_data.get("email")
+            auth_token = request.headers["auth-token"]
+            if auth_token[::-1] != auth_token:
+                return JsonResponse({}, status=401)  # Unauthorized
 
-            if not password or not age or not email:
+            try:
+                player = Player.objects.get(username=username)
+            except Player.DoesNotExist:
+                return JsonResponse({}, status=404)
+
+            try:
+                request_data = json.loads(request.body)
+                password = request_data["password"]
+                age = int(request_data["age"])
+                email = request_data["email"]
+
+                if not password or not age:
+                    return JsonResponse({}, status=400)  # Bad Request
+
+                validate_password(password)
+                validate_age(age)
+
+                player.password = password
+                player.age = age
+                if email:
+                    validate_email(email)
+                    player.email = email
+                else:
+                    player.email = player.email
+                player.save()
+
+                return JsonResponse({}, status=200)  # OK
+
+            except json.JSONDecodeError:
                 return JsonResponse({}, status=400)  # Bad Request
 
-            validate_password(password)
-            validate_age(age)
-
-            player.password = password
-            player.age = age
-            if email != "null":
-                player.email = email
-            player.save()
-
-            return JsonResponse({}, status=200)  # OK
-
-        except json.JSONDecodeError:
+        except (KeyError, json.JSONDecodeError):
             return JsonResponse({}, status=400)  # Bad Request
+        except Player.DoesNotExist:
+            return JsonResponse({}, status=404)  # Not Found
+        except Exception:
+            return JsonResponse({}, status=500)  # Internal Server Error
 
     else:
         return JsonResponse({}, status=405)  # Method Not Allowed

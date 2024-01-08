@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0fbe9639-de0d-4f65-af82-adb101b1bf25" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Question1/answers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/Question2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Question2/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Question2/asgi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Question2/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Question2/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Question2/wsgi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/django_hw.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game/middlewares.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game/migrations/0002_alter_player_email.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game/validators.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/game/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tweet/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tweet/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tweet/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tweet/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tweet/migrations/0002_user_followings_user_outgoing_follow_requests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tweet/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tweet/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../djangoProject/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../djangoProject/.idea/djangoProject.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../djangoProject/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../djangoProject/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../djangoProject/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../djangoProject/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../djangoProject/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../djangoProject/db.sqlite3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../djangoProject/members/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../djangoProject/members/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../djangoProject/members/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../djangoProject/members/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../djangoProject/members/migrations/0002_member_joined_date_member_phone.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../djangoProject/members/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../djangoProject/members/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../djangoProject/members/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../djangoProject/members/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../djangoProject/members/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../djangoProject/templates/myfirst.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../q2/django_hw.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../HW4/q1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../HW4/q1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../.idea/Pure-Python.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../.idea/Pure-Python.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../DJango/code1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../DJango/djangoProject/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../DJango/djangoProject/.idea/djangoProject.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../DJango/djangoProject/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../DJango/djangoProject/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../DJango/djangoProject/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../DJango/djangoProject/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../DJango/djangoProject/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../DJango/djangoProject/djangoProject/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../DJango/djangoProject/djangoProject/asgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../DJango/djangoProject/djangoProject/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../DJango/djangoProject/djangoProject/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../DJango/djangoProject/djangoProject/wsgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../DJango/djangoProject/manage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../answers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../03-Economics/HW4/Eco_toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../03-Economics/HW4/Eco_toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../03-Economics/HW4/HW4-KeivanJamali.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../03-Economics/HW4/HW4-KeivanJamali.ipynb" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2ab7EsJ13CyuyzrfCEvylyfAgOc" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/All Python Projects/interpreter&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="Question2" type="Python.DjangoServer" factoryName="Django server">
+      <module name="Question2" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="localhost" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-50da183f06c8-2887949eec09-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.13135.95" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0fbe9639-de0d-4f65-af82-adb101b1bf25" name="Changes" comment="" />
+      <created>1704575317355</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1704575317355</updated>
+      <workItem from="1704575318358" duration="10642000" />
+      <workItem from="1704625945883" duration="5258000" />
+      <workItem from="1704721977731" duration="69000" />
+      <workItem from="1704744909534" duration="2016000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>

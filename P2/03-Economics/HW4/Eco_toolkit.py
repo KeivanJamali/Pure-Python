@@ -1,9 +1,6 @@
 from math import exp
-from typing import Tuple
-
 import matplotlib.pyplot as plt
 import numpy as np
-from numpy import ndarray
 from scipy.optimize import fsolve
 
 
@@ -24,6 +21,29 @@ class Eco:
                 time_2 = result[i] - int(time_1[0])
                 time_2 = time_2 * 12
                 print(f"__$$ {name[i]} = {int(time_1[0])} year and {time_2:.{self.decimal_digits}f} month $$__")
+
+    def table(self, approach: str, **kwargs) -> None:
+        if approach == "BV":
+            print(f"--------------------------  TABLE   --------------------------")
+            print(f"Year  ------    Dj   --------------   BV   ----------")
+            print(f" {0:.0f}     |      {0:.2f}      |      {kwargs['bv'][0]:.2f} ")
+            for i in range(kwargs["n"]):
+                print(f" {i + 1:.0f}     |      {kwargs['dj'][i]:.2f}      |      {kwargs['bv'][i + 1]:.2f} ")
+            print(f"--------------------------   END    --------------------------")
+        elif approach == "SL":
+            print(f"--------------------------  TABLE   --------------------------")
+            print(f"Year  ------  Dj   --------------   SL   ---------")
+            for i in range(kwargs["n"]):
+                print(f" {i:.0f}     |      {kwargs['dj'][i]:.2f}      |      {kwargs['sl'][i]:.2f} ")
+            print(f"--------------------------   END    --------------------------")
+        elif approach == "TAX":
+            print(f"--------------------------  TABLE   --------------------------")
+            print(
+                f"Year  ------  CFBT   --------------   Dj   --------------   TI   --------------   TAX   --------------   CFAT   ----------")
+            for i in range(kwargs["n"]):
+                print(
+                    f" {i:.0f}     |      {kwargs['cfbt'][i]:.2f}      |      {kwargs['dj'][i]:.2f}      |      {kwargs['ti'][i]:.2f}      |      {kwargs['tax'][i]:.2f}      |      {kwargs['cfat'][i]:.2f}")
+            print(f"--------------------------   END    --------------------------")
 
     @staticmethod
     def visualize(dict_list: list, show: bool = True, title=None, legend: bool = False, scaler: float = 1) -> None:
@@ -224,11 +244,17 @@ class Primary_Eco(Eco):
             self.print_factor(factor=factor, name=f"(i_from_ie, ie={ie:.{self.decimal_digits}f}, m={m})")
         return factor
 
-    def some_f_to_p(self, i: float, all_f: list) -> float:
+    def some_f_to_p(self, i: float, all_f: list, with_p: bool = True) -> float:
         """produce p from some a"""
-        result = 0
-        for iteration in range(len(all_f)):
-            p = Primary_Eco().f_to_p(i=i, n=iteration + 1, f=all_f[iteration], print_=False)
+        all_f_copy = all_f.copy()
+        if with_p:
+            result = all_f_copy.pop(0)
+        else:
+            result = 0
+
+        for iteration in range(len(all_f_copy)):
+            primary = Primary_Eco()
+            p = primary.f_to_p(i=i, n=iteration + 1, f=all_f_copy[iteration], print_=False)
             result += p
         return result
 
@@ -366,13 +392,13 @@ class Equation_Eco(Eco):
         solution = fsolve(equ, x0=init)
         return float(solution[0])
 
-    def plot_eq_to_solve(self, equ, print_: bool = True, plot: bool = True):
+    def plot_eq_to_solve(self, equ, error: float = 50, print_: bool = True, plot: bool = False):
+        """send the function of lambda x. 0=equation"""
         results = []
         x = []
-        solution = []
         for i in np.arange(0.001, 1, 0.001):
             s = equ(i)
-            if abs(s) < 50:
+            if abs(s) < error:
                 results.append(s)
                 x.append(i)
 
@@ -381,77 +407,110 @@ class Equation_Eco(Eco):
             plt.plot(x, np.zeros(len(x)), c="r")
             plt.show()
 
-        for i in range(len(results)):
-            if abs(results[i]) < 5:
-                solution.append(x[i])
-        solution_final = np.average(solution)
+        solution_final = np.average(x)
         if print_:
             self.print_factor(factor=solution_final, name=f"ROR")
-        return solution_final
+        return x
 
 
-class Amortization_Eco(Eco):
+class Tax_Eco(Eco):
     def __init__(self, decimal_digits: int = 4):
         super().__init__()
         self.decimal_digits = decimal_digits
 
-    def sl(self, p: float, sv: float, n: int, i: float = 0, print_: bool = True) -> tuple:
+    def sl(self, p: float, sv: float, n: int, print_: bool = True) -> tuple:
         """produce sl, [ (p-sv)/2=n ]"""
-        amortization = (p - sv) / n
-        primary = Primary_Eco()
-        if i != 0:
-            factor = primary.a_to_p(i=i, n=n)
-        else:
-            factor = n
-        pw = amortization * factor
-        if print_:
-            self.print_factor(factor=amortization,
-                              name=f"(SL, p={p:.{self.decimal_digits}f}, sv={sv:.{self.decimal_digits}f}, n={n})")
-            self.print_factor(factor=pw, name=f"(PW, P/A={factor:.{self.decimal_digits}f})")
-        return amortization, pw
+        dj = [(p - sv) / n for _ in range(n)]
+        bv = [p]
 
-    def soyd(self, p: float, sv: float, n: int, i: float = None, print_: bool = True) -> tuple:
+        for i in range(n):
+            bv.append(bv[i] - dj[i])
+
+        if print_:
+            self.table(approach="BV", n=n, dj=dj, bv=bv)
+
+        dj.insert(0, 0)
+        return dj, bv
+
+    def soyd(self, p: float, sv: float, n: int, print_: bool = True) -> tuple:
         """produce SOYD [ (n-(j-1))/(n*(n+1)/2) ]"""
-        primary = Primary_Eco()
-        amortization = []
+        dj = []
+        bv = [p]
         for j in range(1, n + 1):
-            amortization.append(((n - (j - 1)) / ((n * (n + 1)) / 2)) * (p - sv))
-        pw = primary.some_f_to_p(i=i, all_f=amortization)
+            dj.append(((n - (j - 1)) / ((n * (n + 1)) / 2)) * (p - sv))
+            bv.append(bv[j - 1] - dj[j - 1])
         if print_:
-            for item in amortization:
-                self.print_factor(factor=item,
-                                  name=f"(SOYD-{amortization.index(item)+1}, p={p:.{self.decimal_digits}f}, sv={sv:.{self.decimal_digits}f}, n={n})")
-            self.print_factor(factor=pw, name=f"(PW)")
-        return amortization, pw
+            self.table(approach="BV", n=n, dj=dj, bv=bv)
+        dj.insert(0, 0)
+        return dj, bv
 
-    def ddb(self, p: float, n: int, approach: str, i: float = None, f: float = None, sv: float = None,
-            print_: bool = True) -> tuple:
+    def db(self, p: float, n: int, approach: str, f: float = None, sv: float = None, print_: bool = True,
+           dont: str = False) -> tuple:
         """produce DDB [ (n-1)/(n*(n+1)/2) ]
         approach = [factor, sv, ddb
         3 possibilities:
-            1: we have f: question gives us [amortization factor].
-            2: we don't have [amortization factor] but we have [sv](Declining inventory method).
+            1: we have f: question gives us [d%].
+            2: we don't have [d%] but we have [sv](Declining inventory method).
             3: we don't have [amortization factor] and [sv] but the method is DDB(double declining inventory method)."""
-        primary = Primary_Eco()
-        amortization = []
-        if approach == "factor":
+        dj = []
+        bv = [p]
+
+        if approach == "one":
             f = f
-        elif approach == "sv":
+        elif approach == "two":
             f = 1 - (sv / p) ** (1 / n)
         elif approach == "ddb":
             f = 2 / n
 
         for j in range(1, n + 1):
-            amortization.append(p * f * ((1 - f) ** (j - 1)))
-        if i:
-            pw = primary.some_f_to_p(i=i, all_f=amortization)
+            dj.append(p * f * ((1 - f) ** (j - 1)))
+            bv.append(bv[j - 1] - dj[j - 1])
+
         if print_:
-            for item in amortization:
-                self.print_factor(factor=item,
-                                  name=f"(DDB-{amortization.index(item)+1}, p={p:.{self.decimal_digits}f}, f={f:.{self.decimal_digits}f}, n={n})")
-            if i:
-                self.print_factor(factor=pw, name=f"(PW)")
-        if i:
-            return amortization, pw
-        else:
-            return amortization
+            print("first:")
+            self.table(approach="BV", n=n, dj=dj, bv=bv)
+
+        if not dont:
+            if bv[-1] < sv:
+                for i in range(len(bv)):
+                    if bv[i] < sv:
+                        bv[i] = sv
+                        dj[i - 1] = bv[i - 1] - sv
+                if print_:
+                    print("BV_last is smaller than SV... easy!")
+                    self.table(approach="BV", n=n, dj=dj, bv=bv)
+
+            elif bv[-1] > sv:
+                sl = []
+                for j in range(n):
+                    sl.append((bv[j] - sv) / (n - ((j + 1) - 1)))
+                for i in range(len(sl)):
+                    if sl[i] > dj[i]:
+                        index, new = i, sl[i]
+                        break
+                for i in range(len(dj)):
+                    if i >= index:
+                        dj[i] = new
+                        bv[i + 1] = bv[i] - new
+                if print_:
+                    print("BV_last is larger than SV... Too bad!")
+                    self.table(approach="SL", n=n, dj=dj, sl=sl)
+                    self.table(approach="BV", n=n, dj=dj, bv=bv)
+        dj.insert(0, 0)
+        return dj, bv
+
+    def cfat(self, cfbt: list, dj: list, tax_rate: float, print_: bool = True) -> list:
+        """calculate CFAT"""
+        cfat = []
+        ti = []
+        tax = []
+        for i in range(len(cfbt)):
+            ti_temp = cfbt[i] - dj[i]
+            ti.append(0) if ti_temp < 0 else ti.append(ti_temp)
+            tax.append(ti[i] * tax_rate)
+            cfat.append(cfbt[i] - tax[i])
+
+        if print_:
+            self.table(approach="TAX", n=len(cfbt), cfbt=cfbt, dj=dj, ti=ti, tax=tax, cfat=cfat)
+
+        return cfat

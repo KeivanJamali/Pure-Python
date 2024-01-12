@@ -4,7 +4,7 @@ if question_num == 1:
 elif question_num == 2:
     print('django-admin startproject my_website')
 elif question_num == 3:
-    print('python manage.py startapp my_app')
+    print('startapp my_app')
 elif question_num == 4:
     print('4')
     print('6')

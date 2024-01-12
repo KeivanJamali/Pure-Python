@@ -1,7 +1,6 @@
 from math import exp
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy.optimize import fsolve
 
 
 class Eco:
@@ -387,10 +386,6 @@ class Equation_Eco(Eco):
         super().__init__()
         self.decimal_digits = decimal_digits
         self.math = ["+", "-", "*", "^", "/", "="]
-
-    def solve_for_i(self, equ, init) -> float:
-        solution = fsolve(equ, x0=init)
-        return float(solution[0])
 
     def plot_eq_to_solve(self, equ, error: float = 50, print_: bool = True, plot: bool = False):
         """send the function of lambda x. 0=equation"""

@@ -63,10 +63,7 @@ def signup(request):
 
 def profile(request, username):
     if request.method == "GET":
-        try:
-            player = Player.objects.get(username=username)
-        except Player.DoesNotExist:
-            return JsonResponse({}, status=404)
+        player = get_object_or_404(Player, username=username)
         response_body = {
             "username": player.username,
             "rank": player.get_rank_display(),

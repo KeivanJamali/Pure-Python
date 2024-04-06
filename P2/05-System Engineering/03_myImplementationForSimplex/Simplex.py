@@ -136,11 +136,15 @@ class Simplex:
         temp = self.constraints[:, column]
         temp[temp == 0] = 0.0000000001
         temp = self.constraints[:, 0] / temp
+        self.test = temp.copy()
         temp[temp < 0] = np.inf
+        self.test2 = temp.copy()
+        self.test3 = column
+
         return temp.argmin(axis=0)
 
     def _find_pivot_element(self) -> tuple:
-        column = self._find_pivot_column() if not self.two_phase else self._find_pivot_column_two_phase()
+        column = self._find_pivot_column() if self.two_phase_done else self._find_pivot_column_two_phase()
         row = self._find_pivot_row(column)
         return self.constraints[row][column], row, column
 
@@ -156,7 +160,7 @@ class Simplex:
                 temp = self.objective_function[col] / self.constraints[row, col]
                 for j in range(len(self.objective_function)):
                     self.objective_function[j] = self.objective_function[j] - temp * self.constraints[row, j]
-                if self.two_phase:
+                if self.two_phase and not self.two_phase_done:
                     temp = self.minus_w[col] / self.constraints[row, col]
                     for j in range(len(self.minus_w)):
                         self.minus_w[j] = self.minus_w[j] - temp * self.constraints[row, j]

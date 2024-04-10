@@ -20,13 +20,10 @@ def now_time():
 
 
 def check(month, date):
-    if month == "April":
-        if 20 <= int(date) <= 30:
-            return month + " " + date
-    elif month == "May":
+    if month == "May":
         return month + " " + date
     elif month == "June":
-        if 14 <= date <= 24:
+        if 11 <= date <= 24:
             return False
         else:
             return month + " " + date
@@ -76,12 +73,12 @@ while not found:
         password = driver.find_element(By.ID, "user_password")
 
         # Enter your login credentials
-        if s % 2 == 0:
-            username.send_keys("nassrinsharifi02@gmail.com")
-            password.send_keys("nsrn1381")
-        else:
-            username.send_keys("keivanjamali01@gmail.com")
-            password.send_keys("Po77#kpsmebestand")
+        # if s % 2 == 0:
+        #     username.send_keys("nassrinsharifi02@gmail.com")
+        # password.send_keys("nsrn1381")
+        # else:
+        username.send_keys("keivanjamali01@gmail.com")
+        password.send_keys("Po77#kpsmebestand")
 
         policy_checkbox = driver.find_element(By.ID, "policy_confirmed")
 

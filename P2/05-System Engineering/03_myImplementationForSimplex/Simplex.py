@@ -5,28 +5,57 @@ from copy import deepcopy
 
 
 class Constraint:
-    def __init__(self, constraints: list, equality: list):
+    def __init__(self, constraints: list, equality: list) -> None:
+        """
+        Initialize the class with the given constraints and equality lists.
+
+        Parameters:
+            constraints (list): A list of constraints.
+            equality (list): A list of equalities.
+
+        Returns:
+            None
+        """
         self.cons_data = constraints
         self.equality = equality
         self.objective_addition = []
+        self.basic_variables_at_first = []
         self.minus_w = [0 for _ in range(len(constraints[0]))]
         self.slack = 0
         self.artificial = 0
-        self.error = 0
+        self.excess = 0
         self.label = []
         for i in range(len(self.cons_data)):
             self.check_constraints(i)
         self.constraints = deepcopy(self.cons_data)
 
     def check_constraints(self, number: int) -> None:
+        """
+        Check the constraints based on the given number.
+
+        Parameters:
+            number (int): The number to check.
+
+        Returns:
+            None
+        """
         if self.equality[number] == "eq":
             self.add_artificial(number)
         elif self.equality[number] == "ineq" and self.cons_data[number][0] < 0:
-            self.add_error_artificial(number)
+            self.add_excess_artificial(number)
         elif self.equality[number] == "ineq" and self.cons_data[number][0] > 0:
             self.add_slack(number)
 
-    def add_slack(self, number: int):
+    def add_slack(self, number: int) -> None:
+        """
+        Add a slack variable to the constraint matrix for the specified number.
+
+        Parameters:
+            number (int): The index at which the slack variable should be added.
+
+        Returns:
+            None
+        """
         for i in range(len(self.cons_data)):
             if i == number:
                 self.cons_data[i].append(1.)
@@ -36,8 +65,18 @@ class Constraint:
         self.minus_w.append(0.)
         self.slack += 1
         self.label.append(f"s{self.slack}")
+        self.basic_variables_at_first.append(f"s{self.slack}")
 
-    def add_artificial(self, number: int):
+    def add_artificial(self, number: int) -> None:
+        """
+        Method to add an artificial variable to the linear program.
+
+        Parameters:
+            number (int): The index of the artificial variable to be added.
+
+        Returns:
+            None
+        """
         for i in range(len(self.cons_data)):
             if i == number:
                 self.cons_data[i].append(1.)
@@ -47,8 +86,14 @@ class Constraint:
         self.minus_w.append(-1.)
         self.artificial += 1
         self.label.append(f"y{self.artificial}")
+        self.basic_variables_at_first.append(f"y{self.artificial}")
 
-    def add_error_artificial(self, number: int):
+    def add_excess_artificial(self, number: int) -> None:
+        """
+        Add excess artificial variables to the constraint data for a given number.
+        :param number: An integer representing the position to add excess artificial variables.
+        :return: None
+        """
         for i in range(len(self.cons_data)):
             if i == number:
                 self.cons_data[i].extend([1., -1.])
@@ -56,14 +101,28 @@ class Constraint:
                 self.cons_data[i].extend([0., 0.])
         self.objective_addition.extend([0., 0.])
         self.minus_w.extend([0., -1.])
-        self.error += 1
+        self.excess += 1
         self.artificial += 1
-        self.label.append(f"e{self.error}")
+        self.label.append(f"e{self.excess}")
         self.label.append(f"y{self.artificial}")
+        self.basic_variables_at_first.append(f"y{self.artificial}")
 
 
 class Simplex:
-    def __init__(self, objective_function: list, parameters: list, decimal: int = 1):
+    def __init__(self, objective_function: list, mode: str, parameters: list, decimal: int = 1) -> None:
+        """
+        Initialize the Simplex class with the given objective function, mode, parameters, and optional decimal value.
+
+        Parameters:
+            objective_function (list): The coefficients of the objective function.
+            mode (str): The mode of optimization, either 'min' for minimization or 'max' for maximization.
+            parameters (list): The parameters of the optimization.
+            decimal (int, optional): The number of decimal places to round results to. Defaults to 1.
+
+        Raises:
+            ValueError: If the mode is not 'min' or 'max'.
+        """
+        self.basic_variables_at_first = None
         self.two_phase = None
         self.two_phase_done = None
         self.objective_function = objective_function
@@ -79,22 +138,34 @@ class Simplex:
         self.error = None
         self.label = None
         self.constraints_object = None
+        self.result = None
+        self.final_table = None
         self.columns = ["Current Values"]
+        if mode == "min":
+            self.objective_function = [-i for i in self.objective_function]
+        elif mode == "max":
+            pass
+        else:
+            raise ValueError("mode must be 'min' or 'max'")
 
-    def fit(self, constraints: Constraint):
+    def fit(self, constraints: Constraint) -> None:
+        """
+        A method to fit the constraints to the model and perform optimization.
+        """
         self.constraints_object = constraints
         self.constraints = np.array(constraints.constraints)
         self.objective_function.extend(constraints.objective_addition)
         self.objective_function = np.array(self.objective_function)
         self.minus_w = constraints.minus_w
         self.minus_w = np.array(self.minus_w)
+        self.basic_variables_at_first = constraints.basic_variables_at_first
         self.slack = [f"s{i}" for i in range(1, constraints.slack + 1)]
         self.artificial = [f"y{i}" for i in range(1, constraints.artificial + 1)]
-        self.error = [f"e{i}" for i in range(1, constraints.error + 1)]
+        self.error = [f"e{i}" for i in range(1, constraints.excess + 1)]
         self.label = constraints.label
         self.columns = self.columns + self.parameters + self.label
         self.iteration = 1
-        es = [f"e{i}" for i in range(1, constraints.error + 1)]
+        es = [f"e{i}" for i in range(1, constraints.excess + 1)]
         for e in es:
             self.label.remove(e)
 
@@ -105,6 +176,7 @@ class Simplex:
         else:
             print("[INFO] One phase solution")
             self.two_phase = False
+            self.two_phase_done = True
 
         self._save_data(self.label, self.constraints)
 
@@ -116,39 +188,63 @@ class Simplex:
                 self._transform()
                 self._save_data(self.label, self.constraints)
             print("[INFO] Phase II Starts.")
-            self._remove_two_phase()
+            # don't remove artificial variables. If you want to remove change this to code.
+            # self._remove_two_phase()
             self.two_phase_done = True
             self._save_data(self.label, self.constraints)
-
         while not self._check_optimization():
             self._transform()
             self._save_data(self.label, self.constraints)
+
         self.data.set_index("Basic Variables", inplace=True)
         self._make_result_table()
+        self.final_table = self.data.iloc[-(len(self.label) + 2):-1, :]
 
     def _find_pivot_column(self) -> int:
+        """
+        Find the pivot column in the objective function and return its index.
+        """
         return self.objective_function[1:].argmax(axis=0) + 1
 
     def _find_pivot_column_two_phase(self) -> int:
+        """
+        Find the pivot column in the two-phase algorithm.
+        No parameters.
+        Returns:
+            int: The index of the pivot column.
+        """
         return self.minus_w[1:].argmax(axis=0) + 1
 
     def _find_pivot_row(self, column: int) -> int:
+        """
+        Find the pivot row based on the specified column.
+
+        Parameters:
+            column (int): The index of the column to consider.
+
+        Returns:
+            int: The index of the pivot row.
+        """
         temp = self.constraints[:, column]
         temp[temp == 0] = 0.0000000001
         temp = self.constraints[:, 0] / temp
-        self.test = temp.copy()
         temp[temp < 0] = np.inf
-        self.test2 = temp.copy()
-        self.test3 = column
 
         return temp.argmin(axis=0)
 
     def _find_pivot_element(self) -> tuple:
+        """
+        A function to find the pivot element in a matrix for optimization problems.
+        Returns a tuple containing the pivot element value, row index, and column index.
+        """
         column = self._find_pivot_column() if self.two_phase_done else self._find_pivot_column_two_phase()
         row = self._find_pivot_row(column)
         return self.constraints[row][column], row, column
 
-    def _transform(self):
+    def _transform(self) -> None:
+        """
+        Find the pivot element in the constraints matrix and perform row operations to transform the matrix.
+        """
         element, row, col = self._find_pivot_element()
         for i in range(len(self.constraints)):
             if i == row:
@@ -167,7 +263,10 @@ class Simplex:
 
         self.label[row] = self.columns[col]
 
-    def _transform_two_phase(self):
+    def _transform_two_phase(self) -> None:
+        """
+        Transform the two-phase method by identifying rows and columns with specific conditions.
+        """
         rows_num = []
         columns_num = []
 
@@ -185,34 +284,54 @@ class Simplex:
         for i in rows_num:
             self.minus_w = self.minus_w + self.constraints[i[0]] * i[1]
 
-    def _remove_two_phase(self):
+    def _remove_two_phase(self) -> None:
+        """
+        Remove the columns associated with the two-phase method from the model.
+        """
         column_num = []
-        for l in range(len(self.columns)):
-            if self.columns[l][0] == "y":
-                column_num.append(l)
+        for l_ in range(len(self.columns)):
+            if self.columns[l_][0] == "y":
+                column_num.append(l_)
         self.constraints_phase_i = self.constraints.copy()
         self.constraints = np.delete(self.constraints, column_num, axis=1)
         self.objective_function = np.delete(self.objective_function, column_num, axis=0)
         self.columns = [self.columns[i] for i in range(len(self.columns)) if i not in column_num]
 
     def _check_optimization(self) -> bool:
+        """
+        Check if the optimization is successful based on the objective function values.
+
+        Parameters:
+            None
+
+        Returns:
+            bool: True if optimization is successful, False otherwise.
+        """
         if self.objective_function[1:].max(axis=0) > 0.0001:
             return False
         else:
-            print("done!")
+            print("[INFO] done!")
             return True
 
     def _check_phase_two(self) -> bool:
-        ys = [f"y{i}" for i in range(1, self.constraints_object.artificial + 1)]
-        if self.minus_w[0] < 0.001:
-            for y in ys:
-                if y in self.label:
-                    return False
+        """
+        A function to check phase two with specific conditions and return a boolean value.
+        """
+        if self.minus_w[0] < 0.001 and self.minus_w[1:].max(axis=0) < 0.0001:
             return True
         else:
+            print("[INFO] Infeasible.")
             return False
 
-    def _save_data(self, labels: list, values: np.array):
+    def _save_data(self, labels: list, values: np.array) -> None:
+        """
+        Save data to a DataFrame and update self.data with the new data.
+
+        Args:
+            labels (list): Labels for the data.
+            values (np.array): Values to be saved in the DataFrame.
+        """
+        number_of_dash = 20
         data = pd.DataFrame(values, columns=self.columns)
         data["Basic Variables"] = labels
         data_z = pd.DataFrame([self.objective_function], columns=self.columns)
@@ -221,31 +340,111 @@ class Simplex:
             data_w = pd.DataFrame([self.minus_w], columns=self.columns)
             data_w["Basic Variables"] = f"-w{self.iteration}"
 
+        data_empty = pd.DataFrame([np.array([f"{number_of_dash * "-"}" for _ in range(len(self.columns))])],
+                                  columns=self.columns)
+        data_empty["Basic Variables"] = f"{number_of_dash * "-"}"
+
         self.iteration += 1
 
         if self.two_phase and not self.two_phase_done:
-            data = pd.concat((data, data_z, data_w), ignore_index=True)
+            data = pd.concat((data, data_z, data_w, data_empty), ignore_index=True)
         else:
-            data = pd.concat((data, data_z), ignore_index=True)
+            data = pd.concat((data, data_z, data_empty), ignore_index=True)
 
         if self.data is not None:
             self.data = pd.concat((self.data, data), ignore_index=True)
         else:
             self.data = data
 
-    def make_table(self, format_: str):
+    def make_table(self, format_: str) -> None:
+        """
+        A function to generate a table in a specified format.
+
+        Parameters:
+            format_ (str): The format of the table. It can be "github", "latex", or "excel".
+
+        Returns:
+            None if the format is not supported, otherwise it prints a table in the specified format.
+        """
         if format_ not in ["github", "latex", "excel"]:
             return None
         print(tabulate(self.data, headers="keys", tablefmt=format_, numalign="right", floatfmt=f".{self.decimal}f"))
 
-    def _make_result_table(self):
-        # len(self.slack) + 1
+    def _make_result_table(self) -> None:
+        """
+        Generates a result table based on the columns and data attributes of the object.
+        Updates the 'result' attribute with the computed values.
+        Prints the result table using the tabulate library with specified formatting options.
+        """
         result = {}
-        for l in self.columns:
-            if l not in self.label:
-                result[l] = 0
+        for l_ in self.columns:
+            if l_ not in self.label:
+                result[l_] = 0
             else:
-                result[l] = self.data[self.data.index == l].iloc[-1, 0]
-        result["Current Values"] = -self.data.iloc[-1, 0]
-        result = pd.DataFrame(result, index=[0])
-        print(tabulate(result, headers="keys", tablefmt="github", numalign="right", floatfmt=f".{self.decimal}f"))
+                result[l_] = self.data[self.data.index == l_].iloc[-1, 0]
+        result["Current Values"] = -self.data.iloc[-2, 0]
+        self.result = pd.DataFrame(result, index=[0])
+        print(tabulate(self.result, headers="keys", tablefmt="github", numalign="right", floatfmt=f".{self.decimal}f"))
+
+
+class Sensitivity_Analysis:
+    def __init__(self, table: Simplex):
+        self.shadow_prices = {}
+        self.righthand_nodes = []
+        self.coefficient_nodes = []
+        self.tabulate = table.final_table
+        self.basic_variables_at_first = table.basic_variables_at_first
+        self._set_setting()
+        self.make_shadow_prices()
+
+    def _set_setting(self):
+        self.label = list(self.tabulate.index)
+        self.columns = list(self.tabulate.columns[:])
+        self.constraints = self.tabulate.iloc[:-1, :].values
+        self.objective_function = self.tabulate.iloc[-1, :].values
+
+    def make_shadow_prices(self):
+        for c in range(len(self.columns[1:])):
+            temp = -self.tabulate.iloc[-1, c + 1]
+            self.shadow_prices[self.columns[1:][c]] = 0 if abs(temp) < 0.001 else temp
+
+    def change_coefficient(self):
+        pass
+
+    def change_righthand(self, righhands: list):
+        if len(righhands) != len(self.label):
+            raise ValueError("number of righhands must be equal to the number of rows.")
+
+        teta = 0
+        self.righthand_nodes.append([teta, -self.tabulate.iloc[-1, 0]])
+
+    def _find_pivot_column(self) -> int:
+        return self.objective_function[1:].argmax(axis=0) + 1
+
+    def _find_pivot_row(self, column: int) -> int:
+        temp = self.constraints[:, column]
+        temp[temp == 0] = 0.0000000001
+        temp = self.constraints[:, 0] / temp
+        temp[temp < 0] = np.inf
+
+        return temp.argmin(axis=0)
+
+    def _find_pivot_element(self) -> tuple:
+        column = self._find_pivot_column()
+        row = self._find_pivot_row(column)
+        return self.constraints[row][column], row, column
+
+    def _transform(self):
+        element, row, col = self._find_pivot_element()
+        for i in range(len(self.constraints)):
+            if i == row:
+                self.constraints[i, :] = self.constraints[i, :] / element
+            else:
+                temp = self.constraints[i, col] / self.constraints[row, col]
+                for j in range(len(self.constraints[0, :])):
+                    self.constraints[i, j] = self.constraints[i, j] - temp * self.constraints[row, j]
+                temp = self.objective_function[col] / self.constraints[row, col]
+                for j in range(len(self.objective_function)):
+                    self.objective_function[j] = self.objective_function[j] - temp * self.constraints[row, j]
+
+        self.label[row] = self.columns[col]

@@ -2,6 +2,37 @@ import numpy as np
 from tabulate import tabulate
 import pandas as pd
 from copy import deepcopy
+import matplotlib.pyplot as plt
+
+
+class Me_Plot:
+    def __init__(self, node_lists: list, title: str, decimal: int = 1, font_size: int = 10):
+        self.nodes = sorted(node_lists, key=lambda x: x[0])
+        self.decimal = decimal
+        self.font_size = font_size
+        self.title = title
+        self.x = None
+        self.y = None
+        self._make_x_y()
+        self._plot_curve()
+
+    def _make_x_y(self):
+        self.x = []
+        self.y = []
+
+        for x, y in self.nodes:
+            self.x.append(x)
+            self.y.append(y)
+
+    def _plot_curve(self):
+        plt.plot(self.x, self.y, marker='o', linestyle='-')
+        for i, (x, y) in enumerate(zip(self.x, self.y)):
+            plt.text(x, y, f'({x:.{self.decimal}f},{y:.{self.decimal}f})', fontsize=self.font_size, ha='right')
+        plt.xlabel('X')
+        plt.ylabel('Y')
+        plt.title(self.title)
+        plt.grid(True)
+        plt.show()
 
 
 class Constraint:
@@ -389,19 +420,22 @@ class Simplex:
 
 class Sensitivity_Analysis:
     def __init__(self, table: Simplex):
+        self.teta = None
+        self.righthand = None
+        self.righthand_b = None
         self.shadow_prices = {}
         self.righthand_nodes = []
         self.coefficient_nodes = []
-        self.tabulate = table.final_table
-        self.basic_variables_at_first = table.basic_variables_at_first
+        self.tabulate = table.final_table.copy()
+        self.basic_variables_at_first = table.basic_variables_at_first.copy()
         self._set_setting()
         self.make_shadow_prices()
 
     def _set_setting(self):
         self.label = list(self.tabulate.index)
         self.columns = list(self.tabulate.columns[:])
-        self.constraints = self.tabulate.iloc[:-1, :].values
-        self.objective_function = self.tabulate.iloc[-1, :].values
+        self.constraints = self.tabulate.iloc[:-1, :].values.copy()
+        self.objective_function = self.tabulate.iloc[-1, :].values.copy()
 
     def make_shadow_prices(self):
         for c in range(len(self.columns[1:])):
@@ -411,40 +445,106 @@ class Sensitivity_Analysis:
     def change_coefficient(self):
         pass
 
-    def change_righthand(self, righhands: list):
-        if len(righhands) != len(self.label):
+    def change_righthand(self, righthands_at_first: list = None, righthands_at_last: list = None):
+        if righthands_at_first and not righthands_at_last:
+            self.righthand_b = self._from_first_to_final(righthand=righthands_at_first).copy()
+        elif not righthands_at_first and righthands_at_last:
+            self.righthand_b = righthands_at_last.copy()
+        else:
+            print("[ERROR]")
+
+        self.righthand = self.righthand_b.copy()
+        if len(self.righthand) != len(self.label):
             raise ValueError("number of righhands must be equal to the number of rows.")
 
-        teta = 0
-        self.righthand_nodes.append([teta, -self.tabulate.iloc[-1, 0]])
+        self.teta = 0
+        self.righthand_nodes.append([self.teta, -(self.objective_function[0] + self.teta * self.righthand[-1])])
 
-    def _find_pivot_column(self) -> int:
-        return self.objective_function[1:].argmax(axis=0) + 1
+        self._set_setting()
+        while abs(self.objective_function[0] + self.teta * self.righthand[-1]) > 0.0001:
+            self._transform(mode="d")
+            self.righthand_nodes.append([self.teta, -(self.objective_function[0] + self.teta * self.righthand[-1])])
+            if abs(self.righthand[-1]) < 0.01:
+                break
 
-    def _find_pivot_row(self, column: int) -> int:
-        temp = self.constraints[:, column]
-        temp[temp == 0] = 0.0000000001
-        temp = self.constraints[:, 0] / temp
-        temp[temp < 0] = np.inf
+        self._set_setting()
+        self.righthand = self.righthand_b.copy()
+        self.teta = 0
+        while abs(self.objective_function[0] + self.teta * self.righthand[-1]) > 0.0001:
+            self._transform(mode="u")
+            self.righthand_nodes.append([self.teta, -(self.objective_function[0] + self.teta * self.righthand[-1])])
+            if abs(self.righthand[-1]) < 0.01:
+                break
 
-        return temp.argmin(axis=0)
+        Me_Plot(self.righthand_nodes, title="Righthand limits")
 
-    def _find_pivot_element(self) -> tuple:
-        column = self._find_pivot_column()
-        row = self._find_pivot_row(column)
+    def _find_pivot_row_righthand(self, mode: str) -> int:
+        temp = []
+        for i in range(len(self.constraints[:, 0])):
+            if abs(self.righthand[i]) > 0.001:
+                temp.append(-self.constraints[i, 0] / self.righthand[i])
+            else:
+                temp.append(0)
+        if mode == "u":
+            row = np.argmax(temp)
+            self.teta = np.max(temp)
+        elif mode == "d":
+            row = np.argmin(temp)
+            self.teta = np.min(temp)
+        return row
+
+    def _find_pivot_column_righthand(self, row) -> int:
+        temp = []
+        for i in range(1, len(self.constraints[row, :])):
+            temp2 = 0.0001 if self.constraints[row, i] == 0 else self.constraints[row, i]
+            temp.append(self.objective_function[i] / temp2)
+        temp = np.array(temp)
+        temp[temp < 0.001] = np.inf
+        column = np.argmin(temp)
+        return column + 1
+
+    def _find_pivot_element_righthand(self, mode: str) -> tuple:
+        row = self._find_pivot_row_righthand(mode=mode)
+        column = self._find_pivot_column_righthand(row)
         return self.constraints[row][column], row, column
 
-    def _transform(self):
-        element, row, col = self._find_pivot_element()
+    def _transform(self, mode: str) -> None:
+        element, row, col = self._find_pivot_element_righthand(mode=mode)
         for i in range(len(self.constraints)):
             if i == row:
                 self.constraints[i, :] = self.constraints[i, :] / element
+                self.righthand[row] = self.righthand[row] / element
             else:
                 temp = self.constraints[i, col] / self.constraints[row, col]
                 for j in range(len(self.constraints[0, :])):
                     self.constraints[i, j] = self.constraints[i, j] - temp * self.constraints[row, j]
-                temp = self.objective_function[col] / self.constraints[row, col]
-                for j in range(len(self.objective_function)):
-                    self.objective_function[j] = self.objective_function[j] - temp * self.constraints[row, j]
+                self.righthand[i] = self.righthand[i] - temp * self.righthand[row]
+
+        temp = self.objective_function[col] / self.constraints[row, col]
+        for j in range(len(self.objective_function)):
+            self.objective_function[j] = self.objective_function[j] - temp * self.constraints[row, j]
+        self.righthand[-1] = self.righthand[-1] - temp * self.righthand[row]
 
         self.label[row] = self.columns[col]
+
+    def _from_first_to_final(self, righthand):
+        new_righthand = []
+        columns = []
+        for n in self.basic_variables_at_first:
+            for j in range(len(self.columns)):
+                if n == self.columns[j]:
+                    columns.append(j)
+                    break
+
+        for i in range(len(righthand) - 1):
+            temp = 0
+            for j in range(len(righthand) - 1):
+                temp += righthand[j] * self.constraints[i, columns[j]]
+            new_righthand.append(temp)
+
+        temp = 0
+        for j in range(len(righthand) - 1):
+            temp += righthand[j] * self.objective_function[columns[j]]
+        new_righthand.append(temp)
+
+        return new_righthand

@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import time
-import Send_SMS
+# import Send_SMS
 from datetime import datetime
 import logging
 
@@ -78,7 +78,7 @@ while not found:
         # password.send_keys("nsrn1381")
         # else:
         username.send_keys("keivanjamali01@gmail.com")
-        password.send_keys("Po77#kpsmebestand")
+        password.send_keys("K1ovn39nsfs49mlsg")
 
         policy_checkbox = driver.find_element(By.ID, "policy_confirmed")
 
@@ -107,67 +107,69 @@ while not found:
         # Navigate to the extracted URL
         driver.get(button_url)
         driver.get(button_url[:-16] + "appointment")
-        while (end_time - start_time).seconds < 30 * 60 and not found:
-            # step 3
-            calendar_button = driver.find_element(By.ID, "appointments_consulate_appointment_date")
-            # Scroll the calendar button into view
-            driver.execute_script("arguments[0].scrollIntoView();", calendar_button)
+        # while (end_time - start_time).seconds < 30 * 60 and not found:
+        #     # step 3
+        #     calendar_button = driver.find_element(By.ID, "appointments_consulate_appointment_date")
+        #     # Scroll the calendar button into view
+        #     driver.execute_script("arguments[0].scrollIntoView();", calendar_button)
+        #
+        #     time.sleep(4)
+        #
+        #     # Click on the calendar button
+        #     calendar_button.click()
+        #
+        #     time.sleep(2)
+        #
+        #     date_number = False
+        #     i_for_loop_3 = 0
+        #     while not date_number and i_for_loop_3 < 5:
+        #         i_for_loop_3 += 1
+        #         driver.execute_script("document.querySelector('a.ui-datepicker-next').click();")
+        #         time.sleep(1)
+        #
+        #         date_elements = driver.find_elements(By.CSS_SELECTOR, 'tbody .ui-state-default[href="#"]')
+        #         if date_elements:
+        #             # Get the parent div element that contains the month name
+        #             month_element = driver.find_element(By.CSS_SELECTOR, '.ui-datepicker-title')
+        #
+        #             # Get the text of the month element
+        #             month_name = month_element.find_element(By.CLASS_NAME, 'ui-datepicker-month').text
+        #             month_name = month_maker(month_name)
+        #
+        #             # Get the first available date
+        #             first_available_date_element = date_elements[0]
+        #             date_number = first_available_date_element.text
+        #
+        #     if month_name and date_number:
+        #         available_date = check(month_name, date_number)
+        #         if available_date:
+        #             message = f"An available date ({available_date}) has been found. Check your calendar!"
+        #             Send_SMS.send_sms(message)
+        #             found = True
+        #             logging.info(f"[Success {s}] Found an available date. {month_name} {date_number}")
+        #             logging.info(f"[Success {s}] Sending SMS...(time : {now_time()}")
+        #             if IM_HOME:
+        #                 input("Press Enter to exit...")
+        #
+        #     time.sleep(3)
+        #     driver.refresh()
+        #     logging.info(f"[Iter {iteration}] [{month_name} {date_number}] (time : {now_time()}) | Refreshing...")
+        #     iteration += 1
+        #     end_time = datetime.now()
 
-            time.sleep(4)
-
-            # Click on the calendar button
-            calendar_button.click()
-
-            time.sleep(2)
-
-            date_number = False
-            i_for_loop_3 = 0
-            while not date_number and i_for_loop_3 < 5:
-                i_for_loop_3 += 1
-                driver.execute_script("document.querySelector('a.ui-datepicker-next').click();")
-                time.sleep(1)
-
-                date_elements = driver.find_elements(By.CSS_SELECTOR, 'tbody .ui-state-default[href="#"]')
-                if date_elements:
-                    # Get the parent div element that contains the month name
-                    month_element = driver.find_element(By.CSS_SELECTOR, '.ui-datepicker-title')
-
-                    # Get the text of the month element
-                    month_name = month_element.find_element(By.CLASS_NAME, 'ui-datepicker-month').text
-                    month_name = month_maker(month_name)
-
-                    # Get the first available date
-                    first_available_date_element = date_elements[0]
-                    date_number = first_available_date_element.text
-
-            if month_name and date_number:
-                available_date = check(month_name, date_number)
-                if available_date:
-                    message = f"An available date ({available_date}) has been found. Check your calendar!"
-                    Send_SMS.send_sms(message)
-                    found = True
-                    logging.info(f"[Success {s}] Found an available date. {month_name} {date_number}")
-                    logging.info(f"[Success {s}] Sending SMS...(time : {now_time()}")
-                    if IM_HOME:
-                        input("Press Enter to exit...")
-
-            time.sleep(3)
-            driver.refresh()
-            logging.info(f"[Iter {iteration}] [{month_name} {date_number}] (time : {now_time()}) | Refreshing...")
-            iteration += 1
-            end_time = datetime.now()
-
-        driver.quit()
-        start_time = datetime.now()
-        end_time = datetime.now()
-        iteration = 1
-        s += 1
-        logging.info(f"[Success {s}] Found an available date.")
-        time.sleep(5 * 60)
+        # driver.quit()
+        # start_time = datetime.now()
+        # end_time = datetime.now()
+        # iteration = 1
+        # s += 1
+        # logging.info(f"[Success {s}] Found an available date.")
+        # time.sleep(5 * 60)
+        time.sleep(6)
+        driver.refresh()
 
     except:
         driver.quit()
-        logging.info(f"[ERROR {e}] There is an error.(time : {now_time()})")
-        e += 1
-        time.sleep(1 * 60)
-        end_time = datetime.now()
+        # logging.info(f"[ERROR {e}] There is an error.(time : {now_time()})")
+        # e += 1
+        # time.sleep(1 * 60)
+        # end_time = datetime.now()

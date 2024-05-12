@@ -72,9 +72,15 @@ class Constraint:
         """
         if self.equality[number] == "eq":
             self.add_artificial(number)
+            print("Add Artificial")
         elif self.equality[number] == "ineq" and self.cons_data[number][0] < 0:
             self.add_excess_artificial(number)
+            print("Add excess artificial")
         elif self.equality[number] == "ineq" and self.cons_data[number][0] > 0:
+            self.add_slack(number)
+            print("Add slack")
+        elif self.equality[number] == "ineq" and self.cons_data[number][0] == 0:
+            self.cons_data[number][0] = 1e-10
             self.add_slack(number)
 
     def add_slack(self, number: int) -> None:
@@ -172,6 +178,7 @@ class Simplex:
         self.result = None
         self.final_table = None
         self.columns = ["Current Values"]
+        self.mode = mode
         if mode == "min":
             self.objective_function = [-i for i in self.objective_function]
         elif mode == "max":
@@ -220,7 +227,7 @@ class Simplex:
                 self._save_data(self.label, self.constraints)
             print("[INFO] Phase II Starts.")
             # don't remove artificial variables. If you want to remove change this to code.
-            # self._remove_two_phase()
+            self._remove_two_phase()
             self.two_phase_done = True
             self._save_data(self.label, self.constraints)
         while not self._check_optimization():
@@ -338,7 +345,10 @@ class Simplex:
         Returns:
             bool: True if optimization is successful, False otherwise.
         """
-        if self.objective_function[1:].max(axis=0) > 0.0001:
+        if  self.iteration >= 1000:
+            print("[ERROR] Limit of iteration exceeded.(iteration=1000)")
+            return True
+        elif self.objective_function[1:].max(axis=0) > 0.0000001:
             return False
         else:
             print("[INFO] done!")
@@ -348,10 +358,12 @@ class Simplex:
         """
         A function to check phase two with specific conditions and return a boolean value.
         """
-        if self.minus_w[0] < 0.001 and self.minus_w[1:].max(axis=0) < 0.0001:
+        if self.iteration >= 1000:
+            print("[ERROR] Limit of iteration exceeded.(iteration=1000)")
+            return True
+        elif self.minus_w[0] < 0.001 and self.minus_w[1:].max(axis=0) < 0.0001:
             return True
         else:
-            print("[INFO] Infeasible.")
             return False
 
     def _save_data(self, labels: list, values: np.array) -> None:
@@ -364,6 +376,7 @@ class Simplex:
         """
         number_of_dash = 20
         data = pd.DataFrame(values, columns=self.columns)
+        self.test=data
         data["Basic Variables"] = labels
         data_z = pd.DataFrame([self.objective_function], columns=self.columns)
         data_z["Basic Variables"] = f"-z{self.iteration}"
@@ -413,13 +426,23 @@ class Simplex:
                 result[l_] = 0
             else:
                 result[l_] = self.data[self.data.index == l_].iloc[-1, 0]
-        result["Current Values"] = -self.data.iloc[-2, 0]
+        if self.mode == "max":
+            result["Current Values"] = -self.data.iloc[-2, 0]
+        else:
+            result["Current Values"] = self.data.iloc[-2, 0]
         self.result = pd.DataFrame(result, index=[0])
         print(tabulate(self.result, headers="keys", tablefmt="github", numalign="right", floatfmt=f".{self.decimal}f"))
 
 
 class Sensitivity_Analysis:
+    """In this Class we define a Sensitivity analysis.
+    """
     def __init__(self, table: Simplex):
+        """Here we define a Sensitivity analysis init.
+
+        Args:
+            table (Simplex): An object of simplex class.
+        """
         self.teta = None
         self.righthand = None
         self.righthand_b = None
@@ -432,12 +455,16 @@ class Sensitivity_Analysis:
         self.make_shadow_prices()
 
     def _set_setting(self):
+        """This function collect nessecery iformation from simplex class.
+        """
         self.label = list(self.tabulate.index)
         self.columns = list(self.tabulate.columns[:])
         self.constraints = self.tabulate.iloc[:-1, :].values.copy()
         self.objective_function = self.tabulate.iloc[-1, :].values.copy()
 
     def make_shadow_prices(self):
+        """In this function we find shadow prices.
+        """
         for c in range(len(self.columns[1:])):
             temp = -self.tabulate.iloc[-1, c + 1]
             self.shadow_prices[self.columns[1:][c]] = 0 if abs(temp) < 0.001 else temp
@@ -446,6 +473,15 @@ class Sensitivity_Analysis:
         pass
 
     def change_righthand(self, righthands_at_first: list = None, righthands_at_last: list = None):
+        """What happens if righthands are changed? This function will help you with that.
+
+        Args:
+            righthands_at_first (list, optional): What is the righthands befor solving the simplex table? Defaults to None.
+            righthands_at_last (list, optional): What is the righthands after solving the simplex table? Defaults to None.
+
+        Raises:
+            ValueError: The len of the input should be equal to the number of rows.
+        """
         if righthands_at_first and not righthands_at_last:
             self.righthand_b = self._from_first_to_final(righthand=righthands_at_first).copy()
         elif not righthands_at_first and righthands_at_last:
@@ -479,6 +515,14 @@ class Sensitivity_Analysis:
         Me_Plot(self.righthand_nodes, title="Righthand limits")
 
     def _find_pivot_row_righthand(self, mode: str) -> int:
+        """To help the function of cange_righthand we need this function to find pivot row.
+
+        Args:
+            mode (str): If we are going to larger numbers: u and if we are going to smaller numbers: d.
+
+        Returns:
+            int: The index of pivot row.
+        """
         temp = []
         for i in range(len(self.constraints[:, 0])):
             if abs(self.righthand[i]) > 0.001:
@@ -493,7 +537,15 @@ class Sensitivity_Analysis:
             self.teta = np.min(temp)
         return row
 
-    def _find_pivot_column_righthand(self, row) -> int:
+    def _find_pivot_column_righthand(self, row: int) -> int:
+        """In this part we help to find pivot column to help change_righthand function
+
+        Args:
+            row (int): The specified row in the _find_pivot_column_righthand function.
+
+        Returns:
+            int: The index of the pivot column.
+        """
         temp = []
         for i in range(1, len(self.constraints[row, :])):
             temp2 = 0.0001 if self.constraints[row, i] == 0 else self.constraints[row, i]
@@ -504,11 +556,24 @@ class Sensitivity_Analysis:
         return column + 1
 
     def _find_pivot_element_righthand(self, mode: str) -> tuple:
+        """To find the pivot element to help the change_righthand function.
+
+        Args:
+            mode (str): If we are increasing our numbers then u and if we are decreasing then d.
+
+        Returns:
+            tuple: (Value, row, column)
+        """
         row = self._find_pivot_row_righthand(mode=mode)
         column = self._find_pivot_column_righthand(row)
         return self.constraints[row][column], row, column
 
     def _transform(self, mode: str) -> None:
+        """The function to do transformation of simplex method.
+
+        Args:
+            mode (str): If we are increasing our numbers then u and if we are decreasing then d.
+        """
         element, row, col = self._find_pivot_element_righthand(mode=mode)
         for i in range(len(self.constraints)):
             if i == row:
@@ -527,7 +592,15 @@ class Sensitivity_Analysis:
 
         self.label[row] = self.columns[col]
 
-    def _from_first_to_final(self, righthand):
+    def _from_first_to_final(self, righthand: list) -> list:
+        """Change the righthands of the simplex befor solving it to the final simplex table.
+
+        Args:
+            righthand (list): righthands before solving the simplex.
+
+        Returns:
+            list: The new righthands.
+        """
         new_righthand = []
         columns = []
         for n in self.basic_variables_at_first:

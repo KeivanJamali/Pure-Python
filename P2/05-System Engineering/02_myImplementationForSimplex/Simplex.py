@@ -477,7 +477,7 @@ class Simplex:
             print(f"[ERROR] Limit of iteration exceeded.(iteration={self.max_iterations})")
             print(f"[DONE] INFEASIBLE!!!")
             return 2
-        elif self.minus_w[0] < 1e-10 and self.minus_w[1:].max(axis=0) < 1e-20:
+        elif abs(self.minus_w[0]) < 1e-5 and self.minus_w[1:].max(axis=0) < 0.00001:
             for l_ in self.label:
                 if l_[0] == "y":
                     return False

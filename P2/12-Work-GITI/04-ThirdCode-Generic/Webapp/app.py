@@ -3,7 +3,7 @@ import os
 from DataLoader import Generic_DataLoader
 
 app = Flask(__name__)
-app.secret_key = 'K1ovn39nsfs49mlsg'  # Replace with a strong secret key
+app.secret_key = ''  # Replace with a strong secret key
 
 # Set your password here
 PASSWORD = 'FaraGiti'

@@ -65,11 +65,27 @@ class Generic_DataLoader:
                 self.zeros.append(center_station)
                 continue
             result.append(["chainage", center_station])
+
+            number_of_zeros = 0
+            lowest_offset = float("inf")
             for _, row in cluster_data.iterrows():
                 if abs(row["Offset"]) < epsilon:
-                    result.append([0, row["Elevation"]])
-                else:
-                    result.append([row["Offset"], row["Elevation"]])
+                    number_of_zeros += 1
+                    if lowest_offset > abs(row["Offset"]):
+                        lowest_offset = abs(row["Offset"])
+
+            if number_of_zeros < 2:
+                for _, row in cluster_data.iterrows():
+                    if abs(row["Offset"]) < epsilon:
+                        result.append([0, row["Elevation"]])
+                    else:
+                        result.append([row["Offset"], row["Elevation"]])
+            else:
+                for _, row in cluster_data.iterrows():
+                    if abs(row["Offset"])-lowest_offset <= 0 :
+                        result.append([0, row["Elevation"]])
+                    else:
+                        result.append([row["Offset"], row["Elevation"]])
         result = pd.DataFrame(result)
         return result
     
@@ -102,7 +118,7 @@ class Generic_DataLoader:
             for row in self.zeros:
                 file.write(f"{row}\n")
 
-        return csv_file, txt_file, out_ranges_file
+        return csv_file, txt_file, out_ranges_file, zeros_file
 
     def fit(self, epsilon, round_lim):
         self._find_center_of_clusters(epsilon=epsilon, round_lim=round_lim)

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Success</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card mt-5">
+                    <div class="card-header">
+                        <h3>Upload Successful</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Your file has been successfully uploaded.</p>
+                        <a href="{{ url_for('upload') }}" class="btn btn-primary">Upload Another File</a>
+                        <a href="{{ url_for('index') }}" class="btn btn-info">Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h1>Menu</h1>
+  <ul>
+    <li><a href="{{ url_for('connect') }}">Connect to Me</a></li>
+    <li><a href="{{ url_for('share_files') }}">Share Files</a></li>
+    <li><a href="{{ url_for('generic_processing') }}">Generic Processing</a></li>
+  </ul>
+{% endblock %}

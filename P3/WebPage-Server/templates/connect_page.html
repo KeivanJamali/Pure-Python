@@ -1,0 +1,20 @@
+<!-- connect_page.html -->
+{% extends "layout.html" %}
+{% block content %}
+  <h1>Connect to Me</h1>
+  <h2>Receive Files from Me</h2>
+  <div class="file-list">
+    <ul>
+      {% for file in send_files %}
+      <li><a href="{{ url_for('download_file', filename=file) }}">{{ file }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  
+  <h2>Upload Files to Me</h2>
+  <form method="POST" enctype="multipart/form-data" action="{{ url_for('upload_files') }}">
+    <input type="file" name="files[]" multiple required>
+    <button type="submit">Upload</button>
+  </form>
+  <a class="back-to-menu" href="{{ url_for('index') }}">Back to Menu</a>
+{% endblock %}

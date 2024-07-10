@@ -27,7 +27,7 @@ class Generic_DataLoader:
     def _remove_nan(self) -> None:
         self.data.dropna(inplace=True)
         outranges = self.data[self.data["Station"] == "Out of range"].index
-        self.outrange_id = list(self.data.loc[outranges]["Point"])
+        self.outrange_id = outranges
         self.data.drop(outranges, inplace=True)
     
     def _correct_station_values(self) -> None:

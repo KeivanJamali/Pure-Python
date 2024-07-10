@@ -1,9 +1,12 @@
 import pandas as pd
 import numpy as np
 import os
+import plotly.express as px
+import plotly.io as pio
 from sklearn.svm import SVC
 
 
+plot_dir = r'D:\All Python\Pure-Python\P3\WebPage-Server\Files\plots'
 
 class Generic_DataLoader:
     def __init__(self, file_name: str):
@@ -56,6 +59,7 @@ class Generic_DataLoader:
 
     def _generic_format(self, epsilon):
         result = []
+        map_data = []
         unique_clusters = self.center_points.sort_values(by="Station").index
         for cluster_id in unique_clusters:
             cluster_data = self.data[self.data["Cluster"] == cluster_id]
@@ -78,15 +82,20 @@ class Generic_DataLoader:
                 for _, row in cluster_data.iterrows():
                     if abs(row["Offset"]) < epsilon:
                         result.append([0, row["Elevation"]])
+                        map_data.append([center_station, 0, row["Elevation"]])
                     else:
                         result.append([row["Offset"], row["Elevation"]])
+                        map_data.append([center_station, row["Offset"], row["Elevation"]])
             else:
                 for _, row in cluster_data.iterrows():
-                    if abs(row["Offset"])-lowest_offset <= 0 :
+                    if abs(row["Offset"])-lowest_offset <= 0:
                         result.append([0, row["Elevation"]])
+                        map_data.append([center_station, 0, row["Elevation"]])
                     else:
                         result.append([row["Offset"], row["Elevation"]])
+                        map_data.append([center_station, row["Offset"], row["Elevation"]])
         result = pd.DataFrame(result)
+        self.map_data = pd.DataFrame(map_data, columns=["Station", "Offset", "Elevation"])
         return result
     
     def save_file(self, folder_name):
@@ -123,4 +132,9 @@ class Generic_DataLoader:
     def fit(self, epsilon, round_lim):
         self._find_center_of_clusters(epsilon=epsilon, round_lim=round_lim)
         self.generic = self._generic_format(epsilon=epsilon)
+
+    def plot_map(self):
+        fig = px.scatter_3d(self.map_data, x='Station', y='Offset', z='Elevation', color='Elevation', title='3D Elevation Profile')
+        fig.show()
+        # pio.write_image(fig, plot_dir+'3d_elevation_profile.svg')
 

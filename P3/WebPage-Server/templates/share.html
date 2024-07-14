@@ -1,18 +1,22 @@
 <!-- share.html -->
 {% extends "layout.html" %}
 {% block content %}
-  <h1>Share Files</h1>
-  <form method="post" enctype="multipart/form-data">
-    <input type="file" name="file">
+
+  <h2>Share Files</h2>
+  <form method="POST" enctype="multipart/form-data" action="{{ url_for('share_files') }}">
+    <input type="file" name="files[]" multiple required>
+    <label for="password">Password:</label>
+    <input type="password" name="password" required>
+    <input type="submit" value="Submit">
     <input type="submit" value="Upload">
   </form>
   <h2>Available Files</h2>
   <div class="file-list">
     <ul>
       {% for file in files %}
-      <li><a href="{{ url_for('share_download', filename=file) }}">{{ file }}</a></li>
+      <li><a href="{{ url_for('share_files', filename=file) }}">{{ file }}</a></li>
       {% endfor %}
     </ul>
   </div>
-  <a class="back-to-menu" href="{{ url_for('index') }}">Back to Menu</a>
+  <!-- <a class="back-to-menu" href="{{ url_for('index') }}">Back to Menu</a> -->
 {% endblock %}

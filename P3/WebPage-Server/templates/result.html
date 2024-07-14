@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h1>Processing Results</h1>
+  <ul>
+    {% for file in files %}
+      <li><a href="{{ url_for('results', filename=file) }}">{{ file }}</a></li>
+    {% endfor %}
+  </ul>
+  <!-- <a class="back-to-menu" href="{{ url_for('index') }}">Back to Menu</a> -->
+{% endblock %}

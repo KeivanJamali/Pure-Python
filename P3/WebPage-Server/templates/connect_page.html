@@ -14,7 +14,7 @@
   <h2>Upload Files to Me</h2>
   <form method="POST" enctype="multipart/form-data" action="{{ url_for('upload_files') }}">
     <input type="file" name="files[]" multiple required>
-    <button type="submit">Upload</button>
+    <input type="submit" value="Upload">
   </form>
-  <a class="back-to-menu" href="{{ url_for('index') }}">Back to Menu</a>
+  <!-- <a class="back-to-menu" href="{{ url_for('index') }}">Back to Menu</a> -->
 {% endblock %}

@@ -3,7 +3,7 @@ import numpy as np
 import os
 import plotly.express as px
 from sklearn.svm import SVC
-
+code_name = "Generic"
 
 plot_dir = r'D:\All Python\Pure-Python\P3\WebPage-Server\Files\plots'
 
@@ -72,7 +72,12 @@ class Generic_DataLoader:
         """
         Correct station values by converting them to floats.
         """
-        self.data["Station"] = self.data["Station"].apply(lambda x: float("".join(str(x).split("+"))))
+        def station_apply(x):
+            if "+" in str(x):
+                return float("".join(str(x).split("+")))
+            else:
+                return float("-"+str(x))
+        self.data["Station"] = self.data["Station"].apply(lambda x: station_apply(x))
 
     def _correct_offset_values(self) -> None:
         """
@@ -158,7 +163,7 @@ class Generic_DataLoader:
         self.map_data = pd.DataFrame(map_data, columns=["Station", "Offset", "Elevation"])
         return result
     
-    def save_file(self, folder_name:str) -> tuple[str,str,str,str]:
+    def save_files(self, folder_name:str) -> tuple[str,str,str,str]:
         """
         Save the processed data to CSV and text files in the specified folder.
 
@@ -175,23 +180,23 @@ class Generic_DataLoader:
         base_name_without_ext = os.path.splitext(base_name)[0]
 
         # Save the CSV file
-        csv_file = os.path.join(folder_name, f"generic_{base_name}")
+        csv_file = os.path.join(folder_name, f"{code_name}_{base_name}")
         self.generic.to_csv(csv_file, index=False, header=False)
 
         # Save the text file
-        txt_file = os.path.join(folder_name, f"generic_{base_name_without_ext}.txt")
+        txt_file = os.path.join(folder_name, f"{code_name}_{base_name_without_ext}.txt")
         with open(txt_file, "w") as file:
             for _, row in self.generic.iterrows():
                 file.write(f"{row[0]}\t{row[1]}\n")
 
         # Save the text file for out of ranges
-        out_ranges_file = os.path.join(folder_name, f"generic_{base_name_without_ext}_outranges.txt")
+        out_ranges_file = os.path.join(folder_name, f"{code_name}_{base_name_without_ext}_outranges.txt")
         with open(out_ranges_file, "w") as file:
             for row in self.outrange_id:
                 file.write(f"{row}\n")
 
         # Save the text file for zeros
-        zeros_file = os.path.join(folder_name, f"generic_{base_name_without_ext}_zeros.txt")
+        zeros_file = os.path.join(folder_name, f"{code_name}_{base_name_without_ext}_zeros.txt")
         with open(zeros_file, "w") as file:
             for row in self.zeros:
                 file.write(f"{row}\n")

@@ -1,20 +1,21 @@
 {% extends "layout.html" %}
 {% block content %}
-  <h1>Generic Processing</h1>
+  <h1>CSDP Processing</h1>
   <form method="post" enctype="multipart/form-data" id="process-form">
     <div>
-      <label for="file">CSV File:</label>
-      <input type="file" name="file" id="file" required>
+      <label for="file">CSV File 1:</label>
+      <small>The main file that need preprations.</small>
+      <input type="file" name="file1" id="file1" required>
     </div>
     <div>
-      <label for="epsilon">Epsilon (m):</label>
-      <small>To cluster and find the ax points.</small>
-      <input type="text" name="epsilon" id="epsilon" required>
+      <label for="file">CSV File 2:</label>
+      <small>The secondary file contains boundries(useing the specefic trick).</small>
+      <input type="file" name="file2" id="file2" required>
     </div>
     <div>
-      <label for="rounding_limit">Rounding Limit (m):</label>
-      <small>To round the digits of ax.</small>
-      <input type="text" name="rounding_limit" id="rounding_limit" required>
+      <label for="file">CSV File 3:</label>
+      <small>The full file that I can get all last nodes from.</small>
+      <input type="file" name="file3" id="file3" required>
     </div>
     <div>
       <label for="password">Password:</label>
@@ -25,6 +26,7 @@
   <div id="processing-info" style="display: none;">
     <p>Processing... Time elapsed: <span id="timer">0</span> seconds</p>
   </div>
+  <!-- <a class="back-to-menu" href="{{ url_for('index') }}">Back to Menu</a> -->
 
   <script>
     document.getElementById('process-form').addEventListener('submit', function(event) {
@@ -39,7 +41,7 @@
 
       const timerInterval = setInterval(updateTimer, 1000);
 
-      fetch('{{ url_for("generic_processing") }}', {
+      fetch('{{ url_for("CSDP_processing") }}', {
         method: 'POST',
         body: new FormData(this)
       }).then(response => response.json())

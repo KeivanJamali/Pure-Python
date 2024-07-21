@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 import os
+code_name = "PPK"
 
 
 class PPK_Processing_Result_DataLoader:
@@ -60,13 +61,13 @@ class PPK_Processing_Result_DataLoader:
             for j in reversed(wrong_text_file[i]):
                 self.text_files_data[i].pop(j)
     
-    def save(self, folder_name:str)->None:
+    def save_files(self, folder_name:str)->None:
         if not os.path.exists(folder_name):
             os.makedirs(folder_name)
 
         base_name = os.path.basename(self.file_name)
         base_name_without_ext = os.path.splitext(base_name)[0]
-        PPK_file = os.path.join(folder_name, f"PPK_Processing_{base_name_without_ext}.csv")
+        PPK_file = os.path.join(folder_name, f"{code_name}_{base_name_without_ext}.csv")
 
         # Save the csv file
         self.data.to_csv(PPK_file, header=False, index=False)
@@ -74,19 +75,15 @@ class PPK_Processing_Result_DataLoader:
         # Save the text file for different parts
         text_files = []
         for i in range(len(self.text_files_data)):
-            text_files.append(os.path.join(folder_name, f"PPK_{base_name_without_ext}_file{i+1}.txt"))
+            text_files.append(os.path.join(folder_name, f"{i+1}-{len(list(self.text_files_data[i]))}.txt"))
             with open(text_files[-1], "w") as file:
                 for row in list(self.text_files_data[i]):
                     file.write(f"{row[0]}\t{row[1]}\t{row[2]}\t{row[3]}\n")
 
         # Save the text file for empty rows
-        empty_file = os.path.join(folder_name, f"PPK_{base_name_without_ext}_empty_rows.txt")
+        empty_file = os.path.join(folder_name, f"{code_name}_{base_name_without_ext}_empty_rows.txt")
         with open(empty_file, "w") as file:
             for row in list(self.empty_rows):
                 file.write(f"{row}\n")
 
         return PPK_file, empty_file, text_files
-
-
-            
-

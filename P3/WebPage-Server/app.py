@@ -1,22 +1,25 @@
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory, flash, session, send_file
 import os
 from werkzeug.utils import secure_filename
-from Generic_DataLoader import Generic_DataLoader
+from Generic_DataLoader_V3 import Generic_DataLoader
 from PPK_Processing import PPK_Processing_Result_DataLoader
+from CSDP_DataLoader import CSDP_DataLoader
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER_SEND'] = r'D:\All Python\Pure-Python\P3\WebPage-Server\Files\send_to_others'
 app.config['UPLOAD_FOLDER_RECEIVED'] = r'D:\All Python\Pure-Python\P3\WebPage-Server\Files\received_from_others'
 app.config['UPLOAD_FOLDER_SHARE'] = r'D:\All Python\Pure-Python\P3\WebPage-Server\Files\share'
 app.config['RESULT_DIR'] = r'D:\All Python\Pure-Python\P3\WebPage-Server\Files\result'
+app.config['MOVIE_FOLDER'] = r'D:\All Python\Pure-Python\P3\WebPage-Server\Files\share'
 app.secret_key = 'supersecretkey'
 passwords = {"Generic_Processing": "1234",
              "PPK_Processing": "1234",
+             "CSDP_Processing": "1234",
              "Connect": "asdf1234"}
 
 @app.route('/')
 def index():
-    items = ['Receive Files from Me', 'Upload Files to Me', 'Share Files', 'Generic Processing', 'PPK Processing']
+    items = ['Receive Files from Me', 'Upload Files to Me', 'Share Files', 'Generic Processing', 'PPK Processing', 'CSDP Processing']
     return render_template('index.html', items=items)
 
 def handle_file_download(folder, filename=None):
@@ -114,18 +117,13 @@ def results(filename):
         files = session.get('files', [])
         return render_template('result.html', files=files)
 
-def generic_process_file(file, epsilon, roun_lim):
-    dataloader = Generic_DataLoader(file_name=file)
-    dataloader.fit(epsilon=epsilon, round_lim=roun_lim)
-    csv_file, txt_file, out_ranges_file, zeros_file = dataloader.save_file(app.config['RESULT_DIR'])
-    return csv_file, txt_file, out_ranges_file, zeros_file
 
 @app.route('/generic_processing', methods=['GET', 'POST'])
 def generic_processing():
     def process(file, epsilon, roun_lim):
         dataloader = Generic_DataLoader(file_name=file)
         dataloader.fit(epsilon=epsilon, round_lim=roun_lim)
-        csv_file, txt_file, out_ranges_file, zeros_file = dataloader.save_file(app.config['RESULT_DIR'])
+        csv_file, txt_file, out_ranges_file, zeros_file = dataloader.save_files(app.config['RESULT_DIR'])
         return csv_file, txt_file, out_ranges_file, zeros_file
     if request.method == 'POST':
         password = request.form['password']
@@ -152,7 +150,7 @@ def generic_processing():
 def PPK_processing():
     def process(file):
         dataloader = PPK_Processing_Result_DataLoader(file_name=file)
-        PPK_file = dataloader.save(app.config['RESULT_DIR'])
+        PPK_file = dataloader.save_files(app.config['RESULT_DIR'])
         return PPK_file
     if request.method == 'POST':
         password = request.form['password']
@@ -173,6 +171,55 @@ def PPK_processing():
             flash('Incorrect password')
             return redirect(url_for('PPK_processing'))
     return render_template('PPK_process.html')
+
+@app.route('/CSDP_processing', methods=['GET', 'POST'])
+def CSDP_processing():
+    def process(file1, file2, file3):
+        dataloader = CSDP_DataLoader(file1, file2, file3)
+        dataloader.fit()
+        CSDP_file = dataloader.save_files(app.config['RESULT_DIR'])
+        return CSDP_file
+    if request.method == 'POST':
+        password = request.form['password']
+        if password == passwords['CSDP_Processing']:
+            file1 = request.files['file1']
+            file2 = request.files['file2']
+            file3 = request.files['file3']
+            if file1 and file2 and file3:
+                filename1 = secure_filename(file1.filename)
+                file_path1 = os.path.join(app.config['RESULT_DIR'], filename1)
+                file1.save(file_path1)
+                filename2 = secure_filename(file2.filename)
+                file_path2 = os.path.join(app.config['RESULT_DIR'], filename2)
+                file2.save(file_path2)
+                filename3 = secure_filename(file3.filename)
+                file_path3 = os.path.join(app.config['RESULT_DIR'], filename3)
+                file3.save(file_path3)
+                # Process the file
+                CSDP_file = process(file_path1, file_path2, file_path3)
+                result_files = [os.path.basename(CSDP_file)]
+                session['files'] = [os.path.basename(CSDP_file)]
+                result_url = url_for('results', files=result_files)
+                return {'result_url': result_url}
+        else:
+            flash('Incorrect password')
+            return redirect(url_for('CSDP_processing'))
+    return render_template('CSDP_process.html')
+
+@app.route('/play_movie')
+def play_movie():
+    movie_directory = app.config['MOVIE_FOLDER']
+    movie_file = next((f for f in os.listdir(movie_directory) if f.endswith(('mp4', 'avi', 'mkv', "m4v"))), None)
+    if movie_file:
+        return render_template('play_movie.html', movie_file=movie_file)
+    else:
+        flash('No movie file found')
+        return redirect(url_for('index'))
+    
+@app.route('/movie/<filename>')
+def movie(filename):
+    return send_from_directory(app.config['MOVIE_FOLDER'], filename)
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

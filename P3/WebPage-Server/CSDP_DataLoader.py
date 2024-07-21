@@ -3,7 +3,7 @@ import os
 code_name = "CSDP"
 
 class CSDP_DataLoader:
-    def __init__(self, main_file, pashneh_file, second_ground_file):
+    def __init__(self, main_file, second_ground_file, pashneh_file):
         self.data = None
         self.left_modes = None
         self.result_without_additionals = None
@@ -51,27 +51,37 @@ class CSDP_DataLoader:
         bound_l = []
         bound_r = []
         for row in range(0, len(self.raw_data_second), 2):
-            # print(row)
-            # print(self.raw_data_second["Distance"][row])
+            done = False
             for row_temp in range(0, len(self.raw_data_main), 2):
                 if self.raw_data_second["Distance"][row] == self.raw_data_main["Distance"][row_temp]:
                     bound_l.append(self.raw_data_second["L3"][row])
+                    bound_l.append(self.raw_data_second["L3"][row+1])
                     bound_r.append(self.raw_data_second["R3"][row])
+                    bound_r.append(self.raw_data_second["R3"][row+1])
                     additionals.loc[row] = self.raw_data_pashneh[additionals.columns].loc[row]
                     additionals.loc[row+1] = self.raw_data_pashneh[additionals.columns].loc[row+1]
+                    done = True
+                if done:
                     break
-            bound_l.append(False)
-            bound_r.append(False)
+            if done:
+                continue
+            else:
+                print(row, row_temp)
+                bound_l.append("empty")
+                bound_l.append("empty")
+                bound_r.append("empty")
+                bound_r.append("empty")
+
         additionals.fillna("empty", inplace=True)
         return bound_l, bound_r, additionals
     
     def end_nodes(self):
-        temp_additional = ["L5", "L4", "L3", "R3", "R4", "R5"]
+        temp_additional = ["L3", "L4", "L5", "R3", "R4", "R5"]
         additional = []
         for add in temp_additional:
             if add in self.raw_data_pashneh.columns:
                 additional.append(add)
-        return pd.DataFrame(0, index=range(len(self.raw_data_main)), columns=additional)
+        return pd.DataFrame("empty", index=range(len(self.raw_data_main)), columns=additional)
         # additional_pashneh = self.raw_data_pashneh[additional]
         # return additional_pashneh
     
@@ -89,7 +99,7 @@ class CSDP_DataLoader:
                     # print((left_bound[i]-node) >= 0)
                     # 0.02
                     if self.raw_data_main.columns[j] in self.left_modes:
-                        if (self.left_bound[i]-node) >= 0:
+                        if (self.left_bound[i]-node) >= 0.01:
                             # print(f"adding {i}-{j}-{data.columns[j]}")
                             result.iloc[i, j+3] = node
                             result.iloc[i+1, j+3] = self.raw_data_main.iloc[i+1, j]
@@ -97,7 +107,7 @@ class CSDP_DataLoader:
                             result.iloc[i, j+3] = "empty"
                             result.iloc[i+1, j+3] = "empty"
                     elif "R" in self.raw_data_main.columns[j]:
-                        if (node - self.right_bound[i]) <= 0:
+                        if (node - self.right_bound[i]) <= 0.01:
                             result.iloc[i, j+3] = node
                             result.iloc[i+1, j+3] = self.raw_data_main.iloc[i+1, j]
                         else:
@@ -133,14 +143,36 @@ class CSDP_DataLoader:
                                 break
         return self.CSDP
     
+    def add_left_right_bounds(self):
+        for row in range(0, len(self.left_bound), 2):
+            if not self.right_bound[row] == "empty":
+                for i in range(1, 11):
+                    if self.CSDP.loc[row]["R" + str(i)] == "empty":
+                        col_i = list(self.CSDP.columns).index("R" + str(i))
+                        self.CSDP.iloc[row, col_i] = self.right_bound[row]
+                        self.CSDP.iloc[row+1, col_i] = self.right_bound[row+1]
+                        break
+                
+            if not self.left_bound[row] == "empty":
+                for i in range(1, 11):
+                    if self.CSDP.loc[row]["L" + str(i)] == "empty":
+                        col_i = list(self.CSDP.columns).index("L" + str(i))
+                        self.CSDP.iloc[row, col_i] = self.left_bound[row]
+                        self.CSDP.iloc[row+1, col_i] = self.left_bound[row+1]
+                        break
+    
     def fit(self):
         result_without_additionals = self.use_bounds()
+        self.add_left_right_bounds()
         result = self.add_additional_bounds()
         result.fillna("", inplace=True)
         result.replace("empty", "", inplace=True)
+        for col in result.columns:
+            if not result[col].astype(str).sum():
+                result.drop(columns=col, inplace=True)
         return result
     
-    def save_file(self, folder_name:str) -> tuple[str]:
+    def save_files(self, folder_name:str) -> tuple[str]:
         """
         Save the processed data to CSV and text files in the specified folder.
 
@@ -158,7 +190,7 @@ class CSDP_DataLoader:
 
         # Save the CSV file
         csv_file = os.path.join(folder_name, f"{code_name}_{base_name}")
-        self.CSDP.to_csv(csv_file, index=False, header=False)
+        self.CSDP.to_csv(csv_file, index=False)
 
         # # Save the text file
         # txt_file = os.path.join(folder_name, f"{code_name}_{base_name_without_ext}.txt")

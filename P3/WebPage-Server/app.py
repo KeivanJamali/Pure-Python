@@ -4,22 +4,28 @@ from werkzeug.utils import secure_filename
 from Generic_DataLoader_V3 import Generic_DataLoader
 from PPK_Processing import PPK_Processing_Result_DataLoader
 from CSDP_DataLoader import CSDP_DataLoader
+from Delete_distance_from_centerline import Delete_Distance_From_Centerline
 
+# r'home\Keivan01\mysite\Files\share'
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER_SEND'] = r'D:\All Python\Pure-Python\P3\WebPage-Server\Files\send_to_others'
 app.config['UPLOAD_FOLDER_RECEIVED'] = r'D:\All Python\Pure-Python\P3\WebPage-Server\Files\received_from_others'
 app.config['UPLOAD_FOLDER_SHARE'] = r'D:\All Python\Pure-Python\P3\WebPage-Server\Files\share'
 app.config['RESULT_DIR'] = r'D:\All Python\Pure-Python\P3\WebPage-Server\Files\result'
 app.config['MOVIE_FOLDER'] = r'D:\All Python\Pure-Python\P3\WebPage-Server\Files\share'
+app.config['APP_FOLDER'] = r"D:\All Python\Pure-Python\P3\WebPage-Server\Files\apps"
 app.secret_key = 'supersecretkey'
 passwords = {"Generic_Processing": "1234",
              "PPK_Processing": "1234",
              "CSDP_Processing": "1234",
-             "Connect": "asdf1234"}
+             "Connect": "asdf1234",
+             "Image_Processing": "1234",
+             "Delete_empty_processing": "1234"}
 
 @app.route('/')
 def index():
-    items = ['Receive Files from Me', 'Upload Files to Me', 'Share Files', 'Generic Processing', 'PPK Processing', 'CSDP Processing']
+    items = ['Receive Files from Me', 'Upload Files to Me', 'Share Files', 'Generic Processing', 'PPK Processing', 'CSDP Processing', 'Image Processing'
+             "delete_empty_processing"]
     return render_template('index.html', items=items)
 
 def handle_file_download(folder, filename=None):
@@ -220,6 +226,44 @@ def play_movie():
 def movie(filename):
     return send_from_directory(app.config['MOVIE_FOLDER'], filename)
 
+@app.route('/Image_processing', methods=['GET', 'POST'])
+def Image_processing():
+    if request.method == 'POST':
+        password = request.form["password"]
+        if password == passwords["Image_Processing"]: 
+            return send_from_directory(app.config['APP_FOLDER'], 'ImageProcessingAPP.exe', as_attachment=True)
+        else:
+            flash('Incorrect password')
+            return redirect(url_for('image_processing'))
+    return render_template('image_processing.html')
+
+@app.route('/delete_empty_processing', methods=['GET', 'POST'])
+def delete_empty_processing():
+    def process(file, left_bound, right_bound):
+        dataloader = Delete_Distance_From_Centerline(file, left_bound=left_bound, right_bound=right_bound)
+        dataloader.fit()
+        csv_file = dataloader.save_files(app.config['RESULT_DIR'])
+        return csv_file
+    if request.method == 'POST':
+        password = request.form['password']
+        if password == passwords['Delete_empty_processing']:
+            file = request.files['file']
+            left = float(request.form['left'])
+            right = float(request.form['right'])
+            if file:
+                filename = secure_filename(file.filename)
+                file_path = os.path.join(app.config['RESULT_DIR'], filename)
+                file.save(file_path)
+                # Process the file
+                csv_file = process(file_path, left, right)
+                result_files = [os.path.basename(csv_file)]
+                session['files'] = [os.path.basename(csv_file)]
+                result_url = url_for('results', files=result_files)
+                return {'result_url': result_url}
+        else:
+            flash('Incorrect password')
+            return redirect(url_for('delete_empty_processing'))
+    return render_template('delete_empty_process.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

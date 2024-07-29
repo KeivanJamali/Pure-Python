@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import os
-import plotly.express as px
 from sklearn.svm import SVC
 code_name = "Generic"
 
@@ -214,11 +213,4 @@ class Generic_DataLoader:
         self._find_center_of_clusters(epsilon=epsilon, round_lim=round_lim)
         self.generic = self._generic_format(epsilon=epsilon)
 
-    def plot_map(self):
-        """
-        Plot a 3D scatter plot of the data using Plotly.
-        """
-        fig = px.scatter_3d(self.map_data, x='Station', y='Offset', z='Elevation', color='Elevation', title='3D Elevation Profile')
-        fig.show()
-        # pio.write_image(fig, plot_dir+'3d_elevation_profile.svg')
 

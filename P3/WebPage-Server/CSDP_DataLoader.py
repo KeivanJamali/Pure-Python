@@ -190,12 +190,7 @@ class CSDP_DataLoader:
 
         # Save the CSV file
         csv_file = os.path.join(folder_name, f"{code_name}_{base_name}")
-        self.CSDP.to_csv(csv_file, index=False)
-
-        # # Save the text file
-        # txt_file = os.path.join(folder_name, f"{code_name}_{base_name_without_ext}.txt")
-        # with open(txt_file, "w") as file:
-        #     for _, row in self.generic.iterrows():
-        #         file.write(f"{row[0]}\t{row[1]}\n")
+        self.CSDP.columns = list(self.CSDP.columns[0:2]) + [i[0] if i!="CL" else "CL" for i in self.CSDP.columns[2:]]
+        self.CSDP.to_csv(csv_file, index=False, header=True)
 
         return csv_file

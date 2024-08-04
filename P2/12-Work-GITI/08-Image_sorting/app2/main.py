@@ -2,21 +2,14 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 from PIL import Image, ImageTk
 import os
-import shutil
+from shutil import copy, SameFileError
 import webbrowser
-from image_processing import Image_Processing_survey
+from image_processing_V1 import Image_Processing_survey
 from threading import Thread, Event
 import time
 import customtkinter as ctk
-import sys
 
-# Determine the base path of the application
-if getattr(sys, 'frozen', False):
-    # If the application is frozen (i.e., packaged)
-    base_path = sys._MEIPASS
-else:
-    # If the application is running in a normal Python environment
-    base_path = os.path.dirname(os.path.abspath(__file__))
+base_path = os.path.dirname(os.path.abspath(__file__))
 
 class ImageProcessingApp:
     def __init__(self, root):
@@ -204,8 +197,10 @@ class ImageProcessingApp:
                 self.author_info_button.configure(state=ctk.NORMAL)
                 self.hide_additional_info()
                 return
-
-        for idx, image_list in enumerate(datasettr.result_folders, start=1):
+        idx = 0
+        for _, image_list in enumerate(datasettr.result_folders, start=1):
+            if not image_list:
+                continue
             if self.cancel_event.is_set():
                 messagebox.showinfo("Cancelled", "Image processing cancelled.")
                 self.process_button.configure(state=ctk.NORMAL)
@@ -213,10 +208,22 @@ class ImageProcessingApp:
                 self.hide_additional_info()
                 return
 
+            idx += 1
+            double = len(set([i.split("\\")[-2] for i in image_list])) > 1
             subfolder_name = os.path.join(output_folder, str(idx))
-            if not os.path.exists(subfolder_name):
-                os.makedirs(subfolder_name)
 
+            if double:
+                subfolder_name1 = os.path.join(subfolder_name, "1")
+                subfolder_name2 = os.path.join(subfolder_name, "2")
+                if not os.path.exists(subfolder_name1):
+                    os.makedirs(subfolder_name1)
+                if not os.path.exists(subfolder_name2):
+                    os.makedirs(subfolder_name2)
+            else:
+                if not os.path.exists(subfolder_name):
+                    os.makedirs(subfolder_name)
+
+            second_f = False
             for image_path in image_list:
                 if self.cancel_event.is_set():
                     messagebox.showinfo("Cancelled", "Image processing cancelled.")
@@ -224,17 +231,24 @@ class ImageProcessingApp:
                     self.author_info_button.configure(state=ctk.NORMAL)
                     self.hide_additional_info()
                     return
-
+                if not second_f:
+                    second_f = image_path.split(".")[-2][-3:] == "001"
                 image_name = os.path.basename(image_path)
-                destination_path = os.path.join(subfolder_name, image_name)
+                if double and second_f:
+                    destination_path = os.path.join(subfolder_name2, image_name)
+                elif double and not second_f:
+                    destination_path = os.path.join(subfolder_name1, image_name)
+                else:
+                    destination_path = os.path.join(subfolder_name, image_name)
+                copy(image_path, destination_path)
 
                 if os.path.abspath(image_path) != os.path.abspath(destination_path):
                     try:
-                        shutil.copy(image_path, destination_path)
+                        copy(image_path, destination_path)
                         copied_images += 1
                         self.update_progress_bar(copied_images / total_images)
                         self.update_time_label(start_time, copied_images, total_images)
-                    except shutil.SameFileError:
+                    except SameFileError:
                         # Stop the process and prompt user to retry or cancel
                         stop_processing_and_prompt(f"Skipping copy: {image_path} is the same as {destination_path}. Do you want to retry?")
                         return
@@ -258,8 +272,8 @@ class ImageProcessingApp:
             destination_path = os.path.join(first_files_folder, image_name)
             if os.path.abspath(image_path) != os.path.abspath(destination_path):
                 try:
-                    shutil.copy(image_path, destination_path)
-                except shutil.SameFileError:
+                    copy(image_path, destination_path)
+                except SameFileError:
                     # Stop the process and prompt user to retry or cancel
                     stop_processing_and_prompt(f"Skipping copy: {image_path} is the same as {destination_path}. Do you want to retry?")
                     return

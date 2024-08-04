@@ -20,12 +20,13 @@ passwords = {"Generic_Processing": "1234",
              "CSDP_Processing": "1234",
              "Connect": "asdf1234",
              "Image_Processing": "1234",
-             "Delete_empty_processing": "1234"}
+             "Delete_empty_processing": "1234",
+             "bridge_desing": "1234"}
 
 @app.route('/')
 def index():
     items = ['Receive Files from Me', 'Upload Files to Me', 'Share Files', 'Generic Processing', 'PPK Processing', 'CSDP Processing', 'Image Processing'
-             "delete_empty_processing"]
+             "delete_empty_processing", "bridge_processing"]
     return render_template('index.html', items=items)
 
 def handle_file_download(folder, filename=None):
@@ -264,6 +265,17 @@ def delete_empty_processing():
             flash('Incorrect password')
             return redirect(url_for('delete_empty_processing'))
     return render_template('delete_empty_process.html')
+
+@app.route('/bridge_processing', methods=['GET', 'POST'])
+def bridge_processing():
+    if request.method == 'POST':
+        password = request.form["password"]
+        if password == passwords["bridge_desing"]: 
+            return send_from_directory(app.config['APP_FOLDER'], 'BridgeProcessingApp.rar', as_attachment=True)
+        else:
+            flash('Incorrect password')
+            return redirect(url_for('bridge_process'))
+    return render_template('bridge_process.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

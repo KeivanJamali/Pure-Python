@@ -661,6 +661,9 @@
   ('PIL.features',
    'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\PIL\\features.py',
    'PYMODULE'),
+  ('PyQt5',
+   'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\PyQt5\\__init__.py',
+   'PYMODULE'),
   ('__future__',
    'C:\\Python Interpreters\\in_main\\Lib\\__future__.py',
    'PYMODULE'),
@@ -683,6 +686,18 @@
   ('_pyi_rth_utils',
    'C:\\Python '
    'Interpreters\\in_main\\Lib\\site-packages\\PyInstaller\\fake-modules\\_pyi_rth_utils\\__init__.py',
+   'PYMODULE'),
+  ('_pyi_rth_utils._win32',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\PyInstaller\\fake-modules\\_pyi_rth_utils\\_win32.py',
+   'PYMODULE'),
+  ('_pyi_rth_utils.qt',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\PyInstaller\\fake-modules\\_pyi_rth_utils\\qt.py',
+   'PYMODULE'),
+  ('_pyi_rth_utils.tempfile',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\PyInstaller\\fake-modules\\_pyi_rth_utils\\tempfile.py',
    'PYMODULE'),
   ('_sitebuiltins',
    'C:\\Python Interpreters\\in_main\\Lib\\_sitebuiltins.py',
@@ -891,6 +906,39 @@
   ('contextvars',
    'C:\\Python Interpreters\\in_main\\Lib\\contextvars.py',
    'PYMODULE'),
+  ('contourpy',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\contourpy\\__init__.py',
+   'PYMODULE'),
+  ('contourpy._version',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\contourpy\\_version.py',
+   'PYMODULE'),
+  ('contourpy.array',
+   'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\contourpy\\array.py',
+   'PYMODULE'),
+  ('contourpy.chunk',
+   'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\contourpy\\chunk.py',
+   'PYMODULE'),
+  ('contourpy.convert',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\contourpy\\convert.py',
+   'PYMODULE'),
+  ('contourpy.dechunk',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\contourpy\\dechunk.py',
+   'PYMODULE'),
+  ('contourpy.enum_util',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\contourpy\\enum_util.py',
+   'PYMODULE'),
+  ('contourpy.typecheck',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\contourpy\\typecheck.py',
+   'PYMODULE'),
+  ('contourpy.types',
+   'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\contourpy\\types.py',
+   'PYMODULE'),
   ('copy', 'C:\\Python Interpreters\\in_main\\Lib\\copy.py', 'PYMODULE'),
   ('csv', 'C:\\Python Interpreters\\in_main\\Lib\\csv.py', 'PYMODULE'),
   ('ctypes',
@@ -1097,6 +1145,9 @@
   ('customtkinter.windows.widgets.utility.utility_functions',
    'C:\\Python '
    'Interpreters\\in_main\\Lib\\site-packages\\customtkinter\\windows\\widgets\\utility\\utility_functions.py',
+   'PYMODULE'),
+  ('cycler',
+   'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\cycler\\__init__.py',
    'PYMODULE'),
   ('darkdetect',
    'C:\\Python '
@@ -1327,12 +1378,15 @@
   ('http.cookiejar',
    'C:\\Python Interpreters\\in_main\\Lib\\http\\cookiejar.py',
    'PYMODULE'),
+  ('http.cookies',
+   'C:\\Python Interpreters\\in_main\\Lib\\http\\cookies.py',
+   'PYMODULE'),
   ('http.server',
    'C:\\Python Interpreters\\in_main\\Lib\\http\\server.py',
    'PYMODULE'),
-  ('image_processing',
+  ('image_processing_V1',
    'D:\\All '
-   'Python\\Pure-Python\\P2\\12-Work-GITI\\08-Image_sorting\\app2\\image_processing.py',
+   'Python\\Pure-Python\\P2\\12-Work-GITI\\08-Image_sorting\\app2\\image_processing_V1.py',
    'PYMODULE'),
   ('importlib',
    'C:\\Python Interpreters\\in_main\\Lib\\importlib\\__init__.py',
@@ -2019,6 +2073,14 @@
   ('jupyter_core.version',
    'C:\\Users\\keipj\\AppData\\Roaming\\Python\\Python312\\site-packages\\jupyter_core\\version.py',
    'PYMODULE'),
+  ('kiwisolver',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\kiwisolver\\__init__.py',
+   'PYMODULE'),
+  ('kiwisolver.exceptions',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\kiwisolver\\exceptions.py',
+   'PYMODULE'),
   ('logging',
    'C:\\Python Interpreters\\in_main\\Lib\\logging\\__init__.py',
    'PYMODULE'),
@@ -2036,6 +2098,382 @@
   ('markupsafe._native',
    'C:\\Python '
    'Interpreters\\in_main\\Lib\\site-packages\\markupsafe\\_native.py',
+   'PYMODULE'),
+  ('matplotlib',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\__init__.py',
+   'PYMODULE'),
+  ('matplotlib._afm',
+   'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\_afm.py',
+   'PYMODULE'),
+  ('matplotlib._api',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\_api\\__init__.py',
+   'PYMODULE'),
+  ('matplotlib._api.deprecation',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\_api\\deprecation.py',
+   'PYMODULE'),
+  ('matplotlib._blocking_input',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\_blocking_input.py',
+   'PYMODULE'),
+  ('matplotlib._cm',
+   'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\_cm.py',
+   'PYMODULE'),
+  ('matplotlib._cm_listed',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\_cm_listed.py',
+   'PYMODULE'),
+  ('matplotlib._color_data',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\_color_data.py',
+   'PYMODULE'),
+  ('matplotlib._constrained_layout',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\_constrained_layout.py',
+   'PYMODULE'),
+  ('matplotlib._docstring',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\_docstring.py',
+   'PYMODULE'),
+  ('matplotlib._enums',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\_enums.py',
+   'PYMODULE'),
+  ('matplotlib._fontconfig_pattern',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\_fontconfig_pattern.py',
+   'PYMODULE'),
+  ('matplotlib._layoutgrid',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\_layoutgrid.py',
+   'PYMODULE'),
+  ('matplotlib._mathtext',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\_mathtext.py',
+   'PYMODULE'),
+  ('matplotlib._mathtext_data',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\_mathtext_data.py',
+   'PYMODULE'),
+  ('matplotlib._pylab_helpers',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\_pylab_helpers.py',
+   'PYMODULE'),
+  ('matplotlib._text_helpers',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\_text_helpers.py',
+   'PYMODULE'),
+  ('matplotlib._tight_bbox',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\_tight_bbox.py',
+   'PYMODULE'),
+  ('matplotlib._tight_layout',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\_tight_layout.py',
+   'PYMODULE'),
+  ('matplotlib._version',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\_version.py',
+   'PYMODULE'),
+  ('matplotlib.artist',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\artist.py',
+   'PYMODULE'),
+  ('matplotlib.axes',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\axes\\__init__.py',
+   'PYMODULE'),
+  ('matplotlib.axes._axes',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\axes\\_axes.py',
+   'PYMODULE'),
+  ('matplotlib.axes._base',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\axes\\_base.py',
+   'PYMODULE'),
+  ('matplotlib.axes._secondary_axes',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\axes\\_secondary_axes.py',
+   'PYMODULE'),
+  ('matplotlib.axis',
+   'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\axis.py',
+   'PYMODULE'),
+  ('matplotlib.backend_bases',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\backend_bases.py',
+   'PYMODULE'),
+  ('matplotlib.backend_managers',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\backend_managers.py',
+   'PYMODULE'),
+  ('matplotlib.backend_tools',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\backend_tools.py',
+   'PYMODULE'),
+  ('matplotlib.backends',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\backends\\__init__.py',
+   'PYMODULE'),
+  ('matplotlib.backends.backend_agg',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\backends\\backend_agg.py',
+   'PYMODULE'),
+  ('matplotlib.backends.backend_qt',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\backends\\backend_qt.py',
+   'PYMODULE'),
+  ('matplotlib.backends.backend_qtagg',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\backends\\backend_qtagg.py',
+   'PYMODULE'),
+  ('matplotlib.backends.backend_webagg',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\backends\\backend_webagg.py',
+   'PYMODULE'),
+  ('matplotlib.backends.backend_webagg_core',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\backends\\backend_webagg_core.py',
+   'PYMODULE'),
+  ('matplotlib.backends.qt_compat',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\backends\\qt_compat.py',
+   'PYMODULE'),
+  ('matplotlib.backends.qt_editor',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\backends\\qt_editor\\__init__.py',
+   'PYMODULE'),
+  ('matplotlib.backends.qt_editor._formlayout',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\backends\\qt_editor\\_formlayout.py',
+   'PYMODULE'),
+  ('matplotlib.backends.qt_editor.figureoptions',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\backends\\qt_editor\\figureoptions.py',
+   'PYMODULE'),
+  ('matplotlib.backends.registry',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\backends\\registry.py',
+   'PYMODULE'),
+  ('matplotlib.bezier',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\bezier.py',
+   'PYMODULE'),
+  ('matplotlib.category',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\category.py',
+   'PYMODULE'),
+  ('matplotlib.cbook',
+   'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\cbook.py',
+   'PYMODULE'),
+  ('matplotlib.cm',
+   'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\cm.py',
+   'PYMODULE'),
+  ('matplotlib.collections',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\collections.py',
+   'PYMODULE'),
+  ('matplotlib.colorbar',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\colorbar.py',
+   'PYMODULE'),
+  ('matplotlib.colors',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\colors.py',
+   'PYMODULE'),
+  ('matplotlib.container',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\container.py',
+   'PYMODULE'),
+  ('matplotlib.contour',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\contour.py',
+   'PYMODULE'),
+  ('matplotlib.dates',
+   'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\dates.py',
+   'PYMODULE'),
+  ('matplotlib.dviread',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\dviread.py',
+   'PYMODULE'),
+  ('matplotlib.figure',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\figure.py',
+   'PYMODULE'),
+  ('matplotlib.font_manager',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\font_manager.py',
+   'PYMODULE'),
+  ('matplotlib.gridspec',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\gridspec.py',
+   'PYMODULE'),
+  ('matplotlib.hatch',
+   'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\hatch.py',
+   'PYMODULE'),
+  ('matplotlib.image',
+   'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\image.py',
+   'PYMODULE'),
+  ('matplotlib.layout_engine',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\layout_engine.py',
+   'PYMODULE'),
+  ('matplotlib.legend',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\legend.py',
+   'PYMODULE'),
+  ('matplotlib.legend_handler',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\legend_handler.py',
+   'PYMODULE'),
+  ('matplotlib.lines',
+   'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\lines.py',
+   'PYMODULE'),
+  ('matplotlib.markers',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\markers.py',
+   'PYMODULE'),
+  ('matplotlib.mathtext',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\mathtext.py',
+   'PYMODULE'),
+  ('matplotlib.mlab',
+   'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\mlab.py',
+   'PYMODULE'),
+  ('matplotlib.offsetbox',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\offsetbox.py',
+   'PYMODULE'),
+  ('matplotlib.patches',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\patches.py',
+   'PYMODULE'),
+  ('matplotlib.path',
+   'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\path.py',
+   'PYMODULE'),
+  ('matplotlib.patheffects',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\patheffects.py',
+   'PYMODULE'),
+  ('matplotlib.projections',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\projections\\__init__.py',
+   'PYMODULE'),
+  ('matplotlib.projections.geo',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\projections\\geo.py',
+   'PYMODULE'),
+  ('matplotlib.projections.polar',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\projections\\polar.py',
+   'PYMODULE'),
+  ('matplotlib.pylab',
+   'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\pylab.py',
+   'PYMODULE'),
+  ('matplotlib.pyplot',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\pyplot.py',
+   'PYMODULE'),
+  ('matplotlib.quiver',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\quiver.py',
+   'PYMODULE'),
+  ('matplotlib.rcsetup',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\rcsetup.py',
+   'PYMODULE'),
+  ('matplotlib.scale',
+   'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\scale.py',
+   'PYMODULE'),
+  ('matplotlib.spines',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\spines.py',
+   'PYMODULE'),
+  ('matplotlib.stackplot',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\stackplot.py',
+   'PYMODULE'),
+  ('matplotlib.streamplot',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\streamplot.py',
+   'PYMODULE'),
+  ('matplotlib.style',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\style\\__init__.py',
+   'PYMODULE'),
+  ('matplotlib.style.core',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\style\\core.py',
+   'PYMODULE'),
+  ('matplotlib.table',
+   'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\table.py',
+   'PYMODULE'),
+  ('matplotlib.texmanager',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\texmanager.py',
+   'PYMODULE'),
+  ('matplotlib.text',
+   'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\text.py',
+   'PYMODULE'),
+  ('matplotlib.textpath',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\textpath.py',
+   'PYMODULE'),
+  ('matplotlib.ticker',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\ticker.py',
+   'PYMODULE'),
+  ('matplotlib.transforms',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\transforms.py',
+   'PYMODULE'),
+  ('matplotlib.tri',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\tri\\__init__.py',
+   'PYMODULE'),
+  ('matplotlib.tri._triangulation',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\tri\\_triangulation.py',
+   'PYMODULE'),
+  ('matplotlib.tri._tricontour',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\tri\\_tricontour.py',
+   'PYMODULE'),
+  ('matplotlib.tri._trifinder',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\tri\\_trifinder.py',
+   'PYMODULE'),
+  ('matplotlib.tri._triinterpolate',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\tri\\_triinterpolate.py',
+   'PYMODULE'),
+  ('matplotlib.tri._tripcolor',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\tri\\_tripcolor.py',
+   'PYMODULE'),
+  ('matplotlib.tri._triplot',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\tri\\_triplot.py',
+   'PYMODULE'),
+  ('matplotlib.tri._trirefine',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\tri\\_trirefine.py',
+   'PYMODULE'),
+  ('matplotlib.tri._tritools',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\tri\\_tritools.py',
+   'PYMODULE'),
+  ('matplotlib.typing',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\typing.py',
+   'PYMODULE'),
+  ('matplotlib.units',
+   'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\units.py',
+   'PYMODULE'),
+  ('matplotlib.widgets',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\matplotlib\\widgets.py',
    'PYMODULE'),
   ('matplotlib_inline',
    'C:\\Users\\keipj\\AppData\\Roaming\\Python\\Python312\\site-packages\\matplotlib_inline\\__init__.py',
@@ -2060,6 +2498,30 @@
   ('more_itertools.recipes',
    'C:\\Python '
    'Interpreters\\in_main\\Lib\\site-packages\\setuptools\\_vendor\\more_itertools\\recipes.py',
+   'PYMODULE'),
+  ('mpl_toolkits',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\mpl_toolkits\\__init__.py',
+   'PYMODULE'),
+  ('mpl_toolkits.mplot3d',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\mpl_toolkits\\mplot3d\\__init__.py',
+   'PYMODULE'),
+  ('mpl_toolkits.mplot3d.art3d',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\mpl_toolkits\\mplot3d\\art3d.py',
+   'PYMODULE'),
+  ('mpl_toolkits.mplot3d.axes3d',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\mpl_toolkits\\mplot3d\\axes3d.py',
+   'PYMODULE'),
+  ('mpl_toolkits.mplot3d.axis3d',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\mpl_toolkits\\mplot3d\\axis3d.py',
+   'PYMODULE'),
+  ('mpl_toolkits.mplot3d.proj3d',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\mpl_toolkits\\mplot3d\\proj3d.py',
    'PYMODULE'),
   ('multiprocessing',
    'C:\\Python Interpreters\\in_main\\Lib\\multiprocessing\\__init__.py',
@@ -3796,6 +4258,46 @@
    'C:\\Python '
    'Interpreters\\in_main\\Lib\\site-packages\\pandas\\plotting\\_core.py',
    'PYMODULE'),
+  ('pandas.plotting._matplotlib',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\pandas\\plotting\\_matplotlib\\__init__.py',
+   'PYMODULE'),
+  ('pandas.plotting._matplotlib.boxplot',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\pandas\\plotting\\_matplotlib\\boxplot.py',
+   'PYMODULE'),
+  ('pandas.plotting._matplotlib.converter',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\pandas\\plotting\\_matplotlib\\converter.py',
+   'PYMODULE'),
+  ('pandas.plotting._matplotlib.core',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\pandas\\plotting\\_matplotlib\\core.py',
+   'PYMODULE'),
+  ('pandas.plotting._matplotlib.groupby',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\pandas\\plotting\\_matplotlib\\groupby.py',
+   'PYMODULE'),
+  ('pandas.plotting._matplotlib.hist',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\pandas\\plotting\\_matplotlib\\hist.py',
+   'PYMODULE'),
+  ('pandas.plotting._matplotlib.misc',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\pandas\\plotting\\_matplotlib\\misc.py',
+   'PYMODULE'),
+  ('pandas.plotting._matplotlib.style',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\pandas\\plotting\\_matplotlib\\style.py',
+   'PYMODULE'),
+  ('pandas.plotting._matplotlib.timeseries',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\pandas\\plotting\\_matplotlib\\timeseries.py',
+   'PYMODULE'),
+  ('pandas.plotting._matplotlib.tools',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\pandas\\plotting\\_matplotlib\\tools.py',
+   'PYMODULE'),
   ('pandas.plotting._misc',
    'C:\\Python '
    'Interpreters\\in_main\\Lib\\site-packages\\pandas\\plotting\\_misc.py',
@@ -5341,6 +5843,47 @@
    'PYMODULE'),
   ('pygments.util',
    'C:\\Users\\keipj\\AppData\\Roaming\\Python\\Python312\\site-packages\\pygments\\util.py',
+   'PYMODULE'),
+  ('pyparsing',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\pyparsing\\__init__.py',
+   'PYMODULE'),
+  ('pyparsing.actions',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\pyparsing\\actions.py',
+   'PYMODULE'),
+  ('pyparsing.common',
+   'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\pyparsing\\common.py',
+   'PYMODULE'),
+  ('pyparsing.core',
+   'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\pyparsing\\core.py',
+   'PYMODULE'),
+  ('pyparsing.diagram',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\pyparsing\\diagram\\__init__.py',
+   'PYMODULE'),
+  ('pyparsing.exceptions',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\pyparsing\\exceptions.py',
+   'PYMODULE'),
+  ('pyparsing.helpers',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\pyparsing\\helpers.py',
+   'PYMODULE'),
+  ('pyparsing.results',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\pyparsing\\results.py',
+   'PYMODULE'),
+  ('pyparsing.testing',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\pyparsing\\testing.py',
+   'PYMODULE'),
+  ('pyparsing.unicode',
+   'C:\\Python '
+   'Interpreters\\in_main\\Lib\\site-packages\\pyparsing\\unicode.py',
+   'PYMODULE'),
+  ('pyparsing.util',
+   'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\pyparsing\\util.py',
    'PYMODULE'),
   ('pytz',
    'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\pytz\\__init__.py',
@@ -7011,6 +7554,12 @@
   ('tornado',
    'C:\\Users\\keipj\\AppData\\Roaming\\Python\\Python312\\site-packages\\tornado\\__init__.py',
    'PYMODULE'),
+  ('tornado._locale_data',
+   'C:\\Users\\keipj\\AppData\\Roaming\\Python\\Python312\\site-packages\\tornado\\_locale_data.py',
+   'PYMODULE'),
+  ('tornado.autoreload',
+   'C:\\Users\\keipj\\AppData\\Roaming\\Python\\Python312\\site-packages\\tornado\\autoreload.py',
+   'PYMODULE'),
   ('tornado.concurrent',
    'C:\\Users\\keipj\\AppData\\Roaming\\Python\\Python312\\site-packages\\tornado\\concurrent.py',
    'PYMODULE'),
@@ -7020,11 +7569,26 @@
   ('tornado.gen',
    'C:\\Users\\keipj\\AppData\\Roaming\\Python\\Python312\\site-packages\\tornado\\gen.py',
    'PYMODULE'),
+  ('tornado.http1connection',
+   'C:\\Users\\keipj\\AppData\\Roaming\\Python\\Python312\\site-packages\\tornado\\http1connection.py',
+   'PYMODULE'),
+  ('tornado.httpclient',
+   'C:\\Users\\keipj\\AppData\\Roaming\\Python\\Python312\\site-packages\\tornado\\httpclient.py',
+   'PYMODULE'),
+  ('tornado.httpserver',
+   'C:\\Users\\keipj\\AppData\\Roaming\\Python\\Python312\\site-packages\\tornado\\httpserver.py',
+   'PYMODULE'),
+  ('tornado.httputil',
+   'C:\\Users\\keipj\\AppData\\Roaming\\Python\\Python312\\site-packages\\tornado\\httputil.py',
+   'PYMODULE'),
   ('tornado.ioloop',
    'C:\\Users\\keipj\\AppData\\Roaming\\Python\\Python312\\site-packages\\tornado\\ioloop.py',
    'PYMODULE'),
   ('tornado.iostream',
    'C:\\Users\\keipj\\AppData\\Roaming\\Python\\Python312\\site-packages\\tornado\\iostream.py',
+   'PYMODULE'),
+  ('tornado.locale',
+   'C:\\Users\\keipj\\AppData\\Roaming\\Python\\Python312\\site-packages\\tornado\\locale.py',
    'PYMODULE'),
   ('tornado.locks',
    'C:\\Users\\keipj\\AppData\\Roaming\\Python\\Python312\\site-packages\\tornado\\locks.py',
@@ -7050,8 +7614,29 @@
   ('tornado.queues',
    'C:\\Users\\keipj\\AppData\\Roaming\\Python\\Python312\\site-packages\\tornado\\queues.py',
    'PYMODULE'),
+  ('tornado.routing',
+   'C:\\Users\\keipj\\AppData\\Roaming\\Python\\Python312\\site-packages\\tornado\\routing.py',
+   'PYMODULE'),
+  ('tornado.simple_httpclient',
+   'C:\\Users\\keipj\\AppData\\Roaming\\Python\\Python312\\site-packages\\tornado\\simple_httpclient.py',
+   'PYMODULE'),
+  ('tornado.tcpclient',
+   'C:\\Users\\keipj\\AppData\\Roaming\\Python\\Python312\\site-packages\\tornado\\tcpclient.py',
+   'PYMODULE'),
+  ('tornado.tcpserver',
+   'C:\\Users\\keipj\\AppData\\Roaming\\Python\\Python312\\site-packages\\tornado\\tcpserver.py',
+   'PYMODULE'),
+  ('tornado.template',
+   'C:\\Users\\keipj\\AppData\\Roaming\\Python\\Python312\\site-packages\\tornado\\template.py',
+   'PYMODULE'),
   ('tornado.util',
    'C:\\Users\\keipj\\AppData\\Roaming\\Python\\Python312\\site-packages\\tornado\\util.py',
+   'PYMODULE'),
+  ('tornado.web',
+   'C:\\Users\\keipj\\AppData\\Roaming\\Python\\Python312\\site-packages\\tornado\\web.py',
+   'PYMODULE'),
+  ('tornado.websocket',
+   'C:\\Users\\keipj\\AppData\\Roaming\\Python\\Python312\\site-packages\\tornado\\websocket.py',
    'PYMODULE'),
   ('tqdm',
    'C:\\Python Interpreters\\in_main\\Lib\\site-packages\\tqdm\\__init__.py',

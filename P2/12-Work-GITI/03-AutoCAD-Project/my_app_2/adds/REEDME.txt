@@ -1,0 +1,17 @@
+author: KeivanJamali
+website: KeivanJamali.com
+Company: FaraGiti Andishan
+
+1- Extract the zip file.
+2- Set all the information in the input_form.csv.
+3- Change the template dwg files if you Need.
+4- run the BridgeProcessingApp.exe.
+5- In the generate file page, give the template of dwg and the input_form.csv and specify the saving directory.
+6- Click on process and wait until it finishes.
+Notes:
+. If the H be lower than critical number, it will not complete the process and will give you the values and suggest to change parameters and try again.
+. If some critical information is mistaken it will not process the result and need to complete all necessary information. Necessary information: from row 1 to 19 in the table.
+7- Go to the page of generate dwg.
+8- open a empty page in autocad on your PC.
+9- specify the saving directory and the template_bridge.py for processing. Then click on process and wait.
+10- Your dwg file will generated.

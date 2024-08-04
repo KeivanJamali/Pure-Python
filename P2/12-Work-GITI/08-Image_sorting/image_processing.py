@@ -20,7 +20,6 @@ class Image_Processing_survey:
             for tag, value in image._getexif().items():
                 tag_name = TAGS.get(tag, tag)
                 exif_data[tag_name] = value
-        # print(exif_data)
         return exif_data
     
     @staticmethod
@@ -37,14 +36,12 @@ class Image_Processing_survey:
     
     def _get_image_info(self, folder_path):
         all_images_in_folder = self._get_all_images_sorted(folder_path)
-        # print(all_images_in_folder)
         image_date_list = []
 
         for filename in all_images_in_folder:
             if filename.lower().endswith(('.png', '.jpg', '.jpeg')):
                 image_path = os.path.join(folder_path, filename)
                 exif_data = self._get_exif_data(image_path)
-                # self.test = exif_data
                 date_time = exif_data.get('DateTime', 'N/A')
                 dateformat = "%Y:%m:%d %H:%M:%S"
                 try:
@@ -65,7 +62,6 @@ class Image_Processing_survey:
                 result_files[-1].append(self.files[i])
             else:
                 result_files.append([self.files[i]])
-        # result_files[-1].append(self.files[-1])
 
         first_images = []
         for sublist in result_files:
@@ -74,23 +70,38 @@ class Image_Processing_survey:
         return result_files, first_images
 
     def fit_to_copy(self, output_folder):
-        # Ensure the output folder exists
         if not os.path.exists(output_folder):
             os.makedirs(output_folder)
-
-        # Loop through the image lists and create directories
-        for idx, image_list in enumerate(self.result_folders, start=1):
+        idx = 0
+        for _, image_list in enumerate(self.result_folders, start=1):
+            if not image_list:
+                continue
+            idx += 1
+            double = len(set([i.split("\\")[-2] for i in image_list])) > 1
             subfolder_name = os.path.join(output_folder, str(idx))
-            if not os.path.exists(subfolder_name):
-                os.makedirs(subfolder_name)
 
-            # Copy each image in the sublist to the corresponding subfolder
+            if double:
+                subfolder_name1 = os.path.join(subfolder_name, "1")
+                subfolder_name2 = os.path.join(subfolder_name, "2")
+                if not os.path.exists(subfolder_name1):
+                    os.makedirs(subfolder_name1)
+                if not os.path.exists(subfolder_name2):
+                    os.makedirs(subfolder_name2)
+            else:
+                if not os.path.exists(subfolder_name):
+                    os.makedirs(subfolder_name)
+
+            second_f = False
             for image_path_i in tqdm(range(len(image_list))):
-                # Extract the image file name
+                if not second_f:
+                    second_f = image_list[image_path_i].split(".")[-2][-3:] == "001"
                 image_name = os.path.basename(image_list[image_path_i])
-                # Define the destination path
-                destination_path = os.path.join(subfolder_name, image_name)
-                # Copy the image
+                if double and second_f:
+                    destination_path = os.path.join(subfolder_name2, image_name)
+                elif double and not second_f:
+                    destination_path = os.path.join(subfolder_name1, image_name)
+                else:
+                    destination_path = os.path.join(subfolder_name, image_name)
                 shutil.copy(image_list[image_path_i], destination_path)
 
         output_folder = os.path.join(output_folder, "first_files")
@@ -100,4 +111,3 @@ class Image_Processing_survey:
             image_name = os.path.basename(image_path)
             destination_path = os.path.join(output_folder, image_name)
             shutil.copy(image_path, destination_path)
-        

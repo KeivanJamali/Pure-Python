@@ -42,18 +42,18 @@ class FileProcessor(QThread):
                 temp_file = impl.replace_text_in_file()
                 print("[INFO] Finalizing...")
                 # massage = builder.save_files(file=self.csv_file)
-                if m1:
-                    massage = m1
-                else:
-                    if m2 and m3:
-                        massage = m2+" / "+m3
-                    elif m2:
-                        massage = m2
-                    elif m3:
-                        massage = m3
+                # if m1:
+                #     massage = m1
+                # else:
+                #     if m2 and m3:
+                #         massage = m2+" / "+m3
+                #     elif m2:
+                #         massage = m2
+                #     elif m3:
+                #         massage = m3
 
-                if massage:
-                    self.error_signal.emit(massage)
+                # if massage:
+                #     self.error_signal.emit(massage)
 
         except Exception as e:
             self.error_signal.emit(str(e))

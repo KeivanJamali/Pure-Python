@@ -8,13 +8,12 @@
     <label for="password">Password:</label>
     <input type="password" name="password" required>
     <input type="submit" value="Submit">
-    <input type="submit" value="Upload">
   </form>
   <h2>Available Files</h2>
   <div class="file-list">
     <ul>
       {% for file in files %}
-      <li><a href="{{ url_for('download_file', filename=file) }}">{{ file }}</a></li>
+      <li><a href="{{ url_for('download_file', filename=file, folder='UPLOAD_FOLDER_SHARE') }}">{{ file }}</a></li>
       {% endfor %}
     </ul>
   </div>

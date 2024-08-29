@@ -107,8 +107,12 @@ class Generic_DataLoader:
 
         x_total = self.data[["Station"]].values
 
-        svm_model = SVC(kernel="linear", C=1)
+        print(len(y_train), len(x_train))
+
+        svm_model = SVC(kernel="rbf", C=1)
+        print("1")
         svm_model.fit(x_train, y_train)
+        print("2")
         predicted_clusters = svm_model.predict(x_total)
         self.data["Cluster"] = predicted_clusters
 

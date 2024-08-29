@@ -6,7 +6,7 @@
   <div class="file-list">
     <ul>
       {% for file in send_files %}
-      <li><a href="{{ url_for('download_file', filename=file) }}">{{ file }}</a></li>
+      <li><a href="{{ url_for('download_file', filename=file, folder='UPLOAD_FOLDER_SEND') }}">{{ file }}</a></li>
       {% endfor %}
     </ul>
   </div>

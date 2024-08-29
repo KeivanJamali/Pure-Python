@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from modular.Tables import Tables
-from math import ceil, pi, cos
+from math import ceil, pi, cos, radians
 
 class Calculate:
     def __init__(self, file, progress_callback=None):
@@ -465,7 +465,7 @@ class Calculate:
 
     def find_distance_for_bal(self, h_min, h_max, direction):
         def formula(hmax, hmin):
-            return (hmax-hmin)/cos(self.ball_degre) * self.z_shirvani
+            return (hmax-hmin)/cos(radians(self.ball_degre)) * self.z_shirvani
         
         h_min_temp = h_min
         d1, d2 = 0, 1
@@ -479,7 +479,7 @@ class Calculate:
                 d1 = formula(hmax=h_max, hmin=h_min_temp)
                 h_min_temp = 1 - d1*self.z_nature
                 d2 = formula(hmax=h_max, hmin=h_min_temp)
-        print(f"[INFO] Find the distance in {direction} for min height of {h_min} and max height of {h_max}.")
+        print(f"[INFO] Find the distance in {direction} for min height of {h_min} and max height of {h_max}. and The distance for W is {d2}")
         return d2
 
     def count_in_pos(self, p:int, count:str, cal=False):

@@ -1,0 +1,35 @@
+Number of openings:,1
+Opening length (meters):,2
+Culvert length (meters):,16.55
+HS (HS):,0.25
+Minimum support height (meters):,1
+Project axis:,37.14
+Natural ground axis:,35.14
+Right side DEVER:,-0.03
+Left side DEVER:,0.03
+"Natural ground slope (e.g., 0.01):",0.03
+"Longitudinal slope (e.g., -0.01):",-0.0137
+"Slope of embankment (e.g., 3):",3
+Ret (meters):,0.3
+Support angle (degrees):,30
+Parameter A:,5.95
+Parameter B:,10.6
+Upper city,???
+Lower city,???
+"Is the left in autocad 'upper'? (True, False):",TRUE
+Project description line 1:,data1
+Project description line 2:,data2
+Project description line 3:,data3
+Map Topic Line 1:,map1
+Map Topic Line 2:,map2
+Map Topic Line 3:,map3
+Map Number:,123456789
+Employer:,k1
+Consultant Engineer:,k2
+Contractor:,k3
+Project Title:,title
+Notification Date:,1403/5/15
+Culvert Span:,20
+Culvert Location:,21
+Maximum Soil Height Over Culvert:,22
+Turb Angle:,23

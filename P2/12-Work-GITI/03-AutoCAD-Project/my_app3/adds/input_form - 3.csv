@@ -1,0 +1,18 @@
+Number of openings:,3
+Opening length (meters):,2
+Culvert length (meters):,16.55
+HS (HS):,0.25
+Minimum support height (meters):,1
+Project axis:,37.14
+Natural ground axis:,35.14
+Right side DEVER:,-0.03
+Left side DEVER:,0.03
+"Natural ground slope (e.g., 0.01):",0.03
+"Longitudinal slope (e.g., -0.01):",-0.0137
+"Slope of embankment (e.g., 3):",3
+Ret (meters):,0.3
+Support angle (degrees):,30
+Parameter A:,5.95
+Parameter B:,10.6
+"Is the left in autocad 'upper'? (True, False):",TRUE
+alpha,0

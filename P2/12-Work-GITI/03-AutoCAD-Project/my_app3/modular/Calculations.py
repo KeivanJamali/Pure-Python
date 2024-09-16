@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from modular.Tables import Tables
-from math import ceil, pi, cos, radians
+from math import ceil, pi, cos, radians, tan
 
 class Calculate:
     def __init__(self, file, progress_callback=None):
@@ -13,13 +13,13 @@ class Calculate:
         if not input_wrong:
             if self.progress_callback:
                 self.progress_callback(40)
-            if self.n == 1:
+            if self.n == 1 and self.alpha == 0:
                 self._step1()
-            elif self.n == 2:
+            elif self.n == 1 and self.alpha != 0:
                 self._step2()
-            elif self.n == 3:
+            elif self.n > 1 and self.alpha == 0:
                 self._step3()
-            elif self.n == 4:
+            elif self.n > 1 and self.alpha != 0:
                 self._step4()
             elif self.n == 5:
                 self._step5()
@@ -61,12 +61,30 @@ class Calculate:
     def _step2(self):
         """In this function we prepare the result for n=1 culvert angular.
         """
-        pass
+        self._store_tables()
+        if self.progress_callback:
+            self.progress_callback(50)
+        self.apply_directions()
+        self.massage1 = self.apply_table1(self.find_in_table1(Hs=self.Hs))
+        if not self.massage1:
+            self.massage2 = self.apply_table2(self.find_in_table2(Hs=self.Hs))
+            self.massage3 = self.apply_table3(self.find_in_table3(h_min=self.H_min))
+        if self.progress_callback:
+            self.progress_callback(65)
+
+        for k, v in self.data.items():
+            self.data[k] = str(v)
 
     def _step3(self):
         """In this function we prepare the result for n>1 culvert.
         """
-        pass
+        self._store_tables()
+        if self.progress_callback:
+            self.progress_callback(50)
+        self.apply_directions()
+        self.massage1 = self.apply_table1(self.find_in_table1(Hs=self.Hs))
+        if not self.massage1:
+            self.massage2 = self.apply_table2(self.find_in_table2(Hs=self.Hs), self.find_in_table4())
 
     def _step4(self):
         """In this function we prepare the result for n>1 culvert angular.
@@ -150,7 +168,7 @@ class Calculate:
             self.z_toli = float(data.iloc[10, 1])
             self.z_shirvani = int(data.iloc[11, 1])
             self.ret = float(data.iloc[12, 1])
-            self.ball_degre = float(data.iloc[13, 1])
+            self.ball_degree = float(data.iloc[13, 1])
             self.A = float(data.iloc[14, 1])
             self.B = float(data.iloc[15, 1])
             if data.iloc[16, 1] in [True, "TRUE", "true", "True"]:
@@ -162,6 +180,7 @@ class Calculate:
             else:
                 self.left = ""
                 self.right = ""
+            self.alpha = float(data.iloc[17, 1])
 
             # self.city_top = data.iloc[17, 1]
             # self.city_down = data.iloc[18, 1]
@@ -195,7 +214,12 @@ class Calculate:
         if self.n == 1:
             self.t1 = table.one_table
             self.t2 = table.full_table
-            self.t3 = table.bal_table
+            self.t3 = table.dastak_table
+        elif self.n > 1:
+            self.t1 = table.multi_table
+            self.t2 = table.full_table
+            self.t3 = table.dastak_table
+            self.t4 = table.multi_extra_table
 
     def find_in_table1(self, Hs:float) -> pd.Series:
         """This function will check the table to find the correct row of it and store and return the row to us.
@@ -235,7 +259,7 @@ class Calculate:
             pd.Series: The finded result as a series.
         """
         t2 = self.t2
-        mask_temp_1 = t2["n"] == self.n
+        mask_temp_1 = t2["n"] == 1
         mask_temp_2 = t2["D"] == self.D
         mask_temp_3 = t2["Hs"].apply(lambda x: Hs>float(x[1:4]) and Hs<float(x[7:11]))
         mask = mask_temp_1.astype(int) + mask_temp_2.astype(int) + mask_temp_3.astype(int)
@@ -276,12 +300,26 @@ class Calculate:
         print(f"[INFO] Successfuly find parameters in the table 3. ---Calculatinos - line 276---")
         return choice
     
+    def find_in_table4(self) -> pd.Series:
+        """This function will check the table to find the correct row of it and store and return the row to us.
+        This table contains all the data about diffrent posisions for 11 and 12 as extra for multi openings.
+        We give it D and.
+
+        Returns:
+            pd.Series: The finded result as a series.
+        """
+        t4 = self.t4
+        mask = t4["D"] == self.D
+        choice = t4[mask]
+        print(f"[INFO] Successfuly find parameters in the table 4. ---Calculations - line 313---")
+        return choice.iloc[0, :]
+    
     def apply_directions(self):
         """This functino will put the name of directions and cities.
         """
         self.data["i-092"] = self.left
-        self.data["i-093"] = self.city_top
-        self.data["i-094"] = self.city_down
+        # self.data["i-093"] = self.city_top
+        # self.data["i-094"] = self.city_down
         self.data["i-095"] = self.right
         print(f"[INFO] Successfuly applied parameters in the for directions. ---Calculations - line 286---")
 
@@ -322,12 +360,22 @@ class Calculate:
         self.data["i-097"] = round(self.CL, 2)
         self.data["i-098"] = int(round(self.dever_left*100, 0))
         self.data["i-099"] = int(round(self.dever_right*100, 0))
-        self.data["i-182"] = int(round(self.z_shirvani*100, 0))
-        self.data["i-A"] = self.A
-        self.data["i-B"] = self.B
-        self.data["i-L"] = self.L
-        self.data["i-100"] = round(self.data["i-097"] + (self.data["i-098"]/100) * self.data["i-A"] - self.Hs - d["t"] - 0.3, 2)
-        self.data["i-103"] = round(self.data["i-097"] + (self.data["i-099"]/100) * self.data["i-B"] - self.Hs - d["t"] - 0.3, 2)
+        self.data["i-182"] = int(round(self.z_shirvani, 0))
+        self.data["i-A"] = round(abs(self.A/cos(radians(self.alpha))), 2)
+        self.data["i-B"] = round(abs(self.B/cos(radians(self.alpha))), 2)
+        self.data["i-L"] = round(abs(self.L/cos(radians(self.alpha))), 2)
+        self.data["i-208"] = self.ball_degree
+        if self.n > 1:
+            self.data["i-PL"] = float(self.L) + 2 * (float(d["p2"])/2 + 0.1 + 0.2)
+
+        if self.alpha == 0:
+            element1 = float(self.CL)
+        else:
+            self.data["i-209"] = self.alpha
+            element1 = float(self.A) * tan(radians((self.alpha))) * self.z_toli + self.CL
+        self.data["i-100"] = round(element1 + (self.data["i-098"]/100) * self.A - self.Hs - d["t"] - 0.3, 2)
+        self.data["i-103"] = round(element1 + (self.data["i-099"]/100) * self.B - self.Hs - d["t"] - 0.3, 2)
+
         if self.data["i-092"] == "UP":
             self.data["i-101"] = round(self.ax_natural + self.z_natural * self.data["i-A"] - self.ret, 2)
             self.data["i-104"] = round(self.ax_natural - self.z_natural * self.data["i-B"] - self.ret, 2)
@@ -348,23 +396,29 @@ class Calculate:
             self.H = d["H"]
             return self.apply_table1(self.find_in_table1(Hs=self.Hs))
         print(f"[INFO] H={self.H} successful. ---Calculation - line 228---")
-        self.data["i-H"] = self.H
-        self.data["i-096"] = int(round(self.z_toli*100, 0))
+        self.data["i-Hs"] = self.Hs
+        self.data["i-HA"] = self.H
+        self.data["i-096"] = int(round(self.z_toli*100, 1))
         self.data["i-c2"] = d["c2"]
         self.data["i-c1"] = d["c1"]
-        self.data["i-Hs"] = self.Hs
         self.data["i-j"] = d["j*"]
         self.data["i-t"] = d["t"]
-        self.data["i-b2"] = d["b2"]
+        self.data["i-b1"] = d["b1"]
         self.data["i-a1"] = d["a1"]
         self.data["i-b2"] = d["b2"]
         self.data["i-a2"] = d["a2"]
         self.data["i-m"] = d["m"]
         self.data["i-f"] = d["f"]
-        self.data["i-D"] = self.D
+        self.data["i-D"] = round(self.D*cos(radians(self.alpha)), 2)
+        if self.n > 1:
+            self.data["i-p1"] = d["p1"]
+            self.data["i-p2"] = d["p2"]
+            self.data["i-pn"] = d["n"]
+            self.data["i-e"] = d["e"]
+            self.data["i-k"] = d["k"]
         print(f"[INFO] Successfuly applied parameters from the table 1. ---Calcuaion - line 243---")
 
-    def apply_table2(self, d:pd.Series) -> None:
+    def apply_table2(self, d:pd.Series, d2:pd.Series=None) -> None:
         """This functions will apply all the information from table 2 to parameters with n=1.
 
         Args:
@@ -376,9 +430,9 @@ class Calculate:
         self.data["i-001"] = d["p1_diameter(mm)"]
         self.data["i-002"] = self.count_in_pos(1, d["p1_n"])
         self.data["i-003"] = d["p1_sh_i1"]
-        self.data["i-004"] = d["p1_sh_i2"]
+        self.data["i-004"] = d["p1_sh_i2"] if self.alpha==0 else int(d["p1_sh_i1"]+(self.data["i-c1"]/cos(radians(self.alpha)))-self.data["i-c1"])
         self.data["i-005"] = d["p1_sh_i3"]
-        self.data["i-006"] = d["p1_sh_i4"]
+        self.data["i-006"] = d["p1_sh_i4"] if self.alpha==0 else int(d["p1_sh_i4"]+(self.data["i-c1"]/cos(radians(self.alpha)))-self.data["i-c1"])
         self.data["i-007"] = d["p1_sh_i1"]
         self.data["i-008"] = self.lengh_in_pos(p=1, L=d["p1_L(m)"], D=d["p1_diameter(mm)"])
         self.data["i-009"] = self.lengh_in_pos(p=1, L=d["p1_L(m)"], N=self.count_in_pos(1, d["p1_n"], cal=True), D=d["p1_diameter(mm)"], dec=2)
@@ -387,9 +441,9 @@ class Calculate:
         self.data["i-012"] = d["p2_diameter(mm)"]
         self.data["i-013"] = self.count_in_pos(2, d["p2_n"])
         self.data["i-014"] = d["p2_sh_i1"]
-        self.data["i-015"] = d["p2_sh_i2"]
+        self.data["i-015"] = d["p2_sh_i2"] if self.alpha==0 else int(d["p1_sh_i2"]+(self.data["i-c1"]/cos(radians(self.alpha)))-self.data["i-c1"])
         self.data["i-016"] = d["p2_sh_i3"]
-        self.data["i-017"] = d["p2_sh_i4"]
+        self.data["i-017"] = d["p2_sh_i4"] if self.alpha==0 else int(d["p1_sh_i4"]+(self.data["i-c1"]/cos(radians(self.alpha)))-self.data["i-c1"])
         self.data["i-018"] = d["p2_sh_i1"]
         self.data["i-019"] = self.lengh_in_pos(p=2, L=d["p2_L(m)"], D=d["p2_diameter(mm)"])
         self.data["i-020"] = self.lengh_in_pos(p=2, L=d["p2_L(m)"], N=self.count_in_pos(2, d["p2_n"], cal=True), D=d["p2_diameter(mm)"], dec=2)
@@ -397,7 +451,7 @@ class Calculate:
         self.data["i-022"] = self.weight_in_pos(d["p2_diameter(mm)"], self.data["i-020"], 2)
         self.data["i-023"] = d["p3_diameter(mm)"]
         self.data["i-024"] = self.count_in_pos(3, d["p3_n"])
-        self.data["i-025"] = d["p3_sh_i1"]
+        self.data["i-025"] = self.lengh_in_pos(p=3, L=d["p3_L(m)"], D=d["p3_diameter(mm)"])
         self.data["i-026"] = self.lengh_in_pos(p=3, L=d["p3_L(m)"], D=d["p3_diameter(mm)"])
         self.data["i-027"] = self.lengh_in_pos(p=3, L=d["p3_L(m)"], N=self.count_in_pos(3, d["p3_n"], cal=True), D=d["p3_diameter(mm)"], dec=2)
         self.data["i-028"] = self.weight_in_pos(d["p3_diameter(mm)"], dec=3)
@@ -413,14 +467,14 @@ class Calculate:
         self.data["i-038"] = self.weight_in_pos(d["p4_diameter(mm)"], self.data["i-036"], 2)
         self.data["i-039"] = d["p5_diameter(mm)"]
         self.data["i-040"] = self.count_in_pos(5, d["p5_n"])
-        self.data["i-041"] = d["p5_sh_i1"]
+        self.data["i-041"] = self.lengh_in_pos(p=5, L=d["p5_L(m)"], D=d["p5_diameter(mm)"])
         self.data["i-042"] = self.lengh_in_pos(p=5, L=d["p5_L(m)"], D=d["p5_diameter(mm)"])
         self.data["i-043"] = self.lengh_in_pos(p=5, L=d["p5_L(m)"], N=self.count_in_pos(5, d["p5_n"], cal=True), D=d["p5_diameter(mm)"], dec=2)
         self.data["i-044"] = self.weight_in_pos(d["p5_diameter(mm)"], dec=3)
         self.data["i-045"] = self.weight_in_pos(d["p5_diameter(mm)"], self.data["i-043"], 2)
         self.data["i-046"] = d["p6_diameter(mm)"]
         self.data["i-047"] = self.count_in_pos(6, d["p6_n"])
-        self.data["i-048"] = d["p6_sh_i1"]
+        self.data["i-048"] = self.lengh_in_pos(p=6, L=d["p6_L(m)"], D=d["p6_diameter(mm)"])
         self.data["i-049"] = self.lengh_in_pos(p=6, L=d["p6_L(m)"], D=d["p6_diameter(mm)"])
         self.data["i-050"] = self.lengh_in_pos(p=6, L=d["p6_L(m)"], N=self.count_in_pos(6, d["p6_n"], cal=True), D=d["p6_diameter(mm)"], dec=2)
         self.data["i-051"] = self.weight_in_pos(d["p6_diameter(mm)"], dec=3)
@@ -437,7 +491,7 @@ class Calculate:
         self.data["i-062"] = self.weight_in_pos(d["p7_diameter(mm)"], self.data["i-060"], 2)
         self.data["i-063"] = d["p8_diameter(mm)"]
         self.data["i-064"] = self.count_in_pos(8, d["p8_n"])
-        self.data["i-065"] = d["p8_sh_i1"]
+        self.data["i-065"] = self.lengh_in_pos(p=8, L=d["p8_L(m)"], D=d["p8_diameter(mm)"])
         self.data["i-066"] = self.lengh_in_pos(p=8, L=d["p8_L(m)"], D=d["p8_diameter(mm)"])
         self.data["i-067"] = self.lengh_in_pos(p=8, L=d["p8_L(m)"], N=self.count_in_pos(8, d["p8_n"], cal=True), D=d["p8_diameter(mm)"], dec=2)
         self.data["i-068"] = self.weight_in_pos(d["p8_diameter(mm)"], dec=3)
@@ -454,7 +508,7 @@ class Calculate:
         self.data["i-079"] = self.weight_in_pos(d["p9_diameter(mm)"], dec=3)
         self.data["i-080"] = self.weight_in_pos(d["p9_diameter(mm)"], self.data["i-078"], 2)
         self.data["i-081"] = d["p0_diameter(mm)"]
-        self.data["i-082"] = self.count_in_pos(10, d["p0_n"])
+        self.data["i-082"] = self.count_in_pos(10, d["p0_n"]) if self.n==1 else 2 * d2["n on each kole"] * self.L
         if self.data["i-082"] != "-":
             self.data["i-083"] = d["p0_sh_i1"] + " / " + d["p0_sh_i2"]
             self.data["i-084"] = d["p0_sh_i3"]
@@ -469,7 +523,37 @@ class Calculate:
             self.data["i-086"] = "-"
             self.data["i-087"] = "-"
             self.data["i-088"] = "-"
-        c1 = [self.data["i-011"], self.data["i-022"], self.data["i-029"], self.data["i-038"], self.data["i-045"], self.data["i-052"], self.data["i-062"], self.data["i-088"]] 
+
+        if self.n > 1:
+            self.data["i-183"] = d2["diameter(mm)"]
+            self.data["i-184"] = (self.n - 1) * self.easy_calculator(d2["n on each paye"]) * self.data["i-L"]
+            self.data["i-185"] = str(d2["shape_1"]) + " / " + str(d2["shape_2"])
+            self.data["i-186"] = d2["shape_3"]
+            self.data["i-187"] = self.lengh_in_pos(p=11, L=d2["L(m)"], D=d2["diameter(mm)"])
+            self.data["i-188"] = self.lengh_in_pos(p=11, L=d2["L(m)"], N=2*d2["n on each kole"]*self.data["i-L"], D=d2["diameter(mm)"], dec=2)
+            self.data["i-189"] = self.weight_in_pos(d2["diameter(mm)"], dec=3)
+            self.data["i-190"] = self.weight_in_pos(d2["diameter(mm)"], self.data["i-188"], 1) if self.weight_in_pos(d2["diameter(mm)"], dec=1) != "-" else "-"
+            self.data["i-191"] = 10
+            self.data["i-192"] = (self.n - 1) * 8
+            self.data["i-193"] = self.lengh_in_pos(p=12, L=self.data["i-L"], D=10)
+            self.data["i-194"] = self.lengh_in_pos(p=12, L=self.data["i-L"], D=10)
+            self.data["i-195"] = self.lengh_in_pos(p=12, L=self.data["i-L"], N=(self.n - 1) * 8, D=10, dec=2)
+            self.data["i-196"] = self.weight_in_pos(10, dec=3)
+            self.data["i-197"] = self.weight_in_pos(10, self.data["i-195"], 1) if self.weight_in_pos(10, dec=1) != "-" else "-"
+            self.data["i-198"] = 10
+            self.data["i-199"] = (self.n - 1) * 3.3 * self.data["i-L"]
+            self.data["i-200"] = 22
+            self.data["i-201"] = int(float(self.data["i-p2"]) - 10)
+            self.data["i-202"] = 10
+            self.data["i-203"] = 22
+            self.data["i-204"] = self.lengh_in_pos(p=13, L=self.data["i-L"], D=10)
+            self.data["i-205"] = self.lengh_in_pos(p=13, L=self.data["i-L"], N=(self.n - 1) * 3.3 * self.data["i-L"], D=10, dec=2)
+            self.data["i-206"] = self.weight_in_pos(10, dec=3)
+            self.data["i-207"] = self.weight_in_pos(10, self.data["i-205"], 1) if self.weight_in_pos(10, dec=1) != "-" else "-"
+        if self.n == 1:
+            c1 = [self.data["i-011"], self.data["i-022"], self.data["i-029"], self.data["i-038"], self.data["i-045"], self.data["i-052"], self.data["i-062"], self.data["i-088"]]
+        else:
+            c1 = [self.data["i-011"], self.data["i-022"], self.data["i-029"], self.data["i-038"], self.data["i-045"], self.data["i-052"], self.data["i-062"], self.data["i-088"], self.data["i-197"], self.data["i-207"]]
         c2 = [self.data["i-069"], self.data["i-080"]]
         c3 = [self.data["i-011"], self.data["i-022"], self.data["i-029"], self.data["i-038"], self.data["i-045"], self.data["i-052"], self.data["i-062"], self.data["i-088"], self.data["i-069"], self.data["i-080"]]
         c = [c1, c2, c3]
@@ -478,7 +562,7 @@ class Calculate:
             for j in c[i]:
                 if not j == "-":
                     c_temp[i].append(j)
-        self.data["i-089"] = round(sum([float(i) for i in c_temp[0]]) / self.L, 1)
+        self.data["i-089"] = round(sum([float(i) for i in c_temp[0]]) / self.data["i-L"], 1)
         self.data["i-090"] = round(sum([float(i) for i in c_temp[1]]), 1)
         self.data["i-091"] = round(sum([float(i) for i in c_temp[2]]), 1)
         print(f"[INFO] Successfuly applied parameters from the table 2. ---Calculation - line 354---")
@@ -495,10 +579,16 @@ class Calculate:
         """
         if type(data_list) == str:
             return data_list
-        w1_distance = round(self.find_distance_for_bal(h_min=data_list[0]["H"], h_max=data_list[2]["H"], direction=self.data["i-095"]), 1)
-        w2_distance = round(self.find_distance_for_bal(h_min=data_list[0]["H"], h_max=data_list[2]["H"], direction=self.data["i-095"]), 1)
-        w3_distance = round(self.find_distance_for_bal(h_min=data_list[0]["H"], h_max=data_list[1]["H"], direction=self.data["i-092"]), 1)
-        w4_distance = round(self.find_distance_for_bal(h_min=data_list[0]["H"], h_max=data_list[1]["H"], direction=self.data["i-092"]), 1)
+        if self.alpha == 0:
+            w1_distance = round(self.find_distance_for_bal(h_min=data_list[0]["H"], h_max=data_list[2]["H"], ball_degree=self.ball_degree, direction=self.data["i-095"]), 1)
+            w2_distance = round(self.find_distance_for_bal(h_min=data_list[0]["H"], h_max=data_list[2]["H"], ball_degree=self.ball_degree, direction=self.data["i-095"]), 1)
+            w3_distance = round(self.find_distance_for_bal(h_min=data_list[0]["H"], h_max=data_list[1]["H"], ball_degree=self.ball_degree, direction=self.data["i-092"]), 1)
+            w4_distance = round(self.find_distance_for_bal(h_min=data_list[0]["H"], h_max=data_list[1]["H"], ball_degree=self.ball_degree, direction=self.data["i-092"]), 1)
+        else:
+            w1_distance = round(self.find_distance_for_bal(h_min=data_list[0]["H"], h_max=data_list[2]["H"], ball_degree=self.ball_degree, direction=self.data["i-095"]), 1)
+            w2_distance = round(self.find_distance_for_bal(h_min=data_list[0]["H"], h_max=data_list[2]["H"], ball_degree=0, direction=self.data["i-095"]), 1)
+            w3_distance = round(self.find_distance_for_bal(h_min=data_list[0]["H"], h_max=data_list[1]["H"], ball_degree=self.ball_degree, direction=self.data["i-092"]), 1)
+            w4_distance = round(self.find_distance_for_bal(h_min=data_list[0]["H"], h_max=data_list[1]["H"], ball_degree=0, direction=self.data["i-092"]), 1)
 
         height_min = round(data_list[0]["H"], 2)
         height_pei_min = round(data_list[0]["m"], 2)
@@ -621,7 +711,7 @@ class Calculate:
         print(f"[INFO] Successfuly applied parameters from the table 3. ---Calculations - line 621---")
 
 
-    def find_distance_for_bal(self, h_min:float, h_max:float, direction:str) -> float:
+    def find_distance_for_bal(self, h_min:float, h_max:float, ball_degree:int, direction:str) -> float:
         """This functions will calculate the W with our formula.
 
         Args:
@@ -633,7 +723,7 @@ class Calculate:
             float: The W of wall.
         """
         def formula(hmax, hmin):
-            return (hmax-hmin)/cos(radians(self.ball_degre)) * self.z_shirvani
+            return (hmax-hmin)/cos(radians(ball_degree)) * self.z_shirvani
         
         h_min_temp = h_min
         d1, d2 = 0, 1
@@ -664,27 +754,32 @@ class Calculate:
         if count == "-":
             return "-"
         else:
+            if p in [6, 7, 8, 9]:
+                n = 1
+            else:
+                n = self.n
+
             try:
                 count_p1, count_p2 = count.split("*")
             except:
                 count_p1, count_p2 = count, None
             if p in [1, 2, 4, 7, 10]:
-                res = self.L * float(count_p1)
+                res = self.data["i-L"] * float(count_p1)
                 if count_p2:
                     if cal:
-                        return str(ceil(res) * int(count_p2))
+                        return str(ceil(res*n) * int(count_p2))
                     else:
-                        return str(ceil(res)) + "*" + count_p2
+                        return str(ceil(res*n)) + "*" + count_p2
                 else:
-                    return str(ceil(res))
+                    return str(ceil(res*n))
             elif p in [3, 5, 6, 8, 9]:
                 if count_p2:
                     if cal:
-                        return str(ceil(float(count_p1)) * int(count_p2))
+                        return str(ceil(float(count_p1)*n) * int(count_p2))
                     else:
-                        return str(ceil(float(count_p1))) + "*" + count_p2
+                        return str(ceil(float(count_p1)*n)) + "*" + count_p2
                 else:
-                    return str(ceil(float(count_p1)))
+                    return str(ceil(float(count_p1)*n))
             else:
                 print("[ERROR] There is a problem with p. ---Calculation - line 541---")
                 return "Problem accured"
@@ -723,11 +818,13 @@ class Calculate:
         Returns:
             float: The lenght in result table.
         """
-        L = float(L)
-        N = float(N)
-        D = float(D) 
+        if L == "-":
+            return "-"
+        L = float(L) if L else None
+        N = float(N) if N else None
+        D = float(D) if D else None
 
-        if p in [1, 2, 4, 7, 8, 9, 10]:
+        if p in [1, 2, 4, 7, 8, 9, 10, 11]:
             if N:
                 return round(L*N, dec)
             else:
@@ -735,18 +832,23 @@ class Calculate:
             
         elif p in [3, 5, 6]:
             if N:
-                if self.L <= 12:
-                    return round((self.L) * N, dec)
+                if self.data["i-L"] <= 12:
+                    return round((self.data["i-L"]) * N, dec)
                 else:
-                    n = ceil(self.L/12)
+                    n = ceil(self.data["i-L"]/12)
                     nd = 56 if D<20 else 70
-                    return round(((self.L) + n * D * nd / 1000) * N, dec)
+                    return round(((self.data["i-L"]) + n * D * nd / 1000) * N, dec)
             else:
-                if self.L <= 12:
-                    return round((self.L), dec)
+                if self.data["i-L"] <= 12:
+                    return round((self.data["i-L"]), dec)
                 else:
-                    n = ceil(self.L/12)
+                    n = ceil(self.data["i-L"]/12)
                     nd = 56 if D<20 else 70
-                    return round(((self.L) + n * D * nd / 1000), dec)
+                    return round(((self.data["i-L"]) + n * D * nd / 1000), dec)
 
-            
+    def easy_calculator(self, s:str):
+        par = s.split("*")
+        res = 1
+        for p in par:
+            res *= float(p)
+        return res

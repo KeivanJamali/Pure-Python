@@ -15,6 +15,7 @@ class implementing_in_code:
         
         updated_contents = file_contents
         for key, value in self.data.items():
+            value = str(value)
             updated_contents = updated_contents.replace(key, value)
         
         with open(self.file_dir, 'w', encoding="utf-8") as file:

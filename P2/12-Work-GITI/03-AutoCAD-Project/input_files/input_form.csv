@@ -15,21 +15,4 @@ Support angle (degrees):,30
 Parameter A:,5.95
 Parameter B:,10.6
 "Is the left in autocad 'upper'? (True, False):",TRUE
-Upper city,???
-Lower city,???
-Project description line 1:,data1
-Project description line 2:,data2
-Project description line 3:,data3
-Map Topic Line 1:,map1
-Map Topic Line 2:,map2
-Map Topic Line 3:,map3
-Map Number:,123456789
-Employer:,k1
-Consultant Engineer:,k2
-Contractor:,k3
-Project Title:,title
-Notification Date:,1403/5/15
-Culvert Span:,20
-Culvert Location:,21
-Maximum Soil Height Over Culvert:,22
-Turb Angle:,23
+alpha,90

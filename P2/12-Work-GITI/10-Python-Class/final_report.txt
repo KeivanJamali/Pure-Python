@@ -1,0 +1,6 @@
+Construction Project Report
+Material Details:
+Cement: 500 units, 5 per unit
+Sand: 1000 units, 2 per unit
+
+Total cost: 4500 dollars

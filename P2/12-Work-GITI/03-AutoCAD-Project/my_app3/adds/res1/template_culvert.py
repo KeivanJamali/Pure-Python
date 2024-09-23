@@ -77,70 +77,6 @@ try:
 except:
     pass
 
-entity = acad.model.AddLine(APoint(48.57301469314007, 263.4562252688308, 0.0), APoint(90.54474411659521, 263.4562252688308, 0.0))
-entity.Color = 3
-try:
-    entity.LineType = 'Continuous'
-    entity.LineTypeScale = 1.0
-except:
-    pass
-
-entity = acad.model.AddLine(APoint(91.59253581200028, 263.4562252688308, 0.0), APoint(105.07301469314325, 263.4562252688308, 0.0))
-entity.Color = 3
-try:
-    entity.LineType = 'Continuous'
-    entity.LineTypeScale = 1.0
-except:
-    pass
-
-entity = acad.model.AddLine(APoint(48.57301469313916, 261.9562252688308, 0.0), APoint(90.54474411659521, 261.9562252688308, 0.0))
-entity.Color = 3
-try:
-    entity.LineType = 'Continuous'
-    entity.LineTypeScale = 1.0
-except:
-    pass
-
-entity = acad.model.AddLine(APoint(91.59253581200119, 261.95622526883074, 0.0), APoint(106.57301469314007, 261.95622526883074, 0.0))
-entity.Color = 3
-try:
-    entity.LineType = 'Continuous'
-    entity.LineTypeScale = 1.0
-except:
-    pass
-
-entity = acad.model.AddLine(APoint(48.57301469313916, 259.95622526883096, 0.0), APoint(90.54474411659521, 259.95622526883096, 0.0))
-entity.Color = 3
-try:
-    entity.LineType = 'HIDDEN'
-    entity.LineTypeScale = 1.0
-except:
-    pass
-
-entity = acad.model.AddLine(APoint(91.59253581200028, 259.9562252688311, 0.0), APoint(106.57301469313916, 259.95622526883096, 0.0))
-entity.Color = 3
-try:
-    entity.LineType = 'HIDDEN'
-    entity.LineTypeScale = 1.0
-except:
-    pass
-
-entity = acad.model.AddLine(APoint(48.57301469313916, 237.9562252688308, 0.0), APoint(90.54474411659521, 237.95622526883074, 0.0))
-entity.Color = 3
-try:
-    entity.LineType = 'HIDDEN'
-    entity.LineTypeScale = 1.0
-except:
-    pass
-
-entity = acad.model.AddLine(APoint(91.59253581200028, 237.9562252688308, 0.0), APoint(106.57301469313916, 237.9562252688308, 0.0))
-entity.Color = 3
-try:
-    entity.LineType = 'HIDDEN'
-    entity.LineTypeScale = 1.0
-except:
-    pass
-
 entity = acad.model.AddLine(APoint(105.07301469314325, 260.82225067261277, 0.0), APoint(105.07301469314325, 237.09019986504836, 0.0))
 entity.Color = 3
 try:
@@ -2927,7 +2863,7 @@ try:
 except:
     pass
 
-entity = acad.model.AddText('300', APoint(108.37515465262004, 122.8148757869692, 0.0), 2.0)
+entity = acad.model.AddText('3', APoint(108.37515465262004, 122.8148757869692, 0.0), 2.0)
 entity.Color = 1
 
 entity = acad.model.AddText('1', APoint(111.38367833416987, 119.49476670924173, 0.0), 2.0)
@@ -16684,6 +16620,16 @@ try:
     entity.LineTypeScale = 1.0
 except:
     pass
+
+entity = acad.model.AddLine(APoint(106.82301469314325, 238.10056283613028, 0.0), APoint(115.33295492433217, 238.10056283613028, 0.0))
+entity.Color = 3
+
+
+entity = acad.model.AddArc(APoint(110.86175286462799, 237.3460485064851, 0.0), 2.157569535632627, 5.074045078898118, 0.3572569332692559)
+entity.Color = 3
+
+entity = acad.model.AddText('30.0', APoint(114.39153001521254, 235.17931982436744, 0.0), 2.0)
+entity.Color = 1
 
 try:
     acad_doc = acad.app.ActiveDocument

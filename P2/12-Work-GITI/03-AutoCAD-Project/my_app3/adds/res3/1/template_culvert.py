@@ -4902,7 +4902,7 @@ except:
 entity = acad.model.AddText('C.L.', APoint(74.91621160124487, 136.24193746297288, 0.0), 2.5)
 entity.Color = 1
 
-entity = acad.model.AddText('37.14', APoint(65.96961459937938, 133.0157376621494, 0.0), 2.0)
+entity = acad.model.AddText('i-097', APoint(65.96961459937938, 133.0157376621494, 0.0), 2.0)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(118.8680321574152, 113.97651159688417, 0.0), APoint(100.89380215333131, 125.27561250566305, 0.0))
@@ -5009,7 +5009,7 @@ try:
 except:
     pass
 
-entity = acad.model.AddText('3', APoint(108.37515465262004, 122.81487578696931, 0.0), 2.0)
+entity = acad.model.AddText('i-182', APoint(108.37515465262004, 122.81487578696931, 0.0), 2.0)
 entity.Color = 1
 
 entity = acad.model.AddText('1', APoint(111.38367833416987, 119.49476670924184, 0.0), 2.0)
@@ -5077,10 +5077,10 @@ entity = acad.model.AddLine(APoint(133.8006914626435, 74.97537629165288, 0.0), A
 entity.Color = 8
 
 
-entity = acad.model.AddText('33.72', APoint(136.97790639818732, 76.21478786357744, 0.0), 2.0)
+entity = acad.model.AddText('i-105', APoint(136.97790639818732, 76.21478786357744, 0.0), 2.0)
 entity.Color = 1
 
-entity = acad.model.AddText('34.52', APoint(135.30508836831586, 91.9844766388519, 0.0), 2.0)
+entity = acad.model.AddText('i-104', APoint(135.30508836831586, 91.9844766388519, 0.0), 2.0)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(133.5195656451442, 108.39715845366777, 0.0), APoint(133.5195656451442, 112.54042583404782, 0.0))
@@ -5111,7 +5111,7 @@ entity = acad.model.AddLine(APoint(133.5195656451442, 112.54042583404782, 0.0), 
 entity.Color = 8
 
 
-entity = acad.model.AddText('36.02', APoint(135.30508836831586, 113.72666199353307, 0.0), 2.0)
+entity = acad.model.AddText('i-103', APoint(135.30508836831586, 113.72666199353307, 0.0), 2.0)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(21.352295327137654, 85.61770296069221, 0.0), APoint(21.352295327137654, 89.76097034107227, 0.0))
@@ -5170,10 +5170,10 @@ entity = acad.model.AddLine(APoint(21.071169509637457, 73.93810615335848, 0.0), 
 entity.Color = 8
 
 
-entity = acad.model.AddText('34.22', APoint(12.94157362171336, 75.17751772528305, 0.0), 2.0)
+entity = acad.model.AddText('i-102', APoint(12.94157362171336, 75.17751772528305, 0.0), 2.0)
 entity.Color = 1
 
-entity = acad.model.AddText('35.02', APoint(14.614391651584356, 90.94720650055751, 0.0), 2.0)
+entity = acad.model.AddText('i-101', APoint(14.614391651584356, 90.94720650055751, 0.0), 2.0)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(21.352295327137654, 107.35988831537338, 0.0), APoint(21.352295327137654, 111.50315569575343, 0.0))
@@ -5204,7 +5204,7 @@ entity = acad.model.AddLine(APoint(21.352295327137654, 111.50315569575343, 0.0),
 entity.Color = 8
 
 
-entity = acad.model.AddText('36.52', APoint(14.614391651584356, 112.68939185523868, 0.0), 2.0)
+entity = acad.model.AddText('i-100', APoint(14.614391651584356, 112.68939185523868, 0.0), 2.0)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(34.118032157408834, 110.12886160063385, 0.0), APoint(34.118032157416565, 113.09901159688366, 0.0))
@@ -7801,10 +7801,10 @@ entity.Color = 1
 entity = acad.model.AddText('وزن آرماتور برای ابتدا و انتهای آبرو', APoint(360.7562876100187, 186.9368267599775, 0.0), 1.8)
 entity.Color = 1
 
-entity = acad.model.AddText('226.5', APoint(392.1907055852889, 193.58335592557157, 0.0), 1.875)
+entity = acad.model.AddText('i-089', APoint(392.1907055852889, 193.58335592557157, 0.0), 1.875)
 entity.Color = 1
 
-entity = acad.model.AddText('21.1', APoint(401.3121729414843, 186.77625421581635, 0.0), 1.875)
+entity = acad.model.AddText('i-090', APoint(401.3121729414843, 186.77625421581635, 0.0), 1.875)
 entity.Color = 1
 
 entity = acad.model.AddText('وزن کل آرماتور مورد نیاز', APoint(346.2889121367077, 178.90279389507924, 0.0), 1.8)
@@ -7813,7 +7813,7 @@ entity.Color = 1
 entity = acad.model.AddText('(Kg)', APoint(373.9109409713328, 179.0866345310953, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('3768.6', APoint(379.6721288179733, 178.8825833451776, 0.0), 1.875)
+entity = acad.model.AddText('i-091', APoint(379.6721288179733, 178.8825833451776, 0.0), 1.875)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(320.69261141489915, 176.64810354151902, 0.0), APoint(408.4424045167525, 176.64810354151902, 0.0))
@@ -7873,40 +7873,40 @@ try:
 except:
     pass
 
-entity = acad.model.AddText('65 / 50', APoint(352.82956682788245, 212.38376202757672, 0.0), 1.3125)
+entity = acad.model.AddText('i-185', APoint(352.82956682788245, 212.38376202757672, 0.0), 1.3125)
 
 
-entity = acad.model.AddText('20', APoint(359.98757295889027, 211.98767638887023, 0.0), 1.3125)
+entity = acad.model.AddText('i-186', APoint(359.98757295889027, 211.98767638887023, 0.0), 1.3125)
 
 
-entity = acad.model.AddText('14', APoint(329.1209481209744, 211.53100282919138, 0.0), 1.35)
+entity = acad.model.AddText('i-183', APoint(329.1209481209744, 211.53100282919138, 0.0), 1.35)
 entity.Color = 1
 
-entity = acad.model.AddText('132.4', APoint(335.5393902606993, 211.66256247382654, 0.0), 1.35)
+entity = acad.model.AddText('i-184', APoint(335.5393902606993, 211.66256247382654, 0.0), 1.35)
 entity.Color = 1
 
-entity = acad.model.AddText('10', APoint(329.0417154911811, 205.67752710312163, 0.0), 1.35)
+entity = acad.model.AddText('i-191', APoint(329.0417154911811, 205.67752710312163, 0.0), 1.35)
 entity.Color = 1
 
-entity = acad.model.AddText('10', APoint(328.9666787576275, 199.66256247382654, 0.0), 1.35)
+entity = acad.model.AddText('i-198', APoint(328.9666787576275, 199.66256247382654, 0.0), 1.35)
 entity.Color = 1
 
-entity = acad.model.AddText('16', APoint(335.23877206094403, 205.66256247382654, 0.0), 1.35)
+entity = acad.model.AddText('i-192', APoint(335.23877206094403, 205.66256247382654, 0.0), 1.35)
 entity.Color = 1
 
-entity = acad.model.AddText('109.23', APoint(335.39312666491514, 199.66256247382654, 0.0), 1.35)
+entity = acad.model.AddText('i-199', APoint(335.39312666491514, 199.66256247382654, 0.0), 1.35)
 entity.Color = 1
 
-entity = acad.model.AddText('1.208', APoint(386.27020849300425, 211.4947039320719, 0.0), 1.5)
+entity = acad.model.AddText('i-189', APoint(386.27020849300425, 211.4947039320719, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('108.0', APoint(394.120890332877, 211.3827578937192, 0.0), 1.5)
+entity = acad.model.AddText('i-190', APoint(394.120890332877, 211.3827578937192, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('89.37', APoint(378.02020849300516, 211.4947039320719, 0.0), 1.5)
+entity = acad.model.AddText('i-188', APoint(378.02020849300516, 211.4947039320719, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('1.4', APoint(369.77020849300516, 211.4947039320719, 0.0), 1.5)
+entity = acad.model.AddText('i-187', APoint(369.77020849300516, 211.4947039320719, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(348.4624351091379, 205.72979626710526, 0.0), APoint(359.67258082251556, 205.72979626710526, 0.0))
@@ -7917,31 +7917,31 @@ try:
 except:
     pass
 
-entity = acad.model.AddText('None', APoint(352.49400297420925, 206.1026205989906, 0.0), 1.3125)
+entity = acad.model.AddText('i-193', APoint(352.49400297420925, 206.1026205989906, 0.0), 1.3125)
 
 
-entity = acad.model.AddText('0.617', APoint(386.248439897817, 205.35531046476984, 0.0), 1.5)
+entity = acad.model.AddText('i-196', APoint(386.248439897817, 205.35531046476984, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('0.617', APoint(385.6722544293557, 199.35531046476984, 0.0), 1.5)
+entity = acad.model.AddText('i-206', APoint(385.6722544293557, 199.35531046476984, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('None', APoint(377.41201468753434, 205.4947039320719, 0.0), 1.5)
+entity = acad.model.AddText('i-195', APoint(377.41201468753434, 205.4947039320719, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('None', APoint(369.65392158378904, 205.4947039320719, 0.0), 1.5)
+entity = acad.model.AddText('i-194', APoint(369.65392158378904, 205.4947039320719, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('None', APoint(377.2468844929406, 199.4947039320719, 0.0), 1.5)
+entity = acad.model.AddText('i-205', APoint(377.2468844929406, 199.4947039320719, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('None', APoint(369.23733154801675, 199.4947039320719, 0.0), 1.5)
+entity = acad.model.AddText('i-204', APoint(369.23733154801675, 199.4947039320719, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('0.6', APoint(394.120890332877, 205.3827578937192, 0.0), 1.5)
+entity = acad.model.AddText('i-197', APoint(394.120890332877, 205.3827578937192, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('0.6', APoint(394.120890332877, 199.3827578937192, 0.0), 1.5)
+entity = acad.model.AddText('i-207', APoint(394.120890332877, 199.3827578937192, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(358.85379208291124, 200.68906872310887, 0.0), APoint(348.1179503982976, 200.68906872310887, 0.0))
@@ -8004,16 +8004,16 @@ try:
 except:
     pass
 
-entity = acad.model.AddText('22', APoint(359.86804869750085, 199.00520870831213, 0.0), 1.3125)
+entity = acad.model.AddText('i-203', APoint(359.86804869750085, 199.00520870831213, 0.0), 1.3125)
 
 
-entity = acad.model.AddText('22', APoint(344.7727208832903, 199.00520870831213, 0.0), 1.3125)
+entity = acad.model.AddText('i-200', APoint(344.7727208832903, 199.00520870831213, 0.0), 1.3125)
 
 
-entity = acad.model.AddText('-9', APoint(350.5611616053784, 201.46718298779786, 0.0), 1.3125)
+entity = acad.model.AddText('i-201', APoint(350.5611616053784, 201.46718298779786, 0.0), 1.3125)
 
 
-entity = acad.model.AddText('10', APoint(355.94728639500136, 198.67720478718627, 0.0), 1.3125)
+entity = acad.model.AddText('i-202', APoint(355.94728639500136, 198.67720478718627, 0.0), 1.3125)
 
 
 entity = acad.model.AddText('*', APoint(336.05593197573216, 206.40504346661538, 0.0), 2.625)
@@ -8272,7 +8272,7 @@ entity.Color = 1
 entity = acad.model.AddText('9', APoint(323.2163732246053, 223.31798490641484, 0.0), 1.7249999999999992)
 entity.Color = 1
 
-entity = acad.model.AddText('18', APoint(329.1039998291953, 271.38985533241953, 0.0), 1.5)
+entity = acad.model.AddText('i-001', APoint(329.1039998291953, 271.38985533241953, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(345.067844216458, 271.3263451512013, 0.0), APoint(345.067844216458, 272.18278318658884, 0.0))
@@ -8315,19 +8315,19 @@ try:
 except:
     pass
 
-entity = acad.model.AddText('22', APoint(341.62267981529834, 271.1055880697551, 0.0), 1.3125)
+entity = acad.model.AddText('i-003', APoint(341.62267981529834, 271.1055880697551, 0.0), 1.3125)
 entity.Color = 1
 
-entity = acad.model.AddText('27', APoint(346.02912875550004, 272.41625274436524, 0.0), 1.3125)
+entity = acad.model.AddText('i-004', APoint(346.02912875550004, 272.41625274436524, 0.0), 1.3125)
 entity.Color = 1
 
-entity = acad.model.AddText('20', APoint(349.87501251655425, 271.7475555301511, 0.0), 1.3125)
+entity = acad.model.AddText('i-005', APoint(349.87501251655425, 271.7475555301511, 0.0), 1.3125)
 entity.Color = 1
 
-entity = acad.model.AddText('209', APoint(355.7505492757236, 270.91845400259103, 0.0), 1.3125)
+entity = acad.model.AddText('i-006', APoint(355.7505492757236, 270.91845400259103, 0.0), 1.3125)
 entity.Color = 1
 
-entity = acad.model.AddText('22', APoint(363.4916343102622, 270.8246763729944, 0.0), 1.3125)
+entity = acad.model.AddText('i-007', APoint(363.4916343102622, 270.8246763729944, 0.0), 1.3125)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(362.9884062924065, 265.50986221474454, 0.0), APoint(362.9884062924065, 266.3663002501321, 0.0))
@@ -8370,38 +8370,38 @@ try:
 except:
     pass
 
-entity = acad.model.AddText('22', APoint(363.22554515342375, 265.28910513329834, 0.0), 1.3125)
+entity = acad.model.AddText('i-018', APoint(363.22554515342375, 265.28910513329834, 0.0), 1.3125)
 entity.Color = 1
 
-entity = acad.model.AddText('27', APoint(359.3396217533654, 266.5997698079085, 0.0), 1.3125)
+entity = acad.model.AddText('i-017', APoint(359.3396217533654, 266.5997698079085, 0.0), 1.3125)
 entity.Color = 1
 
-entity = acad.model.AddText('20', APoint(355.06588739189004, 265.93107259369447, 0.0), 1.3125)
+entity = acad.model.AddText('i-016', APoint(355.06588739189004, 265.93107259369447, 0.0), 1.3125)
 entity.Color = 1
 
-entity = acad.model.AddText('209', APoint(349.80570123314095, 265.1019710661344, 0.0), 1.3125)
+entity = acad.model.AddText('i-015', APoint(349.80570123314095, 265.1019710661344, 0.0), 1.3125)
 entity.Color = 1
 
-entity = acad.model.AddText('22', APoint(341.65159854783536, 265.0081934365377, 0.0), 1.3125)
+entity = acad.model.AddText('i-014', APoint(341.65159854783536, 265.0081934365377, 0.0), 1.3125)
 entity.Color = 1
 
-entity = acad.model.AddText('10', APoint(329.0543825671802, 241.38985533241933, 0.0), 1.5)
+entity = acad.model.AddText('i-046', APoint(329.0543825671802, 241.38985533241933, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('10', APoint(329.0543825671802, 235.38985533241944, 0.0), 1.5)
+entity = acad.model.AddText('i-053', APoint(329.0543825671802, 235.38985533241944, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('10', APoint(329.0543825671802, 229.38985533241944, 0.0), 1.5)
+entity = acad.model.AddText('i-063', APoint(329.0543825671802, 229.38985533241944, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('10', APoint(329.0543825671802, 223.38985533241944, 0.0), 1.5)
+entity = acad.model.AddText('i-070', APoint(329.0543825671802, 223.38985533241944, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(348.46243510913786, 259.6690473286469, 0.0), APoint(359.6725808225155, 259.6690473286469, 0.0))
 entity.Color = 1
 
 
-entity = acad.model.AddText('18.1', APoint(352.4940029742092, 260.04187166053225, 0.0), 1.3125)
+entity = acad.model.AddText('i-025', APoint(352.4940029742092, 260.04187166053225, 0.0), 1.3125)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(348.46243510913786, 252.41504661027415, 0.0), APoint(348.46243510913786, 253.95018875723295, 0.0))
@@ -8416,48 +8416,48 @@ entity = acad.model.AddLine(APoint(359.6725808225155, 252.41504661027415, 0.0), 
 entity.Color = 1
 
 
-entity = acad.model.AddText('15', APoint(345.23768372110857, 252.75144567271764, 0.0), 1.3125)
+entity = acad.model.AddText('i-032', APoint(345.23768372110857, 252.75144567271764, 0.0), 1.3125)
 entity.Color = 1
 
-entity = acad.model.AddText('250', APoint(352.8295668278824, 254.32301308911835, 0.0), 1.3125)
+entity = acad.model.AddText('i-033', APoint(352.8295668278824, 254.32301308911835, 0.0), 1.3125)
 entity.Color = 1
 
-entity = acad.model.AddText('15', APoint(359.9875729588911, 252.78585379085104, 0.0), 1.3125)
+entity = acad.model.AddText('i-034', APoint(359.9875729588911, 252.78585379085104, 0.0), 1.3125)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(348.46243510913786, 247.66904732864685, 0.0), APoint(359.6725808225155, 247.66904732864685, 0.0))
 entity.Color = 1
 
 
-entity = acad.model.AddText('17.7', APoint(352.4940029742092, 248.04187166053214, 0.0), 1.3125)
+entity = acad.model.AddText('i-041', APoint(352.4940029742092, 248.04187166053214, 0.0), 1.3125)
 entity.Color = 1
 
-entity = acad.model.AddText('8*2', APoint(335.7891998808299, 241.40701238074033, 0.0), 1.5)
+entity = acad.model.AddText('i-047', APoint(335.7891998808299, 241.40701238074033, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(348.46243510913786, 241.66904732864685, 0.0), APoint(359.6725808225155, 241.66904732864685, 0.0))
 entity.Color = 1
 
 
-entity = acad.model.AddText('17.7', APoint(352.4940029742092, 242.04187166053214, 0.0), 1.3125)
+entity = acad.model.AddText('i-048', APoint(352.4940029742092, 242.04187166053214, 0.0), 1.3125)
 entity.Color = 1
 
-entity = acad.model.AddText('17.7', APoint(368.8041756690318, 241.4339549936134, 0.0), 1.5)
+entity = acad.model.AddText('i-049', APoint(368.8041756690318, 241.4339549936134, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('282.72', APoint(377.3424045167524, 241.26511982574385, 0.0), 1.5)
+entity = acad.model.AddText('i-050', APoint(377.3424045167524, 241.26511982574385, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('0.617', APoint(385.5924045167524, 241.29456152631144, 0.0), 1.5)
+entity = acad.model.AddText('i-051', APoint(385.5924045167524, 241.29456152631144, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('174.31', APoint(393.8424045167524, 241.28450954912503, 0.0), 1.5)
+entity = acad.model.AddText('i-052', APoint(393.8424045167524, 241.28450954912503, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('55*2', APoint(335.7891998808299, 235.07995028110943, 0.0), 1.5)
+entity = acad.model.AddText('i-054', APoint(335.7891998808299, 235.07995028110943, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('0.617', APoint(385.5924045167524, 235.29456152631144, 0.0), 1.5)
+entity = acad.model.AddText('i-061', APoint(385.5924045167524, 235.29456152631144, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(352.27672165581856, 235.46747896075445, 0.0), APoint(357.8494552464562, 235.46747896075445, 0.0))
@@ -8523,50 +8523,50 @@ except:
 entity = acad.model.AddArc(APoint(352.1494553214515, 237.66175655633174, 0.0), 0.15, 1.5707963267948966, 3.141592653590248)
 entity.Color = 1
 
-entity = acad.model.AddText('22', APoint(358.0093339008235, 234.16418363761187, 0.0), 1.3125)
+entity = acad.model.AddText('i-058', APoint(358.0093339008235, 234.16418363761187, 0.0), 1.3125)
 entity.Color = 1
 
-entity = acad.model.AddText('45', APoint(348.39757408287545, 234.7055548124382, 0.0), 1.3125)
+entity = acad.model.AddText('i-056', APoint(348.39757408287545, 234.7055548124382, 0.0), 1.3125)
 entity.Color = 1
 
-entity = acad.model.AddText('45', APoint(354.2954519055292, 235.61835174374872, 0.0), 1.3125)
+entity = acad.model.AddText('i-057', APoint(354.2954519055292, 235.61835174374872, 0.0), 1.3125)
 entity.Color = 1
 
-entity = acad.model.AddText('17', APoint(348.2430401421315, 236.87049926991884, 0.0), 1.3125)
+entity = acad.model.AddText('i-055', APoint(348.2430401421315, 236.87049926991884, 0.0), 1.3125)
 entity.Color = 1
 
-entity = acad.model.AddText('2.2', APoint(369.1072545483113, 235.43395499361344, 0.0), 1.5)
+entity = acad.model.AddText('i-059', APoint(369.1072545483113, 235.43395499361344, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('240.9', APoint(377.3424045167524, 235.37445277478585, 0.0), 1.5)
+entity = acad.model.AddText('i-060', APoint(377.3424045167524, 235.37445277478585, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('148.52', APoint(393.8424045167524, 235.3453995462606, 0.0), 1.5)
+entity = acad.model.AddText('i-062', APoint(393.8424045167524, 235.3453995462606, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('3*2', APoint(335.7891998808299, 229.40701238074033, 0.0), 1.5)
+entity = acad.model.AddText('i-064', APoint(335.7891998808299, 229.40701238074033, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(348.46243510913786, 229.66904732864685, 0.0), APoint(359.6725808225155, 229.66904732864685, 0.0))
 entity.Color = 1
 
 
-entity = acad.model.AddText('2.5', APoint(352.4940029742092, 230.04187166053214, 0.0), 1.3125)
+entity = acad.model.AddText('i-065', APoint(352.4940029742092, 230.04187166053214, 0.0), 1.3125)
 entity.Color = 1
 
-entity = acad.model.AddText('2.5', APoint(369.1072545483113, 229.43395499361344, 0.0), 1.5)
+entity = acad.model.AddText('i-066', APoint(369.1072545483113, 229.43395499361344, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('15.0', APoint(377.3424045167524, 229.26511982574374, 0.0), 1.5)
+entity = acad.model.AddText('i-067', APoint(377.3424045167524, 229.26511982574374, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('0.617', APoint(385.5924045167524, 229.29456152631144, 0.0), 1.5)
+entity = acad.model.AddText('i-068', APoint(385.5924045167524, 229.29456152631144, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('9.25', APoint(402.09240451675095, 229.2945615263114, 0.0), 1.5)
+entity = acad.model.AddText('i-069', APoint(402.09240451675095, 229.2945615263114, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('9*2', APoint(335.7891998808299, 223.6018135353681, 0.0), 1.35)
+entity = acad.model.AddText('i-071', APoint(335.7891998808299, 223.6018135353681, 0.0), 1.35)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(352.0918823228994, 224.45528774922562, 0.0), APoint(354.6615543732432, 224.45528774922562, 0.0))
@@ -8621,31 +8621,31 @@ except:
 entity = acad.model.AddArc(APoint(355.44372693943836, 224.86778774922544, 0.0), 0.15, 1.5707963267948966, 2.2667357879311565)
 entity.Color = 1
 
-entity = acad.model.AddText('25', APoint(357.4101374449528, 222.98081455643205, 0.0), 1.3125)
+entity = acad.model.AddText('i-076', APoint(357.4101374449528, 222.98081455643205, 0.0), 1.3125)
 entity.Color = 1
 
-entity = acad.model.AddText('20', APoint(348.50054672094205, 223.95180421960953, 0.0), 1.3125)
+entity = acad.model.AddText('i-072', APoint(348.50054672094205, 223.95180421960953, 0.0), 1.3125)
 entity.Color = 1
 
-entity = acad.model.AddText('15', APoint(355.1454142341635, 225.2079112568441, 0.0), 1.3125)
+entity = acad.model.AddText('i-075', APoint(355.1454142341635, 225.2079112568441, 0.0), 1.3125)
 entity.Color = 1
 
-entity = acad.model.AddText('40', APoint(348.4576780041834, 221.88208077727865, 0.0), 1.3125)
+entity = acad.model.AddText('i-073', APoint(348.4576780041834, 221.88208077727865, 0.0), 1.3125)
 entity.Color = 1
 
-entity = acad.model.AddText('7', APoint(353.7863507135543, 224.64442274458605, 0.0), 1.3125)
+entity = acad.model.AddText('i-074', APoint(353.7863507135543, 224.64442274458605, 0.0), 1.3125)
 entity.Color = 1
 
-entity = acad.model.AddText('1.1', APoint(369.1072545483113, 223.43395499361344, 0.0), 1.5)
+entity = acad.model.AddText('i-077', APoint(369.1072545483113, 223.43395499361344, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('19.26', APoint(377.3424045167524, 223.3220089552607, 0.0), 1.5)
+entity = acad.model.AddText('i-078', APoint(377.3424045167524, 223.3220089552607, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('0.617', APoint(385.5924045167524, 223.29456152631144, 0.0), 1.5)
+entity = acad.model.AddText('i-079', APoint(385.5924045167524, 223.29456152631144, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('11.87', APoint(402.09240451675095, 223.28450954912472, 0.0), 1.5)
+entity = acad.model.AddText('i-080', APoint(402.09240451675095, 223.28450954912472, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(400.19240451675336, 274.85051292637263, 0.0), APoint(400.8116204736636, 275.46972888328287, 0.0))
@@ -9728,109 +9728,109 @@ try:
 except:
     pass
 
-entity = acad.model.AddText('18', APoint(329.0543825671802, 265.38985533241964, 0.0), 1.5)
+entity = acad.model.AddText('i-012', APoint(329.0543825671802, 265.38985533241964, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('14', APoint(329.0543825671802, 259.38985533241953, 0.0), 1.5)
+entity = acad.model.AddText('i-023', APoint(329.0543825671802, 259.38985533241953, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('10', APoint(329.0543825671802, 253.38985533241953, 0.0), 1.5)
+entity = acad.model.AddText('i-030', APoint(329.0543825671802, 253.38985533241953, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('10', APoint(329.0543825671802, 247.38985533241953, 0.0), 1.5)
+entity = acad.model.AddText('i-039', APoint(329.0543825671802, 247.38985533241953, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('24', APoint(335.8043825671793, 247.38985533241953, 0.0), 1.5)
+entity = acad.model.AddText('i-040', APoint(335.8043825671793, 247.38985533241953, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('178', APoint(335.8043825671793, 253.38985533241953, 0.0), 1.5)
+entity = acad.model.AddText('i-031', APoint(335.8043825671793, 253.38985533241953, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('33', APoint(335.8043825671793, 259.38985533241953, 0.0), 1.5)
+entity = acad.model.AddText('i-024', APoint(335.8043825671793, 259.38985533241953, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('178', APoint(335.8043825671793, 265.38985533241964, 0.0), 1.5)
+entity = acad.model.AddText('i-013', APoint(335.8043825671793, 265.38985533241964, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('178', APoint(335.7891998808299, 271.38985533241953, 0.0), 1.5)
+entity = acad.model.AddText('i-002', APoint(335.7891998808299, 271.38985533241953, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('3.0', APoint(369.10725454831135, 271.38985533241953, 0.0), 1.5)
+entity = acad.model.AddText('i-008', APoint(369.10725454831135, 271.38985533241953, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('534.0', APoint(377.3424045167524, 271.38985533241953, 0.0), 1.5)
+entity = acad.model.AddText('i-009', APoint(377.3424045167524, 271.38985533241953, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('1.998', APoint(385.5924045167524, 271.38985533241953, 0.0), 1.5)
+entity = acad.model.AddText('i-010', APoint(385.5924045167524, 271.38985533241953, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('1066.71', APoint(393.8424045167524, 271.38985533241953, 0.0), 1.5)
+entity = acad.model.AddText('i-011', APoint(393.8424045167524, 271.38985533241953, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('3.0', APoint(369.1072545483113, 265.38985533241964, 0.0), 1.5)
+entity = acad.model.AddText('i-019', APoint(369.1072545483113, 265.38985533241964, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('534.0', APoint(377.3424045167524, 265.38985533241964, 0.0), 1.5)
+entity = acad.model.AddText('i-020', APoint(377.3424045167524, 265.38985533241964, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('1.998', APoint(385.5924045167524, 265.38985533241964, 0.0), 1.5)
+entity = acad.model.AddText('i-021', APoint(385.5924045167524, 265.38985533241964, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('1066.71', APoint(393.8424045167524, 265.38985533241964, 0.0), 1.5)
+entity = acad.model.AddText('i-022', APoint(393.8424045167524, 265.38985533241964, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('18.1', APoint(369.1072545483113, 259.38985533241953, 0.0), 1.5)
+entity = acad.model.AddText('i-026', APoint(369.1072545483113, 259.38985533241953, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('597.89', APoint(377.3424045167524, 259.38985533241953, 0.0), 1.5)
+entity = acad.model.AddText('i-027', APoint(377.3424045167524, 259.38985533241953, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('1.208', APoint(385.5924045167524, 259.38985533241953, 0.0), 1.5)
+entity = acad.model.AddText('i-028', APoint(385.5924045167524, 259.38985533241953, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('722.5', APoint(393.8424045167524, 259.38985533241953, 0.0), 1.5)
+entity = acad.model.AddText('i-029', APoint(393.8424045167524, 259.38985533241953, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('2.8', APoint(369.1072545483113, 253.38985533241953, 0.0), 1.5)
+entity = acad.model.AddText('i-035', APoint(369.1072545483113, 253.38985533241953, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('498.4', APoint(377.3424045167524, 253.38985533241953, 0.0), 1.5)
+entity = acad.model.AddText('i-036', APoint(377.3424045167524, 253.38985533241953, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('0.617', APoint(385.5924045167524, 253.38985533241953, 0.0), 1.5)
+entity = acad.model.AddText('i-037', APoint(385.5924045167524, 253.38985533241953, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('307.28', APoint(393.8424045167524, 253.3898553324195, 0.0), 1.5)
+entity = acad.model.AddText('i-038', APoint(393.8424045167524, 253.3898553324195, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('17.7', APoint(369.1072545483113, 247.38985533241956, 0.0), 1.5)
+entity = acad.model.AddText('i-042', APoint(369.1072545483113, 247.38985533241956, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('424.08', APoint(377.3424045167524, 247.38985533241953, 0.0), 1.5)
+entity = acad.model.AddText('i-043', APoint(377.3424045167524, 247.38985533241953, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('0.617', APoint(385.5924045167524, 247.38985533241953, 0.0), 1.5)
+entity = acad.model.AddText('i-044', APoint(385.5924045167524, 247.38985533241953, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('261.46', APoint(393.8424045167524, 247.38985533241953, 0.0), 1.5)
+entity = acad.model.AddText('i-045', APoint(393.8424045167524, 247.38985533241953, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddText('10', APoint(323.2163732246053, 217.31798490641484, 0.0), 1.7249999999999992)
 entity.Color = 1
 
-entity = acad.model.AddText('-', APoint(329.0543825671802, 217.38985533241944, 0.0), 1.5)
+entity = acad.model.AddText('i-081', APoint(329.0543825671802, 217.38985533241944, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('66.2', APoint(335.7891998808299, 217.60181353536814, 0.0), 1.35)
+entity = acad.model.AddText('i-082', APoint(335.7891998808299, 217.60181353536814, 0.0), 1.35)
 entity.Color = 1
 
-entity = acad.model.AddText('-', APoint(369.1072545483113, 217.43395499361344, 0.0), 1.5)
+entity = acad.model.AddText('i-085', APoint(369.1072545483113, 217.43395499361344, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('-', APoint(377.3424045167524, 217.3220089552607, 0.0), 1.5)
+entity = acad.model.AddText('i-086', APoint(377.3424045167524, 217.3220089552607, 0.0), 1.5)
 entity.Color = 1
 
-entity = acad.model.AddText('-', APoint(385.5924045167524, 217.29456152631144, 0.0), 1.5)
+entity = acad.model.AddText('i-087', APoint(385.5924045167524, 217.29456152631144, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(320.6926114148991, 215.46972888328287, 0.0), APoint(408.44240451675245, 215.46972888328287, 0.0))
@@ -9964,7 +9964,7 @@ try:
 except:
     pass
 
-entity = acad.model.AddText('-', APoint(393.8424045167524, 217.29456152631144, 0.0), 1.5)
+entity = acad.model.AddText('i-088', APoint(393.8424045167524, 217.29456152631144, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(348.46243510913786, 217.95018875723295, 0.0), APoint(359.6725808225155, 217.95018875723295, 0.0))
@@ -9983,19 +9983,19 @@ try:
 except:
     pass
 
-entity = acad.model.AddText('- / -', APoint(352.8295668278824, 218.3230130891182, 0.0), 1.3125)
+entity = acad.model.AddText('i-083', APoint(352.8295668278824, 218.3230130891182, 0.0), 1.3125)
 entity.Color = 1
 
-entity = acad.model.AddText('-', APoint(359.9875729588911, 217.92692745041174, 0.0), 1.3125)
+entity = acad.model.AddText('i-084', APoint(359.9875729588911, 217.92692745041174, 0.0), 1.3125)
 entity.Color = 1
 
-entity = acad.model.AddText('UP', APoint(14.029511117826075, 223.1234692798704, 0.0), 3.0)
+entity = acad.model.AddText('DOWN', APoint(14.029511117826075, 223.1234692798704, 0.0), 3.0)
 entity.Color = 5
 
 entity = acad.model.AddText('i-094', APoint(73.2275392569984, 171.15719325662212, 0.0), 3.0)
 entity.Color = 5
 
-entity = acad.model.AddText('DOWN', APoint(131.1044928410347, 223.37262015862916, 0.0), 3.0)
+entity = acad.model.AddText('UP', APoint(131.1044928410347, 223.37262015862916, 0.0), 3.0)
 entity.Color = 5
 
 entity = acad.model.AddText('i-093', APoint(75.25607167294993, 282.9679116980152, 0.0), 3.0)
@@ -15276,7 +15276,7 @@ entity = acad.model.AddLine(APoint(173.33793725451287, 189.75796787955036, 0.0),
 entity.Color = 7
 
 
-entity = acad.model.AddText('0.3', APoint(175.06888963546655, 190.65796787955037, 0.0), 1.5)
+entity = acad.model.AddText('i-c1', APoint(175.06888963546655, 190.65796787955037, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(170.3379372545065, 192.387402413657, 0.0), APoint(171.1379372545065, 193.187402413657, 0.0))
@@ -15287,7 +15287,7 @@ entity = acad.model.AddLine(APoint(168.8879372545138, 193.187402413657, 0.0), AP
 entity.Color = 7
 
 
-entity = acad.model.AddText('0.25', APoint(164.47841344499037, 193.287402413657, 0.0), 1.5)
+entity = acad.model.AddText('i-c2', APoint(164.47841344499037, 193.287402413657, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(173.33793725451287, 178.92536677486336, 0.0), APoint(174.13793725451288, 179.72536677486337, 0.0))
@@ -15298,7 +15298,7 @@ entity = acad.model.AddLine(APoint(168.8879372545138, 179.72536677486337, 0.0), 
 entity.Color = 7
 
 
-entity = acad.model.AddText('0.55', APoint(169.6843658259419, 179.82536677486337, 0.0), 1.5)
+entity = acad.model.AddText('i-b2', APoint(169.6843658259419, 179.82536677486337, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(174.13793725451288, 177.51240280641073, 0.0), APoint(173.33793725451287, 176.71240280641072, 0.0))
@@ -15309,7 +15309,7 @@ entity = acad.model.AddLine(APoint(203.33793725451287, 176.71240280641072, 0.0),
 entity.Color = 7
 
 
-entity = acad.model.AddText('2.0', APoint(187.9522229687986, 177.61240280641073, 0.0), 1.5)
+entity = acad.model.AddText('i-D', APoint(187.9522229687986, 177.61240280641073, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(174.13793725451288, 164.30189832985812, 0.0), APoint(173.33793725451287, 163.5018983298581, 0.0))
@@ -15320,7 +15320,7 @@ entity = acad.model.AddLine(APoint(180.34093369071488, 163.5018983298581, 0.0), 
 entity.Color = 7
 
 
-entity = acad.model.AddText('0.8', APoint(175.84657832975674, 164.4018983298581, 0.0), 1.5)
+entity = acad.model.AddText('i-a2', APoint(175.84657832975674, 164.4018983298581, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(173.33793725451287, 163.5018983298581, 0.0), APoint(174.13793725451288, 164.30189832985812, 0.0))
@@ -15331,7 +15331,7 @@ entity = acad.model.AddLine(APoint(160.63793725451742, 164.30189832985812, 0.0),
 entity.Color = 7
 
 
-entity = acad.model.AddText('1.2', APoint(165.77365154022945, 164.4018983298581, 0.0), 1.5)
+entity = acad.model.AddText('i-b1', APoint(165.77365154022945, 164.4018983298581, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(160.63793725451742, 164.30189832985812, 0.0), APoint(159.8379372545174, 163.5018983298581, 0.0))
@@ -15342,7 +15342,7 @@ entity = acad.model.AddLine(APoint(157.84093369071488, 163.5018983298581, 0.0), 
 entity.Color = 7
 
 
-entity = acad.model.AddText('0.0', APoint(158.0608640440447, 164.4018983298581, 0.0), 1.5)
+entity = acad.model.AddText('i-a1', APoint(158.0608640440447, 164.4018983298581, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(164.9373854584733, 181.88197630978257, 0.0), APoint(164.1373854584733, 182.68197630978258, 0.0))
@@ -15364,7 +15364,7 @@ entity = acad.model.AddLine(APoint(187.68513430843333, 187.93197630978278, 0.0),
 entity.Color = 7
 
 
-entity = acad.model.AddText('0.25', APoint(187.65656287986192, 185.2819763097826, 0.0), 1.5)
+entity = acad.model.AddText('i-t', APoint(187.65656287986192, 185.2819763097826, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(155.69725785710918, 160.55697630978258, 0.0), APoint(156.4972578571092, 159.75697630978257, 0.0))
@@ -15375,7 +15375,7 @@ entity = acad.model.AddLine(APoint(156.4972578571092, 184.13197630978257, 0.0), 
 entity.Color = 7
 
 
-entity = acad.model.AddText('1.8', APoint(155.3115435713949, 171.59447630978252, 0.0), 1.5)
+entity = acad.model.AddText('i-HA', APoint(155.3115435713949, 171.59447630978252, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(156.4972578571092, 159.75697630978257, 0.0), APoint(155.69725785710918, 160.55697630978258, 0.0))
@@ -15386,7 +15386,7 @@ entity = acad.model.AddLine(APoint(155.69725785710918, 153.05697630978258, 0.0),
 entity.Color = 7
 
 
-entity = acad.model.AddText('0.8', APoint(155.02582928568063, 155.65697630978252, 0.0), 1.5)
+entity = acad.model.AddText('i-m', APoint(155.02582928568063, 155.65697630978252, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(158.6409336907076, 150.1229991960046, 0.0), APoint(157.8409336907076, 149.3229991960046, 0.0))
@@ -15397,7 +15397,7 @@ entity = acad.model.AddLine(APoint(180.3409336907076, 149.3229991960046, 0.0), A
 entity.Color = 7
 
 
-entity = acad.model.AddText('2.0', APoint(169.0623622621362, 150.2229991960046, 0.0), 1.5)
+entity = acad.model.AddText('i-f', APoint(169.0623622621362, 150.2229991960046, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(204.13793725451288, 177.51240280641073, 0.0), APoint(203.33793725451287, 176.71240280641072, 0.0))
@@ -15408,7 +15408,7 @@ entity = acad.model.AddLine(APoint(209.48793725451068, 176.71240280641072, 0.0),
 entity.Color = 7
 
 
-entity = acad.model.AddText('0.6', APoint(205.38436582594036, 178.11240280641073, 0.0), 1.5)
+entity = acad.model.AddText('i-p2', APoint(205.38436582594036, 178.11240280641073, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(213.16293725450723, 163.6855853186988, 0.0), APoint(213.96293725450724, 164.4855853186988, 0.0))
@@ -15419,7 +15419,7 @@ entity = acad.model.AddLine(APoint(200.46293725451451, 164.4855853186988, 0.0), 
 entity.Color = 7
 
 
-entity = acad.model.AddText('1.2', APoint(205.59865154022518, 165.0855853186988, 0.0), 1.5)
+entity = acad.model.AddText('i-p1', APoint(205.59865154022518, 165.0855853186988, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(199.6629372545145, 163.6855853186988, 0.0), APoint(200.46293725451451, 164.4855853186988, 0.0))
@@ -15430,7 +15430,7 @@ entity = acad.model.AddLine(APoint(195.58793725451088, 164.4855853186988, 0.0), 
 entity.Color = 7
 
 
-entity = acad.model.AddText('0.3', APoint(196.98258011165555, 164.5855853186988, 0.0), 1.5)
+entity = acad.model.AddText('i-e', APoint(196.98258011165555, 164.5855853186988, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(213.96293725450724, 164.4855853186988, 0.0), APoint(213.16293725450723, 163.6855853186988, 0.0))
@@ -15441,7 +15441,7 @@ entity = acad.model.AddLine(APoint(218.03793725451087, 163.6855853186988, 0.0), 
 entity.Color = 7
 
 
-entity = acad.model.AddText('0.3', APoint(215.3575801116519, 164.5855853186988, 0.0), 1.5)
+entity = acad.model.AddText('i-e', APoint(215.3575801116519, 164.5855853186988, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(222.61060531336776, 159.75697630978257, 0.0), APoint(221.81060531336774, 160.55697630978258, 0.0))
@@ -15452,7 +15452,7 @@ entity = acad.model.AddLine(APoint(221.81060531336774, 153.05697630978258, 0.0),
 entity.Color = 7
 
 
-entity = acad.model.AddText('3', APoint(221.5320338847963, 155.6569763097825, 0.0), 1.5)
+entity = acad.model.AddText('i-pn', APoint(221.5320338847963, 155.6569763097825, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(195.58793725451088, 149.4817670399904, 0.0), APoint(194.78793725451087, 148.68176703999038, 0.0))
@@ -15463,7 +15463,7 @@ entity = acad.model.AddLine(APoint(218.03793725451087, 148.68176703999038, 0.0),
 entity.Color = 7
 
 
-entity = acad.model.AddText('1.8', APoint(206.0272229687966, 149.58176703999038, 0.0), 1.5)
+entity = acad.model.AddText('i-k', APoint(206.0272229687966, 149.58176703999038, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddText('W2', APoint(123.5832399773199, 190.58434651848904, 0.0), 2.0)
@@ -15491,16 +15491,16 @@ try:
 except:
     pass
 
-entity = acad.model.AddText('A=5.95', APoint(49.86238060737652, 83.01599936022717, 0.0), 2.0)
+entity = acad.model.AddText('A=i-A', APoint(49.86238060737652, 83.01599936022717, 0.0), 2.0)
 entity.Color = 1
 
-entity = acad.model.AddText('B=10.6', APoint(101.28916819652153, 83.01599936022717, 0.0), 2.0)
+entity = acad.model.AddText('B=i-B', APoint(101.28916819652153, 83.01599936022717, 0.0), 2.0)
 entity.Color = 1
 
-entity = acad.model.AddText('L=17.75', APoint(75.67637378933908, 74.16976331948877, 0.0), 2.0)
+entity = acad.model.AddText('L=i-PL', APoint(75.67637378933908, 74.16976331948877, 0.0), 2.0)
 entity.Color = 1
 
-entity = acad.model.AddText('L=16.55', APoint(72.67637378933908, 99.9448981246405, 0.0), 2.0)
+entity = acad.model.AddText('L=i-L', APoint(72.67637378933908, 99.9448981246405, 0.0), 2.0)
 entity.Color = 1
 
 entity = acad.model.AddText('0.20', APoint(17.82457790160443, 96.03422367574218, 0.0), 2.0)
@@ -15648,7 +15648,7 @@ entity = acad.model.AddLine(APoint(217.66712011231144, 187.9319763097828, 0.0), 
 entity.Color = 7
 
 
-entity = acad.model.AddText('Hs=0.25', APoint(216.63854868374, 191.61121280388286, 0.0), 1.5)
+entity = acad.model.AddText('Hs=i-Hs', APoint(216.63854868374, 191.61121280388286, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(352.70155933255774, 120.1612515830691, 0.0), APoint(351.70155933255774, 120.32791824973577, 0.0))
@@ -16288,7 +16288,7 @@ try:
 except:
     pass
 
-entity = acad.model.AddText('-3 %', APoint(83.03149036782406, 127.50055597702737, 0.0), 1.7249999999999992)
+entity = acad.model.AddText('i-099 %', APoint(83.03149036782406, 127.50055597702737, 0.0), 1.7249999999999992)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(73.87448161728526, 126.90909326196413, 0.0), APoint(61.43041225783372, 126.90909326196413, 0.0))
@@ -16307,13 +16307,13 @@ try:
 except:
     pass
 
-entity = acad.model.AddText('3 %', APoint(66.30739112034053, 127.65664430967297, 0.0), 1.7249999999999992)
+entity = acad.model.AddText('i-098 %', APoint(66.30739112034053, 127.65664430967297, 0.0), 1.7249999999999992)
 entity.Color = 1
 
-entity = acad.model.AddText('DOWN', APoint(136.55470679358086, 98.66042560726392, 0.0), 3.0)
+entity = acad.model.AddText('UP', APoint(136.55470679358086, 98.66042560726392, 0.0), 3.0)
 entity.Color = 5
 
-entity = acad.model.AddText('UP', APoint(13.479687887512227, 101.24274471522433, 0.0), 3.0)
+entity = acad.model.AddText('DOWN', APoint(13.479687887512227, 101.24274471522433, 0.0), 3.0)
 entity.Color = 5
 
 entity = acad.model.AddText('- ', APoint(389.2388533121279, 13.648828014805037, 0.0), 2.663041818489627)
@@ -21375,7 +21375,7 @@ entity = acad.model.AddLine(APoint(261.88323633578466, 198.74542163503747, 0.0),
 entity.Color = 8
 
 
-entity = acad.model.AddText('-1 %', APoint(244.84601999841743, 199.7988933726766, 0.0), 1.5)
+entity = acad.model.AddText('i-096 %', APoint(244.84601999841743, 199.7988933726766, 0.0), 1.5)
 entity.Color = 1
 
 entity = acad.model.AddLine(APoint(106.82301469314325, 192.10056283612923, 0.0), APoint(111.95110091326251, 192.10056283612923, 0.0))
@@ -21385,7 +21385,7 @@ entity.Color = 3
 entity = acad.model.AddArc(APoint(108.61234680754228, 191.6835512759253, 0.0), 1.762591733192687, 5.452070021307522, 0.2388546922045301)
 entity.Color = 3
 
-entity = acad.model.AddText('30.0', APoint(110.8869941993878, 189.9677441640315, 0.0), 2.0)
+entity = acad.model.AddText('i-208', APoint(110.8869941993878, 189.9677441640315, 0.0), 2.0)
 entity.Color = 1
 
 entity = acad.model.AddText('جزئیات دیوارهای هدایت آب', APoint(299.28134349654465, 68.67352775515894, 0.0), 3.0)

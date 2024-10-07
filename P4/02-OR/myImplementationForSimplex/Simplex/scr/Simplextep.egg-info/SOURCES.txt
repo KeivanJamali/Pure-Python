@@ -1,0 +1,12 @@
+LICENSE
+MANIFEST.in
+README.md
+Simplextep.py
+pyproject.toml
+setup.py
+scr/Simplextep/__init__.py
+scr/Simplextep.egg-info/PKG-INFO
+scr/Simplextep.egg-info/SOURCES.txt
+scr/Simplextep.egg-info/dependency_links.txt
+scr/Simplextep.egg-info/requires.txt
+scr/Simplextep.egg-info/top_level.txt

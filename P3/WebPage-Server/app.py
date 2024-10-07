@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for, send_from_directory, flash, session, send_file
+from flask import Flask, render_template, request, redirect, url_for, send_from_directory, flash, session, send_file, jsonify
 import os
 from werkzeug.utils import secure_filename
 from Generic_DataLoader_V4 import Generic_DataLoader
 from PPK_Processing_V1 import PPK_Processing_Result_DataLoader
 from CSDP_DataLoader import CSDP_DataLoader
 from Delete_distance_from_centerline import Delete_Distance_From_Centerline
+from assistant_V1 import send_to_assistant, context
 import pandas as pd
 from datetime import datetime
 
@@ -27,7 +28,7 @@ passwords = {"Generic_Processing": "1234",
              "culvert_desing": "1234"}
 
 items = ['Connect to Me', 'Share Files', 'Generic Processing', 'PPK Processing', 'CSDP Processing', 'Image Processing',
-         'Delete Empty Processing', 'Culvert Processing']
+         'Delete Empty Processing', 'Culvert Processing', 'Chat-GPT']
 
 def initialize_history_version():
     # List all history files
@@ -75,10 +76,12 @@ def add_to_history(name, logged_in):
         r = 7
     elif name == 'Culvert Processing':
         r = 8
-    else:
+    elif name == 'Chat-GPT':
         r = 9
+    else:
+        r = 10
 
-    new_row = [datetime.now().strftime("%Y/%m/%d | %H:%M:%S"), request.remote_addr, logged_in] + [1 if _ == r else 0 for _ in range(1, len(items)+1)] + [1 if r==9 else 0]
+    new_row = [datetime.now().strftime("%Y/%m/%d | %H:%M:%S"), request.remote_addr, logged_in] + [1 if _ == r else 0 for _ in range(1, len(items)+1)] + [1 if r==10 else 0]
     data.loc[len(data)] = new_row
     data.iloc[0, 3:] = data.iloc[1:, 3:].sum().values
     data.iloc[0, :3] = len(data) - 1
@@ -375,6 +378,30 @@ def culvert_processing():
             flash('Incorrect password')
             return redirect(url_for('culvert_process'))
     return render_template('culvert_process.html')
+
+assistant_response = context
+
+@app.route('/talk_to_assistant', methods=['GET', 'POST'])
+def talk_to_assistant():
+    global assistant_response
+    if request.method == 'POST':
+        user_input = request.form['message']  # Capture the user's input
+        # Here you would call your LM Studio model API or local endpoint to get a response
+        assistant_response = send_to_assistant_d(user_input)
+        return render_template('assistant.html', user_input=user_input, assistant_response=assistant_response)
+    return render_template('assistant.html', user_input=None, assistant_response=None)
+
+@app.route('/send_to_assistant_d', methods=['POST'])
+def send_to_assistant_d():
+    global assistant_response
+    # Get the user input from the form data
+    user_input = request.form.get('user-input')
+    if user_input:
+        # Send user input to the assistant function
+        assistant_response = send_to_assistant(user_input+"</Question></Prompt>")
+        add_to_history(name="User: "+user_input+" === Assistant: "+assistant_response, logged_in=3)
+        return jsonify({'response': assistant_response, 'user_message': user_input})
+    return jsonify({'response': None, 'user_message': None})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

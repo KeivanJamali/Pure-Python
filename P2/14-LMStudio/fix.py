@@ -37,7 +37,8 @@ def generate_chat_completion(prompt,
             "stream": stream
         }
     )
-    return response.json()["choices"][0]["message"]["content"].strip()
+    return response.json()["choices"][0]["text"].strip()
+    # return response.json()["choices"][0]["message"]["content"].strip()
 
 selected_model = mistral
 # Create a conversation structure
@@ -52,4 +53,4 @@ while True:
     prompt = input("Prompt: ")
     if prompt in ["exit", "buy"]:
         break
-    print("GPT   ======   ", generate_chat_completion(prompt))
+    print("GPT   ======   ", generate_chat_completion(prompt, max_tokens=30))

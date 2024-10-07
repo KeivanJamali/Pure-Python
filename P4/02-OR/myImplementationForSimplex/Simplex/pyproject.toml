@@ -1,0 +1,9 @@
+[tool.poetry]
+name = "Simplextep"
+version = "1.12.0"
+packages = [
+    { include = "Simplextep", from = "scr" }
+]
+
+[tool.poetry.build]
+script = "scr/Simplextep"

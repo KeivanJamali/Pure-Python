@@ -261,41 +261,41 @@ class Problem_Prepration:
                 raise ValueError("[ERROR] Invalid type of parameters. Expected: n , +, -")
 
     def __str__(self, format_:str = "github"):
-        columns =  ["Current Values"] + self.parameters
+        columns =  ["R.H.S"] + self.parameters
         data = pd.DataFrame(self.constraints, columns=columns)
         temp = self.label.copy()
         temp2 = [f"e{i}" for i in range(1, self.excess + 1)]
         for e in temp2:
             temp.remove(e)
-        data["Basic Variables"] = temp
+        data["B.V"] = temp
         data_z = pd.DataFrame([self.objective_function], columns=columns)
-        data_z["Basic Variables"] = f"-z"
+        data_z["B.V"] = f"-z"
 
         data_empty = pd.DataFrame([np.array([f"{self.number_of_dash * "-"}" for _ in range(len(columns))])],
                                 columns=columns)
-        data_empty["Basic Variables"] = f"{self.number_of_dash * "-"}"
+        data_empty["B.V"] = f"{self.number_of_dash * "-"}"
 
         data = pd.concat((data, data_z, data_empty), ignore_index=True)
         self.data = data
 
-        self.data.set_index("Basic Variables", inplace=True)
+        self.data.set_index("B.V", inplace=True)
         return tabulate(self.data, headers="keys", tablefmt=format_, numalign="right", floatfmt=f".{self.decimal}f")
     
     def __repr__(self, format_:str = "github"):
-        columns =  ["Current Values"] + self.parameters
+        columns =  ["R.H.S"] + self.parameters
         data = pd.DataFrame(self.constraints, columns=columns)
-        data["Basic Variables"] = self.label
+        data["B.V"] = self.label
         data_z = pd.DataFrame([self.objective_function], columns=columns)
-        data_z["Basic Variables"] = f"-z"
+        data_z["B.V"] = f"-z"
 
         data_empty = pd.DataFrame([np.array([f"{self.number_of_dash * "-"}" for _ in range(len(columns))])],
                                 columns=columns)
-        data_empty["Basic Variables"] = f"{self.number_of_dash * "-"}"
+        data_empty["B.V"] = f"{self.number_of_dash * "-"}"
 
         data = pd.concat((data, data_z, data_empty), ignore_index=True)
         self.data = data
 
-        self.data.set_index("Basic Variables", inplace=True)
+        self.data.set_index("B.V", inplace=True)
         return tabulate(self.data, headers="keys", tablefmt=format_, numalign="right", floatfmt=f".{self.decimal}f")
 
 
@@ -332,7 +332,7 @@ class Simplex:
         self.artificial = [f"a{i}" for i in range(1, problem.artificial + 1)]
         self.excess = [f"e{i}" for i in range(1, problem.excess + 1)]
         self.label = problem.label.copy()
-        self.columns = ["Current Values"] + problem.parameters.copy()
+        self.columns = ["R.H.S"] + problem.parameters.copy()
         self.iteration = 1
         self.max_iterations = 1000
         self.mode = problem.mode
@@ -368,7 +368,7 @@ class Simplex:
                 check = self._check_phase_two()
                 if check == 2:
                     print("Finished")
-                    self.data.set_index("Basic Variables", inplace=True)
+                    self.data.set_index("B.V", inplace=True)
                     self._make_result_table(format_="github")
                     self.final_table = self.data.iloc[-(len(self.label) + 2):-1, :]
                     return None
@@ -388,7 +388,7 @@ class Simplex:
             self._save_data(self.label, self.constraints)
             check = self._check_optimization()
         print(f"Finished.")
-        self.data.set_index("Basic Variables", inplace=True)
+        self.data.set_index("B.V", inplace=True)
         self._make_result_table(format_="github")
         self.final_table = self.data.iloc[-(len(self.label) + 2):-1, :]
 
@@ -591,16 +591,19 @@ class Simplex:
             values (np.array): Values to be saved in the DataFrame.
         """
         data = pd.DataFrame(values, columns=self.columns)
-        data["Basic Variables"] = labels
+        data["B.V"] = labels
+        data[self.columns] = data[self.columns].round(self.decimal)
         data_z = pd.DataFrame([self.objective_function], columns=self.columns)
-        data_z["Basic Variables"] = f"-z{self.iteration}"
+        data_z["B.V"] = f"-z{self.iteration}"
+        data_z[self.columns] = data_z[self.columns].round(self.decimal)
         if self.two_phase and not self.two_phase_done:
             data_w = pd.DataFrame([self.minus_w], columns=self.columns)
-            data_w["Basic Variables"] = f"-w{self.iteration}"
+            data_w["B.V"] = f"-w{self.iteration}"
+            data_w[self.columns] = data_w[self.columns].round(self.decimal)
 
         data_empty = pd.DataFrame([np.array([f"{self.number_of_dash * "-"}" for _ in range(len(self.columns))])],
                                   columns=self.columns)
-        data_empty["Basic Variables"] = f"{self.number_of_dash * "-"}"
+        data_empty["B.V"] = f"{self.number_of_dash * "-"}"
 
         self.iteration += 1
 
@@ -645,9 +648,9 @@ class Simplex:
             else:
                 result[l_] = self.data[self.data.index == l_].iloc[-1, 0]
         if self.mode == "max":
-            result["Current Values"] = -self.data.iloc[-2, 0]
+            result["R.H.S"] = -self.data.iloc[-2, 0]
         else:
-            result["Current Values"] = self.data.iloc[-2, 0]
+            result["R.H.S"] = self.data.iloc[-2, 0]
         self.result = pd.DataFrame(result, index=[0])
         print(tabulate(self.result, headers="keys", tablefmt=format_, numalign="right", floatfmt=f".{self.decimal}f"))
 
@@ -961,35 +964,35 @@ class Dual():
             self.new_objective_function.append(self.old_constraints[i][0])
 
     def __str__(self, format_:str = "github"):
-        columns =  ["Current Values"] + self.new_parameters
+        columns =  ["R.H.S"] + self.new_parameters
         data = pd.DataFrame(self.new_constraints, columns=columns)
-        data["Basic Variables"] = ["s" for _ in range(len(self.new_equality))]
+        data["B.V"] = ["s" for _ in range(len(self.new_equality))]
         data_z = pd.DataFrame([self.new_objective_function], columns=columns)
-        data_z["Basic Variables"] = f"-z"
+        data_z["B.V"] = f"-z"
 
         data_empty = pd.DataFrame([np.array([f"{self.number_of_dash * "-"}" for _ in range(len(columns))])],
                                 columns=columns)
-        data_empty["Basic Variables"] = f"{self.number_of_dash * "-"}"
+        data_empty["B.V"] = f"{self.number_of_dash * "-"}"
 
         data = pd.concat((data, data_z, data_empty), ignore_index=True)
         self.data = data
 
-        self.data.set_index("Basic Variables", inplace=True)
+        self.data.set_index("B.V", inplace=True)
         return tabulate(self.data, headers="keys", tablefmt=format_, numalign="right", floatfmt=f".{self.decimal}f")
     
     def __repr__(self, format_:str = "github"):
-        columns =  ["Current Values"] + self.new_parameters
+        columns =  ["R.H.S"] + self.new_parameters
         data = pd.DataFrame(self.new_constraints, columns=columns)
-        data["Basic Variables"] = ["s" for _ in range(len(self.new_equality))]
+        data["B.V"] = ["s" for _ in range(len(self.new_equality))]
         data_z = pd.DataFrame([self.new_objective_function], columns=columns)
-        data_z["Basic Variables"] = f"-z"
+        data_z["B.V"] = f"-z"
 
         data_empty = pd.DataFrame([np.array([f"{self.number_of_dash * "-"}" for _ in range(len(columns))])],
                                 columns=columns)
-        data_empty["Basic Variables"] = f"{self.number_of_dash * "-"}"
+        data_empty["B.V"] = f"{self.number_of_dash * "-"}"
 
         data = pd.concat((data, data_z, data_empty), ignore_index=True)
         self.data = data
 
-        self.data.set_index("Basic Variables", inplace=True)
+        self.data.set_index("B.V", inplace=True)
         return tabulate(self.data, headers="keys", tablefmt=format_, numalign="right", floatfmt=f".{self.decimal}f")

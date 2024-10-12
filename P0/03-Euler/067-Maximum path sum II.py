@@ -1,5 +1,9 @@
-file = open("p067_triangle.txt", "r")
+from pathlib import Path
+file_name = Path("P0/03-Euler/p067_triangle.txt")
+print(file_name)
+file = open(file_name, "r")
 List = []
+
 for line in file.readlines():
     line = line[:-1]
     line = line.split()
@@ -7,11 +11,9 @@ for line in file.readlines():
         line[i] = int(line[i])
     List.append(line)
 
-
 def adding(row: list, add: list) -> None:
     for i in range(len(row)):
         row[i] += max(add[i], add[i + 1])
-
 
 def reduce(tri: list) -> list:
     for i in range(len(tri) - 1, 0, -1):

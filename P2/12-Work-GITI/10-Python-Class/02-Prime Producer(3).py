@@ -14,4 +14,4 @@ def find_prime(max: int) -> list:
     return primes
 
 
-print(find_prime(200_000))
+print(find_prime(20_000))

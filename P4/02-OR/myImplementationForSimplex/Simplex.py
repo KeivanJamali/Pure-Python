@@ -1,3 +1,8 @@
+# Simplextep by Keivan Jamal
+# Website: KeivanJamali.com
+# Email: K1Jamali01@gmail.com
+# Versian 1.12.0
+
 """Examples:
     1) Solve Simplex.
     objective_function = [0, 2, 1]
@@ -575,9 +580,10 @@ class Simplex:
             print(f"[ERROR] It is not possiable to remove a(artificial variable) from BV. Therefore, this problem is Infisibale!")
             return 2
         elif self.minus_w[0] < 1e-5 and self.minus_w[1:].max(axis=0) < 1e-10:
-            for l_ in self.label:
-                if l_[0] == "a":
-                    return False
+            for l_i in range(len(self.label)):
+                if self.label[l_i][0] == "a":
+                    if self.constraints[l_i][0] > 0.001:
+                        return False
             return True
         else:
             return False

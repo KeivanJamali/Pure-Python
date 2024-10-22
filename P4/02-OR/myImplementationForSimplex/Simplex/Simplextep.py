@@ -1,8 +1,13 @@
+# Simplextep by Keivan Jamal
+# Website: KeivanJamali.com
+# Email: K1Jamali01@gmail.com
+# Versian 1.12.0
+
 """Examples:
     1) Solve Simplex.
     objective_function = [0, 2, 1]
     constraints = [[4, 1, 1], [2, 1, -1]] ### always write the constraints in the <= situation. Even the right handside is less than zero.
-    equality = ["ineq", "ineq"]
+    equality = ["leq", "leq"]
     parameters = [("x1", "+"), ("x2", "+")] ### if you only write "x1", "x2" it assume that the sign is "+" by default.
     mode = "max"
 
@@ -28,7 +33,7 @@
     3) Simplex Analyse:
     objective_function = [0, 5, 4.5, 6]
     constraints = [[60, 6, 5, 8], [150, 10, 20, 10], [8, 1, 0, 0]]
-    equality = ["ineq", "ineq", "ineq"]
+    equality = ["leq", "leq", "leq"]
     parameters = [("x1", "+"), ("x2", "+"), ("x3", "+")]
 
     problem = Problem_Prepration(objective_function=objective_function,
@@ -83,7 +88,7 @@ class Me_Plot:
 
 
 class Problem_Prepration:
-    def __init__(self, objective_function: list, constraints: list, equality: list, parameters: list, mode: str, number_of_dashes: int = 20, decimal: int = 1, order_method: bool = False) -> None:
+    def __init__(self, objective_function: list, constraints: list, equality: list, parameters: list, mode: str, number_of_dashes: int = 20, decimal: int = 1, order_method: bool = True) -> None:
         """Initialize the class with the given constraints and equality lists.
 
         Args:
@@ -152,13 +157,13 @@ class Problem_Prepration:
         Returns:
             None
         """
-        if self.equality[number] == "eq":
+        if self.equality[number] in ["=", "eq"]:
             self._add_artificial(number)
             print("[INFO] Add Artificial")
-        elif self.equality[number] == "ineq" and self.cons_data[number][0] < 0:
+        elif self.equality[number] in ["<=", "geq"]:
             self._add_excess_artificial(number)
             print("[INFO] Add excess & artificial")
-        elif self.equality[number] == "ineq" and self.cons_data[number][0] >= 0:
+        elif self.equality[number] in [">=", "leq"]:
             self._add_slack(number)
             print("[INFO] Add slack")
 
@@ -203,9 +208,9 @@ class Problem_Prepration:
         self.objective_addition.append(0)
         self.minus_w.append(-1)
         self.artificial += 1
-        self.label.append(f"y{self.artificial}")
-        self.parameters.append(f"y{self.artificial}")
-        self.basic_variables_at_first.append(f"y{self.artificial}")
+        self.label.append(f"a{self.artificial}")
+        self.parameters.append(f"a{self.artificial}")
+        self.basic_variables_at_first.append(f"a{self.artificial}")
 
     def _add_excess_artificial(self, number: int) -> None:
         """
@@ -219,19 +224,18 @@ class Problem_Prepration:
         """
         for i in range(len(self.cons_data)):
             if i == number:
-                self.cons_data[i].extend([1, -1])
+                self.cons_data[i].extend([-1, 1])
             else:
                 self.cons_data[i].extend([0, 0])
-        self.cons_data[number] = [-i for i in self.cons_data[number]]
         self.objective_addition.extend([0, 0])
         self.minus_w.extend([0, -1])
         self.excess += 1
         self.artificial += 1
         self.label.append(f"e{self.excess}")
-        self.label.append(f"y{self.artificial}")
+        self.label.append(f"a{self.artificial}")
         self.parameters.append(f"e{self.excess}")
-        self.parameters.append(f"y{self.artificial}")
-        self.basic_variables_at_first.append(f"y{self.artificial}")
+        self.parameters.append(f"a{self.artificial}")
+        self.basic_variables_at_first.append(f"a{self.artificial}")
 
     def _fit_parameters(self) -> None:
         """Fit all the setting neccessery for sign of different parameters.
@@ -262,41 +266,41 @@ class Problem_Prepration:
                 raise ValueError("[ERROR] Invalid type of parameters. Expected: n , +, -")
 
     def __str__(self, format_:str = "github"):
-        columns =  ["Current Values"] + self.parameters
+        columns =  ["R.H.S"] + self.parameters
         data = pd.DataFrame(self.constraints, columns=columns)
         temp = self.label.copy()
         temp2 = [f"e{i}" for i in range(1, self.excess + 1)]
         for e in temp2:
             temp.remove(e)
-        data["Basic Variables"] = temp
+        data["B.V"] = temp
         data_z = pd.DataFrame([self.objective_function], columns=columns)
-        data_z["Basic Variables"] = f"-z"
+        data_z["B.V"] = f"-z"
 
         data_empty = pd.DataFrame([np.array([f"{self.number_of_dash * "-"}" for _ in range(len(columns))])],
                                 columns=columns)
-        data_empty["Basic Variables"] = f"{self.number_of_dash * "-"}"
+        data_empty["B.V"] = f"{self.number_of_dash * "-"}"
 
         data = pd.concat((data, data_z, data_empty), ignore_index=True)
         self.data = data
 
-        self.data.set_index("Basic Variables", inplace=True)
+        self.data.set_index("B.V", inplace=True)
         return tabulate(self.data, headers="keys", tablefmt=format_, numalign="right", floatfmt=f".{self.decimal}f")
     
     def __repr__(self, format_:str = "github"):
-        columns =  ["Current Values"] + self.parameters
+        columns =  ["R.H.S"] + self.parameters
         data = pd.DataFrame(self.constraints, columns=columns)
-        data["Basic Variables"] = self.label
+        data["B.V"] = self.label
         data_z = pd.DataFrame([self.objective_function], columns=columns)
-        data_z["Basic Variables"] = f"-z"
+        data_z["B.V"] = f"-z"
 
         data_empty = pd.DataFrame([np.array([f"{self.number_of_dash * "-"}" for _ in range(len(columns))])],
                                 columns=columns)
-        data_empty["Basic Variables"] = f"{self.number_of_dash * "-"}"
+        data_empty["B.V"] = f"{self.number_of_dash * "-"}"
 
         data = pd.concat((data, data_z, data_empty), ignore_index=True)
         self.data = data
 
-        self.data.set_index("Basic Variables", inplace=True)
+        self.data.set_index("B.V", inplace=True)
         return tabulate(self.data, headers="keys", tablefmt=format_, numalign="right", floatfmt=f".{self.decimal}f")
 
 
@@ -330,10 +334,10 @@ class Simplex:
         self.minus_w = np.array(self.minus_w.copy(), dtype=float)
         self.basic_variables_at_first = problem.basic_variables_at_first.copy()
         self.slack = [f"s{i}" for i in range(1, problem.slack + 1)]
-        self.artificial = [f"y{i}" for i in range(1, problem.artificial + 1)]
+        self.artificial = [f"a{i}" for i in range(1, problem.artificial + 1)]
         self.excess = [f"e{i}" for i in range(1, problem.excess + 1)]
         self.label = problem.label.copy()
-        self.columns = ["Current Values"] + problem.parameters.copy()
+        self.columns = ["R.H.S"] + problem.parameters.copy()
         self.iteration = 1
         self.max_iterations = 1000
         self.mode = problem.mode
@@ -344,13 +348,12 @@ class Simplex:
         except:
             pass
 
-
     def fit(self, max_iterations: int = 1000) -> None:
         """
         A method to fit the constraints to the model and perform optimization.
         """
         self.max_iterations = max_iterations
-        if "y1" in self.label:
+        if  "a1" in self.label:
             print("[INFO] Two phase solution")
             self.two_phase = True
             self.two_phase_done = False
@@ -370,6 +373,9 @@ class Simplex:
                 check = self._check_phase_two()
                 if check == 2:
                     print("Finished")
+                    self.data.set_index("B.V", inplace=True)
+                    self._make_result_table(format_="github")
+                    self.final_table = self.data.iloc[-(len(self.label) + 2):-1, :]
                     return None
             print("Finished")
             # don't remove artificial variables. If you want to remove change this to code.
@@ -379,7 +385,7 @@ class Simplex:
             print("[INFO] Phase II Starts", end=" | ")
             self.y_cols = []
             for l_ in range(len(self.columns)):
-                if self.columns[l_][0] == "y":
+                if self.columns[l_][0] == "a":
                     self.y_cols.append(l_)
         check = False
         while not check and not self.force_stop:
@@ -387,7 +393,7 @@ class Simplex:
             self._save_data(self.label, self.constraints)
             check = self._check_optimization()
         print(f"Finished.")
-        self.data.set_index("Basic Variables", inplace=True)
+        self.data.set_index("B.V", inplace=True)
         self._make_result_table(format_="github")
         self.final_table = self.data.iloc[-(len(self.label) + 2):-1, :]
 
@@ -431,8 +437,7 @@ class Simplex:
         temp_co[temp_co == 0] = -1
         temp_ri = self.constraints[:, 0].copy()
         temp = temp_ri / temp_co
-        temp[temp < 0] = self.sp_code
-        temp[temp == 0] = self.sp_code*0.9
+        temp[temp_co <= 0] = self.sp_code
         
         if min(temp) == self.sp_code:
             print(f"[Done] Failed to do the ratio test. Your problem is Unlimited. The answer is Inf!")
@@ -517,7 +522,7 @@ class Simplex:
         columns_num = []
 
         for i in range(len(self.columns)):
-            if self.columns[i][0] == "y":
+            if self.columns[i][0] == "a":
                 columns_num.append(i)
 
         for i in range(len(self.constraints)):
@@ -536,7 +541,7 @@ class Simplex:
         """
         column_num = []
         for l_ in range(len(self.columns)):
-            if self.columns[l_][0] == "y":
+            if self.columns[l_][0] == "a":
                 column_num.append(l_)
         self.constraints_phase_i = self.constraints.copy()
         self.constraints = np.delete(self.constraints, column_num, axis=1)
@@ -572,12 +577,13 @@ class Simplex:
         """
         if self.iteration >= self.max_iterations:
             print(f"[ERROR] Limit of iteration exceeded.(iteration={self.max_iterations})")
-            print(f"[ERROR] It is not possiable to remove y(artificial variable) from BV. Therefore, this problem is Infisibale!")
+            print(f"[ERROR] It is not possiable to remove a(artificial variable) from BV. Therefore, this problem is Infisibale!")
             return 2
         elif self.minus_w[0] < 1e-5 and self.minus_w[1:].max(axis=0) < 1e-10:
-            for l_ in self.label:
-                if l_[0] == "y":
-                    return False
+            for l_i in range(len(self.label)):
+                if self.label[l_i][0] == "a":
+                    if self.constraints[l_i][0] > 0.001:
+                        return False
             return True
         else:
             return False
@@ -591,16 +597,19 @@ class Simplex:
             values (np.array): Values to be saved in the DataFrame.
         """
         data = pd.DataFrame(values, columns=self.columns)
-        data["Basic Variables"] = labels
+        data["B.V"] = labels
+        data[self.columns] = data[self.columns].round(self.decimal)
         data_z = pd.DataFrame([self.objective_function], columns=self.columns)
-        data_z["Basic Variables"] = f"-z{self.iteration}"
+        data_z["B.V"] = f"-z{self.iteration}"
+        data_z[self.columns] = data_z[self.columns].round(self.decimal)
         if self.two_phase and not self.two_phase_done:
             data_w = pd.DataFrame([self.minus_w], columns=self.columns)
-            data_w["Basic Variables"] = f"-w{self.iteration}"
+            data_w["B.V"] = f"-w{self.iteration}"
+            data_w[self.columns] = data_w[self.columns].round(self.decimal)
 
         data_empty = pd.DataFrame([np.array([f"{self.number_of_dash * "-"}" for _ in range(len(self.columns))])],
                                   columns=self.columns)
-        data_empty["Basic Variables"] = f"{self.number_of_dash * "-"}"
+        data_empty["B.V"] = f"{self.number_of_dash * "-"}"
 
         self.iteration += 1
 
@@ -645,9 +654,9 @@ class Simplex:
             else:
                 result[l_] = self.data[self.data.index == l_].iloc[-1, 0]
         if self.mode == "max":
-            result["Current Values"] = -self.data.iloc[-2, 0]
+            result["R.H.S"] = -self.data.iloc[-2, 0]
         else:
-            result["Current Values"] = self.data.iloc[-2, 0]
+            result["R.H.S"] = self.data.iloc[-2, 0]
         self.result = pd.DataFrame(result, index=[0])
         print(tabulate(self.result, headers="keys", tablefmt=format_, numalign="right", floatfmt=f".{self.decimal}f"))
 
@@ -961,35 +970,35 @@ class Dual():
             self.new_objective_function.append(self.old_constraints[i][0])
 
     def __str__(self, format_:str = "github"):
-        columns =  ["Current Values"] + self.new_parameters
+        columns =  ["R.H.S"] + self.new_parameters
         data = pd.DataFrame(self.new_constraints, columns=columns)
-        data["Basic Variables"] = ["s" for _ in range(len(self.new_equality))]
+        data["B.V"] = ["s" for _ in range(len(self.new_equality))]
         data_z = pd.DataFrame([self.new_objective_function], columns=columns)
-        data_z["Basic Variables"] = f"-z"
+        data_z["B.V"] = f"-z"
 
         data_empty = pd.DataFrame([np.array([f"{self.number_of_dash * "-"}" for _ in range(len(columns))])],
                                 columns=columns)
-        data_empty["Basic Variables"] = f"{self.number_of_dash * "-"}"
+        data_empty["B.V"] = f"{self.number_of_dash * "-"}"
 
         data = pd.concat((data, data_z, data_empty), ignore_index=True)
         self.data = data
 
-        self.data.set_index("Basic Variables", inplace=True)
+        self.data.set_index("B.V", inplace=True)
         return tabulate(self.data, headers="keys", tablefmt=format_, numalign="right", floatfmt=f".{self.decimal}f")
     
     def __repr__(self, format_:str = "github"):
-        columns =  ["Current Values"] + self.new_parameters
+        columns =  ["R.H.S"] + self.new_parameters
         data = pd.DataFrame(self.new_constraints, columns=columns)
-        data["Basic Variables"] = ["s" for _ in range(len(self.new_equality))]
+        data["B.V"] = ["s" for _ in range(len(self.new_equality))]
         data_z = pd.DataFrame([self.new_objective_function], columns=columns)
-        data_z["Basic Variables"] = f"-z"
+        data_z["B.V"] = f"-z"
 
         data_empty = pd.DataFrame([np.array([f"{self.number_of_dash * "-"}" for _ in range(len(columns))])],
                                 columns=columns)
-        data_empty["Basic Variables"] = f"{self.number_of_dash * "-"}"
+        data_empty["B.V"] = f"{self.number_of_dash * "-"}"
 
         data = pd.concat((data, data_z, data_empty), ignore_index=True)
         self.data = data
 
-        self.data.set_index("Basic Variables", inplace=True)
+        self.data.set_index("B.V", inplace=True)
         return tabulate(self.data, headers="keys", tablefmt=format_, numalign="right", floatfmt=f".{self.decimal}f")

@@ -1,0 +1,18 @@
+[
+    {
+        "image_path": "D:\\All Python\\Pure-Python\\P4\\06-PromptEngineering\\Project 2 - RAG\\results\\page_1_1.jpg",
+        "document": "I'm happy to help you with your question. However, I notice that the image appears to be in a foreign language, specifically Persian or Farsi. Unfortunately, I'm a large language model, I don't have the capability to read or understand non-English languages. I can try to provide general information or suggestions, but I won't be able to provide a rewritten version of the text.\n\nIf you could provide more context or information about the content of the page, I may be able to offer some general guidance or suggestions on how to approach rewriting the text. Alternatively, you may want to consider reaching out to a native speaker or a translation service to assist with the task."
+    },
+    {
+        "image_path": "D:\\All Python\\Pure-Python\\P4\\06-PromptEngineering\\Project 2 - RAG\\results\\page_1_3.jpg",
+        "document": "I'm not able to access the information on the page that starts with \"content: \", as I'm a text-based model and do not have the capability to access real-time information on the internet. Additionally, I do not have the ability to read or interpret images, so I cannot provide any information about the page's content. If you could provide more context or clarify what you're looking for, I'd be happy to try and help you in a different way."
+    },
+    {
+        "image_path": "D:\\All Python\\Pure-Python\\P4\\06-PromptEngineering\\Project 2 - RAG\\results\\page_1_9.jpg",
+        "document": "I cannot read the text in the image. However, I can provide a general understanding of the image and suggest how to proceed with rewriting the information.\n\nThe image appears to be a page of text in a foreign language, possibly Arabic or Persian. The text is written in a formal script and is divided into sections with headings and bullet points. The content of the page is not clear, but it appears to be a formal document or article.\n\nTo rewrite the information on this page, I would need to be able to read the text in the image. Unfortunately, I am unable to do so. However, I can suggest that you try to find a translation of the text or ask someone who is fluent in the language to help you understand the content.\n\nAlternatively, you can try to use image recognition software or online tools to translate the text. However, the accuracy of these tools may vary depending on the quality of the image and the complexity of the language.\n\nIf you are unable to find a translation of the text, you may need to rely on other sources of information to rewrite the content. You can try to find similar articles or documents that discuss the same topic and use them as a reference. You can also try to contact the author or publisher of the original document to request a translation or clarification on the content.\n\nI hope this helps. Let me know if you have any further questions or if there's anything else I can do to assist you."
+    },
+    {
+        "image_path": "D:\\All Python\\Pure-Python\\P4\\06-PromptEngineering\\Project 2 - RAG\\results\\page_1_10.jpg",
+        "document": "I'm not able to access the content of the page you're referring to, as I don't have the capability to browse the internet or access specific web pages. However, I can suggest that you try copying and pasting the content of the page into a text editor or document, and then rewriting it from there. Alternatively, you can try taking a screenshot of the page and then rewriting the text from the image."
+    }
+]

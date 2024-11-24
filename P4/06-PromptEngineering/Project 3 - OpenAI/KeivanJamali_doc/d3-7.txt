@@ -1,0 +1,47 @@
+
+
+# Persian Gulf Pollution
+
+Make the function of pollute movement in Persian Gulf including advection and diffusion.
+
+Relative Fields: Environment Engineering, Programming
+
+- [Overview](#PersianGulf-overview)
+- [Results](#PersianGulf-results)
+- [Code Sources](#PersianGulf-codesources)
+
+## Project Overview
+
+In this project we want to model an imaginary situation in a Persian Gulf which is covering the leakage position in the ocean.
+
+Problem:
+
+What is the speed and the time of the pollution in these situations?
+
+1\. only diffusion
+
+2\. diffusion and advection with constant speed
+
+3\. diffusion and advection with accelerating speed
+
+## Project Steps :
+
+- Code out the diffusion and advection.
+- Find millions of colors to better showing the change in the ocean.
+- Plot the figure and make the animation for better understanding the situation.
+
+## Results of The Project
+
+Even the low amount of leakage can be so harmful.
+
+There are 3 results in animation and the third scenario is showing below.
+
+## Code Sources :
+
+This modeling is done by python.
+
+Here you can fine all codes and results :
+
+_[Github-Persian-Gulf-Pollution](https://github.com/KeivanJamali/Pure-Python/tree/main/P1/06-Pershan_Gulf_Pollution_Project)_
+
+Scroll to Top

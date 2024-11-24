@@ -1,0 +1,48 @@
+
+
+# Flow Prediction
+
+Predict The flow of OD matrix using Gravity Model (GM) and Neural Network (NN)
+
+Relative Fields: Transportation Engineering, Traffic Engineering, Machine Learning, Neural Network with Pytorch
+
+- [Overview](#FlowPrediction-overview)
+- [Results](#FlowPrediction-results)
+- [Code Sources](#FlowPrediction-codesources)
+
+## Project Overview
+
+Alright, buckle up! 🚀 In this adventure, we’re diving into a fascinating comparison of the Gravity Model (GM) with some cutting-edge tech: Neural Networks (NN) and Graph Neural Networks (GNN). Picture this as a quest to uncover the hidden superpowers and kryptonites of each model, and maybe, just maybe, discover where they shine the brightest.
+
+We’ve got our hands on some juicy datasets from Siouxfall, Anaheim, and Chicago. These aren’t just any datasets; they’re the secret maps to our treasure hunt, packed with real-world urban magic. 🌆 With these treasures, we’re ready to explore how GM, NN, and GNN stack up against each other in the bustling streets of different cities. By delving into this data, we’re not just crunching numbers – we’re looking for those hidden gems of insight, those aha moments that reveal the mysteries of urban life through the lens of these models.
+
+So, let’s get ready to draw some bold conclusions, spot intriguing patterns, and maybe even challenge what we thought we knew about these urban landscapes. Who knew data analysis could be this exciting, right? 😄
+
+## Project Steps :
+
+- code out the GM Model. We did this in 4 different approach. 1-exponentional  2-power  3-tanner  4-guess
+- The last approach (Guess) is made by me and is a new approach.
+- Model the NN and GN
+- connect all details to get the results all together.
+
+## Results of The Project
+
+We are still work on the conclusion.
+
+Coming Soon…
+
+## Code Sources :
+
+This modeling is done by Pytorch.
+
+Here you can fine all codes and results :
+
+Last Changes:
+
+_[Github-Transportation-FlowPrediction](https://github.com/KeivanJamali/Machine-Learning-Projects/tree/main/Project%202%20-%20Transportation)_
+
+Stable Version:
+
+_[Github-Transportation-FlowPrediction](https://github.com/KeivanJamali/Transportation-FlowPrediction)_
+
+Scroll to Top

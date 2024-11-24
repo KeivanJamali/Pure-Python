@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2024-11-23 12:58:16 by Eclipse SUMO GUI Version 1.21.0
+<sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="D:\All Python\Pure-Python\P4\03-Advanced transportation\SUMO\P1\HelloWorld_KeivanJamali.net.xml"/>
+        <route-files value="D:\All Python\Pure-Python\P4\03-Advanced transportation\SUMO\P1\HelloWorld_KeivanJamali.rou.xml"/>
+    </input>
+
+    <output>
+        <tripinfo-output value="D:\All Python\Pure-Python\P4\03-Advanced transportation\SUMO\P1\OUTPUT.xml"/>
+        <edgedata-output value="D:\All Python\Pure-Python\P4\03-Advanced transportation\SUMO\P1\EDGEDATA.xml"/>
+    </output>
+
+</sumoConfiguration>
+-->
+
+<meandata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/meandata_file.xsd">
+    <interval begin="0.00" end="546.00" id="DEFAULT_EDGEDATA">
+        <edge id="E0" sampledSeconds="9470.18" traveltime="80.63" overlapTraveltime="81.23" density="94.68" laneDensity="47.34" occupancy="14.40" waitingTime="91.00" timeLoss="7316.86" speed="2.29" speedRelative="0.17" departed="191" arrived="0" entered="0" left="191" laneChangedFrom="112" laneChangedTo="112"/>
+        <edge id="E1" sampledSeconds="4155.88" traveltime="21.00" overlapTraveltime="21.69" density="87.29" laneDensity="43.64" occupancy="13.84" waitingTime="0.00" timeLoss="2406.13" speed="4.17" speedRelative="0.30" departed="0" arrived="0" entered="191" left="191" laneChangedFrom="24" laneChangedTo="24"/>
+        <edge id="E2" sampledSeconds="4235.83" traveltime="28.14" overlapTraveltime="28.80" density="41.44" laneDensity="20.72" occupancy="7.65" waitingTime="0.00" timeLoss="1704.41" speed="6.63" speedRelative="0.48" departed="0" arrived="90" entered="191" left="101" laneChangedFrom="36" laneChangedTo="36"/>
+        <edge id="E3" sampledSeconds="1020.24" traveltime="9.50" overlapTraveltime="10.10" density="22.46" laneDensity="11.23" occupancy="5.29" waitingTime="0.00" timeLoss="348.46" speed="8.74" speedRelative="0.63" departed="0" arrived="0" entered="101" left="101" laneChangedFrom="1" laneChangedTo="1"/>
+        <edge id="E4" sampledSeconds="496.00" traveltime="8.82" overlapTraveltime="9.28" density="9.46" laneDensity="4.73" occupancy="2.28" waitingTime="0.00" timeLoss="112.48" speed="10.90" speedRelative="0.78" departed="0" arrived="101" entered="101" left="0" laneChangedFrom="0" laneChangedTo="0"/>
+    </interval>
+</meandata>

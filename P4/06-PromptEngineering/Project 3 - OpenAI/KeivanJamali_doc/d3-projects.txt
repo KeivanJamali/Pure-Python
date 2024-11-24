@@ -1,0 +1,61 @@
+
+
+# Here You Can Find my Projects And their brief overview
+
+# [Simplex-step 🧑‍💻🎯📥](https://keivanjamali.com/keivan-jamali-project-portfolio/simplex-method-python-library-keivan-jamali/)
+
+**Project Overview**
+
+For my Systems Engineering course project, I dived into building a Python library that harnesses the power of the Simplex method. It’s all about solving problems step-by-step and making the process as transparent as possible! 😊
+
+[more deteil](https://keivanjamali.com/keivan-jamali-project-portfolio/simplex-method-python-library-keivan-jamali/)
+
+# [Food Vision 🍕👁️💪](https://keivanjamali.com/keivan-jamali-project-portfolio/culinary-image-recognition-deep-learning/)
+
+**Project Overview**
+
+Embarking on a culinary odyssey, inspired by the “Udemy – PyTorch for Deep Learning Bootcamp 2023-6” course, I posed a tantalizing question: Can we teach a machine to decode the secrets of gastronomy through images? 🍔📸 With 52 hours and 14 minutes of diligent preparation, I crafted a neural network to unveil the flavors hidden within pixels. Join me on this savory journey of discovery, where technology meets taste. #DeepLearning #NeuralNetworks
+
+[more deteil](https://keivanjamali.com/keivan-jamali-project-portfolio/culinary-image-recognition-deep-learning/)
+
+## [LOS Prediction Under Rainy Weather Conditions](https://keivanjamali.com/keivan-jamali-project-portfolio/traffic-los-prediction-rainy-weather-ml/)
+
+**Project Overview**
+
+In the dance of raindrops and traffic lights, I embarked on the project “LOS Prediction Under Rainy Weather Conditions with Machine Learning.” My quest? To foresee the dynamic interplay of transportation in the midst of rainfall. Crafting a model to illuminate how rainy weather influences traffic flow, I invite you to explore the science behind the storm. 🌐 #ML #Transportation #WeatherImpact
+
+[more deteil](https://keivanjamali.com/keivan-jamali-project-portfolio/traffic-los-prediction-rainy-weather-ml/)
+
+# [Comparative Analysis of Gravity Model, Neural Network, and Graph Neural Network for Traffic Demand Modeling in Urban Areas](https://keivanjamali.com/keivan-jamali-project-portfolio/urban-flow-prediction-models/)
+
+**Project Overview**
+
+In the bustling heart of urban life, we set forth on a mission to decode the intricate choreography of city traffic. Our goal? To evaluate the prowess of three formidable models—Gravity, Neural Network, and Graph Neural Network—in predicting traffic demand. 🏙️ Armed with Python mastery and PyTorch’s might, we push the boundaries of traffic modeling. Join us on GitHub to witness our cutting-edge approach and together, let’s sculpt the future of urban mobility. 🚀 #TrafficAnalysis #SmartCities
+
+[more deteil](https://keivanjamali.com/keivan-jamali-project-portfolio/urban-flow-prediction-models/)
+
+## [Advanced Programming: Clinic Website](https://keivanjamali.com/keivan-jamali-project-portfolio/clinic-management-system-django/)
+
+**Project Overview**
+
+In the delicate interplay of code and healthcare, our team’s vision materialized with each keystroke, aspiring to revolutionize clinic management. Immersed in the realm of ‘Advanced Programming,’ we ventured forth to create a digital sanctuary for healthcare, seamlessly blending Python’s power with Django’s elegance. Our mission was clear: to craft a haven where appointments flow seamlessly, patient histories are eloquently detailed, and administrative tasks unfold with effortless grace. Join us as we unveil a digital oasis, poised to redefine the clinic experience. 🌟
+
+[more deteil](https://keivanjamali.com/keivan-jamali-project-portfolio/clinic-management-system-django/)
+
+## [Structural Analysis of Azadi Tower using Finite Element Method: A 2D Model Approach](https://keivanjamali.com/keivan-jamali-project-portfolio/azadi-tower-structural-analysis/)
+
+**Project Overview**
+
+In the realm of engineering wonders, where the ancient whispers of stone meet the modern language of code, I ventured into a quest to unveil the soul of the Azadi Tower. 🌌 With Python as my faithful companion, I wove a tapestry of analysis through the Finite Element Method, a mathematical sorcery that turned the tower’s silent grandeur into a symphony of data and insights. 📜 Each stress and strain told a tale, as I breathed life into a 2D model that danced with every gust of wind and every seismic whisper. 🏛️ My journey was not just about unraveling the mechanics of this architectural marvel but about kindling a deeper flame of wonder and reverence for the boundless dance of forces that shape our world. 🕊️ Dare to journey with me through this tale of numbers and dreams? 🚀
+
+[more deteil](https://keivanjamali.com/keivan-jamali-project-portfolio/azadi-tower-structural-analysis/)
+
+## [Simulating Pollution Diffusion in the Persian Gulf: A Hypothetical Study on Gas Penetration](https://keivanjamali.com/keivan-jamali-project-portfolio/persian-gulf-pollution-advection-diffusion/)
+
+**Project Overview**
+
+As twilight drapes its serene veil over the Persian Gulf, where the golden hues whisper tales of yore, I beckon you to join me in a voyage of environmental imagination. 🌅 With meticulous precision and a heart attuned to the rhythms of nature, I ventured into a hypothetical exploration of gas diffusion within this pristine expanse. In this simulated dance of pollutants, amidst the gentle caress of winds and currents, we uncover not just data but a narrative of dedication and innovation. 🌊✨ Each calculation and simulation weaves together a story of our times, reflecting both the fragility and resilience of our cherished environments. Come, let us explore this intricate interplay and marvel at the delicate balance we strive to understand and protect.
+
+[more deteil](https://keivanjamali.com/keivan-jamali-project-portfolio/persian-gulf-pollution-advection-diffusion/)
+
+Scroll to Top

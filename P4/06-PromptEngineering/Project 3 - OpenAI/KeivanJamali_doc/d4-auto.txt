@@ -1,0 +1,77 @@
+
+
+# Here You can find some useful solutions I wrote in python
+
+## [Bridge Processing 🌉](https://keivan01.pythonanywhere.com/culvert_processing)
+
+**Automation**
+
+Connect to autoCAD and draw all the necessary shapes and texts and make them ready to present them.
+
+[Use Function](https://keivan01.pythonanywhere.com/culvert_processing)
+
+# [Delete Distance From Centerline ⏲️](https://keivan01.pythonanywhere.com/delete_empty_processing)
+
+**Automation**
+
+In this case, we get your file and omit all data lower than your limit.
+
+###### First file
+
+[![file1_picture](https://keivanjamali.com/wp-content/uploads/elementor/thumbs/file1_pic-qrdnfvr295a44q4yjo3m5ydhzhcsbophg0q180w03s.png)](https://keivanjamali.com/wp-content/uploads/2024/07/file1_pic.png)
+
+[Use Function](https://keivan01.pythonanywhere.com/delete_empty_processing)
+
+## [Image Processing 🖼️](https://keivan01.pythonanywhere.com/Image_processing)
+
+**Automation**
+
+Change the directory of some photos according to the date of them.
+
+[Use Function](https://keivan01.pythonanywhere.com/Image_processing)
+
+# [CSDP DataLoader 🎯](https://keivan01.pythonanywhere.com/CSDP_processing)
+
+**Automation**
+
+Three CSV files, like the stars aligning in the night sky, come together to reveal the proper format for your application’s needs. Upload them here, and let the cosmos of data align perfectly for your purpose. In the convergence of these files, discover the precision you seek.
+
+###### First file
+
+[![file1_picture](https://keivanjamali.com/wp-content/uploads/elementor/thumbs/file1_pic-qrdnfvr295a44q4yjo3m5ydhzhcsbophg0q180w03s.png)](https://keivanjamali.com/wp-content/uploads/2024/07/file1_pic.png)
+
+###### Second file
+
+[![file2_picture_CSDP](https://keivanjamali.com/wp-content/uploads/elementor/thumbs/file2_pic-qrdni0tttk7mkr101lf0uexap2svuv7h2m7ukpppxk.png)](https://keivanjamali.com/wp-content/uploads/2024/07/file2_pic.png)
+
+###### Third file
+
+[![file3_pic_CSDP](https://keivanjamali.com/wp-content/uploads/elementor/thumbs/file3_pic-qrdniq7gy36da804xedy7qiqqhbsmp0863tyj6o39k.png)](https://keivanjamali.com/wp-content/uploads/2024/07/file3_pic.png)
+
+[Use Function](https://keivan01.pythonanywhere.com/CSDP_processing)
+
+## [PPK DataLoader🕸️](https://keivan01.pythonanywhere.com/PPK_processing)
+
+**Automation**
+
+Imagine a spider weaving its intricate web, capturing the essence of its surroundings. By uploading your data exported from MAGNET tools, you provide the silk needed to craft a solution tailored to your desires. Should you seek further calculations, consider me your guide in this mathematical labyrinth.
+
+###### Input file shape
+
+[![](https://keivanjamali.com/wp-content/uploads/2024/07/file_picture_PPK-1024x377.png)](https://keivanjamali.com/wp-content/uploads/2024/07/file_picture_PPK.png)
+
+[Use Function](https://keivan01.pythonanywhere.com/PPK_processing)
+
+# [Generic DataLoader 💪](https://keivan01.pythonanywhere.com/generic_processing)
+
+**Automation**
+
+In the realm of data, precision is the path to enlightenment. By offering your CSV file in the prescribed format and filling in the details of Epsilon and Rounding Limit, you unlock a gateway to a universal file, perfectly attuned for the CSDP application. Let the numbers dance in harmony, and witness the transformation.
+
+###### Input file shape
+
+[![file_picture_generic](https://keivanjamali.com/wp-content/uploads/2024/07/Generic-file-pic-218x300.png)](https://keivanjamali.com/wp-content/uploads/2024/07/Generic-file-pic.png)
+
+[Use Function](https://keivan01.pythonanywhere.com/generic_processing)
+
+Scroll to Top

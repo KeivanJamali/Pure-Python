@@ -1,0 +1,42 @@
+
+
+# Food Vision
+
+Food Vision using EfficientNetB2 Model and 101Food Data Source
+
+Relative Fields: Deep Learning, Machine Learning, Programming
+
+- [Overview](#FoodVision-overview)
+- [Results](#FoodVision-results)
+- [Code Sources](#FoodVision-codesources)
+
+## Project Overview
+
+As I delved into the realms of deep learning through the “PyTorch for Deep Learning Bootcamp 2023-6” course by Udemy for 52 hours and 14 minutes, tends in aa amazing model. What if a model could decipher the mysteries behind our culinary delights with just a glance at a picture? 🍔📸 Thus, my journey began, crafting a neural network to discern the essence of every dish captured through the lens. Join me to see the flavors hidden within pixels.
+
+## Project Steps :
+
+1. Downloading the Food101 Dataset from the provided [**link**.](https://pytorch.org/vision/stable/generated/torchvision.datasets.Food101.html)
+2. Prepare the data, ensuring that transformers and augmentations are ready.
+3. Utilize transfer learning techniques to prepare the model of [**EfficientNetB2**](https://pytorch.org/vision/main/models/generated/torchvision.models.efficientnet_b2.html).
+4. Train the model and deploy it into **[Hugging Face](https://huggingface.co)** using the provided link.
+
+![](https://keivanjamali.com/wp-content/uploads/2024/05/bigmodel-1024x449.png)
+
+## Results of The Project
+
+[![](https://keivanjamali.com/wp-content/uploads/2024/05/interface-1024x513.png)](https://huggingface.co/spaces/K1Jamali/Food_Vision?logs=container)
+
+[You Can Find And Use The Model Here](https://huggingface.co/spaces/K1Jamali/Food_Vision?logs=container)
+
+## Code Sources :
+
+This modeling had been done by PyTorch.
+
+Here you can fine all codes and results :
+
+_[Github-Food-Vision](https://github.com/KeivanJamali/PyTorch-for-Deep-Learning)_
+
+_[HuggingFace-Space-Food-Vision](https://huggingface.co/spaces/K1Jamali/Food_Vision?logs=container)_
+
+Scroll to Top

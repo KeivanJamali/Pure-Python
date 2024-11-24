@@ -1,0 +1,44 @@
+
+
+# Simplex-step
+
+This nifty library walks you through the Simplex algorithm, step-by-step, for solving optimization puzzles.
+
+Relative Fields: Optimization, Python Programming
+
+- [Overview](#Simplextep-overview)
+- [Results](#Simplextep-results)
+- [Code Sources](#Simplextep-codesources)
+
+## Project Overview
+
+For my Systems Engineering course project, I dived into building a Python library that harnesses the power of the Simplex method. It’s all about solving problems step-by-step and making the process as transparent as possible! 😊
+
+## Project Steps :
+
+1. Performing the Simplex algorithm – the magic starts here!
+2. Prepping the two-phase Simplex method – making sure we’re ready for anything.
+3. Implementing sensitivity analysis – because knowing how changes affect our solutions is key.
+4. Using duality to optimize the performance – duality is like finding the secret sauce for efficiency!
+
+## Results of The Project
+
+Guess what? You can install this library in a snap! Just pop open your CMD (after you’ve got Python set up) and type
+
+`pip install Simplextep` \| Easy peasy!
+
+![](https://keivanjamali.com/wp-content/uploads/2024/07/simplextep_installation.png)
+
+![](https://keivanjamali.com/wp-content/uploads/2024/07/simplextep_installation2.png)
+
+## Code Sources :
+
+This implementation had been done by Python.
+
+Here you can fine all codes and documentation :
+
+_[Github-Simplextep](https://github.com/KeivanJamali/Simplextep)_
+
+_[Documentation](https://keivanjamali.com/wp-content/uploads/2024/07/Systemtep_documentation.pdf)_
+
+Scroll to Top

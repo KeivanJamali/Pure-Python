@@ -1,0 +1,45 @@
+
+
+# Azadi Tower of Iran
+
+Using Python and Finite Element Analysis to Model the Azadi Tower of Iran
+
+Relative Fields: Structure Engineering, Steel Engineering, Programming
+
+- [Overview](#AzadiTowerOfIran-overview)
+- [Results](#AzadiTowerOfIran-results)
+- [Code Sources](#AzadiTowerOfIran-codesources)
+
+## Project Overview
+
+Here we are trying to model the Azadi tower as a trust 2d model, therefore we can find forces and displacements of any node in the structure by the method of Finite Element.
+
+Problem:
+
+![](https://keivanjamali.com/wp-content/uploads/2023/10/Problem-Defenition-300x253.png)
+
+## Project Steps :
+
+- Defined the structure in python.
+- Implement the finite element in the code
+- Plot the result to show the displacements.
+
+## Results of The Project
+
+The amount of displacements and forces in each node.
+
+This code can be used to different structures in trust form.
+
+Here is the result of the following project. (there is some exaggeration according to the more clear result to see the hole pattern) :
+
+![](https://keivanjamali.com/wp-content/uploads/2023/10/Azadi-Tower-Project.png)
+
+## Code Sources :
+
+This modeling is done by python.
+
+Here you can fine all codes and results :
+
+_[Github-Azadi-Tower-Of-Iran](https://github.com/KeivanJamali/Pure-Python/tree/main/P1/03-Azadi_Project)_
+
+Scroll to Top

@@ -1,0 +1,47 @@
+
+
+# Clinic Online Website
+
+Programming a clinic apointment website using Database, Python, Django.
+
+Relative Fields: Programming, Object Oriented Programming, Django, Query
+
+- [Overview](#overview)
+- [Results](#result)
+- [Code Sources](#source)
+
+## Project Overview
+
+In the grand adventure of our ‘Advanced Programming’ course, my team and I embarked on a quest to bring a clinic website to life using Python and Django. Picture us, a bunch of coding enthusiasts, creating a digital haven for clinics to thrive.
+
+We had this dream—making a platform that would smooth out the wrinkles in clinic management. Think of it: effortless appointment scheduling, seamless patient registration, and a treasure chest of medical records, all under one virtual roof.
+
+With Django as our trusty steed, we crafted a sturdy, user-friendly web application. Our interface? A breeze to navigate! Patients can book their appointments in a snap and revisit their medical history with a few clicks. And for the clinic wizards—the administrators—oh boy, did we make their lives easier. Managing staff schedules, tracking patient records, whipping up reports; it’s all there, neat and tidy.
+
+So, there we were, turning code into care, one line at a time. And in this digital realm we built, clinics could flourish, and health care became just a bit more human. 😊
+
+## Project Steps :
+
+- Defined Tables
+- defined Classes with the OOP methods
+- Work on the backend and Front end using Django
+
+## Results of The Project
+
+[==>First Report of the Project <==](https://keivanjamali.com/wp-content/uploads/2024/04/Report_AP_Phase_1.pdf)
+
+[==>Second Report of the Project<==](https://keivanjamali.com/wp-content/uploads/2024/04/Report_AP_Phase_2.pdf)
+
+The diagram of the project is here =>
+
+![](https://keivanjamali.com/wp-content/uploads/2024/04/Diagram.png)
+
+## Code Sources :
+
+This program is done by python.
+
+Here you can fine all codes and results :
+
+_[Github-Clinic-Online-Website](https://github.com/KeivanJamali/Advanced_Programming_Clinic)_
+
+Scroll to Top

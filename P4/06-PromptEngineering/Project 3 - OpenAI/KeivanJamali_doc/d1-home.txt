@@ -1,0 +1,137 @@
+
+
+###### Hi, I'm
+
+# Keivan Jamali
+
+Civil Engineering Student at Sharif University of Technology
+
+- [Scroll Down](#Homepage)
+
+You can see my **[Résumé](https://keivanjamali.com/wp-content/uploads/2024/09/Resume_2.pdf)**here
+
+[résumé](https://keivanjamali.com/wp-content/uploads/2024/09/Resume_2.pdf)
+
+![](https://keivanjamali.com/wp-content/uploads/2024/04/KeivanJamali-17-2048x2048.png)
+
+### Civil Engineering at Sharif University of Technology
+
+My Skills :
+
+Here you can fine my most significant skills. Provided percentages are for easier comparison between my skills.
+
+Python Programming
+
+90%
+
+PyTorch - Machine Learning
+
+85%
+
+Data Analysis - Pandas & Numpy
+
+82%
+
+WordPress
+
+76%
+
+Prompt Engineering
+
+94%
+
+**Other Skills :** MathCad **\|** MatLab **\|** Maple **\|** LaTeX **\|** CSS **\|** HTML **\|** Revit **\|** PhotoShop **\|** CSI Etabs \| AutoCAD
+
+### Research Interests :
+
+- Intelligent Transportation Systems (ITS)
+- Traffic Flow
+- Automated Vehicles
+- Behavior
+- Machine Learning
+
+### Education :
+
+- **Bachelor of Science in Civil Engineering   \|** **Sharif University of Technology**
+
+           29th October 2020 – 21st June 2024   \|   GPA : 4.0/4.0   \|   Ranked 2 among 80
+
+- **High School Diploma in Mathematics and Physics  \|  National Organization for Development of Exceptional Talents (Sampad)**
+
+           Sep 2014 – June 2020
+
+## Projects :
+
+- **[Simplex-step](https://keivanjamali.com/keivan-jamali-projects/culinary-deep-learning-efficientnetb2/)   \|** Feb 2024 – June 2024
+
+• Performing the Simplex algorithm – the magic starts here
+
+• Prepping the two-phase Simplex method – making sure we’re ready for anything.
+
+• Implementing sensitivity analysis – because knowing how changes affect our solutions is key.
+
+• Using duality to optimize the performance – duality is like finding the secret sauce for efficiency!
+
+• The model base code can be tracked on [KeivanJamali.com](https://keivanjamali.com/keivan-jamali-project-portfolio/simplex-method-python-library-keivan-jamali/) and [GitHub](https://github.com/KeivanJamali/Simplextep).
+
+- **[Food Vision with PyTorch](https://keivanjamali.com/keivan-jamali-projects/culinary-deep-learning-efficientnetb2/)   \|** Oct 2023 – May 2024
+
+• Currently engaged in the development of a vision-based model using [**PyTorch**](https://pytorch.org).
+
+• Utilize transfer learning techniques to prepare the model of [**EfficientNetB2**](https://pytorch.org/vision/main/models/generated/torchvision.models.efficientnet_b2.html).
+
+• The model deployed into [**Hugging-Face**](https://huggingface.co/spaces/K1Jamali/Food_Vision_Mini_Course)
+
+• The model base code can be tracked on [KeivanJamali.com](https://keivanjamali.com/keivan-jamali-projects/culinary-deep-learning-efficientnetb2/) and [GitHub](https://github.com/KeivanJamali/PyTorch-for-Deep-Learning).
+
+- **[Clinic Online Website](https://keivanjamali.com/keivan-jamali-projects/clinic-management-python-django/https://keivanjamali.com/keivan-jamali-projects/clinic-management-python-django/)   \|** Oct 2023 –  Jan 2024  **\|**   Supervisor: Dr. Habibi
+
+• Our team developed a clinic website using Python and Django. The platform streamlines clinic management by handling appointment scheduling, patient registration, and medical record management.
+
+• Leveraging the Django framework, we created a user-friendly web application. Patients can easily book appointments and access their medical history, while administrators efficiently manage staff schedules and patient records.
+
+• Our project involved defining tables, implementing classes with object-oriented programming (OOP) methods, and seamlessly integrating the back-end and front-end components using Django.
+
+• The project can be tracked on [KeivanJamali.com](https://keivanjamali.com/keivan-jamali-projects/clinic-management-python-django/) and [GitHub](https://github.com/KeivanJamali/Machine-Learning-Projects/tree/main/Project%205%20-%20LOS%20Prediction).
+
+- **[LOS Prediction Under Rainy Weather Conditions with Machine Learning](https://keivanjamali.com/keivan-jamali-projects/los-transportation-management/)  \|** Oct 2023 –  Jan 2024  **\|**   Supervisor: Dr. Z. Amini
+
+• Worked on LOS Prediction Under Rainy Weather Conditions with Machine Learning using Python.
+
+• Developing a model to predict unseen regions.
+
+• Planning to write a research paper on the project’s findings and insights.
+
+• Progress and updates on the project can be tracked on [KeivanJamali.com](https://keivanjamali.com/keivan-jamali-projects/los-transportation-management/) and [GitHub](https://github.com/KeivanJamali/Machine-Learning-Projects/tree/main/Project%205%20-%20LOS%20Prediction).
+
+- **[Traffic Demand Modeling Using Neural Networks](https://keivanjamali.com/keivan-jamali-projects/gravity-model-vs-nn-vs-gnn/)   \|** Jun 2023 – Jan 2024   **\|** Supervisor: Dr. Z. Amini
+
+• Developed and implemented a traffic demand modeling framework using the **_Gravity model_** and **_Neural Networks_** for accurate flow prediction.
+
+• Analyzed results from four OD matrices (SiouxFalls, Anaheim, Chicago, and Gold Coast Zones) to gain insights into traffic patterns.
+
+• Contributing to a research paper on the findings.
+
+• Documented the project details and outcomes on [KeivanJamali.com](https://keivanjamali.com/keivan-jamali-projects/gravity-model-vs-nn-vs-gnn/) & [GitHub](https://github.com/KeivanJamali/Transportation-FlowPrediction).
+
+- **[FEM Modeling of Azadi Tower](https://keivanjamali.com/keivan-jamali-projects/azadi-tower-2d-trust-model/)   \|** Feb 2023 – June 2023   **\|**   Supervisor: Dr. M. Ahmadi
+
+• Developed a 2D **FEM model** to simulate and analyze the structural behavior of _Azadi Tower_.
+
+• Provided valuable insights by analyzing **displacements** and **forces** of each node.
+
+• Received the highest score in the class (2.5 out of 2).
+
+• Project is available on [KeivanJamali.com](https://keivanjamali.com/keivan-jamali-projects/azadi-tower-2d-trust-model/) & [GitHub](https://github.com/KeivanJamali/Pure-Python/tree/main/P1/03-Azadi_Project).
+
+- **[Modeling the Transfer of Pollution in the Persian Gulf](https://keivanjamali.com/keivan-jamali-projects/pollution-modeling-persian-gulf/)   \|** Feb 2023 – June 2023   **\|** Supervisor: Dr. Danesh
+
+• Developed a comprehensive model to simulate pollution **diffusion** and **advection** in the _Persian Gulf_.
+
+• Investigated the impact of primary pollutants and analyzed pollution transfer patterns.
+
+• Created an **animation** illustrating the movement and spread of pollutants within the ocean.
+
+• Project is available on [KeivanJamali.com](https://keivanjamali.com/keivan-jamali-projects/pollution-modeling-persian-gulf/) & [GitHub](https://github.com/KeivanJamali/Pure-Python/tree/main/P1/06-Pershan_Gulf_Pollution_Project).
+
+Scroll to Top

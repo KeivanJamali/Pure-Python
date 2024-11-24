@@ -1,0 +1,11 @@
+<configuration>
+    <input>
+        <net-file>HelloWorld_KeivanJamali.net.xml</net-file>
+        <route-files>HelloWorld_KeivanJamali.rou.xml</route-files>
+    </input>
+
+    <output>
+        <tripinfo-output value="OUTPUT.xml"/>
+        <edgedata-output value="EDGEDATA.xml"/>
+    </output>
+</configuration>

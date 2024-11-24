@@ -1,0 +1,12 @@
+<routes>
+    <vType id="car" accel="1.0" decel="2.0" maxSpeed="25" length="5" color="blue"/>
+    <vType id="bus" accel="0.8" decel="1.5" maxSpeed="20" length="12" color="red" speedFactor="1.5"/>
+    <vType id="bick" accel="0.1" decel="0.5" maxSpeed="8" length="2" color="yellow" speedFactor="1"/>
+
+    <flow id="f0" type="car" beg="0" end="80" number="100" from="E0" to="E4" departPos="random" arrivalPos="random"/>
+    <flow id="f1" type="bick" beg="10" end="80" number="90" from="E0" to="E2" departPos="random" arrivalPos="random"/>
+    
+    <route id="route0" edges="E0 E1 E2 E3 E4"/>
+
+    <vehicle id="bus0" type="bus" route="route0" depart="5"/>
+</routes>

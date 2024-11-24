@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Chatbot</title>
+    <style>
+        /* Styling for chat interface */
+        #chatIcon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #333333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        #chatbot {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 320px;
+            height: 400px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-family: Arial, sans-serif;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        #chatBody {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            background-color: #f7f7f7;
+        }
+
+        #chatInput {
+            display: flex;
+            padding: 10px;
+            background-color: #ffffff;
+        }
+
+        #chatInput input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            margin-right: 5px;
+        }
+
+        #sendButton {
+            background-color: #333333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 80%;
+        }
+
+        .userMessage {
+            background-color: #e0f7ff;
+            align-self: flex-end;
+        }
+
+        .botMessage {
+            background-color: #ffe6e6;
+            align-self: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <!-- Chat Icon -->
+    <div id="chatIcon" onclick="toggleChat()">💬</div>
+
+    <!-- Chatbot -->
+    <div id="chatbot">
+        <div id="chatBody"></div>
+        <div id="chatInput">
+            <input type="text" id="userInput" placeholder="Type a message..." />
+            <button id="sendButton" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // Toggle chatbot visibility
+        function toggleChat() {
+            const chatbot = document.getElementById('chatbot');
+            chatbot.style.display = chatbot.style.display === 'none' || !chatbot.style.display ? 'flex' : 'none';
+        }
+
+        const API_URL = "http://keivan02.pythonanywhere.com/generate"; // Your Flask API
+        const API_KEY = "K1ovn39nsfs49mlsg"; // Your API Key
+
+        // Send message to chatbot
+        async function sendMessage() {
+            const userInput = document.getElementById('userInput');
+            const userMessage = userInput.value.trim();
+            const chatBody = document.getElementById('chatBody');
+
+            if (!userMessage) return;
+
+            // Display user message
+            const userMessageDiv = document.createElement('div');
+            userMessageDiv.classList.add('message', 'userMessage');
+            userMessageDiv.textContent = userMessage;
+            chatBody.appendChild(userMessageDiv);
+
+            // Clear input and scroll
+            userInput.value = '';
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            try {
+                // Call the API
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        api_key: API_KEY,
+                        query: userMessage,
+                    }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch response from the server.');
+                }
+
+                const data = await response.json();
+                const botResponse = data.answer || "Sorry, I couldn't understand your request.";
+
+                // Display bot message
+                const botMessageDiv = document.createElement('div');
+                botMessageDiv.classList.add('message', 'botMessage');
+                botMessageDiv.textContent = botResponse;
+                chatBody.appendChild(botMessageDiv);
+                chatBody.scrollTop = chatBody.scrollHeight;
+
+            } catch (error) {
+                console.error(error);
+                const errorDiv = document.createElement('div');
+                errorDiv.classList.add('message', 'botMessage');
+                errorDiv.textContent = "There was an error contacting the server. Please try again later.";
+                chatBody.appendChild(errorDiv);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }
+        }
+    </script>
+</body>
+</html>

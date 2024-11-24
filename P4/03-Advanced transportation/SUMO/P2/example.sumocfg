@@ -1,0 +1,5 @@
+<configuration>
+  <input>
+    <net-file value="example.net.xml" />
+  </input>
+</configuration>

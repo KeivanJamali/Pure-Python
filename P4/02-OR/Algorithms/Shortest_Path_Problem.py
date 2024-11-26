@@ -30,12 +30,12 @@ class Defind_Graph:
         edge_labels = {edge: eval(template) for edge in self.graph.edges}
         nx.draw_networkx_edge_labels(self.graph, self.pos, edge_labels=edge_labels)
 
+
 class Dijkestra:
     def __init__(self, problem:Defind_Graph):
         self.problem = problem
         self.graph = self.problem.graph
         self.done = False
-
 
     def fit(self, start_node, end_node=None):
         self._step_one_initialize(starter=start_node)

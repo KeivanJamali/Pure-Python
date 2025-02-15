@@ -1,0 +1,41 @@
+<additional>
+    <!-- Red Detector: Middle of edge -->
+    <!-- between node 11 and 4, length=800 -->
+    <e1Detector id="dr_e36p_0" lane="E36_0" pos="400.0" freq="10" file="output\red_detector_36_output.xml"/>
+    <e1Detector id="dr_e36p_1" lane="E36_1" pos="400.0" freq="10" file="output\red_detector_36_output.xml"/>
+
+    <!-- between node 10 and 11, length=800 -->
+    <e1Detector id="dr_e10p_0" lane="E10_0" pos="400.0" freq="10" file="output\red_detector_10_output.xml"/>
+    <e1Detector id="dr_e10p_1" lane="E10_1" pos="400.0" freq="10" file="output\red_detector_10_output.xml"/>
+
+    <!-- between node 8 and 9, length=800 -->
+    <e1Detector id="dr_e35p_0" lane="E35_0" pos="400.0" freq="10" file="output\red_detector_35_output.xml"/>
+    <e1Detector id="dr_e35p_1" lane="E35_1" pos="400.0" freq="10" file="output\red_detector_35_output.xml"/>
+
+    <!-- between node 11 and 14, length=800 -->
+    <e1Detector id="dr_e14p_0" lane="E14_0" pos="400.0" freq="10" file="output\red_detector_14_output.xml"/>
+    <e1Detector id="dr_e14p_1" lane="E14_1" pos="400.0" freq="10" file="output\red_detector_14_output.xml"/>
+
+    <!-- between node 22 to 23, length=800 -->
+    <e1Detector id="dr_e34n_0" lane="-E34_0" pos="400.0" freq="10" file="output\red_detector_34_output.xml"/>
+    <e1Detector id="dr_e34n_1" lane="-E34_1" pos="400.0" freq="10" file="output\red_detector_34_output.xml"/>
+
+    <!-- Blue Detector: Start of edge -->
+    <!-- between node 1 and 2 -->
+    <e1Detector id="db_e0p_0" lane="E0_0" pos="0.0" freq="10" file="output\blue_detector_0_output.xml"/>
+    <e1Detector id="db_e0p_1" lane="E0_1" pos="0.0" freq="10" file="output\blue_detector_0_output.xml"/>
+    <e1Detector id="db_e0n_0" lane="-E0_0" pos="0.0" freq="10" file="output\blue_detector_0_output.xml"/>
+    <e1Detector id="db_e0n_1" lane="-E0_1" pos="0.0" freq="10" file="output\blue_detector_0_output.xml"/>
+
+    <!-- between node 12 and 13 -->
+    <e1Detector id="db_e13p_0" lane="E13_0" pos="0.0" freq="10" file="output\blue_detector_13_output.xml"/>
+    <e1Detector id="db_e13p_1" lane="E13_1" pos="0.0" freq="10" file="output\blue_detector_13_output.xml"/>
+    <e1Detector id="db_e13n_0" lane="-E13_0" pos="0.0" freq="10" file="output\blue_detector_13_output.xml"/>
+    <e1Detector id="db_e13n_1" lane="-E13_1" pos="0.0" freq="10" file="output\blue_detector_13_output.xml"/>
+
+    <!-- between node 18 and 20 -->
+    <e1Detector id="db_e25p_0" lane="E25_0" pos="0.0" freq="10" file="output\blue_detector_25_output.xml"/>
+    <e1Detector id="db_e25p_1" lane="E25_1" pos="0.0" freq="10" file="output\blue_detector_25_output.xml"/>
+    <e1Detector id="db_e25n_0" lane="-E25_0" pos="0.0" freq="10" file="output\blue_detector_25_output.xml"/>
+    <e1Detector id="db_e25n_1" lane="-E25_1" pos="0.0" freq="10" file="output\blue_detector_25_output.xml"/>
+</additional>

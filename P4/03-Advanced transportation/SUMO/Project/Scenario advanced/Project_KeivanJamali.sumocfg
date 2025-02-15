@@ -1,0 +1,17 @@
+<configuration>
+    <input>
+        <net-file>Project_KeivanJamali.net.xml</net-file>
+        <route-files>Project_KeivanJamali.rou.xml</route-files>
+        <additional-files>Project_KeivanJamali.detectors.xml</additional-files>
+    </input>
+
+    <output>
+        <tripinfo-output>output/Project_KeivanJamali.tripinfo.xml</tripinfo-output>
+        <edgedata-output>output/Project_KeivanJamali.edgedata.xml</edgedata-output>
+    </output>
+
+    <time>
+        <begin value="0"/>
+        <end value="3600"/>
+    </time>
+</configuration>

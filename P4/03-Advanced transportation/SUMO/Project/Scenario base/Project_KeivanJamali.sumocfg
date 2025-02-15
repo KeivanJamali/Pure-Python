@@ -5,7 +5,12 @@
     </input>
 
     <output>
-        <tripinfo-output>TripInfor.xml</tripinfo-output>
+        <tripinfo-output>TripInfo.xml</tripinfo-output>
         <edgedata-output>EdgeData.xml</edgedata-output>
     </output>
+
+    <time>
+        <begin value="0"/>
+        <end value="3600"/>
+    </time>
 </configuration>

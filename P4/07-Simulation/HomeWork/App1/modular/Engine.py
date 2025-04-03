@@ -425,6 +425,7 @@ class Queue_Simulator:
         try:
             temp_id = max(self.departures, key=lambda x: x[1])[0]
             time_in_queue = next((i for i in self.queue.time_in_queue if i[0] == temp_id), None)[1]
+            self.time_in_queue = time_in_queue
             Q_bar = time_in_queue/len(self.departures)
         except:
             time_in_queue = 0

@@ -19,5 +19,10 @@
         "titleBar.inactiveForeground": "#e7e7e799"
     },
     "peacock.color": "#007fff",
-    "python.REPL.enableREPLSmartSend": false
+    "python.REPL.enableREPLSmartSend": false,
+    "editor.defaultFoldingRangeProvider": null,
+    "editor.defaultFormatter": "eeyore.yapf",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8"
+    }
 }

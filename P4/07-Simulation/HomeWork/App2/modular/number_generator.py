@@ -15,7 +15,7 @@ class Exponential_Generator:
         self.mean = mean
         self.seed = seed
         self.temp = self.seed
-        self.first = True
+        self.first = False
 
     def next_number(self) -> float:
         """Generate a number.
@@ -34,7 +34,7 @@ class Exponential_Generator:
 
     def reset(self):
         self.temp = self.seed
-        self.first = True
+        self.first = False
 
 
 class Uniform_Generator:
@@ -48,7 +48,7 @@ class Uniform_Generator:
         """
         self.seed = seed
         self.temp = seed
-        self.first = True
+        self.first = False
 
     def next_number(self) -> float:
         """Generate a number.
@@ -67,7 +67,7 @@ class Uniform_Generator:
 
     def reset(self):
         self.temp = self.seed
-        self.first = True
+        self.first = False
 
 
 class Deterministic_Generator:

@@ -5,7 +5,8 @@ class Storage:
         self.time = 0
         self.integral_ip = 0
         self.integral_in = 0
-        self.negative_weeks = 0
+        self.negative_days = 0
+        self.negative_ordering = 0
         self.spent_money = 0
         # can be removed
         self.history = {}
@@ -25,7 +26,7 @@ class Storage:
         if self.store_level > 0:
             self.integral_ip += self.store_level * x
         elif self.store_level <= 0:
-            self.negative_weeks += x
+            self.negative_days += x
             self.integral_in += self.store_level * x
 
     def reset(self):

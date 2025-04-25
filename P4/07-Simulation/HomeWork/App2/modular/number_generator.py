@@ -38,7 +38,7 @@ class Exponential_Generator:
 
 
 class Uniform_Generator:
-    """Exponential Generator.
+    """Uniform Generator.
     """
 
     def __init__(self, seed: int) -> None:

@@ -26,7 +26,7 @@ class Validation_Tools:
                            "n":n,
                            "mean":mean_data,
                            "S2": S2,
-                           "confidense_intervals":{}}
+                           "confidence_intervals":{}}
         print(f"[INFO] '{name}' data added to the storage with Mean:{mean_data} and Variance:{S2}.")
         
     def remove(self, name:str):
@@ -51,10 +51,10 @@ class Validation_Tools:
         S2 = ((data-mean_data)**2).sum() / (len(data) - 1)
         return S2
 
-    def confidense_interval(self, data_name:str, alpha:float):
+    def confidence_interval(self, data_name:str, alpha:float):
         interval_name = f"{(100 - 100*alpha):.3f}%"
-        if interval_name in self.data[data_name]["confidense_intervals"].keys():
-            return self.data[data_name]["confidense_intervals"][interval_name]
+        if interval_name in self.data[data_name]["confidence_intervals"].keys():
+            return self.data[data_name]["confidence_intervals"][interval_name]
         else:
             n = self.data[data_name]["n"]
             mean_data = self.data[data_name]["mean"]
@@ -65,7 +65,7 @@ class Validation_Tools:
             else:
                 t_value = stats.t.ppf(1-alpha/2, n-1)
                 temp = t_value
-            self.data[data_name]["confidense_interval"][interval_name] = [mean_data - temp * np.sqrt(S2/n)]
+            self.data[data_name]["confidence_interval"][interval_name] = [mean_data - temp * np.sqrt(S2/n)]
 
     def independent_sampling_with_equal_variance(self, data_name_1:str, data_name_2:str, alpha:float, print_:bool=True):
         if len(self.data) < 2:
@@ -80,14 +80,14 @@ class Validation_Tools:
         interval_name = f"{(100 - 100*alpha):.3f}%"
         analysis_name = f"ISEV_{data_name_1}_{data_name_2}"
 
-        S2_pooled = ((n1 - 1)*S1 + (n2 - 1)*S2 - 1)/(n1 + n2 - 2)
+        S2_pooled = ((n1 - 1)*S1 + (n2 - 1)*S2)/(n1 + n2 - 2)
         freedom = n1 + n2 - 2
         SE = S2_pooled * np.sqrt((1/n1) + (1/n2))
-        confidense_interval = [mean1 - mean2 - stats.t.ppf(1-alpha/2, freedom) * SE, mean1 - mean2 + stats.t.ppf(1-alpha/2, freedom) * SE]
+        confidence_interval = [mean1 - mean2 - stats.t.ppf(1-alpha/2, freedom) * SE, mean1 - mean2 + stats.t.ppf(1-alpha/2, freedom) * SE]
 
         if analysis_name in self.analysis.keys():
-            if not interval_name in self.analysis[analysis_name]["confidense_intervals"].keys():
-                self.analysis[analysis_name]["confidense_intervals"][interval_name] = confidense_interval
+            if not interval_name in self.analysis[analysis_name]["confidence_intervals"].keys():
+                self.analysis[analysis_name]["confidence_intervals"][interval_name] = confidence_interval
                 return self.analysis[analysis_name]
             else:
                 print(f"[INFO] There is already exactly a same analysis in the data.")
@@ -98,10 +98,10 @@ class Validation_Tools:
                                             "freedom": freedom,
                                             "SE": SE,
                                             "half-lenght": stats.t.ppf(1-alpha/2, freedom) * SE,
-                                            "confidense_intervals":{interval_name: confidense_interval}}
+                                            "confidence_intervals":{interval_name: confidence_interval}}
         
         if print_:
-            print(f"[RESULT] [{float(confidense_interval[0]):4f}, {float(confidense_interval[1]):4f}]")
+            print(f"[RESULT] [{float(confidence_interval[0]):4f}, {float(confidence_interval[1]):4f}]")
         return self.analysis[analysis_name]
 
     def independent_sampling(self, data_name_1:str, data_name_2:str, alpha:float, print_:bool=True):
@@ -118,11 +118,11 @@ class Validation_Tools:
         analysis_name = f"IS_{data_name_1}_{data_name_2}"
         SE = np.sqrt(S1/n1 + S2/n2)
         freedom = int((S1/n1 + S2/n2)**2 / (((S1/n1)**2)/(n1-1) + ((S2/n2)**2)/(n2-1)))
-        confidense_interval = [mean1 - mean2 - stats.t.ppf(1-alpha/2, freedom) * SE, mean1 - mean2 + stats.t.ppf(1-alpha/2, freedom) * SE]
+        confidence_interval = [mean1 - mean2 - stats.t.ppf(1-alpha/2, freedom) * SE, mean1 - mean2 + stats.t.ppf(1-alpha/2, freedom) * SE]
 
         if analysis_name in self.analysis.keys():
-            if not interval_name in self.analysis[analysis_name]["confidense_intervals"].keys():
-                self.analysis[analysis_name]["confidense_intervals"][interval_name] = confidense_interval
+            if not interval_name in self.analysis[analysis_name]["confidence_intervals"].keys():
+                self.analysis[analysis_name]["confidence_intervals"][interval_name] = confidence_interval
                 return self.analysis[analysis_name]
             else:
                 print(f"[INFO] There is already exactly a same analysis in the data.")
@@ -132,10 +132,10 @@ class Validation_Tools:
                                             "freedom": freedom,
                                             "SE": SE,
                                             "half-lenght": stats.t.ppf(1-alpha/2, freedom) * SE,
-                                            "confidense_intervals":{interval_name: confidense_interval}}
+                                            "confidence_intervals":{interval_name: confidence_interval}}
             
         if print_:
-            print(f"[RESULT] [{float(confidense_interval[0]):4f}, {float(confidense_interval[1]):4f}]")
+            print(f"[RESULT] [{float(confidence_interval[0]):4f}, {float(confidence_interval[1]):4f}]")
         return self.analysis[analysis_name]
 
     def common_random_numbers(self, data_name_1:str, data_name_2:str, alpha:float, print_:bool=True):
@@ -155,11 +155,11 @@ class Validation_Tools:
         S2 = ((delta - D)**2).sum() / (n-1)
         SE = np.sqrt(S2)/np.sqrt(n)
         freedom = n-1
-        confidense_interval = [mean1 - mean2 - stats.t.ppf(1-alpha/2, freedom) * SE, mean1 - mean2 + stats.t.ppf(1-alpha/2, freedom) * SE]
+        confidence_interval = [mean1 - mean2 - stats.t.ppf(1-alpha/2, freedom) * SE, mean1 - mean2 + stats.t.ppf(1-alpha/2, freedom) * SE]
 
         if analysis_name in self.analysis.keys():
-            if not interval_name in self.analysis[analysis_name]["confidense_intervals"].keys():
-                self.analysis[analysis_name]["confidense_intervals"][interval_name] = confidense_interval
+            if not interval_name in self.analysis[analysis_name]["confidence_intervals"].keys():
+                self.analysis[analysis_name]["confidence_intervals"][interval_name] = confidence_interval
                 return self.analysis[analysis_name]
             else:
                 print(f"[INFO] There is already exactly a same analysis in the data.")
@@ -170,10 +170,10 @@ class Validation_Tools:
                                             "freedom": freedom,
                                             "SE": SE,
                                             "half-lenght": stats.t.ppf(1-alpha/2, freedom) * SE,
-                                            "confidense_intervals":{interval_name: confidense_interval}}
+                                            "confidence_intervals":{interval_name: confidence_interval}}
             
         if print_:
-            print(f"[RESULT] [{float(confidense_interval[0]):4f}, {float(confidense_interval[1]):4f}]")
+            print(f"[RESULT] [{float(confidence_interval[0]):4f}, {float(confidence_interval[1]):4f}]")
         return self.analysis[analysis_name]
 
     def multiple_comparison_with_standard(self, data1:str, data_list:list, alpha:float, method:str):
@@ -185,7 +185,7 @@ class Validation_Tools:
             for data_name in data_list:
                 info_ = self.independent_sampling_with_equal_variance(data1, data_name, alpha=alpha/k, print_=False)
                 interval_name = f"{(100 - 100*alpha/k):.3f}%"
-                data[data_name] = [round(info_["Y1-Y2"], self.decimal), (round(float(info_["confidense_intervals"][interval_name][0]), self.decimal), round(float(info_["confidense_intervals"][interval_name][1]), self.decimal))]
+                data[data_name] = [round(info_["Y1-Y2"], self.decimal), (round(float(info_["confidence_intervals"][interval_name][0]), self.decimal), round(float(info_["confidence_intervals"][interval_name][1]), self.decimal))]
             data_structure = pd.DataFrame.from_dict(data, orient="index", columns=columns)
             self.comparisons["M.C. with a standard_ISEV"] = data_structure
             return data_structure
@@ -193,7 +193,7 @@ class Validation_Tools:
             for data_name in data_list:
                 info_ = self.independent_sampling(data1, data_name, alpha=alpha/k, print_=False)
                 interval_name = f"{(100 - 100*alpha/k):.3f}%"
-                data[data_name] = [round(info_["Y1-Y2"], self.decimal), (round(float(info_["confidense_intervals"][interval_name][0]), self.decimal), round(float(info_["confidense_intervals"][interval_name][1]), self.decimal))]
+                data[data_name] = [round(info_["Y1-Y2"], self.decimal), (round(float(info_["confidence_intervals"][interval_name][0]), self.decimal), round(float(info_["confidence_intervals"][interval_name][1]), self.decimal))]
             data_structure = pd.DataFrame.from_dict(data, orient="index", columns=columns)
             self.comparisons["M.C. with a standard_IS"] = data_structure
             return data_structure
@@ -201,7 +201,7 @@ class Validation_Tools:
             for data_name in data_list:
                 info_ = self.common_random_numbers(data1, data_name, alpha=alpha/k, print_=False)
                 interval_name = f"{(100 - 100*alpha/k):.3f}%"
-                data[data_name] = [round(info_["Y1-Y2"], self.decimal), (round(float(info_["confidense_intervals"][interval_name][0]), self.decimal), round(float(info_["confidense_intervals"][interval_name][1]), self.decimal))]
+                data[data_name] = [round(info_["Y1-Y2"], self.decimal), (round(float(info_["confidence_intervals"][interval_name][0]), self.decimal), round(float(info_["confidence_intervals"][interval_name][1]), self.decimal))]
             data_structure = pd.DataFrame.from_dict(data, orient="index", columns=columns)
             self.comparisons["M.C. with a standard_CRN"] = data_structure
             return data_structure
@@ -221,7 +221,7 @@ class Validation_Tools:
                         info_ = self.independent_sampling_with_equal_variance(data1, data2, alpha=alpha/k, print_=False)
                         interval_name = f"{(100 - 100*alpha/k):.3f}%"
                         data_mean[data1].append(round(info_["Y1-Y2"], self.decimal))
-                        data_intervals[data1].append((round(float(info_["confidense_intervals"][interval_name][0]), self.decimal), round(float(info_["confidense_intervals"][interval_name][1]), self.decimal)))
+                        data_intervals[data1].append((round(float(info_["confidence_intervals"][interval_name][0]), self.decimal), round(float(info_["confidence_intervals"][interval_name][1]), self.decimal)))
                     else:
                         data_mean[data1].append(0)
                         data_intervals[data1].append(0)
@@ -238,7 +238,7 @@ class Validation_Tools:
                         info_ = self.independent_sampling(data1, data2, alpha=alpha/k, print_=False)
                         interval_name = f"{(100 - 100*alpha/k):.3f}%"
                         data_mean[data1].append(round(info_["Y1-Y2"], self.decimal))
-                        data_intervals[data1].append((round(float(info_["confidense_intervals"][interval_name][0]), self.decimal), round(float(info_["confidense_intervals"][interval_name][1]), self.decimal)))
+                        data_intervals[data1].append((round(float(info_["confidence_intervals"][interval_name][0]), self.decimal), round(float(info_["confidence_intervals"][interval_name][1]), self.decimal)))
                     else:
                         data_mean[data1].append(0)
                         data_intervals[data1].append(0)
@@ -255,7 +255,7 @@ class Validation_Tools:
                         info_ = self.common_random_numbers(data1, data2, alpha=alpha/k, print_=False)
                         interval_name = f"{(100 - 100*alpha/k):.3f}%"
                         data_mean[data1].append(round(info_["Y1-Y2"], self.decimal))
-                        data_intervals[data1].append((round(float(info_["confidense_intervals"][interval_name][0]), self.decimal), round(float(info_["confidense_intervals"][interval_name][1]), self.decimal)))
+                        data_intervals[data1].append((round(float(info_["confidence_intervals"][interval_name][0]), self.decimal), round(float(info_["confidence_intervals"][interval_name][1]), self.decimal)))
                     else:
                         data_mean[data1].append(0)
                         data_intervals[data1].append(0)

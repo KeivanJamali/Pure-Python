@@ -305,8 +305,15 @@ class Validation_Tools:
                         best_data = data
             print(best_data)
 
-            for data in data_list:
-                data_s[data] = [round(self.data[data]["mean"], self.decimal), round(self.data[data]["mean"] - best + epsilon, self.decimal)]
+            if more_less == "more":
+                print("We need to see all negative numbers.")
+                for data in data_list:
+                    data_s[data] = [round(self.data[data]["mean"], self.decimal), round(self.data[data]["mean"] - best + epsilon, self.decimal)]
+                
+            elif more_less == "less":
+                print("We need to see all positive numbers.")
+                for data in data_list:
+                    data_s[data] = [round(self.data[data]["mean"], self.decimal), round(self.data[data]["mean"] - best - epsilon, self.decimal)]
             data_structure = pd.DataFrame.from_dict(data_s, orient="index", columns=columns)
             self.comparisons["M.C. with the best"] = data_structure
             return data_structure

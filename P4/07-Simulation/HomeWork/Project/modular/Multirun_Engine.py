@@ -1,5 +1,5 @@
 import pandas as pd
-from modular.Individual_Engine import One_Server_Queue
+from modular.Individual_Engine import Queue
 from modular.Number_Generator import Exponential_Generator, Deterministic_Generator
 
 
@@ -8,10 +8,10 @@ class Queue_Program:
                  seed_pairs:list,
                  mean_pair:list,
                  generator_pair:list,
+                 policy,
                  sim_time_limit:float=float("inf"), 
                  sim_customer_limit:int=float("inf"),
-                 capacity:int=1,
-                 policy:str="FCFS"):
+                 capacity:int=1):
         self.seed_pairs = seed_pairs
         self.capacity = capacity
         self.mean_pair = mean_pair
@@ -19,18 +19,18 @@ class Queue_Program:
         self._set_generators()
         self.sim_time_limit = sim_time_limit
         self.sim_customer_limit = sim_customer_limit
-        self.policy = policy.lower()
+        self.policy = policy
         self.result = None
 
     def run(self):
         result = [] 
         for i in range(len(self.seed_pairs)):
-            model = One_Server_Queue(arrival_gen=self.arrival_gens[i],
-                                     service_time_gen=self.service_time_gens[i],
-                                     sim_time_limit=self.sim_time_limit,
-                                     sim_customer_limit=self.sim_customer_limit,
-                                     capacity=self.capacity)
-            model.run(policy=self.policy, report=False)
+            model = Queue(arrival_gen=self.arrival_gens[i],
+                          service_time_gen=self.service_time_gens[i],
+                          sim_time_limit=self.sim_time_limit,
+                          sim_customer_limit=self.sim_customer_limit,
+                          capacity=self.capacity)
+            model.run(policy=self.policy, detailed=False, report=False)
             model.report_data["seed_pair"] = self.seed_pairs[i]
             result.append(model.report_data)
         self.result = pd.DataFrame(result)

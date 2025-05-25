@@ -2,26 +2,21 @@ import simpy
 from modular.Players import Customer
 
 class Queue:
-    def __init__(self, 
-                 arrival_gen:float,
-                 service_time_gen:float,
-                 sim_time_limit:int=float("inf"), 
-                 sim_customer_limit:int=float("inf"),
+    def __init__(self,
+                 env:simpy.Environment,
+                 arrival_gen,
+                 service_time_gen,
                  capacity:int=1):
         """Make a MM1 Queue with FCFS policy.
 
         Args:
             arrival_gen (float): Generator that produce inter-arrival time.
             service_time_gen (float): Generator that produce service time.
-            sim_time_limit (int, optional): If you want can say a limit for the time of simulation. Defaults to float("inf").
-            sim_customer_limit (int, optional): If you want you can set the max served customer. Defaults to float("inf").
             capacity (int, optional): The capacity of server.
         """
         self.arrival_gen = arrival_gen
         self.service_time_gen = service_time_gen
-        self.sim_time_limit = sim_time_limit
-        self.sim_customer_limit = sim_customer_limit
-        self.env = simpy.Environment()
+        self.env = env
         self.server = simpy.Resource(self.env, capacity=capacity)
         self.capacity = capacity
         self.stats = {"Wait_time_in_queue": [],
@@ -79,9 +74,9 @@ class Queue:
                 if detailed:
                     print(f"[ZERO] As no one where in queue or server, we activate customer {customer_id} and remove it from queue.")
 
-            result_event = yield self.callbacks["customer_arrived_event"] | self.callbacks["dispatcher_event"]
+            event_result = yield self.callbacks["customer_arrived_event"] | self.callbacks["dispatcher_event"]
             if len(self.server.users) < self.server.capacity and len(self.customers_in_queue) > 0:
-                if self.callbacks["dispatcher_event"] in result_event:
+                if self.callbacks["dispatcher_event"] in event_result:
                     customer_id = yield self.callbacks["dispatcher_event"]
                     del self.customer_in_system[customer_id]
                     if detailed:
@@ -91,24 +86,24 @@ class Queue:
                 if detailed:
                     print(f"[DISPATCH] Customer {customer_id} goes to server according to the policy.")
 
-    def run(self, policy:str, report:bool=True, detailed:bool=False):
-        """Starts the simulation.
-        """
-        self.env.process(self._arrival_process(detailed=detailed))
-        self.env.process(self._dispatcher_process(policy_function=policy, detailed=detailed))
+    # def run(self, policy:str, report:bool=True, detailed:bool=False):
+    #     """Starts the simulation.
+    #     """
+    #     self.env.process(self._arrival_process(detailed=detailed))
+    #     self.env.process(self._dispatcher_process(policy_function=policy, detailed=detailed))
 
-        while True:
-            self.env.step()
-            if self.env.now >= self.sim_time_limit:
-                print("[INFO] Time limit reached. The simulation finished successfuly.")
-                self.limit_type = "T"
-                break
-            if self.stats["completed"] >= self.sim_customer_limit:
-                print("[INFO] Customer limit reached. The simulation finished successfuly.")
-                self.limit_type = "C"
-                break
-        self.finalize_remaining_customers()
-        self.report(print_=report)
+    #     while True:
+    #         self.env.step()
+    #         if self.env.now >= self.sim_time_limit:
+    #             print("[INFO] Time limit reached. The simulation finished successfuly.")
+    #             self.limit_type = "T"
+    #             break
+    #         if self.stats["completed"] >= self.sim_customer_limit:
+    #             print("[INFO] Customer limit reached. The simulation finished successfuly.")
+    #             self.limit_type = "C"
+    #             break
+    #     self.finalize_remaining_customers()
+    #     self.report(print_=report)
     
     def finalize_remaining_customers(self):
         """It will take care of the last people who are still in the queue and not finished yet, but we need their presece

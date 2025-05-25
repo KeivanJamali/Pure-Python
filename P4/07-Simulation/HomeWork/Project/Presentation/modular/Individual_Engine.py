@@ -8,14 +8,14 @@ class Queue:
                  sim_time_limit:int=float("inf"), 
                  sim_customer_limit:int=float("inf"),
                  capacity:int=1):
-        """Make a MM1 Queue with FCFS policy.
+        """Make a General Queue. In this class you can set all the statistics you may need to calculate.
 
         Args:
             arrival_gen (float): Generator that produce inter-arrival time.
             service_time_gen (float): Generator that produce service time.
             sim_time_limit (int, optional): If you want can say a limit for the time of simulation. Defaults to float("inf").
             sim_customer_limit (int, optional): If you want you can set the max served customer. Defaults to float("inf").
-            capacity (int, optional): The capacity of server.
+            capacity (int, optional): The capacity of server. Defaults to 1.
         """
         self.arrival_gen = arrival_gen
         self.service_time_gen = service_time_gen
@@ -30,15 +30,19 @@ class Queue:
                       "Integral_of_curve": 0,
                       "completed":0}
         self.customer_id = 0
-        self.callbacks = {"dispatcher_event": self.env.event(),
+        self._callbacks = {"dispatcher_event": self.env.event(),
                           "customer_arrived_event": self.env.event()}
         self.customer_in_system = {}
         self.customers_in_queue = []
         self.limit_type = None
         self.report_data = {}
 
-    def _arrival_process(self, detailed=False):
-        """Send customers in queue. This function is a generator used for env.
+    def _arrival_process(self, detailed:bool=False):
+        """Generate customers. 
+        This function is a generator used for processing.
+
+        Args:
+            detailed (optional, bool): If you want to see all the details when customers arrives, change this to 'True'. Defaults to False.
         """
         while True:
             interarrival = self.arrival_gen()
@@ -52,7 +56,7 @@ class Queue:
                 "arrival_time": self.env.now,
                 "service_time": service_time,
                 "stats": self.stats,
-                "callbacks": self.callbacks,
+                "callbacks": self._callbacks,
             }
 
             self.customer_in_system[self.customer_id] = Customer(**customer)
@@ -62,27 +66,34 @@ class Queue:
                 print(f"[ARRIVE] Customer {self.customer_id} generated. Added to system and queue.")
 
             # Tell everyone that a customer arrived.
-            if not self.callbacks["customer_arrived_event"].triggered:
-                self.callbacks["customer_arrived_event"].succeed(self.customer_id)
+            if not self._callbacks["customer_arrived_event"].triggered:
+                self._callbacks["customer_arrived_event"].succeed(self.customer_id)
 
             # Reset the event for next customer.
             self.customer_id += 1
-            self.callbacks["customer_arrived_event"] = self.env.event()
+            self._callbacks["customer_arrived_event"] = self.env.event()
 
-    def _dispatcher_process(self, policy_function, detailed:bool):
-        """Continuously checks and dispatches the customer according to the policy function."""
+    def _dispatcher_process(self, policy_function, detailed:bool=False):
+        """Dispatch customers to the server according to the policy function.
+        This function is a generator used for processing.
+
+        Args:
+            policy (python function): This function is a python function where input=wait customers as a list of (customer_id, customer_data). 
+                                      The output should be a int number which shows the customer_id of the chosen customer.
+            detailed (optional, bool): If you want to see all the details when customers arrives, change this to 'True'. Defaults to False.
+        """
         while True:
             if len(self.customers_in_queue) == 0 and len(self.server.users) == 0:
-                customer_id = yield self.callbacks["customer_arrived_event"]
+                customer_id = yield self._callbacks["customer_arrived_event"]
                 self.customer_in_system[customer_id].active()
                 self.customers_in_queue.pop(0)
                 if detailed:
                     print(f"[ZERO] As no one where in queue or server, we activate customer {customer_id} and remove it from queue.")
 
-            result_event = yield self.callbacks["customer_arrived_event"] | self.callbacks["dispatcher_event"]
+            result_event = yield self._callbacks["customer_arrived_event"] | self._callbacks["dispatcher_event"]
             if len(self.server.users) < self.server.capacity and len(self.customers_in_queue) > 0:
-                if self.callbacks["dispatcher_event"] in result_event:
-                    customer_id = yield self.callbacks["dispatcher_event"]
+                if self._callbacks["dispatcher_event"] in result_event:
+                    customer_id = yield self._callbacks["dispatcher_event"]
                     del self.customer_in_system[customer_id]
                     if detailed:
                         print(f"[QUITE] Customer {customer_id}")
@@ -91,8 +102,14 @@ class Queue:
                 if detailed:
                     print(f"[DISPATCH] Customer {customer_id} goes to server according to the policy.")
 
-    def run(self, policy:str, report:bool=True, detailed:bool=False):
-        """Starts the simulation.
+    def run(self, policy, report:bool=True, detailed:bool=False) -> None:
+        """Starts the simulation by adding arrival process and dispatcher process to the environment.
+
+        Args:
+            policy (python function): This function is a python function where input=wait customers as a list of (customer_id, customer_data). 
+                                      The output should be a int number which shows the customer_id of the chosen customer.
+            report (optional, bool): If you don't want to see the resport change it to False. Defaults to True.
+            detailed (optional, bool): If you want to see every detail in the simulation process, change this to True. Defaults to False.
         """
         self.env.process(self._arrival_process(detailed=detailed))
         self.env.process(self._dispatcher_process(policy_function=policy, detailed=detailed))
@@ -111,8 +128,8 @@ class Queue:
         self.report(print_=report)
     
     def finalize_remaining_customers(self):
-        """It will take care of the last people who are still in the queue and not finished yet, but we need their presece
-        to find the total integral of the curve.
+        """It will take care of last people who are still in the queue. These people stats is not calculated. You can change this part as you wish.
+           Here I want to find the total integral of the curve.
         """
         for customer_id, customer in self.customers_in_queue:
             wait_time_so_far = self.env.now - customer["arrival_time"]
@@ -120,8 +137,11 @@ class Queue:
                 self.stats["Waits_more"] += 1
             self.stats["Integral_of_curve"] += wait_time_so_far
 
-    def report(self, print_):
-        """Give a report.
+    def report(self, print_:bool=False):
+        """It will make a dict to show the results.
+
+        Args:
+            print_ (optional, False): If you want to see the results in the output too, change this to true. . Defaults to False.
         """
         if self.limit_type == "C":
             total_time = self.env.now

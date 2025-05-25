@@ -8,15 +8,17 @@ class Customer:
                  arrival_time:float, 
                  service_time:float, 
                  stats:dict,
-                 callbacks:dict):
+                 _callbacks:dict):
         """Here we have the Customer object that will process.
 
         Args:
             env (simpy.Environment): We pass the environment we are working in.
             id (int): The id of this customer which is a number.
             server (simpy.Resource): We pass the resource or server.
+            arrival_time (float): We pass the calculated arrival time here.
             service_time (float): We pass the calculated service time here.
             stats (dict): All the parameters we want to monitor.
+            _callback (dict, private variable): Do not change this variable, it will call Engine whenever is needed. Warning!!!
         """
 
         self.env = env
@@ -25,16 +27,15 @@ class Customer:
         self.arrival_time = arrival_time
         self.service_time = service_time
         self.stats = stats
-        self.callbacks = callbacks
+        self._callbacks = _callbacks
         self.action = None
 
     def active(self):
-        """Customer starts to do it's job."""
+        """Activate customers. Customer starts to do it's job."""
         self.action = self.env.process(self.process())
 
     def process(self):
-        """The behaviour of a customer who shoud go to the server.
-        """
+        """The behaviour of a customer who shoud go to the server."""
         with self.server.request() as request:
             yield request
 
@@ -49,7 +50,7 @@ class Customer:
             self.stats["Integral_of_curve"] += wait_time_in_system
             self.stats["completed"] += 1
 
-            if not self.callbacks["dispatcher_event"].triggered:
-                self.callbacks["dispatcher_event"].succeed(self.id)
-            self.callbacks["dispatcher_event"] = self.env.event()
+            if not self._callbacks["dispatcher_event"].triggered:
+                self._callbacks["dispatcher_event"].succeed(self.id)
+            self._callbacks["dispatcher_event"] = self.env.event()
         

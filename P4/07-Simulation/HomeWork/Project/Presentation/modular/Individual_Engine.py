@@ -56,7 +56,7 @@ class Queue:
                 "arrival_time": self.env.now,
                 "service_time": service_time,
                 "stats": self.stats,
-                "callbacks": self._callbacks,
+                "_callbacks": self._callbacks,
             }
 
             self.customer_in_system[self.customer_id] = Customer(**customer)

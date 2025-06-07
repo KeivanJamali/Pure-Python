@@ -2,6 +2,7 @@ import networkx as nx
 import osmnx as ox
 import matplotlib.pyplot as plt
 from pathlib import Path
+import random
 
 
 
@@ -20,14 +21,15 @@ class Data_loader:
             print("[INFO] Start downloading data...")
             G = ox.graph_from_place(self.city_name, network_type="drive")
             # ox.plot_graph(G)
-            ox.save_graphml(G, filepath=path_dir/file_name+".graphml")
+            name = file_name + ".graphml"
+            ox.save_graphml(G, filepath=path_dir/name)
             print(f"[INFO] Data is downloaded and stored as {file_name} from the local device.")
         self.raw_graph = G
 
     def set_setting(self, number_of_nodes):
         self._make_undirected()
         self._extract_largest_connected_components()
-        self._customize_component(number_of_nodes=number_of_nodes)
+        self._customize_component(number_of_nodes=number_of_nodes, iterations=10)
         self._assign_node_label()
         self._assign_edge_label()
 
@@ -42,8 +44,10 @@ class Data_loader:
         print(f"[INFO] Largest component founded!")
 
 
-    def _customize_component(self, number_of_nodes):
+    def _customize_component2(self, number_of_nodes):
         start_node = max(dict(self.graph.degree()).items(), key=lambda x: x[1])[0]
+        print(f"[INFO] Start node is {start_node}")
+
         nodes_seen = set([start_node])
         fringe = set(self.graph[start_node])
 
@@ -51,7 +55,9 @@ class Data_loader:
             next_node = max(fringe, key=lambda n: self.graph.degree(n))
             nodes_seen.add(next_node)
             fringe.update(self.graph[next_node])
-            fringe -= nodes_seen
+            self.fringe = fringe
+            self.test = next_node
+            fringe -= set([next_node])
 
         # If fewer than 20 nodes found, warn the user
         if len(nodes_seen) < number_of_nodes:
@@ -67,6 +73,48 @@ class Data_loader:
             G_standard.add_edge(u, v, **data)
         self.graph = G_standard
 
+    def _customize_component(self, number_of_nodes, iterations):
+        self.graph = nx.Graph(self.graph)
+        best_nodes = set()
+        best_edges = []
+        
+        for _ in range(iterations):
+            start_node = random.choice(list(self.graph.nodes))
+            visited = set([start_node])
+            edge_list = []
+            queue = [start_node]
+
+            while queue and len(visited) < number_of_nodes:
+                current = queue.pop(0)
+                neighbors = list(self.graph.neighbors(current))
+
+                for neighbor in neighbors:
+                    if len(visited) >= number_of_nodes:
+                        break
+
+                    edge = (current, neighbor)
+                    if neighbor not in visited:
+                        visited.add(neighbor)
+                        queue.append(neighbor)
+                        edge_list.append(edge)
+                    elif edge not in edge_list and (neighbor, current) not in edge_list:
+                        edge_list.append(edge)  # Add it if it hasn't already been added in any direction
+
+            if len(visited) == number_of_nodes and len(edge_list) > len(best_edges):
+                best_nodes = visited.copy()
+                best_edges = edge_list.copy()
+
+        if not best_nodes:
+            print("[WARNING] Could not find a connected subgraph with the desired number of nodes.")
+            return None
+
+        print(f"[INFO] Found a connected subgraph with {len(best_nodes)} nodes and {len(best_edges)} edges.")
+        
+        # Build and return the subgraph
+        subgraph = self.graph.subgraph(best_nodes).copy()
+        self.graph = subgraph
+        return subgraph
+
     def _assign_node_label(self):
         sorted_nodes = sorted(self.graph.nodes())
         node_label_map = {node_id: i + 1 for i, node_id in enumerate(sorted_nodes)}
@@ -77,16 +125,28 @@ class Data_loader:
 
     def _assign_edge_label(self):
         edge_index = {}
-        names = []
+        names = {}
         for u, v in self.graph.edges():
             label_sum = u + v
-            while label_sum in names:
-                label_sum += 0.5                    
-            names.append(label_sum)
+            depth = 0
+            while label_sum in names.keys():
+                depth += 1
+                if min([u, v]) < min(names[label_sum]):
+                    label_sum -= 0.1/depth
+                else:
+                    label_sum += 0.1/depth
+            names[label_sum] = (u, v)
+
+        values = sorted(list(names.keys()))
+        
+        counter = 0
+        for value in values:
+            counter += 1
+            u, v = names[value]
             # Ensure unique key (undirected)
             if (u, v) not in edge_index and (v, u) not in edge_index:
-                edge_index[(u, v)] = label_sum
-            self.graph.edges[u, v]["ID"] = label_sum
+                edge_index[(u, v)] = counter
+            self.graph.edges[u, v]["ID"] = counter
                 
         self.edge_index = edge_index
         print("\n[INFO] Edge Indices (based on node label sums):")
@@ -98,8 +158,14 @@ class Data_loader:
             ox.plot_graph(graph)
         else:
             pos = nx.spring_layout(graph, seed=seed)
-            nx.draw(self.graph, pos, with_labels=True, node_color='lightblue', node_size=800)
+            # plt.figure(figsize=(12, 12))
+            nx.draw(self.graph, pos, with_labels=True, node_color='lightblue', node_size=200)
             nx.draw_networkx_edge_labels(self.graph, pos,
                 edge_labels={edge: idx for edge, idx in self.edge_index.items()})
+            # Auto adjust plot bounds with padding
+            # x_vals, y_vals = zip(*pos.values())
+            # plt.xlim(min(x_vals) - 0.001, max(x_vals) + 0.001)
+            # plt.ylim(min(y_vals) - 0.001, max(y_vals) + 0.001)
+
             plt.title("Subgraph with Edge Indices")
             plt.show()

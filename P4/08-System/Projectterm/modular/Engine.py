@@ -293,7 +293,6 @@ class Engine:
         derivative = sp.diff(objective_function, alpha)
         critical_points = sp.solve(derivative, alpha)
         # critical_points = [pt for pt in critical_points if pt.is_real and pt >= 0]
-        print(critical_points)
         return float(critical_points[0])
 
     def _compute_integral_costs_convex_combination(self, xn:dict, yn:dict):
@@ -322,7 +321,11 @@ class Engine:
         x = {}
         for u, v in self.graph.edges():
             x[self.graph.edges[u, v]["var"]] = sum(self.graph.edges[u, v]["flows"])
-            x[self.graph.edges[u, v]["var"]] = x[self.graph.edges[u, v]["var"]].subs(f)
+            # print(x[self.graph.edges[u, v]["var"]])
+            # print(x)
+            # print(self.graph.edges[u, v]["var"])
+            if type(x[self.graph.edges[u, v]["var"]]) != int:
+                x[self.graph.edges[u, v]["var"]] = x[self.graph.edges[u, v]["var"]].subs(f)
         return x
 
     def _update_travel_time(self, solution, print_=True):

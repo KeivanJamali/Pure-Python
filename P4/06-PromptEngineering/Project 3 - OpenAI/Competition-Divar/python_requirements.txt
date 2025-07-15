@@ -1,0 +1,5 @@
+openai==1.93.3
+requests==2.32.4
+pillow==11.3.0
+pytesseract==0.3.13
+beautifulsoup4==4.13.4

@@ -1,0 +1,98 @@
+Skip to content
+Keivan Jamali
+Keivan Jamali
+Home
+Services
+Projects
+Automations
+About
+Contact
+Hi, I'm
+Keivan Jamali
+Civil Engineering Student at Sharif University of Technology
+
+Scroll Down
+💬
+You can see my Résumé here
+
+résumé
+
+Civil Engineering at Sharif University of Technology
+My Skills :
+
+Here you can fine my most significant skills. Provided percentages are for easier comparison between my skills.
+
+Python Programming
+90%
+PyTorch - Machine Learning
+85%
+Data Analysis - Pandas & Numpy
+82%
+WordPress
+76%
+Prompt Engineering
+94%
+Other Skills : MathCad | MatLab | Maple | LaTeX | CSS | HTML | Revit | PhotoShop | CSI Etabs | AutoCAD
+
+Research Interests :
+Intelligent Transportation Systems (ITS)
+Traffic Flow
+Automated Vehicles
+Behavior
+Machine Learning
+Education :
+Bachelor of Science in Civil Engineering   |   Sharif University of Technology
+         29th October 2020 – 21st June 2024   |   GPA : 4.0/4.0   |   Ranked 2 among 80
+ High School Diploma in Mathematics and Physics  |  National Organization for Development of Exceptional Talents (Sampad)  
+         Sep 2014 – June 2020 
+Projects :
+Simplex-step   |   Feb 2024 – June 2024
+• Performing the Simplex algorithm – the magic starts here
+• Prepping the two-phase Simplex method – making sure we’re ready for anything.
+• Implementing sensitivity analysis – because knowing how changes affect our solutions is key.
+• Using duality to optimize the performance – duality is like finding the secret sauce for efficiency!
+• The model base code can be tracked on KeivanJamali.com and GitHub.
+Food Vision with PyTorch   |   Oct 2023 – May 2024
+• Currently engaged in the development of a vision-based model using PyTorch.
+• Utilize transfer learning techniques to prepare the model of EfficientNetB2.
+• The model deployed into Hugging-Face
+• The model base code can be tracked on KeivanJamali.com and GitHub.
+Clinic Online Website   |   Oct 2023 –  Jan 2024  |   Supervisor: Dr. Habibi
+• Our team developed a clinic website using Python and Django. The platform streamlines clinic management by handling appointment scheduling, patient registration, and medical record management.
+• Leveraging the Django framework, we created a user-friendly web application. Patients can easily book appointments and access their medical history, while administrators efficiently manage staff schedules and patient records.
+• Our project involved defining tables, implementing classes with object-oriented programming (OOP) methods, and seamlessly integrating the back-end and front-end components using Django.
+• The project can be tracked on KeivanJamali.com and GitHub.
+LOS Prediction Under Rainy Weather Conditions with Machine Learning   |   Oct 2023 –  Jan 2024  |   Supervisor: Dr. Z. Amini
+• Worked on LOS Prediction Under Rainy Weather Conditions with Machine Learning using Python.
+• Developing a model to predict unseen regions.
+• Planning to write a research paper on the project’s findings and insights.
+• Progress and updates on the project can be tracked on KeivanJamali.com and GitHub.
+Traffic Demand Modeling Using Neural Networks   |   Jun 2023 – Jan 2024   |   Supervisor: Dr. Z. Amini
+• Developed and implemented a traffic demand modeling framework using the Gravity model and Neural Networks for accurate flow prediction.
+• Analyzed results from four OD matrices (SiouxFalls, Anaheim, Chicago, and Gold Coast Zones) to gain insights into traffic patterns.
+• Contributing to a research paper on the findings.
+• Documented the project details and outcomes on KeivanJamali.com & GitHub.
+FEM Modeling of Azadi Tower   |   Feb 2023 – June 2023   |   Supervisor: Dr. M. Ahmadi
+• Developed a 2D FEM model to simulate and analyze the structural behavior of Azadi Tower.
+• Provided valuable insights by analyzing displacements and forces of each node.
+• Received the highest score in the class (2.5 out of 2).
+• Project is available on KeivanJamali.com & GitHub.
+Modeling the Transfer of Pollution in the Persian Gulf   |   Feb 2023 – June 2023   |   Supervisor: Dr. Danesh
+• Developed a comprehensive model to simulate pollution diffusion and advection in the Persian Gulf.
+• Investigated the impact of primary pollutants and analyzed pollution transfer patterns.
+• Created an animation illustrating the movement and spread of pollutants within the ocean.
+• Project is available on KeivanJamali.com & GitHub.
+
+Civil Engineering at Sharif University of Technology
+My Location
+Iran, Yazd, Maskan Square, Megdad Street
+
+Quick Link
+-Home
+-Projects
+-Resume
+-Contact
+-Privacy Policy
+
+Copyright © 2025 Keivan Jamali | Powered by Keivan Jamali
+

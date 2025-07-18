@@ -1,0 +1,46 @@
+# LOS Prediction  
+
+**Predicting Level of Service (LOS) Under Rainy Weather Conditions Using Machine Learning**  
+
+**Relative Fields**: Transportation, Programming  
+
+---
+
+## Table of Contents  
+1. [Overview](#project-overview)  
+2. [Project Steps](#project-steps)  
+3. [Results](#results-of-the-project)  
+4. [Code Sources](#code-sources)  
+
+---
+
+## Project Overview  
+This project aims to uncover the hidden impact of rainy weather on the **Level of Service (LOS)** in transportation systems using **machine learning**. By analyzing data and implementing neural networks, the project strives to provide insights into traffic behavior under adverse weather conditions.  
+
+🌧️ "As raindrops dance on the pavement and traffic jams emerge, this journey explores how every drop and delay teaches us the art of data-driven discovery."  
+
+---
+
+## Project Steps  
+1. **Download the UTD19 dataset** from [this link](https://www.research-collection.ethz.ch/handle/20.500.11850/437802).  
+2. **Prepare the data** for training with a Neural Network.  
+3. Extract data and build the prediction model.  
+
+---
+
+## Results of the Project  
+A research paper has been prepared to document the findings:  
+
+[==> Read the Paper Here <==](https://keivanjamali.com/wp-content/uploads/2024/04/Incorporating-Traffic-Assignment-Model-into-A.pdf)  
+
+---
+
+## Code Sources  
+The implementation uses **Python** for data processing and modeling.  
+
+Access all codes and results here:  
+- [GitHub Repository - LOS Prediction](https://github.com/KeivanJamali/Machine-Learning-Projects/tree/main/Project%205%20-%20LOS%20Prediction)  
+
+---
+
+[Scroll to Top](#los-prediction)

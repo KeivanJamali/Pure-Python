@@ -1,0 +1,56 @@
+# Services  
+
+**What can I do?**  
+Here are my abilities and services:  
+
+---
+
+## Transportation Engineering  
+- Utilizing **machine learning** and **deep learning** to uncover patterns in transportation systems.  
+![Transportation Engineering](https://keivanjamali.com/wp-content/uploads/2023/07/Transportation-Engineering-1.png)  
+
+---
+
+## Python Programming  
+- Specialized in **machine learning** (ML) and **scientific programming**.  
+- Developed a `Gravity_Model` class.  
+![Python Programming](https://keivanjamali.com/wp-content/uploads/2023/07/GM-code-1-1024x766.png)  
+
+---
+
+## Revit Designing  
+- Designed a building project using **Revit**.  
+![Revit Project](https://keivanjamali.com/wp-content/uploads/elementor/thumbs/D14-q9ujxgtbsnq92dj1fv30rlex6zl8bpmghnc0oby37c.png)  
+
+---
+
+## HTML, CSS, and WordPress  
+- Proficient in **HTML** and **CSS** (beginner-level knowledge).  
+- Experienced in designing websites with **WordPress**.  
+![WordPress](https://keivanjamali.com/wp-content/uploads/2023/07/WordPress-1-1024x656.png)  
+
+---
+
+## Photoshop Designing  
+- Created posters, website designs, and other projects using **Photoshop**.  
+![Photoshop Projects](https://keivanjamali.com/wp-content/uploads/2023/07/Photoshop-icon-2048x1152.png)  
+![Poster Design](https://keivanjamali.com/wp-content/uploads/elementor/thumbs/Poster-qnmjq23sie812diikvjrv169damy146o6182qpz6pw.png)  
+
+---
+
+## Prompt Engineering  
+- Expert in using modern AI tools like **ChatGPT** for data generation and optimization.  
+- Completed 20 courses to gain advanced knowledge in prompt engineering.  
+- Created my own **Prompt Engineering** course.  
+![Prompt Engineering](https://keivanjamali.com/wp-content/uploads/2024/04/Prompt_Engineering-1024x649.jpg)  
+
+---
+
+## PyTorch  
+- Certified in **PyTorch for Deep Learning Bootcamp (2023)** on **Udemy**.  
+  - Completed **52 hours and 14 minutes** of video-based training.  
+![PyTorch](https://keivanjamali.com/wp-content/uploads/2024/05/PyTorch.png)  
+
+---
+
+[Scroll to Top](#Services)

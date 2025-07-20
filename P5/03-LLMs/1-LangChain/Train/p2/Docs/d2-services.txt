@@ -1,0 +1,44 @@
+# Services (https://keivanjamali.com/keivan-jamali-services/)
+
+**What can I do?**  
+Here are my abilities and services:  
+
+---
+
+## Transportation Engineering  
+- Utilizing **machine learning** and **deep learning** to uncover patterns in transportation systems.  
+
+---
+
+## Python Programming  
+- Specialized in **machine learning** (ML) and **scientific programming**.  
+- Developed a `Gravity_Model` class.  
+
+---
+
+## Revit Designing  
+- Designed a building project using **Revit**.  
+ 
+---
+
+## HTML, CSS, and WordPress  
+- Proficient in **HTML** and **CSS** (beginner-level knowledge).  
+- Experienced in designing websites with **WordPress**.  
+
+---
+
+## Photoshop Designing  
+- Created posters, website designs, and other projects using **Photoshop**.  
+
+---
+
+## Prompt Engineering  
+- Expert in using modern AI tools like **ChatGPT** for data generation and optimization.  
+- Completed 20 courses to gain advanced knowledge in prompt engineering.  
+- Created my own **Prompt Engineering** course.  
+
+---
+
+## PyTorch  
+- Certified in **PyTorch for Deep Learning Bootcamp (2023)** on **Udemy**.  
+  - Completed **52 hours and 14 minutes** of video-based training.  

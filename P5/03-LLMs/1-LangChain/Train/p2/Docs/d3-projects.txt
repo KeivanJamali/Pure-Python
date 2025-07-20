@@ -1,0 +1,72 @@
+# My Projects and Their Brief Overviews (https://keivanjamali.com/keivan-jamali-project-portfolio/)
+
+---
+
+resume
+
+---
+
+## [Simplex-step 🧑‍💻🎯📥](https://keivanjamali.com/keivan-jamali-project-portfolio/simplex-method-python-library-keivan-jamali/)
+
+**Project Overview:**  
+For my Systems Engineering course project, I built a Python library that implements the Simplex method, designed to solve optimization problems step-by-step. The library aims to make the process as transparent and user-friendly as possible.  
+
+[More details](https://keivanjamali.com/keivan-jamali-project-portfolio/simplex-method-python-library-keivan-jamali/)
+
+---
+
+## [Food Vision 🍕👁️💪](https://keivanjamali.com/keivan-jamali-project-portfolio/culinary-image-recognition-deep-learning/)
+
+**Project Overview:**  
+Embarking on a culinary odyssey, I sought to teach a machine to decode the secrets of gastronomy through images. Based on the "Udemy – PyTorch for Deep Learning Bootcamp 2023-6" course, I crafted a neural network to recognize food images, blending technology with taste. #DeepLearning #NeuralNetworks  
+
+[More details](https://keivanjamali.com/keivan-jamali-project-portfolio/culinary-image-recognition-deep-learning/)
+
+---
+
+## [LOS Prediction Under Rainy Weather Conditions](https://keivanjamali.com/keivan-jamali-project-portfolio/traffic-los-prediction-rainy-weather-ml/)
+
+**Project Overview:**  
+This project aimed to predict the **Level of Service (LOS)** under rainy conditions. I developed a machine learning model to forecast how rain influences traffic dynamics, and the science behind it. 🌐 #ML #Transportation #WeatherImpact  
+
+[More details](https://keivanjamali.com/keivan-jamali-project-portfolio/traffic-los-prediction-rainy-weather-ml/)
+
+---
+
+## [Comparative Analysis of Gravity Model, Neural Network, and Graph Neural Network for Traffic Demand Modeling in Urban Areas](https://keivanjamali.com/keivan-jamali-project-portfolio/urban-flow-prediction-models/)
+
+**Project Overview:**  
+I explored the use of three models—Gravity Model, Neural Networks, and Graph Neural Networks—for urban traffic demand forecasting. Using Python and PyTorch, I compared the effectiveness of each model in predicting traffic flow in different cities. #TrafficAnalysis #SmartCities  
+
+[More details](https://keivanjamali.com/keivan-jamali-project-portfolio/urban-flow-prediction-models/)
+
+---
+
+## [Advanced Programming: Clinic Website](https://keivanjamali.com/keivan-jamali-project-portfolio/clinic-management-system-django/)
+
+**Project Overview:**  
+As part of an "Advanced Programming" course, my team and I developed a clinic management system using **Python** and **Django**. This system allows for smooth appointment scheduling, patient registration, and management of medical records. 🌟  
+
+[More details](https://keivanjamali.com/keivan-jamali-project-portfolio/clinic-management-system-django/)
+
+---
+
+## [Structural Analysis of Azadi Tower using Finite Element Method: A 2D Model Approach](https://keivanjamali.com/keivan-jamali-project-portfolio/azadi-tower-structural-analysis/)
+
+**Project Overview:**  
+Using the **Finite Element Method (FEM)**, I modeled the **Azadi Tower** to analyze forces and displacements within the structure. This approach helps understand the impact of external forces on the tower's integrity. 🏛️
+
+[More details](https://keivanjamali.com/keivan-jamali-project-portfolio/azadi-tower-structural-analysis/)
+
+---
+
+## [Simulating Pollution Diffusion in the Persian Gulf: A Hypothetical Study on Gas Penetration](https://keivanjamali.com/keivan-jamali-project-portfolio/persian-gulf-pollution-advection-diffusion/)
+
+**Project Overview:**  
+In this environmental project, I modeled the diffusion and advection of pollutants in the Persian Gulf. The study provides insights into how pollutants spread with wind and water currents. 🌊✨  
+
+[More details](https://keivanjamali.com/keivan-jamali-project-portfolio/persian-gulf-pollution-advection-diffusion/)
+
+---
+
+[Scroll to Top](#my-projects-and-their-brief-overviews)

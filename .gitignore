@@ -2,4 +2,5 @@
 .env
 
 # ignore these directories
-P5/01-Thesis/data/Shiraze94
+P5/01-Thesis/data/Shiraze94_fa
+P5/01-Thesis/data/Shiraze94_en

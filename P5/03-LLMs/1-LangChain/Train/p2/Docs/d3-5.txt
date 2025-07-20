@@ -1,0 +1,66 @@
+# Clinic Online Website (https://keivanjamali.com/keivan-jamali-project-portfolio/clinic-management-system-django/)
+
+**Programming a Clinic Appointment Website Using Database, Python, Django**  
+
+**Relative Fields**: Programming, Object-Oriented Programming, Django, SQL Queries  
+
+---
+
+## Table of Contents  
+1. [Overview](#project-overview)  
+2. [Project Steps](#project-steps)  
+3. [Results](#results-of-the-project)  
+4. [Code Sources](#code-sources)  
+
+---
+
+## Project Overview  
+
+As part of our **Advanced Programming** course, my team and I set out to create a clinic website using **Python** and **Django**. The goal was to develop a seamless platform for clinic management, with features such as:  
+
+- **Effortless appointment scheduling**  
+- **Patient registration**  
+- **Medical records management**  
+
+We aimed to simplify the clinic's operations, making it easier for both patients and administrators to manage appointments, access health records, and track schedules.  
+
+With **Django** as the foundation, we crafted a **user-friendly** interface, allowing patients to book appointments with ease and revisit their medical histories. For the clinic's staff, the website simplifies the management of appointments, schedules, and reports.  
+
+---
+
+## Project Steps  
+
+1. **Define Tables:**  
+   - Set up the necessary database tables for patients, appointments, and medical records.  
+
+2. **Object-Oriented Programming (OOP):**  
+   - Defined relevant classes and methods to handle data interaction.  
+
+3. **Backend & Frontend Development with Django:**  
+   - Worked on both backend logic (using Python and Django) and frontend design to ensure ease of use.  
+
+---
+
+## Results of the Project  
+
+- **First Report:**  
+  [Link to First Report](https://keivanjamali.com/wp-content/uploads/2024/04/Report_AP_Phase_1.pdf)  
+
+- **Second Report:**  
+  [Link to Second Report](https://keivanjamali.com/wp-content/uploads/2024/04/Report_AP_Phase_2.pdf)  
+
+- **Project Diagram:**  
+  ![](https://keivanjamali.com/wp-content/uploads/2024/04/Diagram.png)  
+
+---
+
+## Code Sources  
+
+This program is developed using **Python** and **Django**.  
+
+You can find all the code and documentation here:  
+[GitHub Repository - Clinic Online Website](https://github.com/KeivanJamali/Advanced_Programming_Clinic)  
+
+---
+
+[Scroll to Top](#clinic-online-website)

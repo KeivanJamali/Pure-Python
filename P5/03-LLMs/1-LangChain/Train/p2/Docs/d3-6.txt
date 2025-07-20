@@ -1,0 +1,59 @@
+# Azadi Tower of Iran (https://keivanjamali.com/keivan-jamali-project-portfolio/azadi-tower-structural-analysis/)
+
+**Using Python and Finite Element Analysis to Model the Azadi Tower of Iran**  
+
+**Relative Fields**: Structural Engineering, Steel Engineering, Programming  
+
+---
+
+## Table of Contents  
+1. [Overview](#project-overview)  
+2. [Project Steps](#project-steps)  
+3. [Results](#results-of-the-project)  
+4. [Code Sources](#code-sources)  
+
+---
+
+## Project Overview  
+
+In this project, we aimed to model the **Azadi Tower** as a truss **2D model** using **Finite Element Analysis** (FEA). The goal was to calculate the forces and displacements at each node of the structure using this method.  
+
+**Problem Definition:**  
+![Problem Definition](https://keivanjamali.com/wp-content/uploads/2023/10/Problem-Defenition-300x253.png)
+
+---
+
+## Project Steps  
+
+1. **Defining the Structure in Python:**  
+   - Created a 2D truss model of the Azadi Tower.  
+
+2. **Implementing the Finite Element Method (FEM):**  
+   - Developed the algorithm to calculate forces and displacements at each node using FEA.  
+
+3. **Plotting Results:**  
+   - Visualized the displacements and forces to analyze the structural behavior.  
+
+---
+
+## Results of the Project  
+
+- The output includes the displacements and forces at each node of the structure.  
+- The code can be adapted to model different structures in a truss form.  
+
+**Project Visualization:**  
+*Note: The results have been exaggerated to better illustrate the deformation pattern.*  
+![Azadi Tower Result](https://keivanjamali.com/wp-content/uploads/2023/10/Azadi-Tower-Project.png)
+
+---
+
+## Code Sources  
+
+This modeling was done using **Python**.  
+
+You can find all the code and results here:  
+[GitHub Repository - Azadi Tower of Iran](https://github.com/KeivanJamali/Pure-Python/tree/main/P1/03-Azadi_Project)  
+
+---
+
+[Scroll to Top](#azadi-tower-of-iran)

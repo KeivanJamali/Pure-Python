@@ -1,0 +1,65 @@
+# Flow Prediction (https://keivanjamali.com/keivan-jamali-project-portfolio/urban-flow-prediction-models/)
+
+**Predicting the Flow of OD Matrix Using Gravity Model (GM) and Neural Network (NN)**  
+
+**Relative Fields**: Transportation Engineering, Traffic Engineering, Machine Learning, Neural Networks with PyTorch  
+
+---
+
+## Table of Contents  
+1. [Overview](#project-overview)  
+2. [Project Steps](#project-steps)  
+3. [Results](#results-of-the-project)  
+4. [Code Sources](#code-sources)  
+
+---
+
+## Project Overview  
+
+This project explores a comparative analysis between the **Gravity Model (GM)** and advanced techniques like **Neural Networks (NN)** and **Graph Neural Networks (GNN)** for predicting transportation flows.  
+
+Using real-world datasets from **Siouxfall**, **Anaheim**, and **Chicago**, the goal is to evaluate the strengths and limitations of each method. The project involves discovering patterns, drawing bold conclusions, and challenging conventional understanding of urban dynamics.  
+
+🌆 "Through these datasets, we’re not just crunching numbers – we’re revealing the mysteries of urban life with exciting insights!"  
+
+---
+
+## Project Steps  
+
+1. **Code the Gravity Model (GM):**  
+   - Implemented in four approaches:  
+     - Exponential  
+     - Power  
+     - Tanner  
+     - Guess *(a new method developed by the project author)*  
+   
+2. **Develop Models:**  
+   - Neural Networks (NN)  
+   - Graph Neural Networks (GNN)  
+
+3. **Integrate Details:**  
+   - Combine all models to produce comparative results.  
+
+---
+
+## Results of the Project  
+
+**Status:** Currently under development.  
+
+*Final conclusions and insights are coming soon...*  
+
+---
+
+## Code Sources  
+
+This implementation utilizes **PyTorch** for data modeling.  
+
+- **Latest Updates:**  
+  [GitHub Repository - Transportation Flow Prediction (Last Changes)](https://github.com/KeivanJamali/Machine-Learning-Projects/tree/main/Project%202%20-%20Transportation)  
+
+- **Stable Version:**  
+  [GitHub Repository - Transportation Flow Prediction (Stable Version)](https://github.com/KeivanJamali/Transportation-FlowPrediction)  
+
+---
+
+[Scroll to Top](#flow-prediction)

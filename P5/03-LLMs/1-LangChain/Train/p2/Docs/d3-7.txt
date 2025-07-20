@@ -1,0 +1,62 @@
+# Persian Gulf Pollution (https://keivanjamali.com/keivan-jamali-project-portfolio/persian-gulf-pollution-advection-diffusion/)
+
+**Modeling the Pollution Movement in the Persian Gulf, Including Advection and Diffusion**  
+
+**Relative Fields**: Environmental Engineering, Programming  
+
+---
+
+## Table of Contents  
+1. [Overview](#project-overview)  
+2. [Project Steps](#project-steps)  
+3. [Results](#results-of-the-project)  
+4. [Code Sources](#code-sources)  
+
+---
+
+## Project Overview  
+
+In this project, the goal was to model the pollution movement in the **Persian Gulf**, simulating the effects of leakage into the ocean. The study includes the processes of **advection** (movement with ocean currents) and **diffusion** (spread of pollutants).
+
+**Problem:**  
+What is the speed and the time for the pollution to spread under the following conditions?  
+
+1. **Only Diffusion**  
+2. **Diffusion and Advection with Constant Speed**  
+3. **Diffusion and Advection with Accelerating Speed**
+
+---
+
+## Project Steps  
+
+1. **Code the Diffusion and Advection Processes:**  
+   - Model the movement of pollution using both advection and diffusion equations.  
+
+2. **Color Visualization:**  
+   - Used millions of colors to better illustrate the changes in the ocean environment as pollution spreads.  
+
+3. **Plot and Animation:**  
+   - Created animations to help visualize the pollution spread and its impact over time.  
+
+---
+
+## Results of the Project  
+
+- Even small amounts of leakage can be extremely harmful to the environment.  
+- The project features animations for all three scenarios, with the third scenario (diffusion and accelerating advection) shown below.  
+
+**Scenario 3 - Animation:**  
+*The animation shows how the pollution spreads with accelerating advection and diffusion.*  
+
+---
+
+## Code Sources  
+
+This modeling was done using **Python**.  
+
+You can find all the code and results here:  
+[GitHub Repository - Persian Gulf Pollution](https://github.com/KeivanJamali/Pure-Python/tree/main/P1/06-Pershan_Gulf_Pollution_Project)  
+
+---
+
+[Scroll to Top](#persian-gulf-pollution)

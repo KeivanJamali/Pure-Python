@@ -1,0 +1,49 @@
+# Simplex-step (https://keivanjamali.com/keivan-jamali-project-portfolio/simplex-method-python-library-keivan-jamali/)
+
+A Python library designed for solving optimization problems using the **Simplex algorithm**, step-by-step.  
+
+**Relative Fields**: Optimization, Python Programming  
+
+---
+
+## Table of Contents  
+1. [Overview](#project-overview)  
+2. [Project Steps](#project-steps)  
+3. [Results](#results-of-the-project)  
+4. [Code Sources](#code-sources)  
+
+---
+
+## Project Overview  
+This project was developed for a **Systems Engineering course**, focusing on creating a Python library that simplifies and enhances the transparency of the **Simplex method**.  
+
+---
+
+## Project Steps  
+1. **Performing the Simplex algorithm** – the magic starts here!  
+2. **Prepping the two-phase Simplex method** – ensuring readiness for any scenario.  
+3. **Implementing sensitivity analysis** – understanding how changes impact solutions.  
+4. **Using duality for optimization** – duality reveals the secret sauce for efficiency!  
+
+---
+
+## Results of the Project  
+The library is user-friendly and can be installed easily:  
+
+```bash
+pip install Simplextep
+```
+
+![Installation Screenshot 1](https://keivanjamali.com/wp-content/uploads/2024/07/simplextep_installation.png)  
+![Installation Screenshot 2](https://keivanjamali.com/wp-content/uploads/2024/07/simplextep_installation2.png)  
+
+---
+
+## Code Sources
+The project has been fully implemented in **Python**.  
+
+Find all codes and documentation here:  
+- [GitHub Repository - Simplextep](https://github.com/KeivanJamali/Simplextep)  
+- [Documentation (PDF)](https://keivanjamali.com/wp-content/uploads/2024/07/Systemtep_documentation.pdf)  
+
+[Scroll to Top](#simplex-step)

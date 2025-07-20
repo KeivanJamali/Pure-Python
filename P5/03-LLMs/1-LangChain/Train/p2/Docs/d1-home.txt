@@ -1,0 +1,102 @@
+# Keivan Jamali (https://keivanjamali.com/)
+
+**Civil Engineering Student at Sharif University of Technology**  
+[resume (PDF)](https://keivanjamali.com/wp-content/uploads/2024/09/Resume_2.pdf)
+
+## About Me  
+Civil Engineering at Sharif University of Technology.  
+GPA: **4.0/4.0** | **Ranked 2** among 80 students.  
+
+---
+
+## Skills  
+
+**Key Skills:**  
+- **Python Programming:** 90%  
+- **PyTorch - Machine Learning:** 85%  
+- **Data Analysis (Pandas & NumPy):** 82%  
+- **WordPress:** 76%  
+- **Prompt Engineering:** 94%  
+
+**Other Skills:**  
+MathCad | MatLab | Maple | LaTeX | CSS | HTML | Revit | Photoshop | CSI Etabs | AutoCAD  
+
+---
+
+## Research Interests  
+
+- Intelligent Transportation Systems (ITS)  
+- Traffic Flow  
+- Automated Vehicles  
+- Behavior  
+- Machine Learning  
+
+---
+
+## Education  
+
+**Bachelor of Science in Civil Engineering**  
+Sharif University of Technology  
+*October 2020 – June 2024* | GPA: **4.0/4.0** | Ranked **2/80**  
+
+**High School Diploma in Mathematics and Physics**  
+National Organization for Development of Exceptional Talents (Sampad)  
+*September 2014 – June 2020*  
+
+---
+
+## Projects links
+- [Simplex-step](https://keivanjamali.com/keivan-jamali-project-portfolio/simplex-method-python-library-keivan-jamali/)
+- [Food Vision with PyTorch](https://keivanjamali.com/keivan-jamali-projects/culinary-deep-learning-efficientnetb2/)
+- [Clinic Online Website](https://keivanjamali.com/keivan-jamali-projects/clinic-management-python-django/) 
+- [LOS Prediction Under Rainy Weather Conditions with Machine Learning](https://keivanjamali.com/keivan-jamali-projects/los-transportation-management/)
+- [Traffic Demand Modeling Using Neural Networks](https://keivanjamali.com/keivan-jamali-projects/gravity-model-vs-nn-vs-gnn/)  
+- [FEM Modeling of Azadi Tower](https://keivanjamali.com/keivan-jamali-projects/azadi-tower-2d-trust-model/)
+- [Modeling the Transfer of Pollution in the Persian Gulf](https://keivanjamali.com/keivan-jamali-projects/pollution-modeling-persian-gulf/)  
+
+---
+
+## Projects
+### [Simplex-step]
+*February 2024 – June 2024*  
+- Performed the **Simplex algorithm** and prepared the two-phase method.  
+- Implemented **sensitivity analysis** and used duality to optimize performance.  
+- Code available on [GitHub].  
+
+### [Food Vision with PyTorch]
+*October 2023 – May 2024*  
+- Developed a vision-based model using [PyTorch].  
+- Applied **transfer learning** techniques with **EfficientNetB2**.  
+- Deployed the model on [Hugging Face].
+- Code available on [GitHub].  
+
+### [Clinic Online Website]
+*October 2023 – January 2024* | **Supervisor:** Dr. Habibi  
+- Developed a clinic management system using **Python** and **Django**.  
+- Features include appointment scheduling, patient registration, and medical record management.  
+- Integrated **OOP methods** for seamless back-end and front-end functionality.  
+- Code available on [GitHub].  
+
+### [LOS Prediction Under Rainy Weather Conditions with Machine Learning]
+*October 2023 – January 2024* | **Supervisor:** Dr. Z. Amini  
+- Developed a **Machine Learning** model to predict unseen regions under rainy weather conditions.  
+- Planning a research paper on the project's findings.  
+- Code available on [GitHub].
+
+### [Traffic Demand Modeling Using Neural Networks]
+*June 2023 – January 2024* | **Supervisor:** Dr. Z. Amini  
+- Implemented traffic demand modeling using the **Gravity model** and **Neural Networks**.  
+- Analyzed results across OD matrices for cities like **Sioux Falls** and **Chicago**.  
+- Code available on [GitHub].
+
+### [FEM Modeling of Azadi Tower] 
+*February 2023 – June 2023* | **Supervisor:** Dr. M. Ahmadi  
+- Simulated and analyzed the **structural behavior** of Azadi Tower using **2D FEM modeling**.  
+- Achieved the highest score in class (2.5/2).  
+- Code available on [GitHub].  
+
+### [Modeling the Transfer of Pollution in the Persian Gulf]
+*February 2023 – June 2023* | **Supervisor:** Dr. Danesh  
+- Simulated **pollution diffusion** and **advection** in the Persian Gulf.  
+- Created an animation showing pollution movement patterns.  
+- Code available on [GitHub].

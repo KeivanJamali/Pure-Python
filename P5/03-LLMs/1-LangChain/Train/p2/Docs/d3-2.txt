@@ -1,0 +1,50 @@
+# Food Vision (https://keivanjamali.com/keivan-jamali-project-portfolio/culinary-image-recognition-deep-learning/)
+
+Using the **EfficientNetB2** model and the **Food101 dataset** to create a neural network capable of recognizing dishes from images.  
+
+**Relative Fields**: Deep Learning, Machine Learning, Programming  
+
+---
+
+## Table of Contents  
+1. [Overview](#project-overview)  
+2. [Project Steps](#project-steps)  
+3. [Results](#results-of-the-project)  
+4. [Code Sources](#code-sources)  
+
+---
+
+## Project Overview  
+Inspired by the **"PyTorch for Deep Learning Bootcamp 2023-6"** on Udemy (52 hours and 14 minutes of learning), this project dives into creating a neural network model. The goal is to identify and analyze dishes captured in images, unraveling the mysteries of culinary delights through pixels.  
+
+---
+
+## Project Steps  
+1. **Download the Food101 Dataset** from [this link](https://pytorch.org/vision/stable/generated/torchvision.datasets.Food101.html).  
+2. **Prepare the data** with transformations and augmentations.  
+3. Apply **transfer learning** using the [EfficientNetB2 model](https://pytorch.org/vision/main/models/generated/torchvision.models.efficientnet_b2.html).  
+4. **Train the model** and deploy it on **[Hugging Face](https://huggingface.co)**.  
+
+![Model Architecture](https://keivanjamali.com/wp-content/uploads/2024/05/bigmodel-1024x449.png)  
+
+---
+
+## Results of the Project  
+The trained model is fully deployed and accessible for public use.  
+
+[![Model Interface](https://keivanjamali.com/wp-content/uploads/2024/05/interface-1024x513.png)](https://huggingface.co/spaces/K1Jamali/Food_Vision?logs=container)  
+
+**[Use the Model on Hugging Face](https://huggingface.co/spaces/K1Jamali/Food_Vision?logs=container)**  
+
+---
+
+## Code Sources  
+The implementation is done entirely in **PyTorch**.  
+
+Access all the codes and resources here:  
+- [GitHub Repository - Food Vision](https://github.com/KeivanJamali/PyTorch-for-Deep-Learning)  
+- [Hugging Face Space - Food Vision](https://huggingface.co/spaces/K1Jamali/Food_Vision?logs=container)  
+
+---
+
+[Scroll to Top](#food-vision)

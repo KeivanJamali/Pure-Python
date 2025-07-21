@@ -1,0 +1,47 @@
+# Useful Solutions I Wrote in Python (https://keivanjamali.com/python-data-automations-keivan-jamali/)
+
+---
+
+## [Bridge Processing 🌉](https://keivan01.pythonanywhere.com/culvert_processing)
+
+**Automation:**  
+Connect to AutoCAD, draw necessary shapes and texts, and prepare them for presentation.
+
+---
+
+## [Delete Distance From Centerline ⏲️](https://keivan01.pythonanywhere.com/delete_empty_processing)
+
+**Automation:**  
+This tool allows you to upload a file and remove data that is below a specified limit.
+
+---
+
+## [Image Processing 🖼️](https://keivan01.pythonanywhere.com/Image_processing)
+
+**Automation:**  
+Organize images into directories based on their dates.
+
+---
+
+## [CSDP DataLoader 🎯](https://keivan01.pythonanywhere.com/CSDP_processing)
+
+**Automation:**  
+Combine three CSV files into a proper format for your application’s needs. Upload them here and watch as the data aligns seamlessly.
+
+---
+
+## [PPK DataLoader🕸️](https://keivan01.pythonanywhere.com/PPK_processing)
+
+**Automation:**  
+Upload data exported from MAGNET tools to process and tailor the solution to your needs.
+
+---
+
+## [Generic DataLoader 💪](https://keivan01.pythonanywhere.com/generic_processing)
+
+**Automation:**  
+Upload a CSV file and provide details on Epsilon and Rounding Limit to create a universal file ready for the CSDP application.
+
+---
+
+[Scroll to Top](#useful-solutions-i-wrote-in-python)

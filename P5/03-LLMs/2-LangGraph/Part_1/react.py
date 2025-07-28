@@ -28,7 +28,7 @@ def search_tool(query: str) -> str:
         str: The search results.
     """
     search = TavilySearch(max_results=1)
-    results = search.run(query)
+    results = search.invoke(query)
     return results
 
 tools = [triple, search_tool]

@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage
-from langgraph.graph import MessagesState, StateGraph
+from langgraph.graph import MessagesState, StateGraph, START, END
 from nodes import run_agent_reasoning, tool_node
 
 load_dotenv()
@@ -26,7 +26,9 @@ flow.add_conditional_edges(AGENT_REASON, should_continue,
 flow.add_edge(ACT, AGENT_REASON)
 
 app = flow.compile()
-app.get_graph().draw_mermaid_png(output_file_path="flow.png")
+app.get_graph().draw_mermaid_png(output_file_path="/mnt/Data1/Python_Projects/Pure-Python/P5/03-LLMs/2-LangGraph/Part_1/flow.png")
 
 if __name__ == "__main__":
     print("Hello Langgraph with function calling.")
+    res = app.invoke({"messages": [HumanMessage(content="What is the temprature in Tokoyo(tell me)? Then also tell me what is the triple of the temprature.")]})
+    print(res["messages"][-1].content)

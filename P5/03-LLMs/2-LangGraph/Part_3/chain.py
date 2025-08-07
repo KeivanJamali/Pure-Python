@@ -7,11 +7,9 @@ from langchain_core.messages import HumanMessage
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_openai import ChatOpenAI
 
-from schemas import AnswerQuestion, Reflection, ReviseAnswer
+from schemas import AnswerQuestion, ReviseAnswer
 
 llm = ChatOpenAI(model="gpt-4.1-nano")
-parser = JsonOutputToolsParser(return_id=True)
-parser_pydantic = PydanticToolsParser(tools=[AnswerQuestion])
 
 actor_prompt_template = ChatPromptTemplate([
     ("system", """You are an expert researcher.
@@ -42,7 +40,4 @@ revisor = actor_prompt_template.partial(first_instruction=revise_instructions) |
 
 if __name__ == "__main__":
     human_message = HumanMessage(content="Write about usecase of LLMs in Transportation engineering field.")
-    # chain = first_responder_prompt_template | llm.bind_tools(tools=[AnswerQuestion], tool_choice="AnswerQuestion") | parser_pydantic
-
-    # res = chain.invoke(input={"messages": [human_message]})
-    # print(res)
+    

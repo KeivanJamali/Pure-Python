@@ -1,32 +1,33 @@
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.output_parsers import PydanticOutputParser
-from pydantic import BaseModel
-
-class detect_language(BaseModel):
-    query: str
-    language: str
-
-parser = PydanticOutputParser(pydantic_object=detect_language)
-prompt_1 = ChatPromptTemplate([("system", "You are an expert English translator. You can translate any language to English.\n You should tanslate all the sentences to English and tell the language of the origin.\n\n{format_instructions}"),
-                               ("human", "سلام. حال شما چطوره؟"),
-                               ("ai", "{{'query': 'Hello. How are you?', 'language': 'Persian'}}"),
-                               ("human", "The weather is very good today."),
-                               ("ai", "{{'query': 'The weather is very good today.', 'language': 'English'}}"),
-                               ("human", "{input}")],
-                               input_variables=["input"],
-                               partial_variables={"format_instructions": parser.get_format_instructions()},
-                               metadata={"name": "translate_to_english"},
-                               validate_template=True)
-
-prompt_2 = ChatPromptTemplate([("system", "You are an expert English translator. You can translate English to any language."),
-                               ("human", "Hello, how are you? -> Persian"),
-                               ("ai", "سلام. حال شما چطور است؟"),
-                               ("human", "It is so hot. -> English"),
-                               ("ai", "It is so hot."),
-                               ("human", "{query} -> {language}")],
-                               input_variables=["query", "language"],
-                               metadata={"name": "translate_to_language"},
-                               validate_template=True)
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 
 
-prompt_3 = ChatPromptTemplate([("system", "")])
+prompt_to_en = ChatPromptTemplate([("system", "You should only write the translated text in English, and writing the name of the original language in the requested format."),
+                                   ("user", "{query}")],
+                                    input_variables=["query"],
+                                    validate_template=True,
+                                    metadata={"name": "translate_to_EN"})
+
+prompt_to_something = ChatPromptTemplate([("system", "You should ONLY wtire the translation of the next into language of {language}. Nothing else."),
+                                          ("user", "{query}")],
+                                          input_variables=["query", "language"],
+                                          validate_template=True,
+                                          metadata={"name": "translate_to_something"})
+
+prompt_to_choose = ChatPromptTemplate([("system", """You are a helpful AI agent responsible for deciding how to handle a user query.
+Your task is to decide the most appropriate action based on the content of the query.
+
+You have access to the following options:
+1. "Answer it on your own" — Use only your own knowledge to answer.
+2. "Search the web for getting the answer" — When the query is about recent or external information.
+3. "Search the local docs to find the answer" — When the query is about internal knowledge related to Sharif University of Technology (e.g., professors, environmental data, research, departments, etc.).
+"""),
+                                        MessagesPlaceholder(variable_name="messages")],
+                                        input_variables=["messages"],
+                                        validate_template=True,
+                                        metadata={"name": "decide_on_tools"})
+
+prompt_answer = ChatPromptTemplate([("system", "You have to answer the query using the information here\n{information}"),
+                                    MessagesPlaceholder(variable_name="messages")],
+                                    input_variables=["information", "messages"],
+                                    validate_template=True,
+                                    metadata={"name": "decide_on_tools"})

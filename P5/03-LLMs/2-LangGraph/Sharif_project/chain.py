@@ -1,25 +1,22 @@
-from langchain.chat_models import init_chat_model
-from langgraph.checkpoint.memory import MemorySaver
-from langgraph.prebuilt import create_react_agent
-from prompts import *
-from tools import tools
-
 from dotenv import load_dotenv
 load_dotenv()
-llm = init_chat_model(model="openai:gpt-4.1-nano", temperature=0)
-# llm_with_tools = llm.bind_tools(tools)
+from langchain.chat_models import init_chat_model
+from prompts import *
+from schema import TranslationOutput, SearchLocalDocs, SearchTheWeb
+from tools import extract_related_files, search_web
 
-# chain1
-def translator_en(state):
-    chain = prompt_1 | llm
-    return {"messages": chain.invoke(state["messages"])}
 
-# chain2
-def translator_back(state):
-    chain = prompt_2 | llm
-    return {"messages": chain.invoke(state["messages"])}
+llm = init_chat_model(model="gpt-4.1-nano", temperature=0)
+chain_translate_en = prompt_to_en | llm.bind_tools([TranslationOutput], tool_choice=TranslationOutput.__name__)
+chain_translate_something = prompt_to_something | llm
+chain_decide_on_tool = prompt_to_choose | llm.bind_tools([SearchLocalDocs, SearchTheWeb])
+chain_to_answer = prompt_answer | llm
 
-# chain3
-def answering(state):
-    chain = prompt_3 | llm.bind_tools(tools)
-    return {"messages": chain.invoke(state["messages"])}
+
+# res = chain_translate_en.invoke("سلام. خوبی؟")
+# print(res.tool_calls[0]["args"]["query"])
+# print(res.tool_calls[0]["args"]["language"])
+# print()
+
+# res = chain_translate_something.invoke({"query": "Hi. How are you?", "language": "Persian"})
+# print(res.content)

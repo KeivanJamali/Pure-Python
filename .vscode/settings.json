@@ -24,5 +24,10 @@
     "editor.defaultFormatter": "eeyore.yapf",
     "[python]": {
         "editor.defaultFormatter": "ms-python.autopep8"
-    }
+    },
+    "python.testing.pytestArgs": [
+        "P5"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
 }

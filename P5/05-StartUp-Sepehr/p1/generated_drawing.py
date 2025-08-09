@@ -50,7 +50,7 @@ acad.doc.ActiveLayer = layer
 center = APoint(3, 3)
 entity = acad.model.AddCircle(center, 1.5)
 entity.Layer = 'Circles'
-entity.Color = 4
+entity.Color = 2
 # Create or activate layer 'PolylineLayer'
 try:
     layer = acad.doc.Layers.Item('PolylineLayer')

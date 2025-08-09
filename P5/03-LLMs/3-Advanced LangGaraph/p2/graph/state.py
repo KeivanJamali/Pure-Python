@@ -1,0 +1,11 @@
+from typing import List, TypedDict, Annotated
+
+class GraphState(TypedDict):
+    """Represents the state of out graph.
+
+    Attributes:
+        question: question
+        generation: LLM generation
+        web_search: whether to add search
+        documents: list of documents
+    """

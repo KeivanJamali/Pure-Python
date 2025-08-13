@@ -5,7 +5,11 @@ from difflib import SequenceMatcher
 
 # Step 1: Define your known docs
 docs_summary = [
-    {"file_name": "Amini_data.md", "file_path": r"/mnt/Data1/Python_Projects/Pure-Python/P5/03-LLMs/2-LangGraph/Sharif_project/Amini_data.md"},
+    {"file_name": "Zahra Amini", "file_path": r"/mnt/Data1/Python_Projects/Datasets/Sharif_Data/Data/Zahra_Amini.md"},
+    {"file_name": "Amirhosein Kermanshah", "file_path": r"/mnt/Data1/Python_Projects/Datasets/Sharif_Data/Data/Amirhossein_Kermanshah.md"},
+    {"file_name": "Mohammad Sabouri", "file_path": r"/mnt/Data1/Python_Projects/Datasets/Sharif_Data/Data/Mohammad_Sabouri.md"},
+    {"file_name": "Nader Tabatabaee", "file_path": r"/mnt/Data1/Python_Projects/Datasets/Sharif_Data/Data/Nader_Tabatabaee.md"},
+    {"file_name": "Yousef Shafahi", "file_path": r"/mnt/Data1/Python_Projects/Datasets/Sharif_Data/Data/Yousef_Shafahi.md"},
 ]
 
 def normalize(text: str) -> str:

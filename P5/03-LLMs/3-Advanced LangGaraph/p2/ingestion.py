@@ -25,4 +25,4 @@ doc_splits = text_splitter.split_documents(docs_list)
 
 retriever = Chroma(collection_name="rag-chroma",
                    persist_directory="/mnt/Data1/Python_Projects/Pure-Python/P5/03-LLMs/3-Advanced LangGaraph/p2/.chroma",
-                   embedding_function=OpenAIEmbeddings()).as_retriever
+                   embedding_function=OpenAIEmbeddings()).as_retriever()

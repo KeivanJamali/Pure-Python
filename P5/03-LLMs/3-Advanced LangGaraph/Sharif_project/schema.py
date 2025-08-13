@@ -1,4 +1,4 @@
-from typing import List, Annotated, Optional, Dict
+from typing import List, Annotated
 from typing_extensions import TypedDict
 from langchain_core.messages import BaseMessage
 from langgraph.graph.message import add_messages
@@ -6,6 +6,7 @@ from pydantic import BaseModel, Field
 
 
 class TranslationOutput(BaseModel):
+    """Translate the text into English and specify what language it was before."""
     query: str = Field(description="The translated text in English.")
     language: str = Field(description="The original language name.")
 
@@ -25,6 +26,3 @@ class SearchLocalDocs(BaseModel):
 
 class State(TypedDict):
     messages: Annotated[List[BaseMessage], add_messages]
-    local_docs: Optional[List[File]]
-    web_urls: Optional[List[str]]
-    final_answer: Optional[str]

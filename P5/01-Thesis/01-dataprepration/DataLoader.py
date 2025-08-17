@@ -2,102 +2,205 @@ import pandas as pd
 import numpy as np
 from pathlib import Path
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import StandardScaler
+from torch.utils.data import Dataset, DataLoader
+import torch
 import Information as info
+from ast import literal_eval
+
+
+class MyDataset(Dataset):
+    def __init__(self, data: pd.DataFrame, dynamic_features: list, static_features: list, target_col, seq_len=10):
+        """
+        Initializes a new instance of the class.
+
+        Args:
+            data (pd.DataFrame): The data to be used for initialization.
+
+        Returns:
+            None
+        """
+        self.data = data
+        self.dynamic_features = dynamic_features
+        self.target_col = target_col
+        self.static_features = static_features
+        self.seq_len = seq_len
+
+        self.X, self.y = self._build_sequences()
+
+    def _build_sequences(self):
+        X_list, y_list = [], []
+        for _, row in self.data.iterrows():
+            seq_data = []
+            for feat in self.dynamic_features:
+                val = row[feat]
+                if isinstance(val, list):
+                    seq_data.append(val[:self.seq_len] + [0]*(self.seq_len - len(val)))
+                else:
+                    seq_data.append([val]*self.seq_len)
+
+            seq_data = np.stack(seq_data, axis=-1)  # shape: [seq_len, num_features]
+            X_list.append(seq_data)
+            y_list.append(row[self.target_col])
+        
+        static = self.data[self.static_features].values
+
+        return [np.array(X_list, dtype=np.float32), static], np.array(y_list, dtype=np.int64)
+
+    def __len__(self):
+        """You most probably need to change the slices."""
+        return len(self.data)
+
+    def __getitem__(self, idx):
+        """You most probably need to change the slices. returns x1, x2, y"""
+        return torch.tensor(self.X[0][idx], dtype=torch.float), torch.tensor(self.X[1][idx], dtype=torch.float), torch.tensor(self.y[idx], dtype=torch.long)
+
 
 class MyDataloader:
     def __init__(self, data_list:list, seed=42):
-        """[people_data, family_data, trip_data]"""
-        np.random.seed(seed)
+        """[activity_chain, true_OD_matrix, trips]"""
+        self.raw_data_activity = data_list[0]
+        self.raw_data_true_od = data_list[1]
+        self.raw_data_trips = data_list[2]
         self.seed = seed
-        self.data_list = data_list
-        self.raw_data = None
-        self.data = self.set_setting()
-        
-
+        self.scalers = {}
+        self.set_setting()
+    
     def set_setting(self):
-        merged_data = self.data_list[2].merge(self.data_list[0],
-                                              on=['questionnaire_code', 'person_number'],
-                                              how='left')
-        merged_data = merged_data.merge(self.data_list[1],
-                                        on=['questionnaire_code'],
-                                        how='left')
-        merged_data = merged_data.drop(columns=['home_area_code_x', 'home_region_code_x','home_area_code_y', 'home_region_code_y'], errors='ignore')
-        self.raw_data = merged_data
+        data_activity = self.raw_data_activity.copy()
 
-        info.features_dataloader, info.target_dataloader = info.features.copy(), info.target.copy()
-        data = self.raw_data.copy()
-        data["trip_purpose"] = data["trip_purpose"].map({"visit_offices": 0,
-                                                         "return_home": 1,
-                                                         "recreation_or_pilgrimage": 2,
-                                                         "shopping": 3,
-                                                         "visit_relatives": 4,
-                                                         "education": 5,
-                                                         "work": 6,
-                                                         "medical_purposes": 7,
-                                                         "dropoff_or_pickup_others": 8,
-                                                         "other": 9,
-                                                         "accompany_others": 10})
+        drop_cols = ['Unnamed: 0', 'family_id']
+        data_activity.drop(columns=[c for c in drop_cols if c in data_activity.columns], inplace=True)
 
-        # We have 4 NA data.
-        data["travel_mode"] = data["travel_mode"].map({"private_car": 0,
-                                                       "taxi": 1,
-                                                       "city_bus": 2,
-                                                       "service_sedan": 3,
-                                                       "bicycle": 4,
-                                                       "phone_taxi": 5,
-                                                       "service_minibus": 6,
-                                                       "motorcycle": 7,
-                                                       "pickup_truck": 8,
-                                                       "private_passenger": 9,
-                                                       "minibus": 10,
-                                                       "service_bus": 11,
-                                                       "van": 12,
-                                                       "intercity_bus": 13,
-                                                       "service_van": 14,
-                                                       "metro": 15,
-                                                       "truck": 16,
-                                                       "other": 17})
+        # We saw that the data 14075 has trip mode of [nan, nan]. also data 36942 [nan, nan]. remove theses two rows.
+        data_activity.drop([14075, 36942], inplace=True, axis=0)
+        data_activity.reset_index(drop=True, inplace=True)
 
-        data["home_based"] = data["home_based"].map({"home_start": 0,
-                                                     "home_end": 1,
-                                                     "no_home_end": 2})
-        
-        # Male = 1, Female = 0
-        data["gender"] = data["gender"].map({"male": 1,
-                                             "female": 0})
+        list_cols = ["activity_chain", "time_chain", "purpose_chain", "area_zones", "region_zones", "duration", "travel_mode", "trip_distance", "hourly_correction_factor"]
+        for col in list_cols:
+            if col in data_activity.columns and data_activity[col].dtype == object:
+                data_activity[col] = data_activity[col].apply(lambda x: literal_eval(str(x)) if pd.notna(x) else [])
 
-        data["job"] = data["job"].map({"worker": 0,
-                                       "military": 1,
-                                       "housekeeper": 2,
-                                       "school_student": 3,
-                                       "employee": 4,
-                                       "seller": 5,
-                                       "craftsman": 6,
-                                       "teacher": 7,
-                                       "driver": 8,
-                                       "university_student": 9,
-                                       "retired": 10,
-                                       "unemployed": 11,
-                                       "unemployed_under_18": 12,
-                                       "doctor": 13,
-                                       "other": 14})
-        
-        data["destination_area_code"] = data["destination_area_code"] - 1
-        data["origin_area_code"] = data["origin_area_code"] - 1
+        # Define dynamic (sequence) and static features
+        self.dynamic_features = ['activity_chain', 'time_chain', 'purpose_chain', 'trip_distance', 'travel_mode']
+        self.static_features = [
+            'gender', 'age', 'job', 'working', 'driving_license', 'education_level',
+            'home_area_code', 'home_region_code', 'family_members_count', 'total_vehicles_count',
+            'bicycles_24inch_or_larger_count', 'motorcycles_count', 'private_cars_count',
+            'pickup_trucks_count', 'taxis_count', 'other_vehicles_count'
+        ]
+        self.target_column = ""
 
-        data["driving_license"] = data["driving_license"].astype(float)
+        self.data_activity = data_activity
 
-        data = data.loc[:, info.target + info.features]
-        # print(len(data))
-        data = data.dropna()
-        # print(len(data))
-        data = pd.get_dummies(data, columns=["trip_purpose", "travel_mode", "home_based", "job"], dtype=float)
-        info.features_dataloader = data.columns[1:]
-        info.target_dataloader = data.columns[:1]
-        return data
+    def _split_data(self, data: pd.DataFrame, 
+                    train_percent:float, 
+                    val_percent:float, 
+                    test_percent:float=None) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, bool]:
+        """
+        Splits the data into training, validation, and testing sets.
 
+        Parameters:
+            train_percent (float): The percentage of data to be used for training.
+            val_percent (float): The percentage of data to be used for validation.
+            test_percent (float): The percentage of data to be used for testing.
 
-    def _scale_data(self):
-        self.scaler = MinMaxScaler()
-        self.data[info.features] = self.scaler.fit_transform(self.data[info.features])
+        Returns:
+            tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]: A tuple containing the training, validation, and testing
+            dataframes.
+        """
+        train_data, val_test_data = train_test_split(data, train_size=train_percent,
+                                                     random_state=self.seed)
+        if test_percent:
+            val_data, test_data = train_test_split(val_test_data, train_size=val_percent / (val_percent + test_percent),
+                                                   random_state=self.seed)
+            return train_data, val_data, test_data, True
+        else:
+            return train_data, val_test_data, None, False
+
+    def _scale_data(self, train_data, val_data, test_data, have_test):
+        """
+        Scale numeric/static features
+        """
+        train_scaled, val_scaled, test_scaled = train_data.copy(), val_data.copy(), None
+
+        # Standard scale continuous variables
+        num_cols = ['age', 'trip_distance', 'duration', "private_car_1", "private_car_2", "private_car_3", "private_car_4"]
+        for col in num_cols:
+            if col in train_data.columns:
+                scaler = StandardScaler()
+                train_scaled[col] = scaler.fit_transform(train_data[[col]])
+                val_scaled[col] = scaler.transform(val_data[[col]])
+                if have_test:
+                    test_scaled = test_data.copy()
+                    test_scaled[col] = scaler.transform(test_data[[col]])
+                self.scalers[col] = scaler
+
+        return train_scaled, val_scaled, test_scaled
+    
+    def _scale_data(self, 
+                    train_data:pd.DataFrame, 
+                    val_data:pd.DataFrame, 
+                    test_data:pd.DataFrame, 
+                    have_test:bool) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+        """
+        Scale the data data using MinMaxScaler.
+
+        Parameters:
+            train_data (pd.DataFrame): The training data.
+            val_data (pd.DataFrame): The validation data.
+            test_data (pd.DataFrame): The test data.
+
+        Returns:
+            tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]: The scaled training, validation, and test data.
+        """
+        self.scaler_x = StandardScaler()
+        cols = ["age"]
+        train_data[cols] = self.scaler_x.fit_transform(train_data[cols])
+        val_data[cols] = self.scaler_x.transform(val_data[cols])
+        if have_test:
+            test_data[cols] = self.scaler_x.transform(test_data[cols])
+        return train_data, val_data, test_data
+    
+    def _make_datasets(self, 
+                       train_data:pd.DataFrame, 
+                       val_data:pd.DataFrame, 
+                       test_data:pd.DataFrame, 
+                       have_test:pd.DataFrame) -> tuple[Dataset, Dataset, Dataset]:
+        """
+        Generates the datasets for training, validation, and testing.
+
+        Args:
+            train_data (np.ndarray): The training data.
+            val_data (np.ndarray): The validation data.
+            test_data (np.ndarray): The testing data.
+
+        Returns:
+            tuple: A tuple containing the train dataset, val dataset, and test dataset.
+        """
+        train_dataset = MyDataset(train_data, dynamic_features=self.dynamic_features, static_features=self.static_features, target_col=)
+        val_dataset = MyDataset(val_data)
+        if have_test:
+            test_dataset = MyDataset(test_data)
+            return train_dataset, val_dataset, test_dataset
+        else:
+            return train_dataset, val_dataset, None
+
+    def _make_dataloader(self, train_dataset: MyDataset, 
+                         val_dataset: MyDataset, 
+                         test_dataset: MyDataset) -> tuple[DataLoader, DataLoader, DataLoader]:
+        """
+        Create dataloaders for the given datasets.
+
+        Parameters:
+            train_dataset (Dataset): The training dataset.
+            val_dataset (Dataset): The validation dataset.
+            test_dataset (Dataset): The testing dataset.
+
+        Returns:
+            tuple: A tuple containing train_dataloader, val_dataloader, and test_dataloader.
+        """
+        train_dataloader = DataLoader(train_dataset, batch_size=self.batch_size, shuffle=False, drop_last=False)
+        val_dataloader = DataLoader(val_dataset, batch_size=self.batch_size, shuffle=False, drop_last=False)
+        test_dataloader = DataLoader(test_dataset, batch_size=self.batch_size, shuffle=False, drop_last=False)
+        return train_dataloader, val_dataloader, test_dataloader

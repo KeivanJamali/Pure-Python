@@ -8,6 +8,9 @@ from webdriver_manager.chrome import ChromeDriverManager
 import os
 import time
 from tqdm.auto import tqdm
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 def save_docs(i, j):
@@ -71,8 +74,8 @@ wait = WebDriverWait(driver, 20)
 
 # ---------- Configuration ----------
 LOGIN_URL = "https://mail.iau.ac.ir"  # replace with your login URL
-USERNAME = "Manager105001@iau.ir"
-PASSWORD = "@Hamiyazd110"
+USERNAME = os.environ["USERNAME"]
+PASSWORD = os.environ["PASSWORD"]
 sleep_time = 2
 OUTPUT_DIR = r"/mnt/Data1/Python_Projects/Pure-Python/P5/06-HamiWorks/hami_output"
 os.makedirs(OUTPUT_DIR, exist_ok=True)

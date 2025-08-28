@@ -23,7 +23,7 @@ while lives > 0:
         lives -= 1
         print("❌ Nope! Try again.")
         if lives > 0:
-            hint = original[:lives]  
+            hint = original[:3 - lives]
             print(f"Hint: The word starts with '{hint}'")
             print(f"Lives left: {lives}")
         else:

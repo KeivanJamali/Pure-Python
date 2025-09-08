@@ -28,11 +28,11 @@ def run_agent(query: str, id_: str):
 
     return final_answer
 
-# query = "Who is Amini (probalby at sharif university)?"
+query1 = "Who is Amini (probalby at sharif university)?"
 # query1 = "what was my last question?"
 # query2 = "what about now? what was my last question?"
 # query = "Who is Amini?"
 # query = "میدونی امینی کی هست؟ شنیدم تو دانشگاه شریف هست."
-# print(run_agent(query=query1, id_="1"))
+print(run_agent(query=query1, id_="4"))
 # print(run_agent(query=query2, id_="1"))
 

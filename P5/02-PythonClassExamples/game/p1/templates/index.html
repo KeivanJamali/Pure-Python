@@ -1,0 +1,47 @@
+
+{% extends 'base.html' %}
+{% block title %}Play • Stone Paper Scissors{% endblock %}
+{% block content %}
+  <h1 class="page-title center">Battle The Computer</h1>
+  <p class="subtitle center">First to 3 points wins the match</p>
+
+  <div class="scoreboard" aria-label="Scoreboard">
+    <div class="score-box user" aria-live="polite">You <span class="score">{{ user_score }}</span></div>
+    <div class="score-box computer" aria-live="polite">CPU <span class="score">{{ computer_score }}</span></div>
+  </div>
+
+  <form method="POST" class="center" aria-label="Make your choice">
+    <div class="btn-grid">
+      {% for choice in choices %}
+        <button class="choice-btn super-btn" data-choice="{{ choice }}" type="submit" name="choice" value="{{ choice }}" aria-label="Choose {{ choice }}">{% if choice=='stone' %}🪨{% elif choice=='paper' %}📄{% else %}✂️{% endif %} {{ choice.title() }}</button>
+      {% endfor %}
+    </div>
+  </form>
+
+  {% if result %}
+    <div class="result-panel" aria-live="polite">
+      <p>You chose: <strong>{{ user_choice }}</strong></p>
+      <p>Computer chose: <strong>{{ computer_choice }}</strong></p>
+      <h2>{{ result }}</h2>
+    </div>
+    <script id="round-result" type="application/json">{{ {'text': result}|tojson }}</script>
+    <script>
+      (function(){ try { var r=document.getElementById('round-result'); if(r){ var obj=JSON.parse(r.textContent); var txt=(obj.text||'').toLowerCase(); if(txt.includes('draw')) window.__roundResult='draw'; else if(txt.includes('you win')) window.__roundResult='win'; else if(txt.includes('computer wins')) window.__roundResult='lose'; } } catch(e){} })();
+    </script>
+  {% endif %}
+
+  <div class="center mt-28 flex justify-center gap-18 flex-wrap">
+    <a href="javascript:history.back()" class="nav-link">← Back</a>
+    <a href="/" class="nav-link">🏠 Main</a>
+    <a href="{{ url_for('play_computer') }}" class="nav-link">🔄 Reset</a>
+  </div>
+
+  {% if winner_popup %}
+    <script id="winner-data" type="application/json">{{ {'winner': winner_popup}|tojson }}</script>
+    <script>
+      (function(){
+        try { var d = document.getElementById('winner-data'); if(d){ var obj = JSON.parse(d.textContent); window.__winnerPopup = obj.winner; } } catch(e){}
+      })();
+    </script>
+  {% endif %}
+{% endblock %}

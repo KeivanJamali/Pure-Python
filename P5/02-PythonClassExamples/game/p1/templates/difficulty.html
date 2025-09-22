@@ -1,0 +1,17 @@
+
+{% extends 'base.html' %}
+{% block title %}Difficulty • Stone Paper Scissors{% endblock %}
+{% block content %}
+  <h1 class="page-title center">Select Difficulty</h1>
+  <p class="subtitle center">Tune the AI challenger power level</p>
+  <form method="POST" class="center">
+    <div class="btn-grid">
+      <button class="super-btn difficulty-btn" type="submit" name="difficulty" value="easy" aria-label="Easy difficulty">🌱 Easy</button>
+      <button class="super-btn difficulty-btn" type="submit" name="difficulty" value="moderate" aria-label="Moderate difficulty">⚡ Moderate</button>
+      <button class="super-btn difficulty-btn" type="submit" name="difficulty" value="hard" aria-label="Hard difficulty">🔥 Hard</button>
+    </div>
+  </form>
+  <div class="center mt-26">
+  <a href="javascript:history.back()" class="nav-link">← Back</a>
+  </div>
+{% endblock %}

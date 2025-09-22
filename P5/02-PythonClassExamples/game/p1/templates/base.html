@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{% block title %}Stone Paper Scissors{% endblock %}</title>
+    <meta name="description" content="Play an ultra-stylized Stone • Paper • Scissors game vs computer or a friend." />
+    <meta name="theme-color" content="#ff4e50" />
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Baloo+2:wght@600&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="themed-bg">
+    <div id="particles"></div>
+    <main class="main-wrapper">
+        <header class="site-header">
+            <a href="/" class="brand" aria-label="Main page">
+                <span class="emoji">🪨</span><span class="emoji">📄</span><span class="emoji">✂️</span>
+                <span class="brand-text">SPS Ultra</span>
+            </a>
+            <nav class="top-nav">
+                <a href="/" class="nav-link">Home</a>
+                <a href="{{ url_for('play_computer') }}" class="nav-link">Vs Computer</a>
+                <a href="{{ url_for('play_human') }}" class="nav-link">2 Players</a>
+                <button class="nav-link theme-toggle" type="button" aria-label="Toggle theme" id="themeToggle">🌗</button>
+                <button class="nav-link sound-toggle" type="button" aria-label="Toggle sound" id="soundToggle">🔊</button>
+            </nav>
+        </header>
+        <section class="content-card elevate pop-in" role="region">
+            {% block content %}{% endblock %}
+        </section>
+    </main>
+    <div id="winnerModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="winnerTitle">
+        <div class="modal-content elevate">
+            <button class="close-btn" data-close aria-label="Close winner dialog">×</button>
+            <h2 id="winnerTitle" class="modal-title"></h2>
+            <p class="modal-body"></p>
+            <button class="primary-btn" data-close>Play Again</button>
+        </div>
+    </div>
+    <template id="confettiPiece">
+        <div class="confetti"></div>
+    </template>
+    <script src="{{ url_for('static', filename='js/game.js') }}" defer></script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,13 @@
+
+{% extends 'base.html' %}
+{% block title %}Start • Stone Paper Scissors{% endblock %}
+{% block content %}
+  <h1 class="page-title center">Stone • Paper • Scissors</h1>
+  <p class="subtitle center">Choose an epic battle mode below</p>
+  <form method="POST" class="center">
+    <div class="btn-grid">
+      <button class="super-btn mode-btn" type="submit" name="mode" value="computer" aria-label="Play versus computer">🤖 Vs Computer</button>
+      <button class="super-btn mode-btn" type="submit" name="mode" value="human" aria-label="Play with a friend">👥 Two Players</button>
+    </div>
+  </form>
+{% endblock %}

@@ -1,0 +1,51 @@
+
+{% extends 'base.html' %}
+{% block title %}2 Players • Stone Paper Scissors{% endblock %}
+{% block content %}
+  <h1 class="page-title center">Two Player Showdown</h1>
+  <p class="subtitle center">First to 3 points dominates the arena</p>
+  <div class="scoreboard" aria-label="Scoreboard">
+    <div class="score-box user">P1 <span class="score">{{ user1_score }}</span></div>
+    <div class="score-box computer">P2 <span class="score">{{ user2_score }}</span></div>
+  </div>
+  <form method="POST" class="center" aria-label="Player choices">
+    {% if not user1_choice %}
+  <h2 class="center mt-4">Player 1 Choose</h2>
+      <div class="btn-grid">
+        {% for choice in choices %}
+          <button class="choice-btn super-btn" data-choice="{{ choice }}" type="submit" name="user1_choice" value="{{ choice }}">{% if choice=='stone' %}🪨{% elif choice=='paper' %}📄{% else %}✂️{% endif %} {{ choice.title() }}</button>
+        {% endfor %}
+      </div>
+    {% elif not user2_choice %}
+  <h2 class="center mt-4">Player 2 Choose</h2>
+      <div class="btn-grid">
+        {% for choice in choices %}
+          <button class="choice-btn super-btn" data-choice="{{ choice }}" type="submit" name="user2_choice" value="{{ choice }}">{% if choice=='stone' %}🪨{% elif choice=='paper' %}📄{% else %}✂️{% endif %} {{ choice.title() }}</button>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </form>
+  {% if result %}
+    <div class="result-panel" aria-live="polite">
+      <p>Player 1 chose: <strong>{{ user1_choice }}</strong></p>
+      <p>Player 2 chose: <strong>{{ user2_choice }}</strong></p>
+      <h2>{{ result }}</h2>
+    </div>
+    <script id="round-result" type="application/json">{{ {'text': result}|tojson }}</script>
+    <script>
+      (function(){ try { var r=document.getElementById('round-result'); if(r){ var obj=JSON.parse(r.textContent); var txt=(obj.text||'').toLowerCase(); if(txt.includes('draw')) window.__roundResult='draw'; else if(txt.includes('player 1 wins')) window.__roundResult='win'; else if(txt.includes('player 2 wins')) window.__roundResult='lose'; } } catch(e){} })();
+    </script>
+  {% endif %}
+  <div class="center mt-28 flex justify-center gap-18 flex-wrap">
+    <a href="javascript:history.back()" class="nav-link">← Back</a>
+    <a href="/" class="nav-link">🏠 Main</a>
+    <a href="{{ url_for('play_human') }}" class="nav-link">🔄 Reset</a>
+  </div>
+  {% if winner_popup %}
+    <script id="winner-data" type="application/json">{{ {'winner': winner_popup}|tojson }}</script>
+    <script>
+      (function(){ try { var d = document.getElementById('winner-data'); if(d){ var obj = JSON.parse(d.textContent); window.__winnerPopup = obj.winner; } } catch(e){} })();
+    </script>
+  {% endif %}
+{% endblock %}
+            gap: 24px;

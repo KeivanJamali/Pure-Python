@@ -118,53 +118,67 @@ class SearchArxivOAI:
         # Basic setup
         n_groups = len(self.group_names)
         years = np.arange(len(data.index))
-        bar_width = 0.12  # Adjust spacing between bars
-        colors = plt.get_cmap('tab10').colors  # Good color map for categorical data
-        
-        # Plot each group
+        bar_width = 0.12
+        colors = plt.get_cmap('tab10').colors  # Distinct colors per group
+
+        # Plot bars + lines
         for i, group in enumerate(self.group_names):
             positions = years + i * bar_width
+            values = data[group]
+
+            # --- Bar plot ---
             bars = plt.bar(
                 positions,
-                data[group],
+                values,
                 width=bar_width,
                 label=group,
                 color=colors[i % len(colors)],
                 edgecolor='black',
-                alpha=0.9
+                alpha=0.8
             )
 
-            # Add numbers on each bar
+            # --- Add text labels ---
             for bar in bars:
                 height = bar.get_height()
                 if height > 0:
-                    if name == "counts":
-                        plt.text(
-                            bar.get_x() + bar.get_width() / 2,
-                            height,
-                            f"{int(height)}",
-                            ha="center", va="bottom", fontsize=14, rotation=0
-                        )
-                    else:
-                        plt.text(
-                            bar.get_x() + bar.get_width() / 2,
-                            height,
-                            f"{height:.2f}",
-                            ha="center", va="bottom", fontsize=14, rotation=0
-                        )
+                    label = f"{int(height)}" if name == "counts" else f"{height:.2f}"
+                    plt.text(
+                        bar.get_x() + bar.get_width() / 2,
+                        height,
+                        label,
+                        ha="center", va="bottom",
+                        fontsize=12
+                    )
 
-        # Formatting
+            # --- Add line connecting yearly changes ---
+            x_positions = [bar.get_x() + bar.get_width() / 2 for bar in bars]
+            y_values = [bar.get_height() for bar in bars]
+
+            plt.plot(
+                x_positions,
+                y_values,
+                color=colors[i % len(colors)],
+                marker='o',
+                linewidth=2.5,
+                alpha=0.9
+            )
+
+        # --- Formatting ---
         plt.xlabel("Year", fontsize=12)
-        plt.ylabel("Percentage of arXiv Papers (%)", fontsize=12)
-        plt.title(f"Programming Language Mentions in arXiv Papers ({self.start_year}–{self.end_year})",
-                fontsize=14, weight='bold')
-        
-        # X-ticks centered on groups
+        plt.ylabel(
+            "Percentage of arXiv Papers (%)" if name != "counts" else "Number of Papers",
+            fontsize=12
+        )
+        plt.title(
+            f"Programming Language Mentions in arXiv Papers ({self.start_year}–{self.end_year})",
+            fontsize=14, weight='bold'
+        )
+
         plt.xticks(years + bar_width * (n_groups / 2 - 0.5), data.index, rotation=45)
         plt.legend(title="Language Groups", loc="upper left", bbox_to_anchor=(1, 1))
         plt.grid(True, axis='y', linestyle='--', alpha=0.3)
         plt.tight_layout()
 
-        # Save and show
+        # --- Save and show ---
         plt.savefig(SearchArxivOAI._result_path / f"arxiv_language_{name}.png", dpi=300)
         plt.show()

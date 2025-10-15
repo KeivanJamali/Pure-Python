@@ -166,7 +166,7 @@ class SearchArxivOAI:
         # --- Formatting ---
         plt.xlabel("Year", fontsize=12)
         plt.ylabel(
-            "Percentage of arXiv Papers (%)" if name != "counts" else "Number of Papers",
+            "Percentage of arXiv Papers" if name != "counts" else "Number of Papers",
             fontsize=12
         )
         plt.title(

@@ -53,7 +53,7 @@ class SearchArxivOAI:
                 "from": from_date,
                 "until": until_date})
 
-    def fit(self):
+    def fit(self) -> tuple:
         """Loop over years and keyword groups, counting papers per year."""
         for group_name, keywords in zip(self.group_names, self.keyword_groups):
             self.count_data[group_name] = {}
@@ -80,8 +80,10 @@ class SearchArxivOAI:
         self.count_data_frame.to_csv(SearchArxivOAI._result_path / "arxiv_language_group_counts.csv")
         self.count_percent_frame.to_csv(SearchArxivOAI._result_path / "arxiv_language_group_percent.csv")
         self.saved_papers_frame.to_csv(SearchArxivOAI._result_path / "arxiv_language_group_papers.csv")
+        
+        return self.count_data_frame, self.count_percent_frame, self.saved_papers_frame
 
-    def get_group_count(self, keywords: list, year: int) -> int:
+    def get_group_count(self, keywords: list, year: int) -> tuple:
         """
         Counts unique papers mentioning any of the keywords in a given year.
         Each paper is counted once even if it matches multiple keywords.
@@ -108,17 +110,17 @@ class SearchArxivOAI:
 
         return len(seen_ids), papers, count
 
-    def plot_results(self, data: pd.DataFrame):
+    def plot_results(self, data: pd.DataFrame, name: str):
         plt.figure(figsize=(12, 7))
         for group in self.group_names:
             plt.plot(data.index, data[group], label=group, marker='o')
 
         plt.xlabel("Year")
-        plt.ylabel(f"Amount of arXiv papers mentioning groups")
-        plt.title("ArXiv Papers (2000–2025)")
+        plt.ylabel(f"Amount of arXiv papers mentioning in {self.max_number_in_year} papers in total.")
+        plt.title(f"ArXiv Papers ({self.start_year}–{self.end_year})")
         plt.legend()
         plt.grid(True)
         plt.tight_layout()
-        plt.savefig(SearchArxivOAI._result_path / "arxiv_language_group_trends.png")
+        plt.savefig(SearchArxivOAI._result_path / f"arxiv_language_{name}.png")
         plt.show()
 

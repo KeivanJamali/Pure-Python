@@ -5,6 +5,8 @@ from tqdm import tqdm
 from pathlib import Path
 import os
 from datetime import datetime
+import numpy as np
+import matplotlib.cm as cm
 
 
 class SearchArxivOAI:
@@ -111,16 +113,58 @@ class SearchArxivOAI:
         return len(seen_ids), papers, count
 
     def plot_results(self, data: pd.DataFrame, name: str):
-        plt.figure(figsize=(12, 7))
-        for group in self.group_names:
-            plt.plot(data.index, data[group], label=group, marker='o')
+        plt.figure(figsize=(14, 7))
 
-        plt.xlabel("Year")
-        plt.ylabel(f"Amount of arXiv papers mentioning in {self.max_number_in_year} papers in total.")
-        plt.title(f"ArXiv Papers ({self.start_year}–{self.end_year})")
-        plt.legend()
-        plt.grid(True)
+        # Basic setup
+        n_groups = len(self.group_names)
+        years = np.arange(len(data.index))
+        bar_width = 0.12  # Adjust spacing between bars
+        colors = plt.get_cmap('tab10').colors  # Good color map for categorical data
+        
+        # Plot each group
+        for i, group in enumerate(self.group_names):
+            positions = years + i * bar_width
+            bars = plt.bar(
+                positions,
+                data[group],
+                width=bar_width,
+                label=group,
+                color=colors[i % len(colors)],
+                edgecolor='black',
+                alpha=0.9
+            )
+
+            # Add numbers on each bar
+            for bar in bars:
+                height = bar.get_height()
+                if height > 0:
+                    if name == "counts":
+                        plt.text(
+                            bar.get_x() + bar.get_width() / 2,
+                            height,
+                            f"{int(height)}",
+                            ha="center", va="bottom", fontsize=14, rotation=0
+                        )
+                    else:
+                        plt.text(
+                            bar.get_x() + bar.get_width() / 2,
+                            height,
+                            f"{height:.2f}",
+                            ha="center", va="bottom", fontsize=14, rotation=0
+                        )
+
+        # Formatting
+        plt.xlabel("Year", fontsize=12)
+        plt.ylabel("Percentage of arXiv Papers (%)", fontsize=12)
+        plt.title(f"Programming Language Mentions in arXiv Papers ({self.start_year}–{self.end_year})",
+                fontsize=14, weight='bold')
+        
+        # X-ticks centered on groups
+        plt.xticks(years + bar_width * (n_groups / 2 - 0.5), data.index, rotation=45)
+        plt.legend(title="Language Groups", loc="upper left", bbox_to_anchor=(1, 1))
+        plt.grid(True, axis='y', linestyle='--', alpha=0.3)
         plt.tight_layout()
-        plt.savefig(SearchArxivOAI._result_path / f"arxiv_language_{name}.png")
-        plt.show()
 
+        # Save and show
+        plt.savefig(SearchArxivOAI._result_path / f"arxiv_language_{name}.png", dpi=300)
+        plt.show()

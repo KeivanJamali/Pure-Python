@@ -137,3 +137,9 @@ def largest_product_in_a_series(n: int) -> int:
         if s > best_answer:
             best_answer = s
     return best_answer
+
+def lexicographic_permutations(n: int) -> str:
+    from itertools import permutations
+    input_number = "0123456789"
+    perms = sorted([''.join(p) for p in permutations(input_number)])
+    return perms[n-1]

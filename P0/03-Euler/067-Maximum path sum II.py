@@ -23,20 +23,20 @@ def reduce(tri: list) -> list:
 print(reduce(List))
 
 
-i = 0
-def max_path_sum_tree(tree):
-    global i
-    print(f"{i}call")
-    i += 1
-    if len(tree) == 1:
-        return tree[0][0]
+# i = 0
+# def max_path_sum_tree(tree):
+#     global i
+#     print(f"{i}call")
+#     i += 1
+#     if len(tree) == 1:
+#         return tree[0][0]
     
-    left_subtree = [row[:-1] for row in tree[1:]]
-    right_subtree = [row[1:] for row in tree[1:]]
+#     left_subtree = [row[:-1] for row in tree[1:]]
+#     right_subtree = [row[1:] for row in tree[1:]]
     
-    left_sum = max_path_sum_tree(left_subtree)
-    right_sum = max_path_sum_tree(right_subtree)
+#     left_sum = max_path_sum_tree(left_subtree)
+#     right_sum = max_path_sum_tree(right_subtree)
     
-    return tree[0][0] + max(left_sum, right_sum)
+#     return tree[0][0] + max(left_sum, right_sum)
 
-print(max_path_sum_tree(List))
+# print(max_path_sum_tree(List))

@@ -11,13 +11,14 @@ from datetime import datetime
 
 # r'/home/Keivan01/mysite/Files/send_to_others'
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER_SEND'] = r'D:\All Python\Pure-Python\P3\WebPage-Server\Files\send_to_others'
-app.config['UPLOAD_FOLDER_RECEIVED'] = r'D:\All Python\Pure-Python\P3\WebPage-Server\Files\received_from_others'
-app.config['UPLOAD_FOLDER_SHARE'] = r'D:\All Python\Pure-Python\P3\WebPage-Server\Files\share'
-app.config['RESULT_DIR'] = r'D:\All Python\Pure-Python\P3\WebPage-Server\Files\result'
-app.config['MOVIE_FOLDER'] = r'D:\All Python\Pure-Python\P3\WebPage-Server\Files\share'
-app.config['APP_FOLDER'] = r"D:\All Python\Pure-Python\P3\WebPage-Server\Files\apps"
-app.config['STATISTIC'] = r"D:\All Python\Pure-Python\P3\WebPage-Server\Files\statistic"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+app.config['UPLOAD_FOLDER_SEND'] = os.path.join(BASE_DIR, 'Files', 'send_to_others')
+app.config['UPLOAD_FOLDER_RECEIVED'] = os.path.join(BASE_DIR, 'Files', 'received_from_others')
+app.config['UPLOAD_FOLDER_SHARE'] = os.path.join(BASE_DIR, 'Files', 'share')
+app.config['RESULT_DIR'] = os.path.join(BASE_DIR, 'Files', 'result')
+app.config['MOVIE_FOLDER'] = os.path.join(BASE_DIR, 'Files', 'share')
+app.config['APP_FOLDER'] = os.path.join(BASE_DIR, 'Files', 'apps')
+app.config['STATISTIC'] = os.path.join(BASE_DIR, 'Files', 'statistic')
 app.secret_key = 'supersecretkey'
 passwords = {"Generic_Processing": "1234",
              "PPK_Processing": "1234",

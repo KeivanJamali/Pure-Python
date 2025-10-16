@@ -6,8 +6,7 @@ from pathlib import Path
 import os
 from datetime import datetime
 import numpy as np
-import matplotlib.cm as cm
-
+import multiprocessing
 
 class SearchArxivOAI:
     _result_path = Path(__file__).parent / "result"
@@ -57,30 +56,43 @@ class SearchArxivOAI:
 
     def fit(self) -> tuple:
         """Loop over years and keyword groups, counting papers per year."""
-        import time
         MAX_YEAR_SECONDS = 300  # 5 minutes
+        def group_count_worker(queue, keywords, year):
+            try:
+                result = self.get_group_count(keywords, year)
+                queue.put(("success", result))
+            except Exception as e:
+                queue.put(("error", str(e)))
+
         for group_name, keywords in zip(self.group_names, self.keyword_groups):
             self.count_data[group_name] = {}
             self.saved_papers[group_name] = {}
             self.count_percent[group_name] = {}
             for year in tqdm(self.years, desc=f"Searching for '{group_name}'"):
                 while True:
-                    start_time = time.time()
-                    try:
-                        count, papers, total_record = self.get_group_count(keywords, year)
-                        elapsed = time.time() - start_time
-                        if elapsed > MAX_YEAR_SECONDS:
-                            print(f"Year {year} for group '{group_name}' took {elapsed:.1f}s (>5min). Retrying...")
-                            continue  # retry this year
-                        self.count_data[group_name][year] = count
-                        self.count_percent[group_name][year] = (count / total_record) * 100 if total_record else 0
-                        self.saved_papers[group_name][year] = papers
-                        break  # success, go to next year
-                    except Exception as e:
-                        print(f"Error for {group_name}-{year}: {e}")
-                        self.count_data[group_name][year] = None
-                        self.count_percent[group_name][year] = None
-                        break  # do not retry on exception
+                    queue = multiprocessing.Queue()
+                    proc = multiprocessing.Process(target=group_count_worker, args=(queue, keywords, year))
+                    proc.start()
+                    proc.join(MAX_YEAR_SECONDS)
+                    if proc.is_alive():
+                        proc.terminate()
+                        proc.join()
+                        print(f"Year {year} for group '{group_name}' exceeded {MAX_YEAR_SECONDS}s. Retrying...")
+                        continue  # retry this year
+                    if not queue.empty():
+                        status, result = queue.get()
+                        if status == "success":
+                            count, papers, total_record = result
+                            self.count_data[group_name][year] = count
+                            self.count_percent[group_name][year] = (count / total_record) * 100 if total_record else 0
+                            self.saved_papers[group_name][year] = papers
+                            break  # success, go to next year
+                        else:
+                            print(f"Error for {group_name}-{year}: {result}. Retrying...")
+                            continue  # retry on exception
+                    else:
+                        print(f"No result for {group_name}-{year}. Retrying...")
+                        continue  # retry if no result
 
         self.count_data_frame = pd.DataFrame(self.count_data)
         self.count_data_frame.index.name = "Year"

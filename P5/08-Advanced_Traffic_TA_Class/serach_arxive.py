@@ -57,20 +57,30 @@ class SearchArxivOAI:
 
     def fit(self) -> tuple:
         """Loop over years and keyword groups, counting papers per year."""
+        import time
+        MAX_YEAR_SECONDS = 300  # 5 minutes
         for group_name, keywords in zip(self.group_names, self.keyword_groups):
             self.count_data[group_name] = {}
             self.saved_papers[group_name] = {}
             self.count_percent[group_name] = {}
             for year in tqdm(self.years, desc=f"Searching for '{group_name}'"):
-                try:
-                    count, papers, total_record = self.get_group_count(keywords, year)
-                    self.count_data[group_name][year] = count
-                    self.count_percent[group_name][year] = (count / total_record) * 100 if total_record else 0
-                    self.saved_papers[group_name][year] = papers
-                except Exception as e:
-                    print(f"Error for {group_name}-{year}: {e}")
-                    self.count_data[group_name][year] = None
-                    self.count_percent[group_name][year] = None
+                while True:
+                    start_time = time.time()
+                    try:
+                        count, papers, total_record = self.get_group_count(keywords, year)
+                        elapsed = time.time() - start_time
+                        if elapsed > MAX_YEAR_SECONDS:
+                            print(f"Year {year} for group '{group_name}' took {elapsed:.1f}s (>5min). Retrying...")
+                            continue  # retry this year
+                        self.count_data[group_name][year] = count
+                        self.count_percent[group_name][year] = (count / total_record) * 100 if total_record else 0
+                        self.saved_papers[group_name][year] = papers
+                        break  # success, go to next year
+                    except Exception as e:
+                        print(f"Error for {group_name}-{year}: {e}")
+                        self.count_data[group_name][year] = None
+                        self.count_percent[group_name][year] = None
+                        break  # do not retry on exception
 
         self.count_data_frame = pd.DataFrame(self.count_data)
         self.count_data_frame.index.name = "Year"

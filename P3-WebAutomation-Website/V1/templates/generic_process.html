@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h1>Generic Processing</h1>
+  <form method="post" enctype="multipart/form-data" id="process-form">
+    <div>
+      <label for="file">CSV File:</label>
+      <input type="file" name="file" id="file" required>
+    </div>
+    <div>
+      <label for="epsilon">Epsilon (m):</label>
+      <small>To cluster and find the ax points.</small>
+      <input type="text" name="epsilon" id="epsilon" required>
+    </div>
+    <div>
+      <label for="rounding_limit">Rounding Limit (m):</label>
+      <small>To round the digits of ax.</small>
+      <input type="text" name="rounding_limit" id="rounding_limit" required>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" required>
+    </div>
+    <input type="submit" value="Process">
+  </form>
+  <div id="processing-info" style="display: none;">
+    <p>Processing... Time elapsed: <span id="timer">0</span> seconds</p>
+  </div>
+
+  <script>
+    document.getElementById('process-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      document.getElementById('processing-info').style.display = 'block';
+      let startTime = Date.now();
+
+      const updateTimer = () => {
+        let elapsed = Math.floor((Date.now() - startTime) / 1000);
+        document.getElementById('timer').textContent = elapsed;
+      };
+
+      const timerInterval = setInterval(updateTimer, 1000);
+
+      fetch('{{ url_for("generic_processing") }}', {
+        method: 'POST',
+        body: new FormData(this)
+      }).then(response => response.json())
+        .then(data => {
+          clearInterval(timerInterval);
+          document.getElementById('processing-info').style.display = 'none';
+          if (data.result_url) {
+            window.location.href = data.result_url;
+          } else {
+            // Handle failure
+            alert('Processing failed');
+          }
+        }).catch(error => {
+          clearInterval(timerInterval);
+          document.getElementById('processing-info').style.display = 'none';
+          // Handle error, e.g., display error message
+          alert('An error occurred');
+        });
+    });
+  </script>
+{% endblock %}

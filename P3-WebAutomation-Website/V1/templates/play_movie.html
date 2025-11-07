@@ -1,0 +1,11 @@
+<!-- templates/play_movie.html -->
+{% extends "layout.html" %}
+{% block content %}
+<h1>Watch Movie</h1>
+<div class="video-container">
+    <video controls>
+        <source src="{{ url_for('movie', filename=movie_file) }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+{% endblock %}

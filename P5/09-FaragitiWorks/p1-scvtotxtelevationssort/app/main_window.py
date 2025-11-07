@@ -47,6 +47,13 @@ class MainWindow(QMainWindow):
         layout.addWidget(QLabel("Elevation Threshold (optional):"))
         layout.addWidget(self.elevation_threshold_spin)
 
+        self.start_n_spin = QSpinBox()
+        self.start_n_spin.setValue(1)
+        self.start_n_spin.setMinimum(1)
+        self.start_n_spin.setMaximum(100000)
+        layout.addWidget(QLabel("Start N (default 1):"))
+        layout.addWidget(self.start_n_spin)
+
         self.load_btn = QPushButton("Load and Process Data")
         self.load_btn.clicked.connect(self.load_data)
         layout.addWidget(self.load_btn)
@@ -112,7 +119,8 @@ class MainWindow(QMainWindow):
             return
         output_dir = QFileDialog.getExistingDirectory(self, "Select Output Directory")
         if output_dir:
-            self.data_loader.store_data(output_dir)
+            start_n = self.start_n_spin.value()
+            self.data_loader.store_data(output_dir, start_n)
             QMessageBox.information(self, "Saved", f"Processed data saved to {output_dir}")
 
 if __name__ == "__main__":

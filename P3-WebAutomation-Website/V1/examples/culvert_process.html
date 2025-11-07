@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h1>Culvert Processing</h1>
+  <p>This file doesn't need installation. You move it to your local PC and run it whenever you need it.</p>
+
+  <h2>Purpose:</h2>
+  <p>It gets some information and give you the designed dwg file for culverts.</p>
+
+  <h2>Parameters:</h2>
+  <ul>
+    <li><strong>Generate File:</strong> The template dwg file + the CSV template for informations or in app parameters.</li>
+    <li><strong>Generate dwg:</strong> The .py file that generates by the previous step.</li>
+  </ul>
+
+  <form method="post" action="{{ url_for('culvert_processing') }}">
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" required>
+    </div>
+    <input type="submit" value="Download App">
+  </form>
+{% endblock %}

@@ -1,3 +1,4 @@
+from tokenize import group
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -15,6 +16,7 @@ class DataLoader:
         else:
             self.removed_notes = self._remove_by_std_deviation()
         self._remove_by_time(time_threshold=time_threshold)
+        self._remove_empty_groups()
         print(f"Removed notes: {self.removed_notes}")
 
     def _load_data(self):
@@ -132,6 +134,7 @@ class DataLoader:
             group = group.iloc[start:end+1].reset_index(drop=True)
             removed_notes[len(removed_notes) + 1] = removed
             self.group_data[idx] = group
+            
         return removed_notes
 
     def _remove_by_time(self, time_threshold: int):
@@ -169,13 +172,25 @@ class DataLoader:
                     end -= 1
             if removed:
                 self.removed_notes[len(self.removed_notes) + 1] = removed
-            self.group_data[idx] = group
+            if not group.empty:
+                self.group_data[idx] = group
 
-    def store_data(self, output_dir: str):
+    def _remove_empty_groups(self):
+        non_empty_groups = []
+        for i in range(len(self.group_data)):
+            group = self.group_data[i]
+            if not group.empty:
+                non_empty_groups.append(group)
+        self.group_data = non_empty_groups
+
+    def store_data(self, output_dir: str, start_num: int):
         output_path = Path(output_dir)
         output_path.mkdir(parents=True, exist_ok=True)
         for idx, group in enumerate(self.group_data):
-            group[self.needed_col].dropna().to_csv(output_path / f"group_{idx+1}.csv", index=False)
+            rows = group[self.needed_col].dropna().shape[0]
+            out_file = output_path / f"{start_num + idx}_{rows}.txt"
+            # save as .txt without header or index
+            group[self.needed_col].dropna().to_csv(out_file, index=False, header=False)
         removed_rows = []
         for notes in self.removed_notes.values():
             for note in notes:
@@ -184,8 +199,9 @@ class DataLoader:
                     "Note": note["Note"],
                     "Elevation": note["Elevation"]
                 })
-        removed_data = pd.DataFrame(removed_rows)
-        removed_data.to_csv(output_path / "removed_notes.csv", index=False)
+        if removed_rows:
+            removed_data = pd.DataFrame(removed_rows)
+            removed_data.to_csv(output_path / "removed_notes.txt", index=False, header=True)
 
 class Engine:
     def __init__(self):
@@ -244,6 +260,7 @@ class Engine:
             ax.set_xlabel('Time', fontsize=12)
             ax.set_ylabel('Ell.Height (m)', fontsize=12)
             ax.grid(True, linestyle='--', alpha=0.5)
+            plt.figtext(0.5, 0.01, f"Total records: {len(elev)}", ha="center", fontsize=12, color="gray")
             plt.tight_layout(rect=[0, 0.03, 1, 0.95])
             plt.show()
         

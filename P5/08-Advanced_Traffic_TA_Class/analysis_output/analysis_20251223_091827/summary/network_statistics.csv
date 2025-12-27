@@ -1,0 +1,2 @@
+total_trips_completed,avg_wait_time,median_wait_time,std_wait_time,min_wait_time,max_wait_time,percentile_25_wait,percentile_75_wait,percentile_95_wait,avg_travel_time,median_travel_time,std_travel_time,min_travel_time,max_travel_time,percentile_25_travel,percentile_75_travel,percentile_95_travel,simulation_duration,throughput_per_hour
+4000,8.221,6.0,8.593638441045469,0,55,0.0,14.0,25.0,243.95325,234.0,97.09009571582989,96,635,176.0,298.0,416.0499999999997,2390,6025.104602510461

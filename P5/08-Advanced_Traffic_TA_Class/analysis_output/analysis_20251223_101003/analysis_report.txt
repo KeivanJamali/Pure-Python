@@ -1,0 +1,62 @@
+================================================================================
+TRAFFIC SIMULATION ANALYSIS REPORT
+Generated: 2025-12-23 10:10:10
+================================================================================
+
+NETWORK-WIDE STATISTICS
+----------------------------------------
+Total Trips Completed: 800
+Simulation Duration: 2190 seconds
+Throughput: 1315 vehicles/hour
+
+WAIT TIME STATISTICS
+----------------------------------------
+Average Wait Time: 159.72 seconds
+Median Wait Time: 159.50 seconds
+Std Dev Wait Time: 92.70 seconds
+Min Wait Time: 0.00 seconds
+Max Wait Time: 328.00 seconds
+25th Percentile: 80.00 seconds
+75th Percentile: 239.00 seconds
+95th Percentile: 304.00 seconds
+
+TRAVEL TIME STATISTICS
+----------------------------------------
+Average Travel Time: 946.58 seconds
+Median Travel Time: 946.00 seconds
+Std Dev Travel Time: 463.52 seconds
+Min Travel Time: 150.00 seconds
+Max Travel Time: 1790.00 seconds
+25th Percentile: 548.25 seconds
+75th Percentile: 1344.00 seconds
+95th Percentile: 1667.10 seconds
+
+LANE-LEVEL STATISTICS
+----------------------------------------
+Total Lanes Analyzed: 2
+Total Network Delay: 0 vehicle-seconds
+Average Delay per Lane: 0.00 vehicle-seconds
+Max Single Lane Delay: 0 vehicle-seconds
+Average Max Queue Length: 0.00 vehicles
+Highest Max Queue: 0 vehicles
+
+TOP 10 MOST CONGESTED LANES (by Total Delay)
+----------------------------------------
+ 1. Lane 1.0 → 2.0: Delay=0s, MaxQueue=0veh, Vehicles=409
+ 2. Lane 2.0 → 1.0: Delay=0s, MaxQueue=0veh, Vehicles=391
+
+================================================================================
+OUTPUT FILES
+----------------------------------------
+- lane_metrics.csv: Metrics for each lane
+- network_statistics.csv: Network-wide statistics
+- trip_data_with_travel_time.csv: All trip records
+- detailed_movement_data.csv: Vehicle movement logs
+- lane_summary.csv: Summary statistics per lane
+- comprehensive_dashboard.png: Visual dashboard
+- network_time_distributions.png: Time distribution plots
+- lane_level_analysis.png: Lane-level analysis plots
+- temporal_analysis.png: Time series analysis
+- trajectories/: Individual lane trajectory plots
+- queue_analysis/: Individual lane queue plots
+================================================================================

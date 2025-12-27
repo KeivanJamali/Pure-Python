@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generated on 2025-12-19T19:32:37 by TrafficLightConverter -->
+
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+
+    <tlLogic id="J1" type="static" programID="0" offset="0">
+        <phase duration="30" state="Gr"/>
+        <phase duration="5" state="yr"/>
+        <phase duration="30" state="rG"/>
+        <phase duration="5" state="ry"/>
+    </tlLogic>
+
+    <tlLogic id="J2" type="static" programID="0" offset="0">
+        <phase duration="30" state="Gr"/>
+        <phase duration="5" state="yr"/>
+        <phase duration="30" state="rG"/>
+        <phase duration="5" state="ry"/>
+    </tlLogic>
+
+    <tlLogic id="J3" type="static" programID="0" offset="0">
+        <phase duration="30" state="Grr"/>
+        <phase duration="5" state="yrr"/>
+        <phase duration="30" state="rGr"/>
+        <phase duration="5" state="ryr"/>
+        <phase duration="30" state="rrG"/>
+        <phase duration="5" state="rry"/>
+    </tlLogic>
+
+    <tlLogic id="J4" type="static" programID="0" offset="0">
+        <phase duration="30" state="Grr"/>
+        <phase duration="5" state="yrr"/>
+        <phase duration="30" state="rGr"/>
+        <phase duration="5" state="ryr"/>
+        <phase duration="30" state="rrG"/>
+        <phase duration="5" state="rry"/>
+    </tlLogic>
+
+    <tlLogic id="J5" type="static" programID="0" offset="0">
+        <phase duration="30" state="Grr"/>
+        <phase duration="5" state="yrr"/>
+        <phase duration="30" state="rGr"/>
+        <phase duration="5" state="ryr"/>
+        <phase duration="30" state="rrG"/>
+        <phase duration="5" state="rry"/>
+    </tlLogic>
+
+    <tlLogic id="J6" type="static" programID="0" offset="0">
+        <phase duration="30" state="Grr"/>
+        <phase duration="5" state="yrr"/>
+        <phase duration="30" state="rGr"/>
+        <phase duration="5" state="ryr"/>
+        <phase duration="30" state="rrG"/>
+        <phase duration="5" state="rry"/>
+    </tlLogic>
+
+    <tlLogic id="J7" type="static" programID="0" offset="0">
+        <phase duration="30" state="Gr"/>
+        <phase duration="5" state="yr"/>
+        <phase duration="30" state="rG"/>
+        <phase duration="5" state="ry"/>
+    </tlLogic>
+
+    <tlLogic id="J8" type="static" programID="0" offset="0">
+        <phase duration="30" state="Grrr"/>
+        <phase duration="5" state="yrrr"/>
+        <phase duration="30" state="rGrr"/>
+        <phase duration="5" state="ryrr"/>
+        <phase duration="30" state="rrGr"/>
+        <phase duration="5" state="rryr"/>
+        <phase duration="30" state="rrrG"/>
+        <phase duration="5" state="rrry"/>
+    </tlLogic>
+
+    <tlLogic id="J9" type="static" programID="0" offset="0">
+        <phase duration="30" state="Grr"/>
+        <phase duration="5" state="yrr"/>
+        <phase duration="30" state="rGr"/>
+        <phase duration="5" state="ryr"/>
+        <phase duration="30" state="rrG"/>
+        <phase duration="5" state="rry"/>
+    </tlLogic>
+
+    <tlLogic id="J10" type="static" programID="0" offset="0">
+        <phase duration="30" state="Grrrr"/>
+        <phase duration="5" state="yrrrr"/>
+        <phase duration="30" state="rGrrr"/>
+        <phase duration="5" state="ryrrr"/>
+        <phase duration="30" state="rrGrr"/>
+        <phase duration="5" state="rryrr"/>
+        <phase duration="30" state="rrrGr"/>
+        <phase duration="5" state="rrryr"/>
+        <phase duration="30" state="rrrrG"/>
+        <phase duration="5" state="rrrry"/>
+    </tlLogic>
+
+    <tlLogic id="J11" type="static" programID="0" offset="0">
+        <phase duration="30" state="Grrr"/>
+        <phase duration="5" state="yrrr"/>
+        <phase duration="30" state="rGrr"/>
+        <phase duration="5" state="ryrr"/>
+        <phase duration="30" state="rrGr"/>
+        <phase duration="5" state="rryr"/>
+        <phase duration="30" state="rrrG"/>
+        <phase duration="5" state="rrry"/>
+    </tlLogic>
+
+    <tlLogic id="J12" type="static" programID="0" offset="0">
+        <phase duration="30" state="Grr"/>
+        <phase duration="5" state="yrr"/>
+        <phase duration="30" state="rGr"/>
+        <phase duration="5" state="ryr"/>
+        <phase duration="30" state="rrG"/>
+        <phase duration="5" state="rry"/>
+    </tlLogic>
+
+    <tlLogic id="J13" type="static" programID="0" offset="0">
+        <phase duration="30" state="Gr"/>
+        <phase duration="5" state="yr"/>
+        <phase duration="30" state="rG"/>
+        <phase duration="5" state="ry"/>
+    </tlLogic>
+
+    <tlLogic id="J14" type="static" programID="0" offset="0">
+        <phase duration="30" state="Grr"/>
+        <phase duration="5" state="yrr"/>
+        <phase duration="30" state="rGr"/>
+        <phase duration="5" state="ryr"/>
+        <phase duration="30" state="rrG"/>
+        <phase duration="5" state="rry"/>
+    </tlLogic>
+
+    <tlLogic id="J15" type="static" programID="0" offset="0">
+        <phase duration="30" state="Grrr"/>
+        <phase duration="5" state="yrrr"/>
+        <phase duration="30" state="rGrr"/>
+        <phase duration="5" state="ryrr"/>
+        <phase duration="30" state="rrGr"/>
+        <phase duration="5" state="rryr"/>
+        <phase duration="30" state="rrrG"/>
+        <phase duration="5" state="rrry"/>
+    </tlLogic>
+
+    <tlLogic id="J16" type="static" programID="0" offset="0">
+        <phase duration="30" state="Grrr"/>
+        <phase duration="5" state="yrrr"/>
+        <phase duration="30" state="rGrr"/>
+        <phase duration="5" state="ryrr"/>
+        <phase duration="30" state="rrGr"/>
+        <phase duration="5" state="rryr"/>
+        <phase duration="30" state="rrrG"/>
+        <phase duration="5" state="rrry"/>
+    </tlLogic>
+
+    <tlLogic id="J17" type="static" programID="0" offset="0">
+        <phase duration="30" state="Grr"/>
+        <phase duration="5" state="yrr"/>
+        <phase duration="30" state="rGr"/>
+        <phase duration="5" state="ryr"/>
+        <phase duration="30" state="rrG"/>
+        <phase duration="5" state="rry"/>
+    </tlLogic>
+
+    <tlLogic id="J18" type="static" programID="0" offset="0">
+        <phase duration="30" state="Grr"/>
+        <phase duration="5" state="yrr"/>
+        <phase duration="30" state="rGr"/>
+        <phase duration="5" state="ryr"/>
+        <phase duration="30" state="rrG"/>
+        <phase duration="5" state="rry"/>
+    </tlLogic>
+
+    <tlLogic id="J19" type="static" programID="0" offset="0">
+        <phase duration="30" state="Grr"/>
+        <phase duration="5" state="yrr"/>
+        <phase duration="30" state="rGr"/>
+        <phase duration="5" state="ryr"/>
+        <phase duration="30" state="rrG"/>
+        <phase duration="5" state="rry"/>
+    </tlLogic>
+
+    <tlLogic id="J20" type="static" programID="0" offset="0">
+        <phase duration="30" state="Grrr"/>
+        <phase duration="5" state="yrrr"/>
+        <phase duration="30" state="rGrr"/>
+        <phase duration="5" state="ryrr"/>
+        <phase duration="30" state="rrGr"/>
+        <phase duration="5" state="rryr"/>
+        <phase duration="30" state="rrrG"/>
+        <phase duration="5" state="rrry"/>
+    </tlLogic>
+
+    <tlLogic id="J21" type="static" programID="0" offset="0">
+        <phase duration="30" state="Grr"/>
+        <phase duration="5" state="yrr"/>
+        <phase duration="30" state="rGr"/>
+        <phase duration="5" state="ryr"/>
+        <phase duration="30" state="rrG"/>
+        <phase duration="5" state="rry"/>
+    </tlLogic>
+
+    <tlLogic id="J22" type="static" programID="0" offset="0">
+        <phase duration="30" state="Grrr"/>
+        <phase duration="5" state="yrrr"/>
+        <phase duration="30" state="rGrr"/>
+        <phase duration="5" state="ryrr"/>
+        <phase duration="30" state="rrGr"/>
+        <phase duration="5" state="rryr"/>
+        <phase duration="30" state="rrrG"/>
+        <phase duration="5" state="rrry"/>
+    </tlLogic>
+
+    <tlLogic id="J23" type="static" programID="0" offset="0">
+        <phase duration="30" state="Grr"/>
+        <phase duration="5" state="yrr"/>
+        <phase duration="30" state="rGr"/>
+        <phase duration="5" state="ryr"/>
+        <phase duration="30" state="rrG"/>
+        <phase duration="5" state="rry"/>
+    </tlLogic>
+
+    <tlLogic id="J24" type="static" programID="0" offset="0">
+        <phase duration="30" state="Grr"/>
+        <phase duration="5" state="yrr"/>
+        <phase duration="30" state="rGr"/>
+        <phase duration="5" state="ryr"/>
+        <phase duration="30" state="rrG"/>
+        <phase duration="5" state="rry"/>
+    </tlLogic>
+
+</additional>

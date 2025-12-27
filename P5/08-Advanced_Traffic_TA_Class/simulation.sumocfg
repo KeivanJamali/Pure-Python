@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="result.net.xml"/>
+        <route-files value="routes.rou.xml"/>
+        <additional-files value="simulation.add.xml"/>
+    </input>
+
+    <time>
+        <begin value="0"/>
+        <end value="3600"/>
+        <step-length value="1.0"/>
+    </time>
+
+    <processing>
+        <time-to-teleport value="-1"/>
+        <waiting-time-memory value="100"/>
+        <junction-taz value="true"/>
+    </processing>
+
+    <routing>
+        <device.rerouting.probability value="1.0"/>
+        <device.rerouting.period value="60"/>
+        <device.rerouting.adaptation-interval value="1"/>
+        <device.rerouting.adaptation-weight value="0.5"/>
+    </routing>
+
+    <output>
+        <tripinfo-output value="tripinfo.xml"/>
+        <summary-output value="summary.xml"/>
+    </output>
+
+    <gui_only>
+        <start value="true"/>
+        <quit-on-end value="false"/>
+    </gui_only>
+
+</configuration>

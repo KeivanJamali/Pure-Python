@@ -1,0 +1,3 @@
+lane_from,lane_to,unique_vehicles,first_observation,last_observation,min_block,max_block,avg_block
+1,2.0,409,5,2185,0,29,26.753768653889857
+2,1.0,391,5,2095,0,29,26.63010491995151

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+
+    <vType id="default" accel="2.6" decel="4.5" sigma="0.5" length="5.0" minGap="2.5" maxSpeed="55.56" color="yellow" vClass="passenger"/>
+    <vType id="car" accel="2.6" decel="4.5" sigma="0.5" length="5.0" minGap="2.5" maxSpeed="33.33" color="red" vClass="passenger"/>
+
+    <route id="route_2" edges="E1_3 E3_4"/>
+
+    <trip id="trip_1" depart="0" from="E1_2" to="E3_4" type="car" color="1,0,0"/>
+
+    <flow id="flow_route_2" route="route_2" type="default" begin="0" end="3600" vehsPerHour="300"/>
+
+    <flow id="flow_1_to_18" type="default" begin="0" end="3600" vehsPerHour="50000" fromJunction="J1" toJunction="J18"/>
+    <flow id="flow_2_to_18" type="default" begin="0" end="3600" vehsPerHour="30000" fromJunction="J2" toJunction="J18"/>
+
+</routes>

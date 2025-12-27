@@ -1,0 +1,70 @@
+================================================================================
+TRAFFIC SIMULATION ANALYSIS REPORT
+Generated: 2025-12-23 09:59:55
+================================================================================
+
+NETWORK-WIDE STATISTICS
+----------------------------------------
+Total Trips Completed: 2,000
+Simulation Duration: 3029 seconds
+Throughput: 2377 vehicles/hour
+
+WAIT TIME STATISTICS
+----------------------------------------
+Average Wait Time: 25.75 seconds
+Median Wait Time: 23.00 seconds
+Std Dev Wait Time: 17.98 seconds
+Min Wait Time: 0.00 seconds
+Max Wait Time: 92.00 seconds
+25th Percentile: 12.00 seconds
+75th Percentile: 37.00 seconds
+95th Percentile: 60.00 seconds
+
+TRAVEL TIME STATISTICS
+----------------------------------------
+Average Travel Time: 690.81 seconds
+Median Travel Time: 686.50 seconds
+Std Dev Travel Time: 303.77 seconds
+Min Travel Time: 96.00 seconds
+Max Travel Time: 1486.00 seconds
+25th Percentile: 459.75 seconds
+75th Percentile: 930.50 seconds
+95th Percentile: 1187.10 seconds
+
+LANE-LEVEL STATISTICS
+----------------------------------------
+Total Lanes Analyzed: 74
+Total Network Delay: 257004 vehicle-seconds
+Average Delay per Lane: 3473.03 vehicle-seconds
+Max Single Lane Delay: 10455 vehicle-seconds
+Average Max Queue Length: 9.45 vehicles
+Highest Max Queue: 20 vehicles
+
+TOP 10 MOST CONGESTED LANES (by Total Delay)
+----------------------------------------
+ 1. Lane 8.0 → 16.0: Delay=10455s, MaxQueue=13veh, Vehicles=103
+ 2. Lane 6.0 → 8.0: Delay=10440s, MaxQueue=20veh, Vehicles=190
+ 3. Lane 17.0 → 16.0: Delay=8634s, MaxQueue=16veh, Vehicles=177
+ 4. Lane 7.0 → 8.0: Delay=8375s, MaxQueue=15veh, Vehicles=115
+ 5. Lane 15.0 → 22.0: Delay=7930s, MaxQueue=13veh, Vehicles=103
+ 6. Lane 12.0 → 3.0: Delay=7260s, MaxQueue=14veh, Vehicles=122
+ 7. Lane 8.0 → 6.0: Delay=7054s, MaxQueue=19veh, Vehicles=206
+ 8. Lane 19.0 → 15.0: Delay=6984s, MaxQueue=14veh, Vehicles=116
+ 9. Lane 16.0 → 10.0: Delay=6764s, MaxQueue=11veh, Vehicles=87
+10. Lane 22.0 → 15.0: Delay=6760s, MaxQueue=13veh, Vehicles=117
+
+================================================================================
+OUTPUT FILES
+----------------------------------------
+- lane_metrics.csv: Metrics for each lane
+- network_statistics.csv: Network-wide statistics
+- trip_data_with_travel_time.csv: All trip records
+- detailed_movement_data.csv: Vehicle movement logs
+- lane_summary.csv: Summary statistics per lane
+- comprehensive_dashboard.png: Visual dashboard
+- network_time_distributions.png: Time distribution plots
+- lane_level_analysis.png: Lane-level analysis plots
+- temporal_analysis.png: Time series analysis
+- trajectories/: Individual lane trajectory plots
+- queue_analysis/: Individual lane queue plots
+================================================================================

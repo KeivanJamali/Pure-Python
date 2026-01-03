@@ -5,12 +5,11 @@
     <input>
         <net-file value="result.net.xml"/>
         <route-files value="routes.rou.xml"/>
-        <additional-files value="simulation.add.xml"/>
     </input>
 
     <time>
         <begin value="0"/>
-        <end value="3600"/>
+        <end value="5398"/>
         <step-length value="1.0"/>
     </time>
 
@@ -29,7 +28,6 @@
 
     <output>
         <tripinfo-output value="tripinfo.xml"/>
-        <summary-output value="summary.xml"/>
     </output>
 
     <gui_only>

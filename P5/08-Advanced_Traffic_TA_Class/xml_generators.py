@@ -891,6 +891,54 @@ class SUMORouteGenerator:
         self.trips.append(trip)
         print(f"Added trip '{trip_id}' from {from_edge} to {to_edge} (dynamic routing)")
     
+    def add_trip_from_junctions(
+        self,
+        trip_id: str,
+        from_junction: str,
+        to_junction: str,
+        depart: float = 0,
+        vtype: str = 'default',
+        color: str = None
+    ):
+        """
+        Add a single trip using junction IDs for DYNAMIC routing.
+        
+        SUMO will compute the shortest path from from_junction to to_junction.
+        This requires the network to have junction-taz enabled in the configuration.
+        
+        Args:
+            trip_id: Unique trip identifier
+            from_junction: Starting junction ID (e.g., 'J1' or '1')
+            to_junction: Destination junction ID (e.g., 'J5' or '5')
+            depart: Departure time in seconds
+            vtype: Vehicle type
+            color: Vehicle color
+            
+        Example:
+            route_gen.add_trip_from_junctions('trip_1', 'J1', 'J5', depart=0)
+            # or with node numbers:
+            route_gen.add_trip_from_junctions('trip_2', '2', '10', depart=10)
+        """
+        # Ensure junction IDs have 'J' prefix if needed
+        if not from_junction.startswith('J') and from_junction.isdigit():
+            from_junction = f"J{from_junction}"
+        if not to_junction.startswith('J') and to_junction.isdigit():
+            to_junction = f"J{to_junction}"
+        
+        trip = {
+            'id': trip_id,
+            'fromJunction': from_junction,
+            'toJunction': to_junction,
+            'depart': depart,
+            'type': vtype,
+            'is_junction_trip': True  # Flag to identify junction-based trips
+        }
+        if color:
+            trip['color'] = color
+        
+        self.trips.append(trip)
+        print(f"Added trip '{trip_id}' from junction {from_junction} to {to_junction} (dynamic routing)")
+    
     def add_routes_from_od(
         self,
         od_matrix: dict,
@@ -1012,13 +1060,24 @@ class SUMORouteGenerator:
         if self.trips:
             sorted_trips = sorted(self.trips, key=lambda t: t['depart'])
             for trip in sorted_trips:
-                attrs = [
-                    f'id="{trip["id"]}"',
-                    f'depart="{trip["depart"]}"',
-                    f'from="{trip["from"]}"',
-                    f'to="{trip["to"]}"',
-                    f'type="{trip["type"]}"'
-                ]
+                # Check if this is a junction-based trip
+                if trip.get('is_junction_trip'):
+                    attrs = [
+                        f'id="{trip["id"]}"',
+                        f'depart="{trip["depart"]}"',
+                        f'fromJunction="{trip["fromJunction"]}"',
+                        f'toJunction="{trip["toJunction"]}"',
+                        f'type="{trip["type"]}"'
+                    ]
+                else:
+                    # Edge-based trip
+                    attrs = [
+                        f'id="{trip["id"]}"',
+                        f'depart="{trip["depart"]}"',
+                        f'from="{trip["from"]}"',
+                        f'to="{trip["to"]}"',
+                        f'type="{trip["type"]}"'
+                    ]
                 if trip.get('color'):
                     attrs.append(f'color="{trip["color"]}"')
                 xml += f'    <trip {" ".join(attrs)}/>\n'

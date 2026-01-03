@@ -1,0 +1,25 @@
+\contentsline {section}{Abstract}{2}{Doc-Start}%
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Study Area}{3}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Methodology}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Data Sources}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Gravity-Based Accessibility}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Cumulative Opportunities Method}{4}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Results}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Task 1: Accessibility Indicators by Zone and District}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Task 2: Accessibility Maps}{5}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Task 3: Method Comparison}{7}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Which Method is More Appropriate?}{7}{subsubsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.4}Task 4: Geographic Pattern Analysis}{8}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Observed Patterns}{8}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Why Are Certain Areas More Accessible?}{8}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}Inequality Analysis}{8}{subsubsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.5}Task 5: Recommendations for Improvement}{9}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}Recommendation 1: Incorporate Mode-Specific Travel Times}{9}{subsubsection.3.5.1}%
+\contentsline {subsubsection}{\numberline {3.5.2}Recommendation 2: Account for Competition Effects}{9}{subsubsection.3.5.2}%
+\contentsline {subsubsection}{\numberline {3.5.3}Recommendation 3: Time-of-Day Sensitivity}{9}{subsubsection.3.5.3}%
+\contentsline {subsubsection}{\numberline {3.5.4}Recommendation 4: Validate with Observed Behavior}{9}{subsubsection.3.5.4}%
+\contentsline {subsubsection}{\numberline {3.5.5}Additional Policy Recommendations}{10}{subsubsection.3.5.5}%
+\contentsline {section}{\numberline {4}Conclusion}{11}{section.4}%
+\contentsline {section}{References}{11}{Item.21}%
+\contentsline {section}{\numberline {A}Appendix: Complete Zone-Level Results}{12}{appendix.A}%

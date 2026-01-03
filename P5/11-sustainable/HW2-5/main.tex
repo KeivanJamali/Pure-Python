@@ -1,0 +1,294 @@
+\documentclass[11pt]{article}
+
+% MIT Format Packages
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{svg}
+\usepackage{pdflscape}
+\usepackage{adjustbox}
+
+% Colors
+\definecolor{mitred}{RGB}{163, 31, 52}
+\definecolor{darkblue}{RGB}{0, 51, 102}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Sustainable Transportation}
+\fancyhead[R]{\small Keivan Jamali}
+\fancyfoot[C]{\thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Title formatting
+\titleformat{\section}{\large\bfseries\color{darkblue}}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{darkblue}}{\thesubsection.}{0.5em}{}
+
+% Hyperlink setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=darkblue,
+    urlcolor=mitred,
+    citecolor=darkblue
+}
+
+\begin{document}
+
+% Title Page Content
+\begin{center}
+    \vspace*{0.5cm}
+    {\Large\textbf{\color{darkblue}Sustainable Transportation Solutions}}\\[0.3cm]
+    {\large\textbf{An Integrated Framework and Prioritization Analysis}}\\[0.5cm]
+    
+    \rule{0.8\textwidth}{0.4pt}\\[0.4cm]
+    
+    {\normalsize
+    \textbf{Course:} Sustainable Transportation\\[0.1cm]
+    \textbf{Instructor:} Dr. Amirhossein Kermanshah\\[0.1cm]
+    \textbf{Department:} Faculty of Civil Engineering\\[0.3cm]
+    \textbf{Student:} Keivan Jamali\\[0.1cm]
+    \textbf{Date:} December 2024\\[0.3cm]
+    }
+    
+    \rule{0.8\textwidth}{0.4pt}
+\end{center}
+
+\vspace{0.3cm}
+
+%==============================================================================
+% PART 1: INTEGRATED STRUCTURE
+%==============================================================================
+\section{Integrated Structure of Sustainable Transportation Solutions}
+
+Based on the reference book \textit{``Sustainable Transportation: Problems and Solutions''} by William R. Black (2010), the following hierarchical structure presents an integrated framework for sustainable transportation solutions. The structure maintains the book's original categorization while organizing solutions into five main pillars.
+
+\vspace{0.3cm}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{diagram.png}
+    \caption{Integrated Framework for Sustainable Transportation Solutions}
+    \label{fig:diagram}
+\end{figure}
+
+\vspace{0.2cm}
+
+\noindent\textbf{Structure Summary:} The framework consists of five main categories: \textbf{(1) Pricing}, \textbf{(2) Planning}, \textbf{(3) Policy}, \textbf{(4) Education}, and \textbf{(5) Technology}. Each category contains specific solutions as outlined in the book's Part II (Chapters 8-21).
+
+\vspace{0.3cm}
+
+%==============================================================================
+% PART 2: STRUCTURE IMPROVEMENTS
+%==============================================================================
+\section{Proposed Improvements to the Integrated Structure}
+
+The 2010 framework, while comprehensive for its time, requires significant updates to address emerging technologies and contemporary challenges. The following improvements are proposed based on current trends and research (2024-2025):
+
+\vspace{0.2cm}
+
+\subsection{New Technology Solutions to Add}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+\textbf{Category} & \textbf{New Topics (2025)} \\
+\hline
+\textbf{Electric Mobility} & EV Charging Infrastructure Networks, Advanced Battery Technology (LFP, Solid-State), Dynamic Wireless Charging Roads \\
+\hline
+\textbf{Autonomous Vehicles} & Self-driving Cars \& Trucks, Robotaxi Services (Waymo, Tesla), V2X Communication Systems \\
+\hline
+\textbf{AI \& Data Analytics} & AI-powered Traffic Optimization, Predictive Maintenance, Computer Vision for Safety, Dynamic Pricing Algorithms \\
+\hline
+\textbf{5G \& Connectivity} & 5G-enabled Transportation Networks, IoT Sensors, Real-time Fleet Management \\
+\hline
+\textbf{Drone Systems} & Urban Air Mobility (UAM), Drone Delivery Networks, BVLOS Operations Regulations \\
+\hline
+\textbf{Micromobility} & E-scooter \& E-bike Sharing Systems, Last-mile Solutions, Micromobility Infrastructure \\
+\hline
+\end{tabularx}
+\caption{New Technology Solutions for 2025}
+\end{table}
+
+\subsection{New Planning \& Policy Solutions to Add}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+\textbf{Category} & \textbf{New Topics (2025)} \\
+\hline
+\textbf{Digital Platforms} & Mobility-as-a-Service (MaaS), Multimodal Integration Apps, Unified Ticketing Systems \\
+\hline
+\textbf{Smart Cities} & Intelligent Traffic Signal Control, Digital Twin Simulations, Smart Parking Systems \\
+\hline
+\textbf{Decarbonization} & Carbon Neutrality Targets (2050), Scope 3 Emissions Tracking, Carbon Credit Systems \\
+\hline
+\textbf{Shared Mobility} & Ride-sharing Platforms (Uber, Lyft), Car-sharing Services, On-demand Transit \\
+\hline
+\textbf{Blockchain} & Supply Chain Transparency, Carbon Insetting Platforms, Tokenized Transit Payments \\
+\hline
+\end{tabularx}
+\caption{New Planning \& Policy Solutions for 2025}
+\end{table}
+
+\subsection{Topics to De-emphasize or Update}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Alternative Fuels (Hydrogen, Ethanol):} While still relevant for heavy-duty vehicles and shipping, the rapid advancement in battery technology has reduced their importance for passenger vehicles. The focus should shift to electric mobility.
+    \item \textbf{Traditional ITS:} Should be updated and merged with AI-powered Smart Traffic Systems and 5G connectivity solutions.
+\end{itemize}
+
+\vspace{0.2cm}
+
+\noindent\textit{Software used for diagram creation: Draw.io / Diagrams.net}
+
+%==============================================================================
+% PART 3: PRIORITIZATION AND CASE STUDY
+%==============================================================================
+\section{Prioritization Analysis: Tehran and Iran}
+
+\subsection{Context: Current State of Tehran's Transportation}
+
+Tehran faces severe transportation challenges characterized by:
+\begin{itemize}[leftmargin=*]
+    \item Chronic traffic congestion throughout the day
+    \item Poor air quality due to vehicle emissions
+    \item Weak policy enforcement with low penalties
+    \item Inadequate public transportation capacity
+    \item Limited infrastructure for alternative mobility options
+\end{itemize}
+
+\noindent The city's transportation system can be described as \textbf{highly unsustainable}, requiring fundamental changes in planning, policy, and governance before advanced technologies can be effectively implemented.
+
+\vspace{0.3cm}
+
+\subsection{Priority Solutions for Tehran (Top 3)}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{|c|l|X|X|}
+\hline
+\textbf{\#} & \textbf{Solution} & \textbf{Justification} & \textbf{Current Limitations} \\
+\hline
+\textbf{1} & \textbf{Policy Reform \& Enforcement} & 
+Policy is the foundation for all other solutions. Without strict enforcement and proper management, no technology or planning can succeed. Tehran's current policies exist but are not taken seriously due to low penalties and weak implementation. & 
+\begin{minipage}[t]{\linewidth}
+\vspace{0.1cm}
+\begin{itemize}[leftmargin=*, nosep]
+    \item Low penalty amounts
+    \item Inconsistent enforcement
+    \item Poor inter-agency coordination
+    \item Lack of political will
+\end{itemize}
+\vspace{0.1cm}
+\end{minipage} \\
+\hline
+\textbf{2} & \textbf{Urban Planning \& Land Use} & 
+Tehran's urban sprawl and mixed land-use patterns contribute significantly to travel demand. Transit-oriented development (TOD) and indicator-based planning can reduce vehicle dependency and trip lengths. & 
+\begin{minipage}[t]{\linewidth}
+\vspace{0.1cm}
+\begin{itemize}[leftmargin=*, nosep]
+    \item Existing urban density patterns
+    \item Limited vacant land for development
+    \item Complex property ownership
+    \item Long implementation timelines
+\end{itemize}
+\vspace{0.1cm}
+\end{minipage} \\
+\hline
+\textbf{3} & \textbf{Pricing \& Taxation} & 
+Economic incentives are powerful tools for behavior change. Congestion pricing, fuel taxation, and parking fees can effectively manage demand while generating revenue for public transit investment. & 
+\begin{minipage}[t]{\linewidth}
+\vspace{0.1cm}
+\begin{itemize}[leftmargin=*, nosep]
+    \item Public resistance to new fees
+    \item Income inequality concerns
+    \item Implementation costs
+    \item Political sensitivity
+\end{itemize}
+\vspace{0.1cm}
+\end{minipage} \\
+\hline
+\end{tabularx}
+\caption{Top 3 Priority Solutions for Tehran}
+\end{table}
+
+\vspace{0.2cm}
+
+\noindent\textbf{Strategic Rationale:} The priority order follows the principle that \textbf{Policy → Planning → Pricing → Technology}. Tehran is not yet ready for advanced technology solutions because the foundational elements (governance, planning, and economic incentives) are not in place. Implementing electric vehicles or smart traffic systems without proper policy frameworks would result in limited impact and wasted resources.
+
+\vspace{0.3cm}
+
+\subsection{Additional Solutions for Iran (Macro Level) (+2)}
+
+At the national level, two additional solutions should complement Tehran's priorities:
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{|c|l|X|X|}
+\hline
+\textbf{\#} & \textbf{Solution} & \textbf{Justification} & \textbf{Implementation Strategy} \\
+\hline
+\textbf{4} & \textbf{National Education \& Awareness Campaign} & 
+Sustainable transportation requires cultural change. A national education program can build public support for policies, promote behavioral changes, and create demand for sustainable options across all cities. & 
+\begin{minipage}[t]{\linewidth}
+\vspace{0.1cm}
+\begin{itemize}[leftmargin=*, nosep]
+    \item School curriculum integration
+    \item Media campaigns
+    \item Community engagement programs
+    \item Professional training
+\end{itemize}
+\vspace{0.1cm}
+\end{minipage} \\
+\hline
+\textbf{5} & \textbf{Electric Vehicle Infrastructure \& Incentives} & 
+Iran needs to prepare for the global EV transition. Establishing charging networks, providing purchase incentives, and developing domestic EV production capacity will position the country for a sustainable transportation future. & 
+\begin{minipage}[t]{\linewidth}
+\vspace{0.1cm}
+\begin{itemize}[leftmargin=*, nosep]
+    \item National charging network plan
+    \item Tax incentives for EVs
+    \item Partnership with automakers
+    \item Grid infrastructure upgrades
+\end{itemize}
+\vspace{0.1cm}
+\end{minipage} \\
+\hline
+\end{tabularx}
+\caption{Additional Solutions for Iran (National Level)}
+\end{table}
+
+\vspace{0.5cm}
+
+
+%==============================================================================
+% REFERENCES
+%==============================================================================
+\noindent\rule{\textwidth}{0.4pt}
+\vspace{0.2cm}
+
+\noindent\textbf{Reference:}\\[0.1cm]
+{[1]} Black, William R. \textit{Sustainable Transportation: Problems and Solutions}. Guilford Press, 2010.
+
+\end{document}

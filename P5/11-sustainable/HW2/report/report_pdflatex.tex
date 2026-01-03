@@ -1,0 +1,415 @@
+\documentclass[11pt]{article}
+
+% MIT-style formatting
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Header/Footer
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Sustainable Transportation - HW2}
+\lhead{Accessibility Analysis}
+\rfoot{Page \thepage}
+
+% Title formatting
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{1em}{}
+
+% Hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+
+\begin{document}
+
+% Title Page
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    
+    {\LARGE\bfseries Sustainable Transportation\\[0.5cm]}
+    {\Large Homework 2: Transportation Accessibility Assessment\\[1cm]}
+    
+    \vspace{1cm}
+    
+    {\large Qazvin City Job Accessibility Analysis\\[0.5cm]}
+    {\large Using Gravity-Based and Cumulative Opportunities Methods\\[2cm]}
+    
+    \vspace{2cm}
+    
+    {\large\bfseries Submitted to:\\[0.3cm]}
+    {\large Dr. Kermanshah\\[1.5cm]}
+    
+    {\large\bfseries Prepared by:\\[0.3cm]}
+    {\large Keivan Jamali\\[1.5cm]}
+    
+    \vfill
+    
+    {\large December 2024}
+\end{titlepage}
+
+% Table of Contents
+\tableofcontents
+\newpage
+
+% Abstract
+\section*{Abstract}
+\addcontentsline{toc}{section}{Abstract}
+
+This report presents a comprehensive accessibility assessment for Qazvin City, Iran, evaluating transportation access to job opportunities across 61 zones grouped into 8 districts (Mantagheh). Two standard methodologies from transport and land-use planning are employed: (1) Gravity-Based Accessibility with a decay parameter $\beta = 0.1068$, and (2) Cumulative Opportunities Method with a 30-minute travel time threshold. Results reveal significant spatial inequalities in job accessibility, with central districts showing substantially higher accessibility values compared to peripheral areas. The analysis provides insights for urban planning and transportation policy recommendations to address accessibility disparities.
+
+\textbf{Keywords:} Accessibility, Gravity Model, Cumulative Opportunities, Transportation Planning, Qazvin
+
+\newpage
+
+% Introduction
+\section{Introduction}
+
+Transportation accessibility is one of the most critical indicators in sustainable transportation and land-use planning. It measures the ease with which people can reach destinations such as employment centers, services, and amenities using available transportation infrastructure.
+
+This assignment evaluates job accessibility for residents of Qazvin City through public transportation modes. The assessment employs two widely recognized methodologies:
+
+\begin{enumerate}
+    \item \textbf{Gravity-Based Accessibility Method}: Accounts for distance decay effects where opportunities farther away contribute less to accessibility.
+    \item \textbf{Cumulative Opportunities Method}: Counts all opportunities reachable within a specified time threshold.
+\end{enumerate}
+
+\subsection{Study Area}
+
+Qazvin is a major city in northwestern Iran with diverse urban zones. The study area comprises:
+\begin{itemize}
+    \item \textbf{61 zones} (neighborhoods) with distinct population and employment characteristics
+    \item \textbf{8 districts} (Mantagheh) for regional aggregation
+    \item Origin-Destination travel time matrix including walking, waiting, and transfer times
+\end{itemize}
+
+\section{Methodology}
+
+\subsection{Data Sources}
+
+Three datasets were used for this analysis:
+
+\begin{enumerate}
+    \item \textbf{Origin-Destination Travel Time Matrix}: Travel times between all zone pairs (in minutes), including walking time, transfer waiting time, and in-vehicle time.
+    \item \textbf{Geographic Data (GeoJSON)}: Zone boundaries with district assignments and identification numbers.
+    \item \textbf{Employment Data}: Number of jobs and population for each zone.
+\end{enumerate}
+
+\subsection{Gravity-Based Accessibility}
+
+The gravity-based accessibility for zone $i$ is calculated as:
+
+\begin{equation}
+    A_i^{grav} = \sum_{j} O_j \cdot e^{-\beta \cdot t_{ij}}
+\end{equation}
+
+Where:
+\begin{itemize}
+    \item $A_i^{grav}$ = Gravity-based accessibility for zone $i$
+    \item $O_j$ = Number of job opportunities in zone $j$
+    \item $t_{ij}$ = Travel time from zone $i$ to zone $j$ (minutes)
+    \item $\beta$ = Distance decay parameter (0.1068 as specified)
+\end{itemize}
+
+The exponential decay function reflects the diminishing attractiveness of opportunities as travel time increases. With $\beta = 0.1068$, opportunities at 30 minutes travel time contribute approximately $4\%$ of their full value.
+
+\subsection{Cumulative Opportunities Method}
+
+The cumulative opportunities accessibility for zone $i$ with threshold $T$ is:
+
+\begin{equation}
+    A_i^{cumul} = \sum_{j} O_j \cdot \mathbf{1}(t_{ij} \leq T)
+\end{equation}
+
+Where:
+\begin{itemize}
+    \item $A_i^{cumul}$ = Cumulative accessibility for zone $i$
+    \item $T$ = Time threshold (30 minutes)
+    \item $\mathbf{1}(\cdot)$ = Indicator function (1 if condition is true, 0 otherwise)
+\end{itemize}
+
+This method counts all jobs reachable within 30 minutes, treating all accessible opportunities equally regardless of exact travel time.
+
+\newpage
+
+\section{Results}
+
+\subsection{Task 1: Accessibility Indicators by Zone and District}
+
+Table \ref{tab:district_results} presents the mean accessibility indicators aggregated by district (Mantagheh).
+
+\begin{table}[H]
+\centering
+\caption{Accessibility Indicators by District (Mean Values)}
+\label{tab:district_results}
+\begin{tabular}{lrr}
+\toprule
+\textbf{District (Mantagheh)} & \textbf{Gravity-Based} & \textbf{Cumulative (30-min)} \\
+\midrule
+Yakhchal (5) & 24,139 & 126,391 \\
+Balaghi (2) & 21,269 & 98,994 \\
+Navab South (3) & 20,195 & 111,978 \\
+Shisheh Chi (1) & 17,729 & 90,209 \\
+Navab North (4) & 14,607 & 72,606 \\
+Molla Sadra South (6) & 12,497 & 62,103 \\
+Molla Sadra North (7) & 6,670 & 27,025 \\
+Kowsar (8) & 5,353 & 15,838 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Summary Statistics for Accessibility Indicators (All Zones)}
+\label{tab:summary_stats}
+\begin{tabular}{lrr}
+\toprule
+\textbf{Statistic} & \textbf{Gravity-Based} & \textbf{Cumulative (30-min)} \\
+\midrule
+Count & 61 & 61 \\
+Mean & 15,770 & 77,771 \\
+Std Dev & 9,248 & 52,969 \\
+Min & 2,918 & 2,690 \\
+25\% & 7,125 & 25,740 \\
+Median & 15,711 & 74,130 \\
+75\% & 23,429 & 120,840 \\
+Max & 35,192 & 188,210 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Task 2: Accessibility Maps}
+
+Figure \ref{fig:accessibility_maps} presents choropleth maps of both accessibility indicators across Qazvin's zones.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{accessibility_maps.png}
+    \caption{Accessibility Maps: (Left) Gravity-Based Job Accessibility, (Right) Cumulative Job Accessibility with 30-minute threshold. Green indicates high accessibility; red indicates low accessibility.}
+    \label{fig:accessibility_maps}
+\end{figure}
+
+\newpage
+
+\subsection{Task 3: Method Comparison}
+
+\subsubsection{Which Method is More Appropriate?}
+
+Both methods capture accessibility but differ fundamentally in their assumptions:
+
+\begin{table}[H]
+\centering
+\caption{Comparison of Accessibility Methods}
+\label{tab:method_comparison}
+\begin{tabular}{p{3cm}p{5.5cm}p{5.5cm}}
+\toprule
+\textbf{Aspect} & \textbf{Gravity-Based} & \textbf{Cumulative (30-min)} \\
+\midrule
+Distance Sensitivity & Continuous decay with distance & Binary (accessible/not accessible) \\
+Behavioral Realism & More realistic (people prefer closer jobs) & Less realistic (ignores time differences within threshold) \\
+Interpretation & Weighted job potential & Total jobs within reach \\
+Policy Use & Investment prioritization & Service coverage assessment \\
+Sensitivity to Threshold & Less sensitive (smooth decay) & Highly sensitive to threshold choice \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Recommendation}: The \textbf{Gravity-Based Method} is more appropriate for this analysis because:
+
+\begin{enumerate}
+    \item \textbf{Behavioral realism}: It reflects actual travel behavior where people prefer closer destinations, even within acceptable travel times.
+    \item \textbf{Continuous sensitivity}: Small improvements in travel time translate to proportional accessibility gains, enabling nuanced policy evaluation.
+    \item \textbf{No arbitrary threshold}: The cumulative method's results change dramatically with threshold selection (e.g., 25 vs 30 vs 35 minutes), while gravity-based results are more stable.
+    \item \textbf{Better for planning}: It identifies zones that benefit most from marginal travel time improvements.
+\end{enumerate}
+
+However, the \textbf{Cumulative Method} remains useful for:
+\begin{itemize}
+    \item Communicating accessibility in intuitive terms (``X jobs within 30 minutes'')
+    \item Setting minimum service standards
+    \item Equity assessments comparing districts
+\end{itemize}
+
+\newpage
+
+\subsection{Task 4: Geographic Pattern Analysis}
+
+\subsubsection{Observed Patterns}
+
+The accessibility analysis reveals distinct spatial patterns:
+
+\begin{enumerate}
+    \item \textbf{Central-Peripheral Gradient}: Central districts (Yakhchal, Balaghi, Navab) show 3-4x higher accessibility than peripheral districts (Kowsar, Molla Sadra North).
+    
+    \item \textbf{Employment Concentration Effect}: Districts with high job density (Balaghi with 10,600 jobs in one zone) serve as accessibility attractors for surrounding areas.
+    
+    \item \textbf{Network Connectivity Impact}: Zones along major transit corridors show consistently higher accessibility regardless of their own employment levels.
+    
+    \item \textbf{Edge Effects}: Northwestern zones (Kowsar district) suffer from limited connectivity, with cumulative accessibility as low as 2,690 jobs.
+\end{enumerate}
+
+\subsubsection{Why Are Certain Areas More Accessible?}
+
+\begin{itemize}
+    \item \textbf{High-Accessibility Areas} (Yakhchal, Balaghi, Navab South):
+    \begin{itemize}
+        \item Central location minimizing average travel time to all destinations
+        \item Dense employment concentrations nearby
+        \item Better public transit connectivity
+        \item Historic city center with mixed land use
+    \end{itemize}
+    
+    \item \textbf{Low-Accessibility Areas} (Kowsar, Molla Sadra North):
+    \begin{itemize}
+        \item Peripheral location on city edges
+        \item Primarily residential with few local jobs
+        \item Limited public transit service
+        \item Recent development outpacing infrastructure
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Inequality Analysis}
+
+The Coefficient of Variation (CV) indicates substantial inequality:
+\begin{itemize}
+    \item Gravity-Based CV: $\frac{9,248}{15,770} = 58.6\%$
+    \item Cumulative CV: $\frac{52,969}{77,771} = 68.1\%$
+\end{itemize}
+
+The ratio between highest and lowest district accessibility exceeds 4:1, indicating significant spatial disparity in job access.
+
+\newpage
+
+\subsection{Task 5: Recommendations for Improvement}
+
+Based on the analysis, the following recommendations are proposed to increase accuracy and reliability in accessibility assessment, while addressing observed inequalities:
+
+\subsubsection{Recommendation 1: Incorporate Mode-Specific Travel Times}
+
+\textbf{Current limitation}: The analysis uses aggregate travel times that may not reflect modal choices.
+
+\textbf{Improvement}: 
+\begin{itemize}
+    \item Separate accessibility calculations for different modes (walking, cycling, bus, car)
+    \item Weight by mode share to create composite accessibility index
+    \item Enable mode-specific policy evaluation
+\end{itemize}
+
+\subsubsection{Recommendation 2: Account for Competition Effects}
+
+\textbf{Current limitation}: The gravity model assumes all jobs are equally available to all job seekers.
+
+\textbf{Improvement}: 
+\begin{itemize}
+    \item Implement a doubly-constrained gravity model or Hansen-based measure
+    \item Include labor force size as a denominator to account for job competition
+    \item Formula modification: $A_i = \sum_j \frac{O_j}{P_j^{\alpha}} \cdot e^{-\beta t_{ij}}$ where $P_j$ is the competing population
+\end{itemize}
+
+\subsubsection{Recommendation 3: Time-of-Day Sensitivity}
+
+\textbf{Current limitation}: Static travel times do not capture peak/off-peak variations.
+
+\textbf{Improvement}:
+\begin{itemize}
+    \item Calculate peak-hour accessibility (relevant for work trips)
+    \item Include reliability measures (travel time variability)
+    \item Weight by typical work arrival time distributions
+\end{itemize}
+
+\subsubsection{Recommendation 4: Validate with Observed Behavior}
+
+\textbf{Current limitation}: The decay parameter $\beta = 0.1068$ may not reflect local behavior.
+
+\textbf{Improvement}:
+\begin{itemize}
+    \item Calibrate $\beta$ using observed commute data from household travel surveys
+    \item Compare actual commute distances/times with accessibility predictions
+    \item Segment analysis by income level, car ownership, and job type
+\end{itemize}
+
+\subsubsection{Additional Policy Recommendations}
+
+To address the observed accessibility inequality:
+
+\begin{enumerate}
+    \item \textbf{Transit Investment}: Prioritize bus route extensions to Kowsar and Molla Sadra North districts
+    \item \textbf{Employment Decentralization}: Incentivize job creation in low-accessibility areas
+    \item \textbf{Transfer Optimization}: Reduce transfer times at major hubs to improve gravity-based accessibility
+    \item \textbf{Targeted Development}: Mixed-use development in peripheral zones to increase local job availability
+\end{enumerate}
+
+\newpage
+
+\section{Conclusion}
+
+This accessibility assessment of Qazvin City reveals significant spatial inequality in job accessibility across the city's 8 districts. Key findings include:
+
+\begin{enumerate}
+    \item Central districts (Yakhchal, Balaghi) exhibit 4x higher accessibility than peripheral areas (Kowsar)
+    \item The gravity-based method provides more behaviorally realistic results than cumulative opportunities
+    \item Geographic patterns reflect the combined effects of employment concentration, transit connectivity, and urban form
+    \item Substantial room exists for policy intervention to reduce accessibility disparities
+\end{enumerate}
+
+The analysis demonstrates the value of accessibility metrics for identifying underserved areas and prioritizing transportation investments. Future work should incorporate mode-specific analysis, competition effects, and behavioral calibration to improve assessment accuracy.
+
+\section*{References}
+\addcontentsline{toc}{section}{References}
+
+\begin{enumerate}
+    \item Hansen, W.G. (1959). How Accessibility Shapes Land Use. \textit{Journal of the American Institute of Planners}, 25(2), 73-76.
+    \item Geurs, K.T., \& Van Wee, B. (2004). Accessibility evaluation of land-use and transport strategies. \textit{Journal of Transport Geography}, 12(2), 127-140.
+    \item Levinson, D.M. (1998). Accessibility and the journey to work. \textit{Journal of Transport Geography}, 6(1), 11-21.
+    \item El-Geneidy, A., \& Levinson, D. (2006). Access to Destinations: Development of Accessibility Measures. Minnesota Department of Transportation.
+\end{enumerate}
+
+\newpage
+
+\appendix
+\section{Appendix: Complete Zone-Level Results}
+
+The complete accessibility results for all 61 zones are available in the supplementary CSV file: \texttt{zone\_accessibility\_results.csv}
+
+Key zones with highest and lowest accessibility:
+
+\begin{table}[H]
+\centering
+\caption{Top 5 and Bottom 5 Zones by Gravity-Based Accessibility}
+\begin{tabular}{clrr}
+\toprule
+\textbf{Rank} & \textbf{Zone Name} & \textbf{Gravity-Based} & \textbf{Cumulative} \\
+\midrule
+1 & Balaghi & 35,192 & 167,450 \\
+2 & Malek Abad & 29,852 & 144,360 \\
+3 & Tanoorsazan & 26,785 & 116,940 \\
+4 & Khayam & 25,956 & 124,460 \\
+5 & Khiaban & 25,933 & 130,480 \\
+\midrule
+57 & Elahieh & 4,377 & 8,950 \\
+58 & Vali Asr & 4,776 & 8,060 \\
+59 & Kabol Alborz & 6,872 & 25,740 \\
+60 & Minoodar & 2,918 & 2,690 \\
+61 & Pamchal & 3,635 & 7,360 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{document}

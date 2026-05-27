@@ -1,0 +1,275 @@
+\documentclass{rapportCS} % Ensure rapportCS.cls is available
+\usepackage{lipsum}
+\usepackage{svg}
+\usepackage{float} % Added for 'H' float specifier
+\title{Project - Template}
+\begin{document}
+
+%--------------------
+
+\logoentreprise{logos/logo.png}
+
+\titre{Transportation's Systems 20-5751}
+
+\mention{Prof. Zahra Amini} 
+\trigrammemention{Project}
+\master{Keivan Jamali}
+
+\eleve{Project Part 0: Prerequisites and Background}
+
+\dates{1405/01/23}
+
+
+%------------------------------
+        
+\fairemarges 
+\fairepagedegarde 
+
+%----------- Abstract -------------------
+%\vspace*{\stretch{1}}
+%\begin{center}
+	%\begin{abstract}
+        %\lipsum[1]
+        %\rule{\linewidth}{0.2 mm} \\[0.4 cm]
+        %\begin{center}\textbf{Summary :}\end{center} 
+        %\lipsum[2]
+    %\end{abstract}
+%\end{center}
+%\vspace*{\stretch{1}}
+%\newpage
+
+%----------------------------
+
+
+%------------ Introduction ----------------
+
+\section{Sioux Falls Transportation Network}
+
+The Sioux Falls network is one of the most widely used benchmark networks in transportation systems engineering. It was originally introduced in the 1970s during the U.S. Federal Highway Administration (FHWA) Urban Transportation Planning studies. Since then, it has become a standard dataset for evaluating traffic assignment algorithms, network optimization models, and computational methods in transportation research.
+
+The network is a medium-scale synthetic representation of the road system of Sioux Falls, South Dakota. Although simplified, it captures a realistic structure and includes key characteristics such as:
+\begin{itemize}
+    \item 24 nodes (intersections)
+    \item 76 directed links (roadway segments)
+    \item Multiple origin--destination (OD) pairs with associated travel demands
+    \item Nonlinear link performance functions (often based on BPR)
+\end{itemize}
+
+Historically, this network gained popularity because it is complex enough to test real-world modeling challenges but small enough for students to implement algorithms efficiently. It is extensively used in:
+\begin{itemize}
+    \item Traffic assignment experiments (user equilibrium, system optimal)
+    \item Sensitivity analysis and calibration
+    \item Machine learning and optimization studies
+    \item Benchmarking new algorithms in network flow theory
+\end{itemize}
+
+Beyond academics, the Sioux Falls network has become a cultural element in the transportation research community---often regarded as the ``MNIST of traffic assignment'' due to its iconic status as an accessible yet meaningful dataset.
+
+
+
+%====================================================
+\newpage
+
+\section{Required Python Libraries}
+
+Throughout this course and in the project parts that follow, students will implement and analyze transportation systems models using Python. The following libraries constitute the essential computational toolkit. Each library description includes a short explanation of its purpose and commonly used classes, modules, or functions that students will likely rely on.
+
+% ----------------------
+\subsection{NumPy}
+NumPy is the foundational package for numerical computing in Python. It provides efficient multi-dimensional arrays and linear algebra routines, making it essential for implementing mathematical models.
+
+\textbf{Key features:}
+\begin{itemize}
+    \item Fast array and matrix operations
+    \item Vectorization to avoid slow Python loops
+    \item Linear algebra tools (eigenvalues, matrix decomposition)
+\end{itemize}
+
+\textbf{Commonly used components:}
+\begin{itemize}
+    \item \texttt{numpy.array}, \texttt{numpy.ndarray}
+    \item \texttt{numpy.linalg} for matrix-based computations
+    \item \texttt{numpy.random} for simulation
+\end{itemize}
+
+% ----------------------
+\subsection{Pandas}
+Pandas provides high-level tools for data manipulation. It is invaluable when working with OD matrices, demand tables, link property files, or any tabular input data.
+
+\textbf{Key features:}
+\begin{itemize}
+    \item Easy data cleaning and filtering
+    \item Import/export of CSV, Excel, and other file types
+    \item Built-in statistics and grouping tools
+\end{itemize}
+
+\textbf{Main components:}
+\begin{itemize}
+    \item \texttt{DataFrame} for tabular data
+    \item \texttt{Series} for 1D labeled data
+    \item \texttt{groupby} for aggregation
+\end{itemize}
+
+% ----------------------
+\subsection{NetworkX}
+NetworkX is the most important library for this project. It provides a flexible framework for creating, modifying, and analyzing networks such as the Sioux Falls road network.
+
+\textbf{Key features:}
+\begin{itemize}
+    \item Graph construction (\texttt{Graph}, \texttt{DiGraph})
+    \item Shortest path algorithms (e.g., Dijkstra, Bellman-Ford)
+    \item Network measures (centrality, connectivity)
+\end{itemize}
+
+\textbf{Useful structures and functions:}
+\begin{itemize}
+    \item \texttt{networkx.DiGraph} for directed networks
+    \item \texttt{G.add\_node()}, \texttt{G.add\_edge()}
+    \item \texttt{nx.shortest\_path()}, \texttt{nx.single\_source\_dijkstra()}
+\end{itemize}
+
+% ----------------------
+\subsection{Matplotlib}
+Matplotlib is the standard library for plotting, useful for visualizing convergence, link performance functions, or network layouts.
+
+\textbf{Capabilities:}
+\begin{itemize}
+    \item Line plots (e.g., cost vs. flow)
+    \item Scatter plots
+    \item Network structure plots combined with NetworkX
+\end{itemize}
+
+\textbf{Common modules:}
+\begin{itemize}
+    \item \texttt{matplotlib.pyplot}
+\end{itemize}
+
+% ----------------------
+\subsection{SymPy}
+SymPy is a symbolic mathematics library. It helps with analytical derivations that appear in transportation modeling.
+
+\textbf{Key uses:}
+\begin{itemize}
+    \item Deriving gradients or Jacobians symbolically
+    \item Working with BPR-type functions symbolically
+    \item Checking equilibrium conditions analytically
+\end{itemize}
+
+\textbf{Important tools:}
+\begin{itemize}
+    \item \texttt{symbols}, \texttt{Eq}, \texttt{solve}
+    \item \texttt{diff} for derivatives
+\end{itemize}
+
+% ----------------------
+\subsection{SciPy}
+SciPy extends NumPy with advanced algorithms for optimization, interpolation, and scientific computing. It becomes important when numerical solvers are required.
+
+\textbf{Relevant modules:}
+\begin{itemize}
+    \item \texttt{scipy.optimize} for solving equilibrium conditions
+    \item \texttt{scipy.sparse} for large sparse matrices
+\end{itemize}
+
+% ----------------------
+\subsection{Scikit-learn}
+Scikit-learn provides machine learning utilities. While not central to classical traffic assignment, it is helpful for:
+\begin{itemize}
+    \item Clustering OD data
+    \item Regression-based estimation of link parameters
+    \item Classification of congestion patterns
+\end{itemize}
+
+\textbf{Commonly used components:}
+\begin{itemize}
+    \item \texttt{LinearRegression}, \texttt{KMeans}
+    \item \texttt{train\_test\_split}
+\end{itemize}
+
+% ----------------------
+\subsection{TQDM}
+TQDM provides progress bars for loops, especially useful when implementing iterative traffic assignment algorithms such as Frank–Wolfe or Method of Successive Averages.
+
+\textbf{Key functionality:}
+\begin{itemize}
+    \item \texttt{tqdm(range(N))} to monitor iteration progress
+\end{itemize}
+
+% ----------------------
+\subsection{Math and Statistics}
+The built-in \texttt{math} and \texttt{statistics} modules support essential computations without needing large packages.
+
+\textbf{Useful elements from \texttt{math}:}
+\begin{itemize}
+    \item \texttt{sqrt}, \texttt{log}, \texttt{exp}
+\end{itemize}
+
+\textbf{Useful elements from \texttt{statistics}:}
+\begin{itemize}
+    \item \texttt{mean}, \texttt{median}, \texttt{variance}
+\end{itemize}
+
+%====================================================
+\newpage
+\section{Task}
+
+All subsequent parts of the project rely on a correctly constructed network model of Sioux Falls. In this section, students are required to build the directed graph using two provided CSV files. Completing this step ensures that the remaining components of the project can be performed consistently and without ambiguity.
+
+\subsection{Input Data Files}
+
+Two CSV files describe the full structure of the network:
+
+\begin{itemize}
+    \item \textbf{SiouxFallsXY.csv}  
+    Contains the spatial coordinates of each node.  
+    Columns:
+    \begin{itemize}
+        \item \texttt{node} — Node identifier
+        \item \texttt{x} — X coordinate (arbitrary planar system)
+        \item \texttt{y} — Y coordinate
+    \end{itemize}
+
+    \item \textbf{SouxFallsNetwork.csv}  
+    Contains the link-level connectivity and attributes.  
+    Columns:
+    \begin{itemize}
+        \item \texttt{from} — Starting node of the directed link
+        \item \texttt{to} — Ending node of the directed link
+        \item \texttt{length} — Physical length of the roadway segment(in meter)
+    \end{itemize}
+\end{itemize}
+
+These files together provide all the information needed to reconstruct the topology and geometry of the Sioux Falls network.
+
+
+\subsection{Required Task: Build the Network in Python}
+
+Students must write Python code to:
+
+\begin{enumerate}
+    \item Load both CSV files using \texttt{pandas}.
+    \item Create an empty \texttt{networkx.DiGraph}.
+    \item Add nodes along with their spatial coordinates as node attributes.
+    \item Add directed edges according to the \texttt{from} and \texttt{to} fields of the link file, including \texttt{length} as an edge attribute.
+    \item (Optional but recommended) Generate a simple visualization of the network using \texttt{matplotlib} and the coordinate data.
+\end{enumerate}
+
+The final constructed graph should satisfy:
+\begin{itemize}
+    \item Exactly 24 nodes.
+    \item Exactly 76 directed edges.
+    \item Each node contains its associated \texttt{x} and \texttt{y} coordinates.
+    \item Each link contains its \texttt{length} attribute.
+\end{itemize}
+
+This graph will be reused throughout subsequent project parts for tasks such as computing shortest paths, evaluating link performance, and performing traffic assignment.
+
+\subsection{Output Requirement}
+No submition on this part is required.
+
+
+%------------------------------------------------------
+%\bibliographystyle{plain}
+%\bibliography{references} 
+
+\end{document}

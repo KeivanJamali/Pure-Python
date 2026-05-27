@@ -1,0 +1,464 @@
+\documentclass{rapportCS} % Ensure rapportCS.cls is available
+\usepackage{lipsum}
+\usepackage{svg}
+\usepackage{float} % Added for 'H' float specifier
+\title{Report - Template}
+\begin{document}
+
+%--------------------
+
+\logoentreprise{logos/logo.png}
+
+\titre{Transportation's Systems 20-5751}
+
+\mention{Prof. Zahra Amini} 
+\trigrammemention{Project}
+\master{Keivan Jamali}
+
+\eleve{Project Part 5: User Equilibrium Traffic Assignment}
+
+\dates{1405/03/01}
+
+
+%------------------------------
+        
+\fairemarges 
+\fairepagedegarde 
+
+%----------- Abstract -------------------
+%\vspace*{\stretch{1}}
+%\begin{center}
+	%\begin{abstract}
+        %\lipsum[1]
+        %\rule{\linewidth}{0.2 mm} \\[0.4 cm]
+        %\begin{center}\textbf{Summary :}\end{center} 
+        %\lipsum[2]
+    %\end{abstract}
+%\end{center}
+%\vspace*{\stretch{1}}
+%\newpage
+
+%----------------------------
+
+%=========================================================
+\section{Introduction}
+
+In this project, students will implement a complete \textbf{User Equilibrium (UE)} traffic assignment model using the \textbf{Convex Combination (Frank--Wolfe)} algorithm on the Sioux Falls transportation network.
+
+This project combines concepts from:
+
+\begin{itemize}
+    \item Transportation network modeling
+    \item Shortest path algorithms
+    \item Traffic assignment
+    \item Convex optimization
+    \item Numerical optimization
+    \item Exact line search methods
+\end{itemize}
+
+The goal of this project is to develop a fully functional traffic assignment engine capable of computing equilibrium flows on a congested transportation network.
+
+\vspace{0.5em}
+
+Students are expected to:
+\begin{itemize}
+    \item Build the optimization framework
+    \item Implement the iterative UE algorithm
+    \item Perform exact line search using Golden Section Search
+    \item Analyze convergence behavior
+    \item Interpret transportation engineering results
+\end{itemize}
+
+%=========================================================
+\section{Background}
+
+\subsection{Wardrop's First Principle}
+
+Wardrop's First Principle states:
+
+\begin{quote}
+``At equilibrium, the travel times on all used routes between an origin and destination are equal and less than or equal to those that would be experienced on any unused route.''
+\end{quote}
+
+This condition is known as the \textbf{User Equilibrium (UE)} condition.
+
+At equilibrium:
+\begin{itemize}
+    \item No traveler can reduce their travel cost by unilaterally changing routes.
+    \item Traffic distributes itself across the network according to congestion levels.
+\end{itemize}
+
+%=========================================================
+\subsection{Beckmann Formulation}
+
+The User Equilibrium problem can be formulated as the following convex optimization problem:
+
+\[
+\min Z(x)=\sum_{a}\int_{0}^{x_a} t_a(w)\,dw
+\]
+
+where:
+
+\begin{itemize}
+    \item $x_a$ = flow on link $a$
+    \item $t_a(x_a)$ = travel time function on link $a$
+\end{itemize}
+
+%=========================================================
+\subsection{BPR Link Performance Function}
+
+In this project, link travel times must be modeled using the BPR function:
+
+\[
+t_a(x_a)=t_a^0\left(1+0.15\left(\frac{x_a}{c_a}\right)^4\right)
+\]
+
+where:
+
+\begin{itemize}
+    \item $t_a^0$ = free-flow travel time
+    \item $x_a$ = current link flow
+    \item $c_a$ = link capacity
+\end{itemize}
+
+%=========================================================
+\section{Project Objectives}
+
+The objectives of this project are:
+
+\begin{enumerate}
+    \item Implement the Frank--Wolfe (Convex Combination) algorithm
+    \item Solve the User Equilibrium assignment problem
+    \item Perform exact line search using Golden Section Search
+    \item Analyze convergence behavior
+\end{enumerate}
+
+%=========================================================
+\section{Network and Data}
+
+Students must use the previously implemented Sioux Falls network.
+
+The network should contain:
+
+\begin{itemize}
+    \item Nodes with positions
+    \item Directed links
+    \item Link lengths
+\end{itemize}
+
+The implementation should use the \texttt{NetworkX} library.
+
+%=========================================================
+\section{Synthetic Data Generation}
+\subsection{Random Seed}
+
+Each student must generate a unique random seed using their student ID:
+
+\begin{enumerate}
+    \item[] \( seed = int(\text{hashlib}.sha256(\text{student\_id}.encode()).hexdigest(), 16) \% int(1e8) \)
+\end{enumerate}
+All generated network parameters must be reproducible using this seed. In the following sections, all random variables must be generated using this seed.
+
+\subsection{Free-Flow Speed Generation}
+
+For each link \(ab\), generate a free-flow speed:
+
+\[
+v_{ab} \sim U(40,100)
+\]
+
+where:
+\begin{itemize}
+    \item \(v_{ab}\) is in km/h
+    \item \(U\) denotes a uniform distribution
+\end{itemize}
+
+Then compute free-flow travel time:
+
+\[
+t_{ab}^0 = \frac{L_{ab}}{v_{ab}}
+\]
+
+where:
+\begin{itemize}
+    \item \(L_{ab}\) = link length
+    \item \(t_{ab}^0\) = free-flow travel time
+\end{itemize}
+
+\subsection{Capacity Generation}
+
+For each link, generate capacity:
+
+\[
+c_{ab} \sim int(U(1000,4000))
+\]
+
+where:
+\begin{itemize}
+    \item \(c_{ab}\) is measured in vehicles per hour
+\end{itemize}
+
+\subsection{OD Demand Matrix Generation}
+
+For every OD pair \((o,d)\):
+
+\begin{itemize}
+    \item With probability \(0.3\), demand exists
+    \item Otherwise demand is zero
+\end{itemize}
+
+If demand exists:
+
+\[
+q_{od} \sim int(U(100,1000))
+\]
+
+where:
+\begin{itemize}
+    \item \(q_{od}\) is measured in vehicles per hour
+\end{itemize}
+
+\subsection{How To Get Them}
+You must at the first initialize the random seed for numpy.random. Then, you can generate the free-flow speeds, capacities, and OD demands using the specified distributions. Make sure to assign the generated parameters to the correct links and OD pairs in your network model and do not change the order of assigning parameters to links. This will ensure that your results are reproducible and consistent with the project requirements.
+
+%=========================================================
+\section{Required Algorithm}
+
+\subsection{Overview}
+
+The User Equilibrium assignment must be solved using the \textbf{Frank--Wolfe / Convex Combination} algorithm.
+
+The implementation must include:
+
+\begin{enumerate}
+    \item Initial feasible solution
+    \item Cost update
+    \item Auxiliary flow generation
+    \item Exact line search
+    \item Flow update
+    \item Convergence check
+\end{enumerate}
+
+%=========================================================
+\subsection{Step 0: Initial Feasible Solution}
+
+\begin{enumerate}
+    \item Initialize all link travel times using free-flow travel times.
+    \item Perform an All-Or-Nothing assignment.
+    \item Store the resulting flows as:
+\[
+x^0
+\]
+\end{enumerate}
+
+%=========================================================
+\subsection{Step 1: Update Link Costs}
+
+At each iteration, update all link travel times using the BPR function:
+
+\[
+t_a(x_a)=t_a^0\left(1+0.15\left(\frac{x_a}{c_a}\right)^4\right)
+\]
+
+%=========================================================
+\subsection{Step 2: Direction Finding}
+
+Using the updated link costs:
+
+\begin{enumerate}
+    \item Perform an All-Or-Nothing assignment
+    \item Obtain the auxiliary flow vector:
+\[
+y^k
+\]
+\end{enumerate}
+
+%=========================================================
+\subsection{Step 3: Exact Line Search}
+
+The step size $\lambda$ must be obtained using \textbf{Golden Section Search}.
+
+Students must minimize:
+
+\[
+\phi(\lambda)=Z(x^k+\lambda(y^k-x^k))
+\]
+
+subject to:
+
+\[
+0 \leq \lambda \leq 1
+\]
+
+The implementation of Golden Section Search from previous assignments must be reused.
+
+%=========================================================
+\subsection{Step 4: Flow Update}
+
+Update link flows using:
+
+\[
+x^{k+1}=x^k+\lambda_k(y^k-x^k)
+\]
+
+%=========================================================
+\subsection{Step 5: Convergence Check}
+
+The algorithm must stop when one of the following criteria is satisfied:
+
+\begin{itemize}
+    \item Maximum number of iterations reached
+    \item Flow change norm below threshold
+\end{itemize}
+
+One possible convergence measure is:
+
+\[
+\|x^{k+1}-x^k\|
+\]
+
+%=========================================================
+\section{Implementation Requirements}
+
+The project must be implemented in Python.
+
+The use of the following libraries is allowed:
+
+\begin{itemize}
+    \item NetworkX
+    \item NumPy
+    \item Pandas
+    \item Matplotlib
+\end{itemize}
+
+\vspace{0.5em}
+
+Students are \textbf{NOT} allowed to use:
+\begin{itemize}
+    \item Ready-made traffic assignment libraries
+    \item Built-in Frank--Wolfe implementations
+\end{itemize}
+
+%=========================================================
+\section{Required Analysis}
+
+%=========================================================
+\subsection{Convergence Analysis}
+
+Students must generate the following plots:
+
+\begin{enumerate}
+    \item Objective function vs iteration
+    \item Step size vs iteration
+    \item Total system travel time vs iteration
+\end{enumerate}
+
+Each plot must include:
+\begin{itemize}
+    \item Proper axis labels
+    \item Titles
+    \item Legends when necessary
+\end{itemize}
+
+%=========================================================
+\subsection{Traffic Analysis}
+
+Students must analyze:
+
+\begin{itemize}
+    \item Most congested links
+    \item Volume-to-capacity ratios
+\end{itemize}
+
+%=========================================================
+\subsection{Comparison with Previous Assignment Methods}
+
+Students must compare:
+
+\begin{itemize}
+    \item All-Or-Nothing Assignment
+    \item Incremental Assignment
+    \item User Equilibrium Assignment
+\end{itemize}
+
+The discussion should include:
+
+\begin{itemize}
+    \item Congestion distribution
+    \item Network performance
+\end{itemize}
+
+%=========================================================
+\section{Sensitivity Analysis}
+
+Perform at least TWO of the following experiments.
+
+%=========================================================
+\subsection{Scenario A: Increased Demand}
+
+Increase all OD demands by:
+
+\begin{itemize}
+    \item 10\%
+    \item 25\%
+    \item 50\%
+\end{itemize}
+
+Analyze:
+\begin{itemize}
+    \item Congestion growth
+    \item Convergence behavior
+    \item Changes in critical links
+\end{itemize}
+
+%=========================================================
+\subsection{Scenario B: Capacity Reduction}
+
+Reduce the capacity of all links by 0.1, 0.25, 0.5.
+
+Analyze:
+\begin{itemize}
+    \item Congestion
+    \item Convergence behavior
+    \item Changes in critical links
+\end{itemize}
+
+%=========================================================
+\section{Deliverables}
+
+Students must submit:
+
+\begin{enumerate}
+    \item Source code
+    \item Technical report (PDF)
+    \item Figures and plots
+\end{enumerate}
+
+%=========================================================
+\section{Report Structure}
+
+The report should contain:
+
+\begin{enumerate}
+    \item Introduction
+    \item Mathematical formulation
+    \item Implementation details
+    \item Results
+    \item Convergence analysis
+    \item Transportation interpretation
+    \item Conclusion
+\end{enumerate}
+
+%=========================================================
+\section{Important Notes}
+
+\begin{itemize}
+    \item Figures must be readable and professionally formatted.
+    \item Numerical stability and convergence behavior should be discussed.
+    \item Students are encouraged to validate intermediate results during development.
+\end{itemize}
+
+%\bibliographystyle{plain}
+%\bibliography{references} 
+
+\end{document}

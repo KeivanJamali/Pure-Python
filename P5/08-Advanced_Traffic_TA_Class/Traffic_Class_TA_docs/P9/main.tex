@@ -1,0 +1,136 @@
+\documentclass{KPS_assignment}
+% ---------For Persian------------
+%\newcommand*{\name}{کیوان جمالی}
+%\newcommand*{\id}{403209743}
+%\newcommand*{\professor}{دکتر شفاهی}
+%\newcommand*{\cdate}{2024/12/26}
+%\newcommand*{\course}{درس (شماره)}
+%\newcommand*{\assignment}{تمرین شماره1}
+% ----------For English------------
+\newcommand*{\name}{Keivan Jamali}
+\newcommand*{\id}{403209743}
+\newcommand*{\professor}{Prof. Amini}
+\newcommand*{\cdate}{1404/(7, 10)}
+\newcommand*{\course}{Advanced Traffic (20--551)}
+\newcommand*{\assignment}{Class Project}
+% ----------START------------------
+\begin{document}
+\maketitle
+
+\section*{Project Description: Network Traffic Simulation}
+
+\textbf{Goal:}  
+Students will design, implement, and analyze a traffic network simulation using Python. The simulation represents vehicle movement in a network of nodes, edges, blocks, and intersections with traffic lights. After completing the Python-based simulation, the same network will be modeled and simulated inside SUMO to compare results.
+
+\vspace{0.3cm}
+\subsection*{Libraries Allowed}
+Students may use any of the following (or similar) Python packages:
+\begin{itemize}
+    \item \texttt{pandas} for data reading and handling
+    \item \texttt{matplotlib} for plots
+    \item \texttt{networkx} for graph/network structure
+    \item \texttt{simpy} for event simulation
+    \item \texttt{sympy} for formulas or any other library
+\end{itemize}
+
+\section*{Part 1: Network Structure}
+
+The input consists of:
+\begin{itemize}
+    \item \textbf{Node file} – list of nodes with IDs and optional coordinates.
+    \item \textbf{Edge file} – for each edge: start node, end node, length, number of lanes (optional).
+    \item \textbf{Demand file} – each row indicates:
+    \begin{itemize}
+        \item vehicle ID,
+        \item start time,
+        \item origin node,
+        \item destination node.
+    \end{itemize}
+\end{itemize}
+
+\vspace{0.2cm}
+\textbf{Network configuration:}
+\begin{itemize}
+    \item Each edge is divided into blocks of \(100\) meters.
+    \item Each block has capacity of about \(20\) vehicles.
+    \item Vehicles may move one block every \(5\) simulation steps.
+    \item There may be more than one lane per edge (optional part).
+\end{itemize}
+
+\section*{Part 2: Vehicle Simulation Rules}
+
+\begin{itemize}
+    \item Simulation runs in discrete time steps (\(1\) second per step).
+    \item Vehicles are not required to enter only at times \(5, 10, 15...\); they may appear at any time (e.g., \(t=7\)).
+    \item If a block is full, vehicles must wait and accumulate delay time.
+    \item Each intersection has a traffic signal:
+    \begin{itemize}
+        \item fixed-time configuration,
+        \item or adaptive, (optional)
+        \item or any custom logic.
+    \end{itemize}
+    \item Vehicles must obey signal states. Red signals cause queue formation.
+    \item Vehicles may choose:
+    \begin{itemize}
+        \item a fixed path at start,
+        \item or a dynamic path that changes if streets become congested (optional).
+    \end{itemize}
+    \item Automated/connected vehicles may be included to improve efficiency (optional).
+\end{itemize}
+
+\section*{Part 3: Outputs (Python)}
+
+During the simulation, the program must produce:
+\begin{itemize}
+    \item Total wait time of all vehicles:
+    \begin{itemize}
+        \item at intersections (red light delays),
+        \item inside edges due to crowded blocks.
+    \end{itemize}
+    \item Trajectory plots for selected lanes.
+    \item Queue length plots for intersections over simulation time.
+    \item Summary statistics (mean delays, travel times, throughput).
+\end{itemize}
+
+\section*{Part 4: SUMO Implementation}
+
+After completing the Python simulation:
+\begin{itemize}
+    \item The same network (nodes and edges) must be exported or recreated in SUMO.
+    \item The same demand file must be used for vehicle input.
+    \item Traffic lights should follow the same logic as Python implementation.
+    \item SUMO output will be collected in real-time (more realistic dynamics).
+    \item Final comparison between:
+    \begin{itemize}
+        \item Python simulation,
+        \item SUMO simulation.
+    \end{itemize}
+\end{itemize}
+
+\section*{Final Deliverables}
+
+\begin{enumerate}
+    \item Python implementation with clear OOP structure (vehicles, network components, traffic lights, statistics).
+    \item SUMO network configuration (\texttt{.net.xml}, \texttt{rou.xml}, traffic-light definitions).
+    \item Plots: delays, queues, trajectories.
+    \item A final mini-report including:
+    \begin{itemize}
+        \item methodology,
+        \item code explanation,
+        \item results from Python,
+        \item results from SUMO,
+        \item comparison and conclusion.
+    \end{itemize}
+\end{enumerate}
+
+\section*{Grading}
+
+\begin{itemize}
+    \item Correctness of simulation logic,
+    \item Object-oriented design quality,
+    \item Ability to handle large demand without errors,
+    \item Quality of plots and interpretation,
+    \item SUMO results and comparison.
+\end{itemize}
+
+\end{document}

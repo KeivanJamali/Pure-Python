@@ -1,0 +1,567 @@
+\documentclass{KPS_assignment}
+% ---------For Persian------------
+% \newcommand*{\name}{کیوان جمالی}
+% \newcommand*{\id}{403209743}
+% \newcommand*{\professor}{دکتر شفاهی}
+% \newcommand*{\cdate}{2024/12/26}
+% \newcommand*{\course}{درس (شماره)}
+% \newcommand*{\assignment}{تمرین شماره1}
+% ----------For English------------
+\newcommand*{\name}{Keivan Jamali}
+\newcommand*{\id}{403209743}
+\newcommand*{\professor}{Dr. Shafahi}
+\newcommand*{\cdate}{1405/02/24}
+\newcommand*{\course}{Airport (20\_582)}
+\newcommand*{\assignment}{Homework 3}
+% ----------START------------------
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\begin{document}
+\maketitle
+\section{Problem}
+
+The following data are given for passenger travel demand over a five-year period.
+
+\begin{table}[!h]
+\centering
+\caption{Passenger Travel Demand Data}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Fare per Passenger-Mile, $p$} &
+\textbf{Travel Demand, $q$ ($10^6$ passenger-miles)} &
+\textbf{Year, $t$} \\ \hline
+
+0.30 & 639 & 1386 \\ \hline
+0.30 & 698 & 1387 \\ \hline
+0.30 & 762 & 1388 \\ \hline
+0.30 & 828 & 1389 \\ \hline
+0.30 & 904 & 1390 \\ \hline
+
+\end{tabular}
+\end{table}
+
+\begin{enumerate}
+
+\item Using regression analysis, estimate the travel demand volume for the year 1395.
+
+\item Suppose that, due to a new regulation introduced in Farvardin 1391, the fare per passenger-mile decreases to $p = 0.24$. As a result, the travel demand in 1391 increases to $1{,}221{,}000{,}000$ passenger-miles.
+
+Answer the following questions:
+
+\begin{enumerate}
+    \item Calculate the demand elasticity.
+    
+    \item Determine a linear demand function of the form:
+    
+    \[
+    q = f(p)
+    \]
+    
+    for the year 1391.
+    
+    \item Determine the maximum profit that the airport can obtain in 1391, assuming the total cost function is:
+    
+    \[
+    TC = 100{,}000 + 80{,}000q
+    \]
+    
+    \item Determine a demand function of the form:
+    
+    \[
+    q = f(p,t)
+    \]
+    
+    for the travel demand volume.
+    
+    \item What additional information would be necessary for designing the airport transportation system corresponding to the airports discussed in part (a)?
+    
+\end{enumerate}
+
+\end{enumerate}
+
+\subsection{solution to part a}
+
+To estimate the travel demand for year 1395, a linear regression model is fitted in the form:
+
+\[
+q = a + b(t-80)
+\]
+
+where:
+
+\begin{itemize}
+    \item $q$ = travel demand ($10^6$ passenger-miles)
+    \item $t$ = year
+\end{itemize}
+
+For simplicity, define:
+
+\[
+x=t-80
+\]
+
+Thus, the data become:
+
+\[
+(6,639), (7,698), (8,762), (9,828), (10,904)
+\]
+
+The required summations are:
+
+\[
+\sum x = 6+7+8+9+10 = 40
+\]
+
+\[
+\sum q = 639+698+762+828+904 = 3831
+\]
+
+\[
+\sum x^2 = 36+49+64+81+100 = 330
+\]
+
+\[
+\sum xq =
+6(639)+7(698)+8(762)+9(828)+10(904)
+=31308
+\]
+
+and
+
+\[
+n=5
+\]
+
+The slope of the regression line is:
+
+\[
+b=
+\frac{
+n\sum xq-(\sum x)(\sum q)
+}{
+n\sum x^2-(\sum x)^2
+}
+\]
+
+\[
+b=
+\frac{
+5(31308)-40(3831)
+}{
+5(330)-40^2
+}
+=
+\frac{
+156540-153240
+}{
+1650-1600
+}
+=
+\frac{3300}{50}
+=66
+\]
+
+The intercept is:
+
+\[
+a=
+\frac{
+\sum q-b\sum x
+}{n}
+\]
+
+\[
+a=
+\frac{
+3831-66(40)
+}{5}
+=
+\frac{
+3831-2640
+}{5}
+=
+238.2
+\]
+
+Therefore, the regression equation becomes:
+
+\[
+\boxed{
+q = 238.2 + 66(t-80)
+}
+\]
+
+For year 1395:
+
+\[
+t-80 = 15
+\]
+
+Thus:
+
+\[
+q_{1395}=238.2+66(15)
+\]
+
+\[
+q_{1395}=238.2+990
+\]
+
+\[
+\boxed{
+q_{1395}=1228.2
+}
+\]
+
+Therefore, the estimated travel demand for year 1395 is:
+
+\[
+\boxed{
+1228.2\times 10^6
+\text{ passenger-miles}
+}
+\]
+
+
+
+\subsection{solution to part b}
+
+\subsubsection{Demand Elasticity}
+
+From part (a), the estimated demand for year 1391 at the original fare $p=0.30$ is:
+
+\[
+q_1 = 238.2+66(11)=964.2
+\]
+
+After the fare reduction:
+
+\[
+p_2=0.24
+\]
+
+and the new demand becomes:
+
+\[
+q_2=1221
+\]
+
+Using the arc elasticity formula:
+
+\[
+E=
+\frac{\Delta q}{\Delta p}
+\cdot
+\frac{\bar p}{\bar q}
+\]
+
+First compute the changes and averages:
+
+\[
+\Delta q = 1221-964.2 = 256.8
+\]
+
+\[
+\Delta p = 0.24-0.30 = -0.06
+\]
+
+\[
+\bar p = \frac{0.30+0.24}{2}=0.27
+\]
+
+\[
+\bar q = \frac{964.2+1221}{2}=1092.6
+\]
+
+Therefore:
+
+\[
+E=
+\frac{256.8}{-0.06}
+\cdot
+\frac{0.27}{1092.6}
+\]
+
+\[
+\boxed{
+E \approx -1.06
+}
+\]
+
+The negative sign indicates that demand increases when price decreases.
+
+
+
+\subsubsection{Linear Demand Function for Year 1391}
+
+Using the two points:
+
+\[
+(p,q)=(0.30,964.2)
+\]
+
+and
+
+\[
+(p,q)=(0.24,1221)
+\]
+
+Assume a linear demand function:
+
+\[
+q=mp+c
+\]
+
+The slope is:
+
+\[
+m=
+\frac{1221-964.2}{0.24-0.30}
+=
+\frac{256.8}{-0.06}
+=-4280
+\]
+
+Thus:
+
+\[
+q=-4280p+c
+\]
+
+Using point $(0.30,964.2)$:
+
+\[
+964.2=-4280(0.30)+c
+\]
+
+\[
+964.2=-1284+c
+\]
+
+\[
+c=2248.2
+\]
+
+Therefore, the demand function becomes:
+
+\[
+\boxed{
+q=2248.2-4280p
+}
+\]
+
+
+
+\subsubsection{Maximum Profit in 1391}
+
+From the demand function:
+
+\[
+q=2248.2-4280p
+\]
+
+Express price in terms of demand:
+
+\[
+p(q)=\frac{2248.2-q}{4280}
+\]
+
+Revenue is:
+
+\[
+R=10^6pq
+\]
+
+Thus:
+
+\[
+R=
+10^6
+\left(
+\frac{2248.2-q}{4280}
+\right)
+q
+\]
+
+The total cost function is given as:
+
+\[
+TC=100000+80000q
+\]
+
+Profit is:
+
+\[
+\Pi(q)=R-TC
+\]
+
+Therefore:
+
+\[
+\Pi(q)=
+10^6
+\left(
+\frac{2248.2-q}{4280}
+\right)q
+-100000
+-80000q
+\]
+
+Simplifying:
+
+\[
+\Pi(q)=
+-233.64486q^2
++445280.3738q
+-100000
+\]
+
+To maximize profit:
+
+\[
+\frac{d\Pi}{dq}=0
+\]
+
+Hence:
+
+\[
+-467.28972q+445280.3738=0
+\]
+
+Solving:
+
+\[
+\boxed{
+q^*=952.9
+}
+\]
+
+Substituting into the demand equation:
+
+\[
+p^*=
+\frac{2248.2-952.9}{4280}
+\]
+
+\[
+\boxed{
+p^*\approx0.3026
+}
+\]
+
+Finally:
+
+\[
+\Pi_{\max}
+=
+10^6
+\left(
+\frac{2248.2-952.9}{4280}
+\right)
+(952.9)
+-100000
+-80000(952.9)
+\]
+
+\[
+\boxed{
+\Pi_{\max}\approx2.12\times10^8
+}
+\]
+
+
+
+\subsubsection{Demand Function of the Form $q=f(p,t)$}
+
+Assume a linear demand model:
+
+\[
+q=A+B(t-80)+Cp
+\]
+
+From part (a), the time trend coefficient is:
+
+\[
+B=66
+\]
+
+Thus:
+
+\[
+q=A+66(t-80)+Cp
+\]
+
+Using the two observations for year 1391:
+
+\[
+964.2=A+66(11)+0.30C
+\]
+
+\[
+1221=A+66(11)+0.24C
+\]
+
+Since:
+
+\[
+66(11)=726
+\]
+
+the equations become:
+
+\[
+964.2=A+726+0.30C
+\]
+
+\[
+1221=A+726+0.24C
+\]
+
+Subtracting the equations:
+
+\[
+256.8=-0.06C
+\]
+
+\[
+C=-4280
+\]
+
+Substituting back:
+
+\[
+964.2=A+726-1284
+\]
+
+\[
+A=1522.2
+\]
+
+Therefore, the final demand model becomes:
+
+\[
+\boxed{
+q=1522.2+66(t-80)-4280p
+}
+\]
+
+
+
+\subsubsection{Additional Information Required for Airport Transportation System Design}
+
+To design the airport transportation system, annual passenger demand alone is not sufficient. Additional information is required, including:
+
+\begin{itemize}
+    \item Peak-hour passenger demand
+    \item Seasonal demand variations
+    \item Origin-destination passenger distribution
+    \item Passenger type (domestic, international, transfer)
+    \item Aircraft size and fleet mix
+    \item Passenger load factors
+    \item Desired level of service
+\end{itemize}
+
+These data are necessary for proper design of airport terminals, runways, parking areas, and transportation facilities.
+
+\end{document}
+

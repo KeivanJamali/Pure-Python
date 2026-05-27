@@ -1,0 +1,17 @@
+mode: Global
+port: 7890
+proxies:
+- name: Violin-Keyvan-mat
+  type: vless
+  server: iran.city-os.ir
+  port: 57222
+  uuid: 5d89b502-0e47-4c52-8652-e90b8c7d1cbf
+  udp: true
+  network: tcp
+  tls: true
+  servername: iran.city-os.ir
+  client-fingerprint: chrome
+  tcp-opts:
+    ip-version: dual
+proxy-groups: []
+rules: []

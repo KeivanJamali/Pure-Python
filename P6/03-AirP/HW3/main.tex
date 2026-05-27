@@ -1,0 +1,1169 @@
+\documentclass{KPS_assignment}
+% ---------For Persian------------
+% \newcommand*{\name}{کیوان جمالی}
+% \newcommand*{\id}{403209743}
+% \newcommand*{\professor}{دکتر شفاهی}
+% \newcommand*{\cdate}{2024/12/26}
+% \newcommand*{\course}{درس (شماره)}
+% \newcommand*{\assignment}{تمرین شماره1}
+% ----------For English------------
+\newcommand*{\name}{Keivan Jamali}
+\newcommand*{\id}{403209743}
+\newcommand*{\professor}{Dr. Shafahi}
+\newcommand*{\cdate}{1405/02/24}
+\newcommand*{\course}{Airport (20\_582)}
+\newcommand*{\assignment}{Homework 3}
+% ----------START------------------
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\begin{document}
+\maketitle
+\section*{Problem 1}
+
+The characteristics of a new aircraft are given in Table B-1. In domestic route service, the applicable regulations require only a 0.75-h fuel reserve for this aircraft. The aircraft has an average route speed of 500 mi/h and an average fuel burn of 13 lb/mi.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lc}
+\hline
+\textbf{Characteristic} & \textbf{Value (lb)} \\
+\hline
+Maximum ramp weight & 141000 \\
+Maximum structural takeoff weight & 140000 \\
+Maximum structural landing weight & 128000 \\
+Zero-fuel weight & 112000 \\
+Operating empty weight & 73274 \\
+Fuel capacity & 39162 \\
+Maximum structural payload & 38726 \\
+Maximum passenger capacity & 27000 \\
+Maximum cargo hold capacity & 12500 \\
+\hline
+\end{tabular}
+\caption{Preliminary aircraft characteristics}
+\end{table}
+
+\begin{enumerate}
+    \item[(a)] Plot payload versus range for this aircraft.
+    \item[(b)] Determine the takeoff weight of this aircraft for a 1200-mi trip at maximum payload.
+\end{enumerate}
+
+\subsection*{Solution}
+
+The reserve flight time is:
+
+\[
+t_{reserve} = 0.75 \text{ h}
+\]
+
+Since the aircraft speed is:
+
+\[
+V = 500 \text{ mi/h}
+\]
+
+the reserve distance becomes:
+
+\[
+R_{reserve} = 0.75 \times 500 = 375 \text{ mi}
+\]
+
+Given the fuel burn rate:
+
+\[
+13 \text{ lb/mi}
+\]
+
+the reserve fuel weight is:
+
+\[
+W_{fuel,reserve} = 375 \times 13 = 4875 \text{ lb}
+\]
+
+The takeoff weight relation is:
+
+\[
+W_{TO} = W_{OEW} + W_{payload} + W_{fuel}
+\]
+
+where:
+
+\[
+W_{OEW} = 73274 \text{ lb}
+\]
+
+and the maximum payload is:
+
+\[
+W_{payload,max} = 38726 \text{ lb}
+\]
+
+\subsection*{(a) Payload--Range Diagram}
+
+At maximum payload:
+
+\[
+W_{fuel} = 140000 - 73274 - 38726
+\]
+
+\[
+W_{fuel} = 28000 \text{ lb}
+\]
+
+The usable trip fuel is:
+
+\[
+W_{fuel,trip} = 28000 - 4875 = 23125 \text{ lb}
+\]
+
+Thus, the range is:
+
+\[
+R = \frac{23125}{13} \approx 1779 \text{ mi}
+\]
+
+For maximum fuel capacity:
+
+\[
+W_{fuel,max} = 39162 \text{ lb}
+\]
+
+The payload allowed by MTOW becomes:
+
+\[
+W_{payload} = 140000 - 73274 - 39162
+\]
+
+\[
+W_{payload} = 27564 \text{ lb}
+\]
+
+The corresponding trip fuel is:
+
+\[
+39162 - 4875 = 34287 \text{ lb}
+\]
+
+Therefore:
+
+\[
+R = \frac{34287}{13} \approx 2637 \text{ mi}
+\]
+
+\begin{table}[h]
+\centering
+\begin{tabular}{cc}
+\hline
+\textbf{Range (mi)} & \textbf{Payload (lb)} \\
+\hline
+0 & 38726 \\
+1779 & 38726 \\
+2637 & 27564 \\
+2637 & 0 \\
+\hline
+\end{tabular}
+\caption{Payload--range characteristic points}
+\end{table}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.75\textwidth]{q1.png}
+\caption{Payload--range diagram}
+\label{fig:q1}
+\end{figure}
+
+\subsection*{(b) Takeoff Weight for a 1200-mi Trip}
+
+For a trip distance of:
+
+\[
+R = 1200 \text{ mi}
+\]
+
+the required trip fuel is:
+
+\[
+W_{fuel,trip} = 1200 \times 13 = 15600 \text{ lb}
+\]
+
+Adding reserve fuel:
+
+\[
+W_{fuel,total} = 15600 + 4875 = 20475 \text{ lb}
+\]
+
+The takeoff weight becomes:
+
+\[
+W_{TO} = 73274 + 38726 + 20475
+\]
+
+\[
+W_{TO} = 132475 \text{ lb}
+\]
+
+Therefore, the required takeoff weight is:
+
+\[
+\boxed{132475 \text{ lb}}
+\]
+
+%%%%%%
+
+\section*{Problem 2}
+
+An aircraft has the performance characteristics given in Table B-2 in normal route operation. In normal use this aircraft will consume 11000 lb of fuel in 1 h of flight. The normal cruising speed is 550 mi/h. Generally, alternate destinations are located within 100 mi of planned destination, and regulations require sufficient fuel to fly to the planned destination, fly to an alternate destination, and fly for 1.25 h at the alternate destination.
+
+\subsection*{Aircraft Data}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{lc}
+\hline
+Characteristic & Value (lb) \\
+\hline
+Maximum ramp weight & 191000 \\
+Maximum structural takeoff weight & 190000 \\
+Maximum structural landing weight & 160000 \\
+Zero-fuel weight & 140000 \\
+Operating empty weight & 100000 \\
+Fuel capacity & 55000 \\
+Maximum structural payload & 45000 \\
+Maximum passenger capacity & 39000 \\
+Maximum cargo hold capacity & 15000 \\
+\hline
+\end{tabular}
+\caption{Aircraft performance characteristics}
+\end{table}
+
+The fuel consumption is:
+
+\[
+11000 \text{ lb/h}
+\]
+
+The cruise speed is:
+
+\[
+550 \text{ mi/h}
+\]
+
+Thus, the fuel burn per mile is:
+
+\[
+\frac{11000}{550}=20 \text{ lb/mi}
+\]
+
+The reserve fuel consists of:
+
+\begin{itemize}
+    \item Fuel to fly 100 mi to alternate airport:
+\[
+100 \times 20 = 2000 \text{ lb}
+\]
+
+    \item Fuel for 1.25 h holding:
+\[
+1.25 \times 11000 = 13750 \text{ lb}
+\]
+\end{itemize}
+
+Therefore, total reserve fuel is:
+
+\[
+2000 + 13750 = 15750 \text{ lb}
+\]
+
+\subsection*{(a) Maximum Passenger Payload with 15000 lb Cargo}
+
+The maximum payload allowed by the zero-fuel-weight limit is:
+
+\[
+140000 - 100000 = 40000 \text{ lb}
+\]
+
+Since 15000 lb of cargo is carried:
+
+\[
+\text{Passenger payload}
+=
+40000 - 15000
+=
+25000 \text{ lb}
+\]
+
+Assuming 200 lb per passenger:
+
+\[
+\frac{25000}{200}=125
+\]
+
+Therefore:
+
+\[
+\boxed{25000 \text{ lb passenger payload}}
+\]
+
+or
+
+\[
+\boxed{125 \text{ passengers}}
+\]
+
+\subsection*{(b) Fuel Required for a 2000-mi Trip}
+
+Trip fuel:
+
+\[
+2000 \times 20 = 40000 \text{ lb}
+\]
+
+Required takeoff fuel:
+
+\[
+40000 + 15750 = 55750 \text{ lb}
+\]
+
+Including 1000 lb taxi fuel:
+
+\[
+55750 + 1000 = 56750 \text{ lb}
+\]
+
+Therefore:
+
+\[
+\boxed{56750 \text{ lb}}
+\]
+
+Since the fuel capacity is only 55000 lb, this flight is not feasible nonstop under the given assumptions.
+
+\subsection*{(c) Additional Airborne Time Before Landing}
+
+The aircraft carries 180 passengers and no cargo except baggage.
+
+Assuming 200 lb per passenger:
+
+\[
+180 \times 200 = 36000 \text{ lb}
+\]
+
+Zero-fuel weight becomes:
+
+\[
+100000 + 36000 = 136000 \text{ lb}
+\]
+
+Maximum allowable fuel at takeoff:
+
+\[
+190000 - 136000 = 54000 \text{ lb}
+\]
+
+Fuel burned in the first 30 minutes:
+
+\[
+0.5 \times 11000 = 5500 \text{ lb}
+\]
+
+Remaining fuel:
+
+\[
+54000 - 5500 = 48500 \text{ lb}
+\]
+
+Aircraft weight after 30 minutes:
+
+\[
+136000 + 48500 = 184500 \text{ lb}
+\]
+
+The maximum landing weight is:
+
+\[
+160000 \text{ lb}
+\]
+
+Excess weight:
+
+\[
+184500 - 160000 = 24500 \text{ lb}
+\]
+
+This fuel must be burned before landing.
+
+Additional airborne time required:
+
+\[
+\frac{24500}{11000}
+=
+2.23 \text{ h}
+\]
+
+Therefore:
+
+\[
+\boxed{2.23 \text{ h}}
+\]
+
+which is approximately:
+
+\[
+\boxed{2 \text{ h } 14 \text{ min}}
+\]
+\subsection*{(d) Payload--Range Diagram}
+
+The payload--range diagram is constructed using the aircraft weight limitations and fuel capacity constraints.
+
+\subsubsection*{Point A: Maximum Payload Condition}
+
+The maximum payload is limited by the zero-fuel weight:
+
+\[
+W_{payload,\max}
+=
+140000-100000
+=
+40000 \text{ lb}
+\]
+
+Thus point A is:
+
+\[
+A=(0,\ 40000)
+\]
+
+\subsubsection*{Point B: Maximum Payload at MTOW}
+
+At maximum payload, the takeoff weight is:
+
+\[
+W_{TO}
+=
+100000+40000+W_f
+\]
+
+Using the maximum takeoff weight:
+
+\[
+190000
+=
+100000+40000+W_f
+\]
+
+Thus:
+
+\[
+W_f
+=
+50000 \text{ lb}
+\]
+
+The reserve fuel requirement is:
+
+\[
+W_{res}
+=
+15750 \text{ lb}
+\]
+
+Therefore usable cruise fuel is:
+
+\[
+W_{cruise}
+=
+50000-15750
+=
+34250 \text{ lb}
+\]
+
+Since fuel burn is:
+
+\[
+20 \text{ lb/mi}
+\]
+
+the corresponding range is:
+
+\[
+R_B
+=
+\frac{34250}{20}
+=
+1712.5 \text{ mi}
+\]
+
+Thus point B is:
+
+\[
+B=(1712.5,\ 40000)
+\]
+
+\subsubsection*{Point C: Maximum Fuel Capacity}
+
+At maximum fuel capacity:
+
+\[
+W_f
+=
+55000 \text{ lb}
+\]
+
+The allowable payload becomes:
+
+\[
+W_{payload}
+=
+190000-100000-55000
+=
+35000 \text{ lb}
+\]
+
+Usable cruise fuel is:
+
+\[
+55000-15750
+=
+39250 \text{ lb}
+\]
+
+Thus the range is:
+
+\[
+R_C
+=
+\frac{39250}{20}
+=
+1962.5 \text{ mi}
+\]
+
+Therefore point C is:
+
+\[
+C=(1962.5,\ 35000)
+\]
+
+\subsubsection*{Point D: Ferry Range}
+
+Below point C, payload can continue decreasing while fuel remains fixed at maximum fuel capacity. Therefore the range remains constant in this simplified model.
+
+Thus the ferry-range point is:
+
+\[
+D=(1962.5,\ 0)
+\]
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.85\textwidth]{q2.png}
+\caption{Payload versus route range diagram}
+\label{fig:q2}
+\end{figure}
+
+%%%%%%%%%%%%%%
+
+\section*{Problem 3}
+
+A turbine-powered aircraft has the following runway performance characteristics:
+
+\begin{itemize}
+    \item For a normal takeoff, the liftoff distance is 6500 ft, and the aircraft reaches a height of 35 ft above the end of the runway at a distance of 7000 ft from the runway threshold.
+    
+    \item For an engine-failure takeoff, the liftoff distance is 7200 ft, and the aircraft reaches a height of 35 ft above the end of the runway at a distance of 7900 ft from the runway threshold.
+    
+    \item For an aborted takeoff, the accelerate-stop distance is 9700 ft.
+    
+    \item For landing, the stop distance is 4600 ft.
+\end{itemize}
+
+Determine the minimum FAR runway length requirements for this aircraft, indicating:
+
+\begin{itemize}
+    \item Length of the full-strength pavement
+    \item Length of the stopway
+    \item Length of the clearway
+\end{itemize}
+
+Assume the runway is to be used by this aircraft in both directions.
+
+\subsection*{Solution}
+
+\subsubsection*{1. Normal Takeoff}
+
+Given:
+
+\[
+LOD_1 = 6500 \ \text{ft}
+\]
+
+\[
+D_{35} = 7000 \ \text{ft}
+\]
+
+The takeoff distance is:
+
+\[
+TOD_1 = 1.15 \times D_{35}
+\]
+
+\[
+TOD_1 = 1.15 \times 7000 = 8050 \ \text{ft}
+\]
+
+The maximum clearway length is:
+
+\[
+CL_{1,\max} = \frac{1}{2}\left(TOD_1 - 1.15 \times LOD_1\right)
+\]
+
+\[
+CL_{1,\max}
+= \frac{1}{2}\left(8050 - 1.15 \times 6500\right)
+\]
+
+\[
+CL_{1,\max}
+= \frac{1}{2}(8050 - 7475)
+\]
+
+\[
+CL_{1,\max} = 287.5 \ \text{ft}
+\]
+
+Therefore, the takeoff run required is:
+
+\[
+TOR_1 = TOD_1 - CL_{1,\max}
+\]
+
+\[
+TOR_1 = 8050 - 287.5
+\]
+
+\[
+TOR_1 = 7762.5 \ \text{ft}
+\]
+
+\subsubsection*{2. Engine-Failure Takeoff}
+
+Given:
+
+\[
+LOD_2 = 7200 \ \text{ft}
+\]
+
+\[
+D_{35} = 7900 \ \text{ft}
+\]
+
+For engine-failure takeoff:
+
+\[
+TOD_2 = D_{35} = 7900 \ \text{ft}
+\]
+
+The maximum clearway length is:
+
+\[
+CL_{2,\max} = \frac{1}{2}(TOD_2 - LOD_2)
+\]
+
+\[
+CL_{2,\max} = \frac{1}{2}(7900 - 7200)
+\]
+
+\[
+CL_{2,\max} = 350 \ \text{ft}
+\]
+
+Thus, the takeoff run required becomes:
+
+\[
+TOR_2 = TOD_2 - CL_{2,\max}
+\]
+
+\[
+TOR_2 = 7900 - 350
+\]
+
+\[
+TOR_2 = 7550 \ \text{ft}
+\]
+
+\subsubsection*{3. Aborted Takeoff}
+
+Given:
+
+\[
+DAS = 9700 \ \text{ft}
+\]
+
+\subsubsection*{4. Landing Requirement}
+
+Given stopping distance:
+
+\[
+SD = 4600 \ \text{ft}
+\]
+
+Using FAR landing requirement:
+
+\[
+LD = \frac{SD}{0.6}
+\]
+
+\[
+LD = \frac{4600}{0.6}
+\]
+
+\[
+LD = 7667 \ \text{ft}
+\]
+
+\subsubsection*{5. Runway Length Determination}
+
+The required full runway length is:
+
+\[
+FL = \max(TOD_1, TOD_2, DAS, LD)
+\]
+
+\[
+FL = \max(8050, 7900, 9700, 7667)
+\]
+
+\[
+FL = 9700 \ \text{ft}
+\]
+
+The required full-strength pavement length is:
+
+\[
+FS = \max(TOR_1, TOR_2, LD)
+\]
+
+\[
+FS = \max(7762.5, 7550, 7667)
+\]
+
+\[
+FS = 7762.5 \ \text{ft}
+\]
+
+The required stopway length is:
+
+\[
+SW = DAS - \max(TOR_1, TOR_2, LD)
+\]
+
+\[
+SW = 9700 - 7762.5
+\]
+
+\[
+SW = 1937.5 \ \text{ft}
+\]
+
+The required clearway length is:
+
+\[
+CL = \min(FL - DAS, CL_{1,\max}, CL_{2,\max})
+\]
+
+\[
+CL = \min(9700 - 9700, 287.5, 350)
+\]
+
+\[
+CL = 0 \ \text{ft}
+\]
+
+\subsubsection*{Final Answers}
+
+\[
+\boxed{
+\text{Full runway length} = 9700 \ \text{ft}
+}
+\]
+
+\[
+\boxed{
+\text{Full-strength pavement length} = 7762.5 \ \text{ft}
+}
+\]
+
+\[
+\boxed{
+\text{Stopway length} = 1937.5 \ \text{ft}
+}
+\]
+
+\[
+\boxed{
+\text{Clearway length} = 0 \ \text{ft}
+}
+\]
+
+%%%%%%%%%%%%%%
+
+\section*{Problem 4}
+
+An airline is considering the use of a particular aircraft on a non-stop route of 1230 mi between two airports. The nearest alternate airport at either destination is 260 mi away. The time fuel reserves are included in the item listed as ``typical operating empty weight plus time fuel reserves'' in Table~B-3. Table~B-4 indicates the takeoff requirements for this aircraft.
+
+The airport under study has a runway of 8000 ft available with a maximum difference in centerline elevation of 15 ft. The airport elevation is 500 ft above mean sea level (AMSL), and the mean daily highest temperature in the hottest month is $90^\circ$F.
+
+\begin{enumerate}
+    \item[(a)] Find the maximum allowable takeoff weight of this aircraft at the study airport.
+
+    \item[(b)] If the aircraft takes off from the other airport with a takeoff weight of 338{,}000 lb with the maximum allowable payload and minimum fuel, find:
+    \begin{enumerate}
+        \item the maximum allowable payload at the origin airport,
+        \item the landing weight,
+        \item and the landing runway requirements at the destination airport.
+    \end{enumerate}
+\end{enumerate}
+
+\bigskip
+
+\begin{table}[h!]
+\centering
+\caption{Landing Runway Requirements}
+\small
+\begin{tabular}{c|ccccccc}
+\hline
+\multicolumn{8}{c}{\textbf{Maximum Allowable Landing Weight, 1000 lb}} \\
+\multicolumn{8}{c}{Airport elevation, ft} \\
+Temp. ($^\circ$F) & 0 & 1000 & 2000 & 3000 & 4000 & 5000 & 6000 \\
+\hline
+80  & 363.5 & 363.5 & 363.5 & 363.5 & 363.5 & 363.5 & 363.5 \\
+85  & 363.5 & 363.5 & 363.5 & 363.5 & 363.5 & 363.5 & 359.8 \\
+90  & 363.5 & 363.5 & 363.5 & 363.5 & 363.5 & 363.5 & 350.6 \\
+95  & 363.5 & 363.5 & 363.5 & 363.5 & 363.5 & 354.6 & 341.7 \\
+100 & 363.5 & 363.5 & 363.5 & 363.5 & 358.4 & 345.5 & 332.8 \\
+\hline
+\end{tabular}
+
+\vspace{0.5cm}
+
+\begin{tabular}{c|ccccccc}
+\hline
+\multicolumn{8}{c}{\textbf{Landing Runway Length, 1000 ft}} \\
+\multicolumn{8}{c}{Airport elevation, ft} \\
+Weight (1000 lb) & 0 & 1000 & 2000 & 3000 & 4000 & 5000 & 6000 \\
+\hline
+280 & 5.44 & 5.57 & 5.71 & 5.85 & 6.00 & 6.15 & 6.31 \\
+290 & 5.59 & 5.73 & 5.87 & 6.02 & 6.17 & 6.33 & 6.49 \\
+300 & 5.75 & 5.89 & 6.04 & 6.19 & 6.35 & 6.51 & 6.68 \\
+310 & 5.90 & 6.05 & 6.20 & 6.36 & 6.52 & 6.69 & 6.86 \\
+320 & 6.06 & 6.21 & 6.37 & 6.53 & 6.70 & 6.87 & 7.05 \\
+330 & 6.21 & 6.37 & 6.54 & 6.70 & 6.87 & 7.05 & 7.23 \\
+340 & 6.37 & 6.53 & 6.69 & 6.86 & 7.03 & 7.21 & 7.40 \\
+350 & 6.51 & 6.66 & 6.83 & 7.00 & 7.19 & 7.37 & 7.57 \\
+360 & 6.64 & 6.81 & 6.98 & 7.16 & 7.35 & 7.54 & 7.75 \\
+370 & 6.77 & 6.96 & 7.14 & 7.33 & 7.52 & 7.71 & 7.92 \\
+\hline
+\end{tabular}
+
+\vspace{0.5cm}
+
+\begin{flushleft}
+Maximum structural takeoff weight $= 408{,}900$ lb \\
+Maximum structural landing weight $= 363{,}500$ lb \\
+Typical operating weight plus time fuel reserves $= 263{,}300$ lb \\
+Average fuel consumption $= 30$ lb/mi \\
+Typical maximum passenger load $= 54{,}000$ lb \\
+Maximum structural payload $= 99{,}660$ lb \\
+Fuel capacity $= 21{,}762$ gal
+\end{flushleft}
+
+\end{table}
+
+\newpage
+
+\begin{table}[h!]
+\centering
+\caption{Takeoff Runway Requirements}
+\small
+
+\begin{tabular}{c|ccccccc}
+\hline
+\multicolumn{8}{c}{Airport elevation, ft} \\
+Temp. ($^\circ$F) & 0 & 1000 & 2000 & 3000 & 4000 & 5000 & 6000 \\
+\hline
+\multicolumn{8}{c}{\textbf{Maximum Allowable Takeoff Weight, 1000 lb}} \\
+80  & 408.9 & 400.6 & 392.9 & 382.8 & 369.1 & 356.2 & 343.9 \\
+85  & 409.0 & 400.6 & 386.0 & 372.3 & 359.4 & 347.1 & 335.4 \\
+90  & 403.6 & 388.8 & 374.9 & 362.0 & 349.7 & 338.1 & 326.9 \\
+95  & 391.1 & 377.3 & 364.2 & 352.0 & 340.3 & 329.2 & 318.4 \\
+100 & 379.6 & 366.4 & 354.1 & 342.4 & 331.2 & 320.4 & 309.9 \\
+\hline
+\end{tabular}
+
+\vspace{0.5cm}
+
+\begin{tabular}{c|ccccccc}
+\hline
+\multicolumn{8}{c}{\textbf{Reference Factor}} \\
+Temp. ($^\circ$F) & 0 & 1000 & 2000 & 3000 & 4000 & 5000 & 6000 \\
+\hline
+80  & 46.0 & 48.2 & 50.5 & 53.4 & 57.0 & 61.0 & 65.4 \\
+85  & 46.3 & 48.5 & 51.8 & 55.2 & 59.0 & 63.1 & 67.8 \\
+90  & 47.2 & 50.3 & 53.6 & 57.2 & 61.1 & 65.5 & 70.4 \\
+95  & 48.8 & 52.0 & 55.4 & 59.2 & 63.3 & 68.0 & 73.2 \\
+100 & 50.5 & 53.8 & 57.4 & 61.4 & 65.8 & 70.7 & 76.3 \\
+\hline
+\end{tabular}
+
+\vspace{0.5cm}
+
+\begin{tabular}{c|ccccc}
+\hline
+\multicolumn{6}{c}{\textbf{Takeoff Runway Length, 1000 ft}} \\
+\multicolumn{6}{c}{Reference factor} \\
+Weight (1000 lb) & 40 & 50 & 60 & 70 & 80 \\
+\hline
+320 & 4.23 & 5.28 & 6.39 & 7.50 & 8.56 \\
+330 & 4.44 & 5.58 & 6.78 & 7.98 & 9.09 \\
+340 & 4.67 & 5.89 & 7.18 & 8.46 & 9.63 \\
+350 & 4.90 & 6.21 & 7.60 & 8.95 & 10.16 \\
+360 & 5.13 & 6.55 & 8.03 & 9.45 & 10.68 \\
+370 & 5.38 & 6.89 & 8.46 & 9.94 & -- \\
+380 & 5.63 & 7.25 & 8.91 & 10.44 & -- \\
+390 & 5.89 & 7.63 & 9.36 & 10.92 & -- \\
+400 & 6.17 & 8.01 & 9.82 & -- & -- \\
+\hline
+\end{tabular}
+
+\end{table}
+
+\subsection{Solution}
+
+Given data:
+
+\begin{align*}
+R &= 1230 \text{ mi} \\
+R_{alt} &= 260 \text{ mi} \\
+h &= 500 \text{ ft} \\
+T &= 90^\circ F \\
+L_{avail} &= 8000 \text{ ft}
+\end{align*}
+
+The runway centerline elevation difference is:
+
+\[
+\Delta h = 15 \text{ ft}
+\]
+
+Therefore, the runway slope is:
+
+\[
+S=\frac{15}{8000}\times100=0.1875\%
+\]
+
+Since the slope is very small, no correction is required.
+
+\subsubsection*{(a) Maximum Allowable Takeoff Weight}
+
+Using Table B-4 for a temperature of $90^\circ F$:
+
+\begin{center}
+\begin{tabular}{c|c}
+Elevation (ft) & Maximum Takeoff Weight (1000 lb) \\
+\hline
+0 & 403.6 \\
+1000 & 388.8
+\end{tabular}
+\end{center}
+
+Interpolating for 500 ft elevation:
+
+\[
+W_{TO,max}
+=
+403.6
++
+\frac{500}{1000}(388.8-403.6)
+\]
+
+\[
+W_{TO,max}=396.2 \text{ klb}
+\]
+
+Thus,
+
+\[
+\boxed{
+W_{TO,max}\approx396,200 \text{ lb}
+}
+\]
+
+\subsubsection*{(b) Payload, Landing Weight, and Landing Runway Requirement}
+
+The total distance including the alternate airport is:
+
+\[
+R_{tot}=1230+260=1490 \text{ mi}
+\]
+
+The average fuel consumption is:
+
+\[
+30 \text{ lb/mi}
+\]
+
+Therefore, the required fuel weight is:
+
+\[
+W_f=1490\times30
+\]
+
+\[
+W_f=44,700 \text{ lb}
+\]
+
+The operating weight plus reserves is:
+
+\[
+W_{OE}=263,300 \text{ lb}
+\]
+
+The payload corresponding to the maximum allowable takeoff weight is:
+
+\[
+W_P
+=
+W_{TO,max}-W_{OE}-W_f
+\]
+
+\[
+W_P
+=
+396,200-263,300-44,700
+\]
+
+\[
+W_P=88,200 \text{ lb}
+\]
+
+However, the aircraft limitations are:
+
+\begin{align*}
+\text{Typical maximum passenger load} &= 54,000 \text{ lb} \\
+\text{Maximum structural payload} &= 99,660 \text{ lb}
+\end{align*}
+
+Therefore, the allowable payload is limited to:
+
+\[
+\boxed{
+W_P=54,000 \text{ lb}
+}
+\]
+
+\subsubsection*{Landing Weight}
+
+The actual takeoff weight becomes:
+
+\[
+W_{TO}
+=
+263,300+54,000+44,700
+\]
+
+\[
+W_{TO}=362,000 \text{ lb}
+\]
+
+Fuel burned during the trip from origin to destination:
+
+\[
+W_{burn}=1230\times30
+\]
+
+\[
+W_{burn}=36,900 \text{ lb}
+\]
+
+Therefore, the landing weight is:
+
+\[
+W_L
+=
+362,000-36,900
+\]
+
+\[
+W_L=325,100 \text{ lb}
+\]
+
+Thus,
+
+\[
+\boxed{
+W_L=325,100 \text{ lb}
+}
+\]
+
+This value is below the maximum structural landing weight:
+
+\[
+325,100 < 363,500 \text{ lb}
+\]
+
+Therefore, the landing weight is acceptable.
+
+\subsubsection*{Landing Runway Requirement}
+
+Using Table B-3:
+
+For 320 klb:
+
+\[
+L_{320}
+=
+6.06
++
+\frac{500}{1000}(6.21-6.06)
+\]
+
+\[
+L_{320}=6.135 \text{ kft}
+\]
+
+For 330 klb:
+
+\[
+L_{330}
+=
+6.21
++
+\frac{500}{1000}(6.37-6.21)
+\]
+
+\[
+L_{330}=6.29 \text{ kft}
+\]
+
+Interpolating for $325.1$ klb:
+
+\[
+L
+=
+6.135
++
+\frac{325.1-320}{330-320}(6.29-6.135)
+\]
+
+\[
+L\approx6.21 \text{ kft}
+\]
+
+Therefore,
+
+\[
+\boxed{
+L_{landing}\approx6210 \text{ ft}
+}
+\]
+
+\end{document}
+

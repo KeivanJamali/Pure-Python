@@ -689,7 +689,7 @@ def play_music(music_file, start_time=0):
 
 atexit.register(stop_music)
 
-music_file = Path(r"/mnt/Data1/Python_Projects/Pure-Python/P5/10-Romantic/song.mp3")
+music_file = Path(r"/Users/keivanjamali/Projects/Pure-Python/P5/10-Romantic/song.mp3")
 start_at_seconds = 115  # Start at 1:55 (1 minute 55 seconds)
 music_thread = threading.Thread(target=play_music, args=(music_file, start_at_seconds), daemon=True)
 music_thread.start()

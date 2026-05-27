@@ -1,0 +1,1024 @@
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.110 ######
+PING 10.141.212.110 (10.141.212.110): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.110 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.111 ######
+PING 10.141.212.111 (10.141.212.111): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.111 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.112 ######
+PING 10.141.212.112 (10.141.212.112): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.112 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.113 ######
+PING 10.141.212.113 (10.141.212.113): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.113 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.114 ######
+PING 10.141.212.114 (10.141.212.114): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.114 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.115 ######
+PING 10.141.212.115 (10.141.212.115): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.115 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.116 ######
+PING 10.141.212.116 (10.141.212.116): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.116 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.117 ######
+PING 10.141.212.117 (10.141.212.117): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.117 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.118 ######
+PING 10.141.212.118 (10.141.212.118): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.118 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.119 ######
+PING 10.141.212.119 (10.141.212.119): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.119 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.120 ######
+PING 10.141.212.120 (10.141.212.120): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.120 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.121 ######
+PING 10.141.212.121 (10.141.212.121): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.121 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.122 ######
+PING 10.141.212.122 (10.141.212.122): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.122 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.123 ######
+PING 10.141.212.123 (10.141.212.123): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.123 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.124 ######
+PING 10.141.212.124 (10.141.212.124): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.124 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.125 ######
+PING 10.141.212.125 (10.141.212.125): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.125 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.126 ######
+PING 10.141.212.126 (10.141.212.126): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.126 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.127 ######
+PING 10.141.212.127 (10.141.212.127): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.127 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.128 ######
+PING 10.141.212.128 (10.141.212.128): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.128 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.129 ######
+PING 10.141.212.129 (10.141.212.129): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.129 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.130 ######
+PING 10.141.212.130 (10.141.212.130): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.130 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.131 ######
+PING 10.141.212.131 (10.141.212.131): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.131 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.132 ######
+PING 10.141.212.132 (10.141.212.132): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.132 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.133 ######
+PING 10.141.212.133 (10.141.212.133): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.133 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.134 ######
+PING 10.141.212.134 (10.141.212.134): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.134 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.135 ######
+PING 10.141.212.135 (10.141.212.135): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.135 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.136 ######
+PING 10.141.212.136 (10.141.212.136): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.136 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.137 ######
+PING 10.141.212.137 (10.141.212.137): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.137 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.138 ######
+PING 10.141.212.138 (10.141.212.138): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.138 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.139 ######
+PING 10.141.212.139 (10.141.212.139): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.139 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.140 ######
+PING 10.141.212.140 (10.141.212.140): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.140 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.141 ######
+PING 10.141.212.141 (10.141.212.141): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.141 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.142 ######
+PING 10.141.212.142 (10.141.212.142): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.142 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.143 ######
+PING 10.141.212.143 (10.141.212.143): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.143 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.144 ######
+PING 10.141.212.144 (10.141.212.144): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.144 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.145 ######
+PING 10.141.212.145 (10.141.212.145): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.145 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.146 ######
+PING 10.141.212.146 (10.141.212.146): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.146 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.147 ######
+PING 10.141.212.147 (10.141.212.147): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.147 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.148 ######
+PING 10.141.212.148 (10.141.212.148): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.148 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.149 ######
+PING 10.141.212.149 (10.141.212.149): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.149 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.150 ######
+PING 10.141.212.150 (10.141.212.150): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.150 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.151 ######
+PING 10.141.212.151 (10.141.212.151): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.151 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.152 ######
+PING 10.141.212.152 (10.141.212.152): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.152 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.153 ######
+PING 10.141.212.153 (10.141.212.153): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.153 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.154 ######
+PING 10.141.212.154 (10.141.212.154): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.154 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.155 ######
+PING 10.141.212.155 (10.141.212.155): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.155 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.156 ######
+PING 10.141.212.156 (10.141.212.156): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.156 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.157 ######
+PING 10.141.212.157 (10.141.212.157): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.157 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.158 ######
+PING 10.141.212.158 (10.141.212.158): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.158 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.159 ######
+PING 10.141.212.159 (10.141.212.159): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.159 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.160 ######
+PING 10.141.212.160 (10.141.212.160): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.160 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.161 ######
+PING 10.141.212.161 (10.141.212.161): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.161 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.162 ######
+PING 10.141.212.162 (10.141.212.162): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.162 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.163 ######
+PING 10.141.212.163 (10.141.212.163): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.163 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.164 ######
+PING 10.141.212.164 (10.141.212.164): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.164 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.165 ######
+PING 10.141.212.165 (10.141.212.165): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.165 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.166 ######
+PING 10.141.212.166 (10.141.212.166): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.166 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.167 ######
+PING 10.141.212.167 (10.141.212.167): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.167 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.168 ######
+PING 10.141.212.168 (10.141.212.168): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.168 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.169 ######
+PING 10.141.212.169 (10.141.212.169): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.169 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.170 ######
+PING 10.141.212.170 (10.141.212.170): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.170 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.171 ######
+PING 10.141.212.171 (10.141.212.171): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.171 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.172 ######
+PING 10.141.212.172 (10.141.212.172): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.172 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.173 ######
+PING 10.141.212.173 (10.141.212.173): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.173 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.174 ######
+PING 10.141.212.174 (10.141.212.174): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.174 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.175 ######
+PING 10.141.212.175 (10.141.212.175): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.175 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.176 ######
+PING 10.141.212.176 (10.141.212.176): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.176 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.177 ######
+PING 10.141.212.177 (10.141.212.177): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.177 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.178 ######
+PING 10.141.212.178 (10.141.212.178): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.178 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.179 ######
+PING 10.141.212.179 (10.141.212.179): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.179 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.180 ######
+PING 10.141.212.180 (10.141.212.180): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.180 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.181 ######
+PING 10.141.212.181 (10.141.212.181): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.181 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.182 ######
+PING 10.141.212.182 (10.141.212.182): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.182 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.183 ######
+PING 10.141.212.183 (10.141.212.183): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.183 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.184 ######
+PING 10.141.212.184 (10.141.212.184): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.184 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.185 ######
+PING 10.141.212.185 (10.141.212.185): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.185 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.186 ######
+PING 10.141.212.186 (10.141.212.186): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.186 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.187 ######
+PING 10.141.212.187 (10.141.212.187): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.187 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.188 ######
+PING 10.141.212.188 (10.141.212.188): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.188 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.189 ######
+PING 10.141.212.189 (10.141.212.189): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.189 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.190 ######
+PING 10.141.212.190 (10.141.212.190): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.190 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.191 ######
+PING 10.141.212.191 (10.141.212.191): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.191 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.192 ######
+PING 10.141.212.192 (10.141.212.192): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.192 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.193 ######
+PING 10.141.212.193 (10.141.212.193): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.193 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.194 ######
+PING 10.141.212.194 (10.141.212.194): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.194 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.195 ######
+PING 10.141.212.195 (10.141.212.195): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.195 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.196 ######
+PING 10.141.212.196 (10.141.212.196): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.196 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.197 ######
+PING 10.141.212.197 (10.141.212.197): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.197 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.198 ######
+PING 10.141.212.198 (10.141.212.198): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.198 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.199 ######
+PING 10.141.212.199 (10.141.212.199): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.199 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.200 ######
+PING 10.141.212.200 (10.141.212.200): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.200 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.201 ######
+PING 10.141.212.201 (10.141.212.201): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.201 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.202 ######
+PING 10.141.212.202 (10.141.212.202): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.202 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.203 ######
+PING 10.141.212.203 (10.141.212.203): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.203 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.204 ######
+PING 10.141.212.204 (10.141.212.204): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.204 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.205 ######
+PING 10.141.212.205 (10.141.212.205): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.205 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.206 ######
+PING 10.141.212.206 (10.141.212.206): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.206 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.207 ######
+PING 10.141.212.207 (10.141.212.207): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.207 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.208 ######
+PING 10.141.212.208 (10.141.212.208): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.208 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.209 ######
+PING 10.141.212.209 (10.141.212.209): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.209 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.210 ######
+PING 10.141.212.210 (10.141.212.210): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.210 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.211 ######
+PING 10.141.212.211 (10.141.212.211): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.211 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.212 ######
+PING 10.141.212.212 (10.141.212.212): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.212 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.213 ######
+PING 10.141.212.213 (10.141.212.213): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.213 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.214 ######
+PING 10.141.212.214 (10.141.212.214): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.214 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.215 ######
+PING 10.141.212.215 (10.141.212.215): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.215 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.216 ######
+PING 10.141.212.216 (10.141.212.216): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.216 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.217 ######
+PING 10.141.212.217 (10.141.212.217): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.217 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.218 ######
+PING 10.141.212.218 (10.141.212.218): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.218 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.219 ######
+PING 10.141.212.219 (10.141.212.219): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.219 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.220 ######
+PING 10.141.212.220 (10.141.212.220): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.220 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.221 ######
+PING 10.141.212.221 (10.141.212.221): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.221 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.222 ######
+PING 10.141.212.222 (10.141.212.222): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.222 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.223 ######
+PING 10.141.212.223 (10.141.212.223): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.223 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.224 ######
+PING 10.141.212.224 (10.141.212.224): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.224 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.225 ######
+PING 10.141.212.225 (10.141.212.225): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.225 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.226 ######
+PING 10.141.212.226 (10.141.212.226): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.226 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.227 ######
+PING 10.141.212.227 (10.141.212.227): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.227 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.228 ######
+PING 10.141.212.228 (10.141.212.228): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.228 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.229 ######
+PING 10.141.212.229 (10.141.212.229): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.229 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.230 ######
+PING 10.141.212.230 (10.141.212.230): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.230 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.231 ######
+PING 10.141.212.231 (10.141.212.231): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.231 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.232 ######
+PING 10.141.212.232 (10.141.212.232): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.232 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.233 ######
+PING 10.141.212.233 (10.141.212.233): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.233 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.234 ######
+PING 10.141.212.234 (10.141.212.234): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.234 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.235 ######
+PING 10.141.212.235 (10.141.212.235): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.235 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.236 ######
+PING 10.141.212.236 (10.141.212.236): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.236 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.237 ######
+PING 10.141.212.237 (10.141.212.237): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.237 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.238 ######
+PING 10.141.212.238 (10.141.212.238): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.238 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.239 ######
+PING 10.141.212.239 (10.141.212.239): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.239 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.240 ######
+PING 10.141.212.240 (10.141.212.240): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.240 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.241 ######
+PING 10.141.212.241 (10.141.212.241): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.241 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.242 ######
+PING 10.141.212.242 (10.141.212.242): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.242 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.243 ######
+PING 10.141.212.243 (10.141.212.243): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.243 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.244 ######
+PING 10.141.212.244 (10.141.212.244): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.244 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.245 ######
+PING 10.141.212.245 (10.141.212.245): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.245 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.246 ######
+PING 10.141.212.246 (10.141.212.246): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.246 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.247 ######
+PING 10.141.212.247 (10.141.212.247): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.247 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.248 ######
+PING 10.141.212.248 (10.141.212.248): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.248 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.249 ######
+PING 10.141.212.249 (10.141.212.249): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.249 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.250 ######
+PING 10.141.212.250 (10.141.212.250): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.250 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.251 ######
+PING 10.141.212.251 (10.141.212.251): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.251 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.252 ######
+PING 10.141.212.252 (10.141.212.252): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.252 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.253 ######
+PING 10.141.212.253 (10.141.212.253): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.253 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.254 ######
+PING 10.141.212.254 (10.141.212.254): 1 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.141.212.254 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+####### 10.141.212.255 ######
+PING 10.141.212.255 (10.141.212.255): 1 data bytes
+9 bytes from 10.141.212.22: icmp_seq=0 ttl=64
+9 bytes from 10.141.212.22: icmp_seq=1 ttl=64
+9 bytes from 10.141.212.22: icmp_seq=2 ttl=64
+
+--- 10.141.212.255 ping statistics ---
+3 packets transmitted, 3 packets received, 0.0% packet loss

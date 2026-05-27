@@ -1,0 +1,243 @@
+\documentclass{KPS_assignment}
+\newcommand*{\name}{Keivan Jamali}
+\newcommand*{\id}{403209743}
+\newcommand*{\professor}{Prof. Shafahi}
+\newcommand*{\cdate}{1404/08/26}
+\newcommand*{\course}{Operation Research (20--308)}
+\newcommand*{\assignment}{Class Project 1}
+% ----------START------------------
+\begin{document}
+\maketitle
+\section*{Pyomo Project 1 - Part 1}
+
+\textbf{Goals:}
+\begin{enumerate}
+\item Learn Pyomo optimization framework and modeling
+\item Understand how to interpret and analyze Pyomo results
+\end{enumerate}
+
+\subsection*{Question 1: Linear Programming Problem}
+
+Solve the following optimization problem:
+\begin{align*}
+\text{Maximize} \quad & z = 2x_1 + x_2 + x_3 \\
+\text{subject to} \quad
+& 2x_1 + 3x_2 - x_3 \leq 9 \\
+& 2x_2 + x_3 \geq 4 \\
+& x_1 + x_3 = 6 \\
+& x_1 \geq 0, \quad x_2 \geq 0, \quad x_3 \geq 0
+\end{align*}
+
+\textbf{Follow-up Question:} Is the optimal solution unique? Justify your answer.
+
+
+\subsection*{Question 2: Multi-Constraint Optimization}
+
+Solve the following optimization problem:
+\begin{equation*}
+\begin{aligned}
+\text{Maximize } z = & 7.9 \sum_{j=A}^{C} x_{1j} + 6.9 \sum_{j=A}^{C} x_{2j} + 5 \sum_{j=A}^{C} x_{3j} \\
+& - \left( 0.6 \sum_{i=1}^{3} x_{iA} + 0.52 \sum_{i=1}^{3} x_{iB} + 0.48 \sum_{i=1}^{3} x_{iC} \right)
+\end{aligned}
+\end{equation*}
+
+Subject to:
+\begin{align*}
+x_{1A} & \leq 0.60 \sum_{j=A}^{C} x_{1j} \\
+x_{1C} & \geq 0.20 \sum_{j=A}^{C} x_{1j} \\
+x_{2A} & \leq 0.15 \sum_{j=A}^{C} x_{2j} \\
+x_{2C} & \geq 0.60 \sum_{j=A}^{C} x_{2j} \\
+x_{3C} & \geq 0.50 \sum_{j=A}^{C} x_{3j} \\
+\sum_{i=1}^{3} x_{iA} & \leq 4000 \\
+\sum_{i=1}^{3} x_{iB} & \leq 5000 \\
+\sum_{i=1}^{3} x_{iC} & \leq 2500 \\
+x_{ij} & \geq 0, \quad \forall i \in \{1,2,3\}, \, \forall j \in \{A,B,C\}
+\end{align*}
+
+\section*{Pyomo Project 1 - Part 2}
+\subsection*{Question 3: Multi-Period Blood-Bank Inventory Optimization}
+Hospitals must collect/store blood units (or receive supply) to meet stochastic patient demand over a short planning horizon, but blood units expire after a fixed shelf life. Collections (or shipments) cost money and have limited capacity, holding inventory causes storage cost, shortages incur high penalty costs (patient risk / emergency procurement), and expired units cause disposal cost. Build an LP model to optimize collection/supply decisions over multiple periods, run it across many scenarios (demand realizations, varying shelf life, collection capacity), and analyze how policy levers (increase capacity, extend shelf life, increase holding capability) change total cost, shortage frequency, and wastage. Use Pyomo to loop and aggregate dual values and KPIs — show where investments (capacity, storage tech) give largest benefit.
+
+\subsubsection*{Problem Description}
+
+Optimize blood collection and inventory management decisions across multiple periods while balancing trade-offs between:
+\begin{itemize}
+    \item \textbf{Collection costs} from procuring blood units
+    \item \textbf{Storage costs} from maintaining inventory
+    \item \textbf{Shortage costs} from unmet demand (patient risk)
+    \item \textbf{Waste costs} from expired blood units
+\end{itemize}
+
+Hospitals must meet stochastic demand over a short horizon while accounting for blood's fixed shelf life and limited collection/storage capacity.
+
+\subsubsection*{Decision Variables}
+\begin{description}
+    \item[$x_t$] Blood units collected in period $t$
+    \item[$I_{t,a}$] Inventory of blood age $a$ at end of period $t$ (initial: $I_{0,a} = 0$)
+    \item[$use_{t,a}$] Blood units of age $a$ used in period $t$
+    \item[$shortage_t$] Unmet demand in period $t$
+    \item[$waste_t$] Expired blood units in period $t$
+\end{description}
+
+\subsubsection*{Parameters}
+\begin{description}
+    \item[$T$] Number of planning periods
+    \item[$L$] Shelf life of blood (in periods)
+    \item[$D_t$] Demand for blood in period $t$
+    \item[$C$] Maximum collection capacity per period
+    \item[$p$] Unit cost of collecting blood
+    \item[$h$] Unit cost of holding inventory per period
+    \item[$s$] Unit cost of shortage (high penalty for unmet demand)
+    \item[$w$] Unit cost of wasting expired blood
+\end{description}
+
+\subsubsection*{Objective Function}
+\begin{equation}
+\text{Minimize} \quad z = \sum_{t=1}^{T} \left( p \cdot x_t + h \sum_{a=1}^{L} I_{t,a} + s \cdot shortage_t + w \cdot waste_t \right)
+\end{equation}
+
+\subsubsection*{Constraints}
+
+\textbf{Collection capacity:}
+\begin{equation}
+0 \leq x_t \leq C \quad \forall t
+\end{equation}
+
+\textbf{Demand satisfaction:}
+\begin{equation}
+\sum_{a=1}^{L} use_{t,a} + shortage_t = D_t \quad \forall t
+\end{equation}
+
+\textbf{Inventory balance by age:}
+\begin{equation}
+I_{t,a} = I_{t-1,a-1} - use_{t,a} \quad \forall t, a \geq 2
+\end{equation}
+
+\textbf{New inventory:}
+\begin{equation}
+I_{t,1} = x_t - use_{t,1} \quad \forall t
+\end{equation}
+
+\textbf{Waste (expired blood):}
+\begin{equation}
+waste_t = I_{t-1,L} \quad \forall t
+\end{equation}
+
+\textbf{Non-negativity:}
+\begin{equation}
+x_t, I_{t,a}, use_{t,a}, shortage_t, waste_t \geq 0 \quad \forall t, a
+\end{equation}
+
+\subsection*{Part A:}
+
+Implement the blood-bank inventory model using Pyomo with the following base parameters(short test).
+
+\subsubsection*{Base Parameters}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lll}
+\textbf{Parameter} & \textbf{Symbol} & \textbf{Value} \\
+Planning horizon & $T$ & 10 days \\
+Shelf life & $L$ & 3 days \\
+Collection capacity & $C$ & 40 units/day \\
+Collection cost & $p$ & \$20/unit \\
+Holding cost & $h$ & \$0.5/unit/day \\
+Disposal cost & $w$ & \$5/expired unit \\
+Shortage penalty & $s$ & \$200/unit \\
+Initial inventory & $I_{0,a}$ & 0 for all $a$ \\
+\end{tabular}
+\end{table}
+
+\subsubsection*{Demand Scenario}
+
+\begin{equation}
+D = [30, 15, 20, 60, 45, 30, 100, 35, 10, 10] \text{ units/day}
+\end{equation}
+
+%-----------------------------------------
+
+\subsection*{Sensitivity and Scenario Analysis}
+
+All experimental runs are defined in the file \texttt{sensitivity\_parameters.csv}. This file contains pre-configured parameter sets representing different combinations of demand scenarios, shelf life, capacity, and cost parameters. 
+
+\textbf{Your task:} Read the CSV file, solve the optimization model for each row, and aggregate results across scenarios to answer the analysis questions.
+
+\subsubsection*{Data Format}
+
+The file \texttt{sensitivity\_parameters.csv} has the following columns:
+\begin{itemize}
+    \item \texttt{run\_id}: Unique identifier for each experimental run
+    \item \texttt{T}: Planning horizon (days)
+    \item \texttt{L}: Shelf life (days)
+    \item \texttt{C}: Collection capacity (units/day)
+    \item \texttt{p}: Collection cost (\$/unit)
+    \item \texttt{h}: Holding cost (\$/unit/day)
+    \item \texttt{w}: Disposal cost (\$/expired unit)
+    \item \texttt{s}: Shortage penalty (\$/unit)
+    \item \texttt{demand\_t1, demand\_t2, \ldots, demand\_t8}: Demand for each period
+    \item \texttt{scenario\_type}: Label indicating the experiment category (e.g., \texttt{volatility}, \texttt{shelf\_life}, \texttt{capacity}, \texttt{cost\_sensitivity})
+    \item \texttt{scenario\_param}: The specific parameter being varied in that experiment
+\end{itemize}
+
+\subsubsection*{Tasks}
+
+\begin{enumerate}
+    \item Load \texttt{sensitivity\_parameters.csv} and iterate through each row
+    \item For each row, formulate and solve the blood-bank optimization model in Pyomo using the parameters from that row
+    \item Store the results for each run:
+    \begin{enumerate}
+        \item Optimal total cost
+        \item Total shortage and units short
+        \item Total waste and units wasted
+        \item Total collection and holding costs
+        \item Optimal collection schedule $x_t^*$
+        \item Optimal inventory by age $I_{t,a}^*$
+    \end{enumerate}
+    \item Group results by \texttt{scenario\_type} and \texttt{scenario\_param}, then perform the following analyses:
+    
+    \subsubsection*{1. Demand Volatility Analysis}
+    
+    Filter rows where \texttt{scenario\_type == 'volatility'}. Group by \texttt{scenario\_param} (volatility level $\sigma$) and compute:
+    \begin{enumerate}
+        \item Mean and standard deviation of total cost
+        \item Mean shortage frequency and total units short
+        \item Mean waste and total units wasted
+        \item Plot total cost, shortage, and waste vs. volatility level
+    \end{enumerate}
+    
+    \subsubsection*{2. Shelf-Life Analysis}
+    
+    Filter rows where \texttt{scenario\_type == 'shelf\_life'}. Group by \texttt{scenario\_param} (shelf life $L$) and compute:
+    \begin{enumerate}
+        \item Total cost, shortage, and waste for each $L$
+        \item Collection and holding cost breakdown
+        \item Plot total cost, shortage, and waste vs. shelf life
+        \item Calculate marginal benefit of increasing shelf life by one day
+    \end{enumerate}
+    
+    \subsubsection*{3. Capacity Analysis}
+    
+    Filter rows where \texttt{scenario\_type == 'capacity'}. Group by \texttt{scenario\_param} (capacity $C$) and compute:
+    \begin{enumerate}
+        \item Total cost, shortage, and waste for each $C$
+        \item Average collection and inventory levels
+        \item Plot total cost vs. capacity
+        \item Calculate marginal cost of reducing/increasing capacity
+    \end{enumerate}
+    
+    \subsubsection*{4. Cost Sensitivity Analysis}
+    
+    Filter rows where \texttt{scenario\_type == 'cost\_sensitivity'}. Group by \texttt{scenario\_param} (the cost parameter being varied: $s$, $w$, or $h$) and compute:
+    \begin{enumerate}
+        \item Total cost and cost component breakdown
+        \item Shortage and waste levels
+        \item Plot total cost, shortage, and waste vs. the cost parameter
+        \item Identify which cost parameters have the largest impact on total cost
+    \end{enumerate}
+    
+    \item Generate a summary report with tables and plots comparing all scenarios
+    \item Provide insights and recommendations based on the aggregated results
+\end{enumerate}
+
+\end{document}

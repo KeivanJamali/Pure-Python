@@ -1,0 +1,491 @@
+\documentclass{KPS_assignment}
+% ---------For Persian------------
+% \newcommand*{\name}{کیوان جمالی}
+% \newcommand*{\id}{403209743}
+% \newcommand*{\professor}{دکتر شفاهی}
+% \newcommand*{\cdate}{2024/12/26}
+% \newcommand*{\course}{درس (شماره)}
+% \newcommand*{\assignment}{تمرین شماره1}
+% ----------For English------------
+\newcommand*{\name}{Keivan Jamali}
+\newcommand*{\id}{403209743}
+\newcommand*{\professor}{Dr. Shafahi}
+\newcommand*{\cdate}{1404/01/16}
+\newcommand*{\course}{Airport (20\_582)}
+\newcommand*{\assignment}{Homework 1}
+% ----------START------------------
+\begin{document}
+\maketitle
+\section*{Problem 1}
+
+\subsection*{Problem Description}
+
+Consider a sequence of aircraft that are scheduled to land on a single runway.  
+Let $A_i$ denote the \textbf{planned landing time} of aircraft $i$.  
+
+Due to operational uncertainties, the \textbf{actual landing time} is subject to random error:
+
+\[
+L_i = A_i + e_i
+\]
+
+where the landing error is normally distributed:
+
+\[
+e_i \sim \mathcal{N}(0,6)
+\]
+
+and errors are assumed to be independent across aircraft.
+
+For safety reasons, the minimum required separation between two consecutive actual landings is:
+
+\[
+L_{i+1} - L_i \ge 80
+\]
+
+If this condition is violated, the aircraft must perform a go-around, reducing runway capacity.
+
+The objective is to determine the optimal planned spacing between aircraft that maximizes expected runway capacity.
+
+\subsection*{Distribution of Landing Separation}
+
+Define the actual landing time difference:
+
+\[
+D_i = L_{i+1} - L_i
+\]
+
+Substituting:
+
+\[
+D_i = (A_{i+1} - A_i) + (e_{i+1} - e_i)
+\]
+
+Assume constant planned spacing:
+
+\[
+s = A_{i+1} - A_i
+\]
+
+Since $e_i \sim \mathcal{N}(0,6)$ and errors are independent:
+
+\[
+e_{i+1} - e_i \sim \mathcal{N}(0,12)
+\]
+
+because variances add:
+
+\[
+\text{Var}(e_{i+1} - e_i) = 6 + 6 = 12
+\]
+
+Therefore:
+
+\[
+D_i \sim \mathcal{N}(s,12)
+\]
+
+\subsection*{Probability of Safe Landing}
+
+The probability that a landing is successful is:
+
+\[
+P(D_i \ge 80)
+\]
+
+Using standardization:
+
+\[
+P(D_i \ge 80)
+=
+1 -
+\Phi\left(
+\frac{80 - s}{\sqrt{12}}
+\right)
+\]
+
+where $\Phi(\cdot)$ is the standard normal cumulative distribution function.
+
+\subsection*{Capacity Function}
+
+Runway capacity is defined as the expected number of successful landings per unit time.
+
+Since each landing consumes $s$ units of time on average, the expected capacity is:
+
+\[
+C(s)
+=
+\frac{
+1 -
+\Phi\left(
+\frac{80 - s}{\sqrt{12}}
+\right)
+}{s}
+\]
+
+This represents the expected number of successful landings per unit time.
+
+\subsection*{Optimization Problem}
+
+The optimal planned separation $s^*$ is obtained by solving:
+
+\[
+\max_{s > 0}
+\quad
+C(s)
+=
+\max_{s > 0}
+\quad
+\frac{
+1 -
+\Phi\left(
+\frac{80 - s}{\sqrt{12}}
+\right)
+}{s}
+\]
+
+Since a closed-form solution does not exist, $s^*$ must be computed numerically.
+
+\subsection*{Final Capacity}
+
+After computing $s^*$ numerically, the maximum runway capacity is:
+
+\[
+C^* = C(87.471^*) = 0.011255
+\]
+
+If time is measured in seconds, runway capacity in landings per hour is:
+
+\[
+\text{Capacity per hour}
+=
+3600 \times C^* = 40.518
+\]
+
+\section*{Problem 2}
+
+Let:
+
+\begin{itemize}
+    \item $T \sim \mathcal{N}(\mu, \sigma^2)$ be the total travel + airport processing time.
+    \item $H$ be the time between two consecutive flights (in minutes).
+    \item $x$ be the decision variable: time before the next flight at which the passenger leaves home.
+\end{itemize}
+
+If a flight departs at time $0$, the passenger leaves at time $-x$.
+Arrival time at the gate is:
+
+\[
+A = -x + T
+\]
+
+\subsection*{Waiting Time Function}
+
+Two cases arise:
+
+\[
+W(x,T) =
+\begin{cases}
+x - T & \text{if } T \le x \\
+H + x - T & \text{if } T > x
+\end{cases}
+\]
+
+Equivalently,
+
+\[
+W(x,T) = x - T + H \mathbf{1}_{\{T > x\}}
+\]
+
+\subsection*{Expected Waiting Time}
+
+Taking expectation:
+
+\[
+\mathbb{E}[W(x)]
+=
+x - \mu
++
+H \mathbb{P}(T > x)
+\]
+
+Since $T$ is normally distributed,
+
+\[
+\mathbb{P}(T > x)
+=
+1 - \Phi\left(\frac{x-\mu}{\sigma}\right)
+\]
+
+Therefore, the objective function is:
+
+\[
+f(x)
+=
+x - \mu
++
+H \left[
+1 - \Phi\left(\frac{x-\mu}{\sigma}\right)
+\right]
+\]
+
+\subsection*{Optimization Problem}
+
+\[
+\min_{0 \le x \le H}
+\;
+f(x)
+\]
+
+\subsection*{First Order Condition}
+
+Taking derivative:
+
+\[
+f'(x)
+=
+1
+-
+\frac{H}{\sigma}
+\phi\left(\frac{x-\mu}{\sigma}\right)
+\]
+
+Setting $f'(x)=0$:
+
+\[
+1
+=
+\frac{H}{\sigma}
+\phi\left(\frac{x-\mu}{\sigma}\right)
+\]
+
+Thus, the optimal $x^*$ satisfies:
+
+\[
+\phi\left(\frac{x^*-\mu}{\sigma}\right)
+=
+\frac{\sigma}{H}
+\]
+
+This implicitly determines the optimal departure time.
+
+\subsection*{Answers to Questions}
+
+\subsubsection*{(a) Optimal $x$ when $H = 3$ hours}
+
+Convert hours to minutes:
+
+\[
+H = 3*60 = 180 \text{ minutes}
+\]
+
+Solve:
+
+\[
+\phi\left(\frac{x^*-72}{\sqrt{17}}\right)
+=
+\frac{\sqrt{17}}{180}
+\]
+
+\[
+x_1^* = 65 \text{ minutes}
+\]
+\[
+x_2^* = 79 \text{ minutes}
+\]
+
+Since $x$ must be greater than the 72(mean of wait time), the optimal departure time is:
+
+\[
+x^* = 79 \text{ minutes}
+\]
+
+The mean waiting time is: 15.06 minutes.
+
+\subsubsection*{(b) Effect of Increasing $H$ to 6 Hours}
+
+If $H$ increases:
+
+\[
+\phi(z^*) = \frac{\sigma}{H}
+\]
+
+Since $H$ increases, the right-hand side decreases.
+Because $\phi(z)$ decreases as $|z|$ increases from $0$,
+
+\[
+|z^*| \text{ increases}
+\]
+
+Therefore,
+
+\[
+x^* \text{ increases}
+\]
+
+\[
+x_1^* = 63.481 \text{ minutes}
+\]
+\[
+x_2^* = 80.518 \text{ minutes}
+\]
+
+\textbf{Conclusion:}  
+When flights are less frequent, the passenger departs earlier (larger safety buffer) -> 80.518.
+
+The mean waiting time is: 15.51 minutes.
+
+\subsection*{(c) Mean Number of People Waiting in Airport}
+
+Assume:
+
+\begin{itemize}
+    \item $D$ destinations
+    \item Each destination has flight interval $H$
+    \item Demand per destination = $\lambda$ persons per flight
+\end{itemize}
+
+Total arrival rate per destination:
+
+\[
+\lambda_d = \frac{\lambda}{H}
+\]
+
+Using Little's Law:
+
+\[
+L = \lambda_d \cdot \mathbb{E}[W(x^*)]
+\]
+
+Total number waiting across all destinations:
+
+\[
+L_{total} = D \cdot \lambda_d \cdot \mathbb{E}[W(x^*)]
+\]
+
+\[
+L_{total} = 30 \cdot \frac{60}{180} \cdot \mathbb{E}[W(79)] = 150.60
+\]
+
+
+\section*{Problem 3}
+
+\subsection*{Current situation}
+\[
+t = \frac{1}{40-q}
+\]
+t is mean time for service in Operation each hour.
+
+\[
+total = \frac{q}{40-q}
+\]
+total is the service time, in one hour.
+
+\[
+day = \frac{24 \times q}{40-q}
+\]
+all the service time, each day
+
+\[
+year = \frac{365 \times 24 \times q}{40-q}
+\]
+all the service time, each year
+
+
+\[
+cost = \frac{3000 \times 365 \times 24 \times q}{40-q} = 26280000 \times \frac{q}{40 - q}
+\]
+This is the yearly cost for current situation.
+
+
+\subsection*{Future situation}
+\[
+t = \frac{1}{40-(q/2)}
+\]
+t is mean time for service in Operation each hour.
+
+\[
+total = \frac{q}{40-(q/2)}
+\]
+total is the service time, in one hour for one Band.
+
+\[
+day = \frac{24 \times q}{40-(q/2)}
+\]
+all the service time, each day for one Band.
+
+\[
+year = \frac{365 \times 24 \times q}{40-(q/2)}
+\]
+all the service time, each year for one Band.
+
+\[
+year = \frac{2 \times 365 \times 24 \times q}{40-(q/2)}
+\]
+all the service time, each year for both Band.
+
+\[
+cost = \frac{3000 \times 2 \times 365 \times 24 \times q}{40-(q/2)} = 52560000 \times \frac{q}{40 - (q/2)}
+\]
+This is the yearly cost for future situation.
+
+\[
+build = \frac{i \times (i + 1)^{40}}{(i + 1)^{40} - 1} \times 60M + 3M = 8031609.69 (8.0316M)
+\]
+This is the yearly cost build the new Band.
+
+\[
+build = 8031609.69 + 52560000 \times \frac{q}{40 - (q/2)}
+\]
+The total cost for future in reality.
+
+\subsection*{Compare to find the best year}
+
+\[
+q = 20 \times (1 + 0.1) ^ n
+\]
+
+Therefore current yearly cost in year n is:
+\[
+current = 26280000 \times \frac{20 \times (1 + 0.1) ^ n}{40 - (20 \times (1 + 0.1) ^ n)}
+\]
+
+Therefore future yearly cost in year n is:
+\[
+future = 8031609.69 + 52560000 \times \frac{20 \times (1 + 0.1) ^ n}{40 - \frac{(20 \times (1 + 0.1) ^ n)}{2}}
+\]
+
+We solve it for n=0:
+\[
+26.28M \leq 43.07M
+\]
+
+We solve it for n=1:
+\[
+32.12M \leq 47.90M
+\]
+
+We solve it for n=2:
+\[
+40.25M \leq 53.62M
+\]
+
+We solve it for n=3:
+\[
+52.29M \leq 60.45M
+\]
+
+We solve it for n=4:
+\[
+71.80M \leq 68.72M
+\]
+
+Therefore, before the start of \textbf{year 4}, we should to build the new Band.
+
+\begin{figure}[h]
+    \includegraphics{q3.png}
+    \caption{During 7 years, coparison the costs.}
+\end{figure}
+
+\end{document}
+

@@ -1,0 +1,177 @@
+\documentclass{rapportCS} % Ensure rapportCS.cls is available
+\usepackage{lipsum}
+\usepackage{svg}
+\usepackage{float} % Added for 'H' float specifier
+\title{Report - Template}
+\begin{document}
+
+%--------------------
+
+\logoentreprise{logos/logo.png}
+
+\titre{Transportation's Systems 20-5751}
+
+\mention{Prof. Zahra Amini} 
+\trigrammemention{Project}
+\master{Keivan Jamali}
+
+\eleve{Project Part 3: One-Dimensional Optimization Methods}
+
+\dates{1405/02/08}
+
+
+%------------------------------
+        
+\fairemarges 
+\fairepagedegarde 
+
+%----------- Abstract -------------------
+%\vspace*{\stretch{1}}
+%\begin{center}
+	%\begin{abstract}
+        %\lipsum[1]
+        %\rule{\linewidth}{0.2 mm} \\[0.4 cm]
+        %\begin{center}\textbf{Summary :}\end{center} 
+        %\lipsum[2]
+    %\end{abstract}
+%\end{center}
+%\vspace*{\stretch{1}}
+%\newpage
+
+%----------------------------
+
+%====================================================
+\section{Introduction}
+
+In this part, you will implement two fundamental one-dimensional optimization algorithms and apply them to transportation-related problems based on the Sioux Falls network.
+
+The goal is to prepare you for more advanced algorithms (e.g., Frank–Wolfe) by first mastering line search and root-finding techniques.
+
+%------------------------------------------------------
+\subsection*{Problem 1: Bisection Method for Flow Equilibrium on a Link}
+
+In transportation systems, congestion effects are often modeled using nonlinear travel time functions. Consider the BPR function:
+
+$$ T(f) = T^0 \left(1 + B \left(\frac{f}{C}\right)^4 \right) $$
+
+We define the total cost on a link as:
+
+$$ Z(f) = f \cdot T(f) $$
+
+Your task is to find the flow value \( f^* \) such that:
+
+$$ \frac{dZ(f)}{df} = K $$
+
+Where:
+\begin{itemize}
+    \item \( K \) is a constant derived from your student ID
+    \item \( C = 1000 \)
+    \item \( T^0 \) and \( B \) are generated using your student ID
+\end{itemize}
+
+\textbf{Instructions:}
+\begin{enumerate}
+    \item Derive \( \frac{dZ(f)}{df} \)
+    \item Reformulate the problem as a root-finding problem:
+    $$ g(f) = \frac{dZ(f)}{df} - K = 0 $$
+    \item Use the \textbf{Bisection Method} to solve for \( f^* \)
+    \item Use an interval \( [0, C] \)
+    \item Stop when:
+    $$ |g(f)| < 10^{-5} $$
+\end{enumerate}
+
+\textbf{Student-Specific Parameters:}
+
+Let your student ID be \( ID \):
+\begin{itemize}
+    \item \( seed = int(\text{hashlib}.sha256(\text{student\_id}.encode()).hexdigest(), 16) \% 1e8 \)
+    \item \( B = 0.15 + \frac{(int(seed) \% 10)}{100} \)
+    \item \( T^0 = 5 + (int(seed) \% 10) \)
+    \item \( K = T^0 + (int(seed) \% (T^0*(1+5*B) - T^0)) \)
+\end{itemize}
+
+\subsubsection*{IMPORTANT NUMBER}
+
+\(x^* = round(f^*)\) and \(y^* = round(Z(f^*))\). Compute:
+$$ R_1 = int(hash(tuple([x^*, y^*])) \% 100000) $$
+
+%------------------------------------------------------
+\subsection*{Problem 2: Golden Section Search for Optimal Step Size}
+
+This problem mimics the line search step used in traffic assignment algorithms such as Frank–Wolfe.
+
+You are given a subset of links from the Sioux Falls network. For each link \( (i,j) \), two flow values are provided:
+\begin{itemize}
+    \item Current flow \( x_{ij} \)
+    \item Auxiliary flow \( y_{ij} \)
+\end{itemize}
+
+Define the flow on each link as a function of \( \lambda \):
+
+$$ f_{ij}(\lambda) = x_{ij} + \lambda (y_{ij} - x_{ij}), \quad \lambda \in [0,1] $$
+
+The objective function is the total system travel time:
+
+$$ Z(\lambda) = \sum_{(i,j)} f_{ij}(\lambda) \cdot T_{ij}(f_{ij}(\lambda)) $$
+
+where the travel time function follows the BPR form:
+
+$$ T_{ij}(f) = T_{ij}^0 \left( 1 + B_{ij} \left( \frac{f}{C} \right)^4 \right), \quad C = 1000 $$
+
+\textbf{Input Data:}
+
+For each student, a data file is provided. This file contains:
+\begin{itemize}
+    \item A list of selected links \( (i,j) \)
+    \item For each link:
+    \begin{itemize}
+        \item \( x_{ij} \): current flow
+        \item \( y_{ij} \): auxiliary flow
+        \item \( T_{ij}^0 \): free-flow travel time
+        \item \( B_{ij} \): BPR parameter
+    \end{itemize}
+\end{itemize}
+
+Each student must use the dataset corresponding to their \texttt{student\_id}.
+
+\textbf{Instructions:}
+\begin{enumerate}
+    \item Read the provided data file corresponding to your \texttt{student\_id}
+    \item Implement the \textbf{Golden Section Search} algorithm
+    \item Minimize \( Z(\lambda) \) over \( \lambda \in [0,1] \)
+    \item Stop when:
+    $$ |b - a| < 10^{-5} $$
+\end{enumerate}
+
+\subsubsection*{IMPORTANT NUMBER}
+
+Let \( \lambda^* \) be the optimal value rounded to 6 decimal places and \( y^* = round(Z(\lambda^*)) \). Compute:
+
+$$ R_2 = int(hash(tuple([x_golde, y_golde])) \% 100000) $$
+%------------------------------------------------------
+\subsection*{Submission for Part 3}
+
+Submit:
+\begin{itemize}
+    \item Your implementation of:
+    \begin{itemize}
+        \item Bisection Method.
+        \item Golden Section Search.
+        \item The code to solve problem 1 and problem 2 using the above methods.
+    \end{itemize}
+    \item A short report including:
+    \begin{itemize}
+        \item Derived formulas
+        \item Final values of \( f^* \) and \( \lambda^* \)
+    \end{itemize}
+    \item A single text file containing IMPORTANT NUMBERS:
+    \begin{itemize}
+        \item \( R_1 \)
+        \item \( R_2 \)
+    \end{itemize}
+\end{itemize}    
+%------------------------------------------------------
+%\bibliographystyle{plain}
+%\bibliography{references} 
+
+\end{document}

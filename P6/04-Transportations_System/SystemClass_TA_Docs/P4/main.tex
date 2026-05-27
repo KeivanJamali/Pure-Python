@@ -1,0 +1,134 @@
+\documentclass{rapportCS} % Ensure rapportCS.cls is available
+\usepackage{lipsum}
+\usepackage{svg}
+\usepackage{float} % Added for 'H' float specifier
+\title{Report - Template}
+\begin{document}
+
+%--------------------
+
+\logoentreprise{logos/logo.png}
+
+\titre{Transportation's Systems 20-5751}
+
+\mention{Prof. Zahra Amini} 
+\trigrammemention{Project}
+\master{Keivan Jamali}
+
+\eleve{Project Part 4: Multi-Dimensional Optimization using Gradient Descent}
+
+\dates{1405/02/08}
+
+
+%------------------------------
+        
+\fairemarges 
+\fairepagedegarde 
+
+%----------- Abstract -------------------
+%\vspace*{\stretch{1}}
+%\begin{center}
+	%\begin{abstract}
+        %\lipsum[1]
+        %\rule{\linewidth}{0.2 mm} \\[0.4 cm]
+        %\begin{center}\textbf{Summary :}\end{center} 
+        %\lipsum[2]
+    %\end{abstract}
+%\end{center}
+%\vspace*{\stretch{1}}
+%\newpage
+
+%----------------------------
+
+%====================================================
+\section{Introduction}
+
+In this part, you will extend your optimization knowledge to multi-variable problems using the Gradient Descent algorithm.
+
+This problem represents a simplified version of flow distribution across parallel routes in a transportation network.
+
+%------------------------------------------------------
+\subsection{Flow Optimization on Parallel Links}
+
+Consider 4 parallel links connecting the same origin and destination. The total demand is:
+
+$$ D $$
+
+Flows must satisfy:
+
+$$ x_1 + x_2 + x_3 + x_4 = D $$
+
+Each link follows the BPR travel time function:
+
+$$ T_i(x_i) = T_i^0 \left(1 + B \left(\frac{x_i}{C}\right)^4 \right) $$
+
+The total system cost is:
+
+$$ Z(x_1, x_2, x_3, x_4) = \sum_{i=1}^{4} x_i \cdot T_i(x_i) $$
+
+\textbf{Instructions:}
+\begin{enumerate}
+    \item Implement \textbf{Gradient Descent}
+    \item Minimize \( Z(x_1, x_2, x_3, x_4) \)
+    \item Enforce the constraint:
+    $$ x_1 + x_2 + x_3 + x_4 = D $$
+\end{enumerate}
+
+\textbf{Hint:}
+You may:
+\begin{itemize}
+    \item Use a penalty function:
+    $$ Z'(x) = Z(x) + \mu (x_1 + x_2 + x_3 + x_4 - D)^2 $$
+\end{itemize}
+
+\textbf{Student-Specific Parameters:}
+
+Let \( ID \) be your student ID:
+
+\begin{itemize}
+    \item \( seed = int(\text{hashlib}.sha256(\text{student\_id}.encode()).hexdigest(), 16) \% 1e8 \)
+    \item \( D = 10000 + (int(seed) \% 10000) \)
+    \item \( B_1 = 0.1 + \frac{int(seed \% 10)}{100} \)
+    \item \( B_2 = 0.2 + \frac{int(seed \% 10)}{100} \)
+    \item \( B_3 = 0.3 + \frac{int(seed \% 10)}{100} \)
+    \item \( B_4 = 0.4 + \frac{int(seed \% 10)}{100} \)
+    \item \( T_1^0 = 5 + (int(seed) \% 5) \)
+    \item \( T_2^0 = 7 + (int(seed) \% 7) \)
+    \item \( T_3^0 = 9 + (int(seed) \% 9) \)
+    \item \( T_4^0 = 11 + (int(seed) \% 11) \)
+\end{itemize}
+
+\textbf{Stopping Criteria:}
+
+You choose the best criteria for the problem.
+
+\vspace{1cm}
+\textbf{Final Output (IMPORTANT NUMBER):}
+
+Let \( x_1^*, x_2^*, x_3^*, x_4^* \) be the optimal flows.
+
+Compute:
+
+$$ R = hash(tuple\left( \lfloor \frac{x_1^*}{10} \rfloor, \lfloor \frac{x_2^*}{10} \rfloor, \lfloor \frac{x_3^*}{10} \rfloor, \lfloor \frac{x_4^*}{10} \rfloor \right)) \bmod 100000 $$
+
+%------------------------------------------------------
+\subsection{Submission for Part 4}
+
+Submit:
+\begin{itemize}
+    \item Your Gradient Descent implementation
+    \item A report including:
+    \begin{itemize}
+        \item Step size strategy
+        \item Convergence behavior
+        \item Final solution
+    \end{itemize}
+    \item IMPORTANT NUMBER:
+    \begin{itemize}
+        \item \( R \)
+    \end{itemize}
+\end{itemize}%------------------------------------------------------
+%\bibliographystyle{plain}
+%\bibliography{references} 
+
+\end{document}

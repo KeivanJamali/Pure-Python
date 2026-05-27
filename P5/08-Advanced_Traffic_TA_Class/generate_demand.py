@@ -31,3 +31,4 @@ if __name__ == "__main__":
     network_file = Path(r"/mnt/Data1/Python_Projects/Pure-Python/P5/08-Advanced_Traffic_TA_Class/data/network_test/SiouxFallsNetwork.csv")
     demand_file = Path(r"/mnt/Data1/Python_Projects/Pure-Python/P5/08-Advanced_Traffic_TA_Class/data/network_test/demand.csv")
     generate_demand(network_file, demand_file, amount=800, time=400)
+    

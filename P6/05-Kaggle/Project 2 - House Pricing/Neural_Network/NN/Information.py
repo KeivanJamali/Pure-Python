@@ -1,0 +1,18 @@
+features = ["MSSubClass", "MSZoning", "LotArea", "Street", "Alley", "LotShape", "LandContour", "Utilities", 
+            "LotConfig", "LandSlope", "Neighborhood", "Condition1", "Condition2", "BldgType", "HouseStyle", "OverallQual", 
+            "OverallCond", "YearBuilt", "YearRemodAdd", "RoofStyle", "Exterior1st", "Exterior2nd", "MasVnrType", "MasVnrArea", "ExterQual",
+            "ExterCond", "Foundation", "BsmtQual", "BsmtCond", "BsmtExposure", "BsmtFinType1", "BsmtFinSF1", "BsmtFinType2",
+            "BsmtFinSF2", "BsmtUnfSF", "TotalBsmtSF", "Heating", "HeatingQC", "CentralAir", "Electrical", "1stFlrSF", "2ndFlrSF",
+            "LowQualFinSF", "GrLivArea", "BsmtFullBath", "BsmtHalfBath", "FullBath", "HalfBath", "BedroomAbvGr", "KitchenAbvGr", "KitchenQual",
+            "TotRmsAbvGrd", "Functional", "Fireplaces", "FireplaceQu", "GarageType", "GarageYrBlt", "GarageFinish", "GarageCars",
+            "GarageArea", "GarageQual", "GarageCond", "PavedDrive", "WoodDeckSF", "OpenPorchSF", "EnclosedPorch", "3SsnPorch",
+            "ScreenPorch", "PoolArea", "PoolQC", "Fence", "MiscFeature", "MiscVal", "MoSold", "YrSold", "SaleType", "SaleCondition"]
+one_hot_encoding = ["MSSubClass", "MSZoning", "Alley", "LotShape", "LandContour", "Utilities", "LotConfig", 
+                    "LandSlope", "Neighborhood", "Condition1", "Condition2", "BldgType", "HouseStyle", "RoofStyle",
+                    "Exterior1st", "Exterior2nd", "MasVnrType", "Foundation", "Heating", "Electrical", "Functional", "GarageType",
+                    "Fence", "MiscFeature", "SaleType", "SaleCondition"]
+target = ["SalePrice"]
+
+
+features_dataloader = []
+target_dataloader = []
